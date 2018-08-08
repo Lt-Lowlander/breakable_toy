@@ -17,7 +17,7 @@ class App extends Component {
           $('#' + flashContainerId).remove();
         }
 
-        setTimeout(removeFlashMessages, flashDurationInSeconds * 1000);
+        setTimeout(removeFlashMessages, flashDurationInSeconds * 2000);
       })
 
   render() {
