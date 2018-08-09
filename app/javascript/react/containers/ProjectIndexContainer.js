@@ -6,7 +6,9 @@ class ProjectIndexContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      projects_array: [],
+      member: false,
+      admin: false
     }
 
   }
