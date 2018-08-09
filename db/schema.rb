@@ -10,10 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_08_230804) do
+ActiveRecord::Schema.define(version: 2018_08_09_164937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "equipment", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "project_id"
+    t.string "tool_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_equipment_on_project_id"
+    t.index ["user_id"], name: "index_equipment_on_user_id"
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.bigint "project_id"
+    t.string "material_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_materials_on_project_id"
+  end
+
+  create_table "project_submissions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "project_id"
+    t.string "project_title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_submissions_on_project_id"
+    t.index ["user_id"], name: "index_project_submissions_on_user_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name", null: false
