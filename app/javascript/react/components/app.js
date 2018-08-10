@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import ProjectIndexContainer from '../containers/ProjectIndexContainer';
+import ProjectShowContainer from '../containers/ProjectShowContainer';
 
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
 
           <IndexRoute component={ProjectIndexContainer} />
           <Route path='/projects' component={ProjectIndexContainer} />
+          <Route path='/projects/:id' component={ProjectShowContainer} />
 
         </Route>
       </Router>

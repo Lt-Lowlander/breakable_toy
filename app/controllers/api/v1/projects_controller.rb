@@ -12,23 +12,17 @@ class Api::V1::ProjectsController < ApiController
       render json: Project.all
     elsif current_user.role == "member"
       payload = {
-        venues: Project.all,
+        projects: Project.all,
         member: true
-      }
-      render json: payload
-    elsif current_user.admin?
-      payload = {
-        projects = Project.all,
-        member: true,
-        admin: true
       }
       render json: payload
     end
   end
 
-  # def show
-  #   render json: Project.find(params[:id]), include: ["reviews", "reviews.review_votes"]
-  # end
+  def show
+    render json: Project.find(params[:id]),
+     include: ["equipment"]
+  end
 
   # def new; end
   #
@@ -69,6 +63,6 @@ class Api::V1::ProjectsController < ApiController
 
   private
   def project_params
-    params.permit(:name, :description, :version, :photo)
+    params.permit(:name, :description, :version_id, :photo_url)
   end
 end
