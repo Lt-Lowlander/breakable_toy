@@ -4,11 +4,16 @@ import StepsContainer from './StepsContainer';
 import VersionHistoryContainer from './VersionHistoryContainer';
 import MaterialsContainer from './MaterialsContainer';
 import EquipmentContainer from './EquipmentContainer';
+import ProjectShowTile from '../components/ProjectShowTile';
 
 class ProjectShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      versions: [],
+      equipment: [],
+      materials: [],
+      steps: [],
 
     }
 
@@ -25,6 +30,9 @@ class ProjectShowContainer extends Component {
         </div>
         <div>
           <StepsContainer/>
+        </div>
+        <div>
+          <ProjectShowTile/>
         </div>
         <div>
           <MaterialsContainer/>

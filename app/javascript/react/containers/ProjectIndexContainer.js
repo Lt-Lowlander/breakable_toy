@@ -24,18 +24,21 @@ class ProjectIndexContainer extends Component {
         throw(error);
       }
     })
-    .then(response => response.join())
+    .then(response => response.json())
     .then(body => {
+      debugger
       this.setState({
-        projects_array: body.projects
+        projects_array: body
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+
   render(){
     const message = "hi cat";
-    let projects = this.state.projects_array.map(project => {
+    const foundProjects = this.state.projects_array;
+    let projectDisplay = foundProjects.map(project => {
       return(
         <div key={project.id} className="cell small-12 medium-6 large-4">
           <ProjectTile
@@ -50,9 +53,9 @@ class ProjectIndexContainer extends Component {
     })
     return(
       <div>
-        {message}
+        <h1 className="site-title">Project Relay</h1>
         <div className="grid-x grid-margin-x align-spaced">
-          {projects}
+          {projectDisplay}
         </div>
       </div>
     )

@@ -20,46 +20,9 @@ class Api::V1::ProjectsController < ApiController
   end
 
   def show
-    render json: Project.find(params[:id]),
-     include: ["equipment"]
+    render json: Project.find(params[:id])
   end
 
-  # def new; end
-  #
-  # def create
-  #   venue = Venue.new(venue_params)
-  #   if venue.save
-  #     render json: venue
-  #   else
-  #     payload = { errors: venue.errors.full_messages }
-  #     render json: payload
-  #   end
-  # end
-  #
-  # def update
-  #   venue = Venue.find(params[:id])
-  #   if venue.update(venue_params)
-  #     render json: venue
-  #   else
-  #     payload = { errors: venue.errors.full_messages }
-  #     render json: payload
-  #   end
-  # end
-  #
-  # def destroy
-  #   venue = Venue.find(params[:id])
-  #   venue.destroy
-  #
-  #   if current_user.admin?
-  #     payload = {
-  #       venues: Venue.all,
-  #       admin: true
-  #     }
-  #     render json: payload
-  #   else
-  #     render json: Venue.all
-  #   end
-  # end
 
   private
   def project_params
