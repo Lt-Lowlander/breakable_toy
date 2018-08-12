@@ -13,7 +13,7 @@ Project.create(
 #create users
 User.create!(
   handle: "Splinter",
-  email: "proto@email.com",
+  email: "proto1@email.com",
   password: "asdf123",
   bio: Faker::Zeke.unique.quote,
   role: "admin"
@@ -21,7 +21,7 @@ User.create!(
 
 #create equipment
 Equipment.create!(
-  user: User.first,
-  project: Project.first,
+  user_id: 1,
+  project_id: 1,
   tool_name: "weather machine"
 )

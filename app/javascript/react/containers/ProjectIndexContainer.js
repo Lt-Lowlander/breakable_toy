@@ -36,7 +36,6 @@ class ProjectIndexContainer extends Component {
 
 
   render(){
-    const message = "hi cat";
     const foundProjects = this.state.projects_array;
     let projectDisplay = foundProjects.map(project => {
       return(

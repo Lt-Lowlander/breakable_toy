@@ -17,7 +17,6 @@ const ProjectTile = (props) => {
           </div>
         </div>
       </Link>
-      <hr/>
     </div>
   )
 }
