@@ -20,7 +20,9 @@ class Api::V1::ProjectsController < ApiController
   end
 
   def show
-    render json: Project.find(params[:id])
+    project = Project.find(params[:id])
+
+    render json: {project: project, include: ["equipment"] }
   end
 
 

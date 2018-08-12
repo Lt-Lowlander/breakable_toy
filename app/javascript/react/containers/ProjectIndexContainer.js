@@ -26,7 +26,6 @@ class ProjectIndexContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       this.setState({
         projects_array: body
       })
