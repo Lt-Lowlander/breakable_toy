@@ -1,4 +1,4 @@
-class Api::V1::EquipmentController < ApiController
+class Api::V1::MaterialController < ApiController
   # before_action :authorize_user, only: [:edit, :update, :destroy]
   #
   # def authorize_user
@@ -8,6 +8,6 @@ class Api::V1::EquipmentController < ApiController
   # end
 
   def index
-    # equipments = Equipment.where(project_id: params[:project_id])
-    # render json: equipments
+    # materials = Material.where(project_id: params[:project_id])
+    # render json: materials
   end
