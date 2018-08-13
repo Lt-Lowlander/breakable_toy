@@ -1,6 +1,8 @@
 class CreateProjects < ActiveRecord::Migration[5.2]
   def change
     create_table :projects do |t|
+      t.belongs_to :users, null: false
+      
       t.string :name, null: false
       t.text :description, null: false
       t.integer :version_id, null: false
@@ -9,7 +11,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :topics
 
       t.timestamps null: false
-      
+
     end
   end
 end
