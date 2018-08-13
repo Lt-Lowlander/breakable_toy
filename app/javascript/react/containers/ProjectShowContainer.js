@@ -41,7 +41,7 @@ class ProjectShowContainer extends Component {
 
       })
     })
-    .catch(error => console.error(`Error in venue show mount fetch: ${error.message}`));
+    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
   }
 
 

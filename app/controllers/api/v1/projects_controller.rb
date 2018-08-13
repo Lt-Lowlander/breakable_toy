@@ -21,7 +21,6 @@ class Api::V1::ProjectsController < ApiController
 
   def show
     project = Project.find(params[:id])
-
     render json: { project: project }
   end
 

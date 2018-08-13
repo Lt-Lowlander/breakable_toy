@@ -2,18 +2,16 @@ require 'faker'
 
 #create users
 users = User.create!([
-  {handle: "Splinter", email: "proto2@email.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "admin"},
-  {handle: "Tinker_Kid", email: "proto3@email.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "member"},
+  {handle: "Splinter", email: "email1@proto.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "admin"},
+  {handle: "Tinker_Kid", email: "email2@proto.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "member"}
 ])
 
 #create projects
 projects = Project.create!([
-  {name: "Lenticular Splines", description: Faker::Zeke.unique.quote, version_id: "1", photo_url: "https://i.imgur.com/6yYM25A.png",
-  budget: "$30", topics: "cloud curvature", users_id: '1'},
-  {name: "Treadmill Bike", description: Faker::Zeke.unique.quote, version_id: "1", photo_url: "http://www.bikeforest.com/tread/treadmillbike.jpg",
-  budget: "$75", topics: "gear ratios", users_id: '1'},
-])
-
+  {name: "Lenticular Splines", description: Faker::Zeke.unique.quote, version_id: "1", photo_url: "https://i.imgur.com/6yYM25A.png", budget: "$30", topics: "cloud curvature", users_id: '1'},
+  {name: "Treadmill Bike", description: Faker::Zeke.unique.quote, version_id: "1", photo_url: "http://www.bikeforest.com/tread/treadmillbike.jpg", budget: "$54", topics: "gear ratios", users_id: '1'},
+  {name: "Stiletto Umbrellas", description: Faker::Zeke.unique.quote, version_id: "1", photo_url: "https://i.ytimg.com/vi/BmxR8tH7MQI/maxresdefault.jpg", budget: "$79", topics: "fashion", users_id: '2'},
+  ])
 
 #create equipment
 equipment = Equipment.create!([
@@ -25,5 +23,5 @@ equipment = Equipment.create!([
 # create materials
 materials = Material.create!([
   {project_id: '1', material_name: "duct tape"},
-  {project_id: '1', material_name: "water"}
+  {project_id: '1', material_name: "water"},
 ])
