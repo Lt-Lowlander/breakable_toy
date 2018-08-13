@@ -4,20 +4,28 @@ import { Link } from 'react-router';
 const ProjectShowTile = (props) => {
   return(
     <div className="project-show-tile">
-      <Link to={`/projects/${props.id}`}>
         <div className="">
-          <img src={props.image} alt={props.name} className="project-index-pic"/>
-          <div className="project-index-info">
-            <div className="project-index-title">
-              {props.name}
+          <img src={props.image} alt={props.name} className="project-show-pic"/>
+          <div className="project-show-info">
+            <div className="project-show-title">
+              <b>{props.name}</b>
             </div>
-            <div className="project-index-version">
-              Mark {props.iteration}
+            <div>
+              <span className="project-show-version">
+                Mark {props.iteration}
+              </span>
+              <span>  </span>
+              <span className="project-show-inventor">
+                by {props.user}
+              </span>
+            </div>
+            <div className="project-show-description">
+              <b>
+                Description:
+              </b> {props.desc}
             </div>
           </div>
         </div>
-      </Link>
-      <hr/>
     </div>
   )
 }

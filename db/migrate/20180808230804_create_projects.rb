@@ -5,10 +5,11 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.text :description, null: false
       t.integer :version_id, null: false
       t.string :photo_url, null: false
-      t.integer :budget
+      t.string :budget
       t.string :topics
 
       t.timestamps null: false
+      
     end
   end
 end

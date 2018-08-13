@@ -20,12 +20,14 @@ class Api::V1::ProjectsController < ApiController
   end
 
   def show
-    render json: Project.find(params[:id])
+    project = Project.find(params[:id])
+
+    render json: { project: project }
   end
 
 
   private
   def project_params
-    params.permit(:name, :description, :version_id, :photo_url)
+    params.permit(:name, :user, :description, :version_id, :photo_url)
   end
 end

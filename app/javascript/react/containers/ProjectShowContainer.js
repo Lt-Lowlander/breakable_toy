@@ -5,6 +5,7 @@ import VersionHistoryContainer from './VersionHistoryContainer';
 import MaterialsContainer from './MaterialsContainer';
 import EquipmentContainer from './EquipmentContainer';
 import ProjectShowTile from '../components/ProjectShowTile';
+import EquipmentShowTile from '../components/EquipmentShowTile';
 
 class ProjectShowContainer extends Component {
   constructor(props) {
@@ -19,11 +20,10 @@ class ProjectShowContainer extends Component {
     }
 
   }
-
+    // Grab the associated project Info
   componentDidMount(){
-    fetch(`api/v1/projects/${this.props.params.id}`)
+    fetch(`/api/v1/projects/${this.props.params.id}`)
       .then(response => {
-debugger
       if (response.ok) {
         return response;
       } else {
@@ -34,8 +34,11 @@ debugger
     })
     .then(response => response.json())
     .then(body => {
+
       this.setState({
-        equipment: body.project.equipment
+        project: body.project,
+        equipment: body.project.equipment,
+
       })
     })
     .catch(error => console.error(`Error in venue show mount fetch: ${error.message}`));
@@ -45,9 +48,9 @@ debugger
 
 
   render(){
+
     const message = "yo dog";
-    const projectInfo = this.state.project;
-    let project
+
     return(
       <div>
         {message}
@@ -58,13 +61,30 @@ debugger
           <StepsContainer/>
         </div>
         <div>
-          <ProjectShowTile/>
+          <ProjectShowTile
+            key={this.state.project.id}
+            id={this.state.project.id}
+            name={this.state.project.name}
+            image={this.state.project.photo_url}
+            iteration={this.state.project.version_id}
+            desc={this.state.project.description}
+            budget={this.state.project.budget}
+            topics={this.state.project.topics}
+            user={this.state.project.user}
+          />
         </div>
         <div>
           <MaterialsContainer/>
         </div>
         <div>
-          <EquipmentContainer/>
+          <div>
+            <b>Equipment</b>
+          </div>
+          <ul>
+            <EquipmentShowTile
+              tool={this.state.equipment}
+            />
+          </ul>
         </div>
       </div>
     )
