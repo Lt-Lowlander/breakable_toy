@@ -2,7 +2,8 @@ require 'faker'
 
 #create users
 users = User.create!([
-  {handle: "Splinter", email: "proto2@email.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "admin"}
+  {handle: "Splinter", email: "proto2@email.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "admin"},
+  {handle: "Tinker_Kid", email: "proto3@email.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "member"},
 ])
 
 #create projects
@@ -11,7 +12,7 @@ projects = Project.create!([
   budget: "$30", topics: "cloud curvature", users_id: '1'},
   {name: "Treadmill Bike", description: Faker::Zeke.unique.quote, version_id: "1", photo_url: "http://www.bikeforest.com/tread/treadmillbike.jpg",
   budget: "$75", topics: "gear ratios", users_id: '1'},
-  ])
+])
 
 
 #create equipment
