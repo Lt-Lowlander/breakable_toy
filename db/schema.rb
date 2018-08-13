@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2018_08_09_182509) do
   end
 
   create_table "projects", force: :cascade do |t|
+    t.bigint "users_id", null: false
     t.string "name", null: false
     t.text "description", null: false
     t.integer "version_id", null: false
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(version: 2018_08_09_182509) do
     t.string "topics"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_projects_on_users_id"
   end
 
   create_table "users", force: :cascade do |t|

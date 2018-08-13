@@ -28,6 +28,6 @@ class Api::V1::ProjectsController < ApiController
 
   private
   def project_params
-    params.permit(:name, :user, :description, :version_id, :photo_url)
+    params.permit(:name, :users_id, :description, :version_id, :photo_url)
   end
 end

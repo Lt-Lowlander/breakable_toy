@@ -7,13 +7,14 @@ Project.create(
   version_id: "1",
   photo_url: "https://i.imgur.com/6yYM25A.png",
   budget: "$30",
-  topics: "cloud curvature"
+  topics: "cloud curvature",
+  users_id: '1'
 )
 
 #create users
 User.create!(
   handle: "Splinter",
-  email: "proto1@email.com",
+  email: "proto2@email.com",
   password: "asdf123",
   bio: Faker::Zeke.unique.quote,
   role: "admin"
