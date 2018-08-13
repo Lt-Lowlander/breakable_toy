@@ -8,13 +8,21 @@ const ProjectShowTile = (props) => {
           <img src={props.image} alt={props.name} className="project-show-pic"/>
           <div className="project-show-info">
             <div className="project-show-title">
-              {props.name}
+              <b>{props.name}</b>
             </div>
-            <div className="project-show-version">
-              Mark {props.iteration}
+            <div>
+              <span className="project-show-version">
+                Mark {props.iteration}
+              </span>
+              <span>  </span>
+              <span className="project-show-inventor">
+                by {props.user}
+              </span>
             </div>
             <div className="project-show-description">
-              Description: {props.desc}
+              <b>
+                Description:
+              </b> {props.desc}
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import VersionHistoryContainer from './VersionHistoryContainer';
 import MaterialsContainer from './MaterialsContainer';
 import EquipmentContainer from './EquipmentContainer';
 import ProjectShowTile from '../components/ProjectShowTile';
+import EquipmentShowTile from '../components/EquipmentShowTile';
 
 class ProjectShowContainer extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class ProjectShowContainer extends Component {
     }
 
   }
-
+    // Grab the associated project Info
   componentDidMount(){
     fetch(`/api/v1/projects/${this.props.params.id}`)
       .then(response => {
@@ -69,13 +70,21 @@ class ProjectShowContainer extends Component {
             desc={this.state.project.description}
             budget={this.state.project.budget}
             topics={this.state.project.topics}
+            user={this.state.project.user}
           />
         </div>
         <div>
           <MaterialsContainer/>
         </div>
         <div>
-          <EquipmentContainer/>
+          <div>
+            <b>Equipment</b>
+          </div>
+          <ul>
+            <EquipmentShowTile
+              tool={this.state.equipment}
+            />
+          </ul>
         </div>
       </div>
     )

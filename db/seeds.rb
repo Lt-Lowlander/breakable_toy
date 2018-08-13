@@ -21,7 +21,19 @@ User.create!(
 
 #create equipment
 Equipment.create!(
-  user_id: 1,
-  project_id: 1,
+  user_id: '1',
+  project_id: '1',
   tool_name: "weather machine"
+)
+
+Equipment.create!(
+  user_id: '1',
+  project_id: '1',
+  tool_name: "french bezier curve"
+)
+
+Equipment.create!(
+  user_id: '1',
+  project_id: '1',
+  tool_name: "800 nm lens"
 )

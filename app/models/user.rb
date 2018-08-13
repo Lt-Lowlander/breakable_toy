@@ -10,4 +10,6 @@ class User < ApplicationRecord
 
   has_many :project_submissions
   has_many :projects, through: :project_submissions
+  has_many :equipment
+  has_many :projects, through: :equip
 end

@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
+  validates :name, :description, :version_id, :photo_url, :user, presence: true
   has_many :project_submissions
-
-  validates :name, :description, :version_id, :photo_url, presence: true
+  has_many :equipment
 end
