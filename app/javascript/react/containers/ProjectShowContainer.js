@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 import StepsContainer from './StepsContainer';
 import VersionHistoryContainer from './VersionHistoryContainer';
-import MaterialsContainer from './MaterialsContainer';
+import MaterialsShowTile from '../components/MaterialsShowTile';
 import EquipmentContainer from './EquipmentContainer';
 import ProjectShowTile from '../components/ProjectShowTile';
 import EquipmentShowTile from '../components/EquipmentShowTile';
@@ -12,10 +12,8 @@ class ProjectShowContainer extends Component {
     super(props)
     this.state = {
       project: {},
-      versions: [],
       equipment: [],
-      materials: [],
-      steps: [],
+      material: [],
 
     }
 
@@ -34,26 +32,20 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-
+      debugger
       this.setState({
-        project: body.project,
-        equipment: body.project.equipment,
-
+        project: body,
+        equipment: body.equipment[0].tool_name,
+        material: body.materials[0].material_name
       })
     })
     .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
   }
 
 
-
-
   render(){
-
-    const message = "yo dog";
-
     return(
       <div>
-        {message}
         <div>
           <VersionHistoryContainer/>
         </div>
@@ -73,15 +65,26 @@ class ProjectShowContainer extends Component {
             user={this.state.project.user}
           />
         </div>
-        <div>
-          <MaterialsContainer/>
+
+        <div className="materials-list">
+          <div>
+            <b>Materials</b>
+          </div>
+          <ul>
+            <MaterialsShowTile
+              key={this.state.material.id}
+              name={this.state.material}
+            />
+          </ul>
         </div>
-        <div>
+
+        <div className="equipment-list">
           <div>
             <b>Equipment</b>
           </div>
           <ul>
             <EquipmentShowTile
+              key={this.state.equipment.id}
               tool={this.state.equipment}
             />
           </ul>

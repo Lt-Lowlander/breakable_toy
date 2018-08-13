@@ -18,10 +18,18 @@ equipment = Equipment.create!([
   {user_id: '1', project_id: '1', tool_name: "weather machine"},
   {user_id: '1', project_id: '1', tool_name: "french bezier curve"},
   {user_id: '1', project_id: '1', tool_name: "800 nm lens"},
+  {user_id: '1', project_id: '2', tool_name: "bike pump"},
+  {user_id: '1', project_id: '2', tool_name: "monkey wrench"},
+  {user_id: '1', project_id: '3', tool_name: "Singer sewing machine"},
 ])
 
 # create materials
 materials = Material.create!([
-  {project_id: '1', material_name: "duct tape"},
-  {project_id: '1', material_name: "water"},
+  {project_id: '1', material_name: ["duct tape", "water vapor"]},
+  {project_id: '2', material_name: ["wheels", "spokes", "chewing gum"]},
 ])
+#
+# #create topics
+# topics = Topic.create!([
+#   {project_id}
+#   ])

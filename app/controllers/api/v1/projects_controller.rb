@@ -7,6 +7,7 @@ class Api::V1::ProjectsController < ApiController
     end
   end
 
+
   def index
     if current_user == nil
       render json: Project.all
@@ -19,9 +20,10 @@ class Api::V1::ProjectsController < ApiController
     end
   end
 
+
   def show
     project = Project.find(params[:id])
-    render json: { project: project }
+    render json: project
   end
 
 
