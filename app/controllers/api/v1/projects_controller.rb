@@ -9,15 +9,7 @@ class Api::V1::ProjectsController < ApiController
 
 
   def index
-    if current_user == nil
-      render json: Project.all
-    elsif current_user.role == "member"
-      payload = {
-        projects: Project.all,
-        member: true
-      }
-      render json: payload
-    end
+    render json: Project.all
   end
 
 
@@ -26,9 +18,21 @@ class Api::V1::ProjectsController < ApiController
     render json: project
   end
 
+  def new; end
+
+  def create
+    project = Project.new(project_params)
+    if project.save
+      
+      render json: project
+    else
+      payload = { errors: project.errors.full_messages }
+      render json: payload
+    end
+  end
 
   private
   def project_params
-    params.permit(:name, :users_id, :description, :version_id, :photo_url)
+    params.permit(:name, :description, :photo_url)
   end
 end

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import ProjectIndexContainer from '../containers/ProjectIndexContainer';
 import ProjectShowContainer from '../containers/ProjectShowContainer';
-
+import ProjectFormContainer from '../containers/ProjectFormContainer';
 
 class App extends Component {
   constructor(props){
@@ -16,11 +16,11 @@ class App extends Component {
     return(
       <Router history={browserHistory}>
         <Route path='/'>
-
           <IndexRoute component={ProjectIndexContainer} />
           <Route path='/projects' component={ProjectIndexContainer} />
+          <Route path='/projects/new' component={ProjectFormContainer} />
+          <Route path='/projects/:id/edit' component={ProjectFormContainer} />
           <Route path='/projects/:id' component={ProjectShowContainer} />
-
         </Route>
       </Router>
     )
