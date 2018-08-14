@@ -11,5 +11,9 @@ class User < ApplicationRecord
   has_many :project_submissions
   has_many :projects, through: :project_submissions
   has_many :equipment
-  has_many :projects, through: :equip
+  has_many :projects, through: :equipment
+
+  def admin?
+    role == "admin"
+  end
 end

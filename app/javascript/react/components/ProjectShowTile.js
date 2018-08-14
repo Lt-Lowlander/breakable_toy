@@ -16,7 +16,7 @@ const ProjectShowTile = (props) => {
               </span>
               <span>  </span>
               <span className="project-show-inventor">
-                by {props.user}
+                by "Insert user handle here"
               </span>
             </div>
             <div className="project-show-description">
