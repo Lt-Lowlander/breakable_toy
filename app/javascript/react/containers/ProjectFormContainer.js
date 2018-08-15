@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router'
 import ProjectInputTile from '../components/ProjectInputTile';
 
 class ProjectFormContainer extends Component {
@@ -8,6 +9,7 @@ class ProjectFormContainer extends Component {
       name:"",
       description:"",
       photo_url:"",
+      budget:"",
       errors: {}
     }
     this.validateEntry = this.validateEntry.bind(this);
@@ -42,6 +44,7 @@ class ProjectFormContainer extends Component {
       name:"",
       description:"",
       photo_url:"",
+      budget:"",
       errors: {}
     });
   }
@@ -58,6 +61,7 @@ class ProjectFormContainer extends Component {
       newProject.append("name", this.state.name);
       newProject.append("description", this.state.description);
       newProject.append("photo_url", this.state.photo_url);
+      newProject.append("budget", this.state.budget);
       this.postNewProject(newProject);
       this.handleClear();
     }
@@ -79,8 +83,9 @@ class ProjectFormContainer extends Component {
         }
       })
       .then(response => response.json())
-      .then(body =>
-        browserHistory.push(`/projects/${body.project.id}`))
+      .then(body => {
+        debugger
+        browserHistory.push(`/projects/${body.project.id}`)})
         .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
 
@@ -108,6 +113,13 @@ class ProjectFormContainer extends Component {
               name="photo_url"
               type="text"
               value={this.state.photo_url}
+              handleChange={this.handleChange}
+            />
+            <ProjectInputTile
+              label="Overall Budget"
+              name="budget"
+              type="text"
+              value={this.state.budget}
               handleChange={this.handleChange}
             />
             <button type="submit" className="form-submit-button" value="Submit">

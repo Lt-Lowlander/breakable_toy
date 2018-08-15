@@ -6,7 +6,7 @@ class ProjectIndexContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      projects_array: []
+      projectsArray: []
     }
 
   }
@@ -27,7 +27,7 @@ class ProjectIndexContainer extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        projects_array: body
+          projectsArray: body
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -35,25 +35,24 @@ class ProjectIndexContainer extends Component {
 
 
   render(){
-    const foundProjects = this.state.projects_array;
-    let projectDisplay = foundProjects.map(project => {
+    const foundProjects = this.state.projectsArray;
+    let projects = foundProjects.map(project => {
       return(
-        <div key={project.id} className="cell small-12 medium-6 large-4">
-          <ProjectTile
-            key={project.id}
-            id={project.id}
-            name={project.name}
-            image={project.photo_url}
-            iteration={project.version_id}
-          />
-        </div>
+        <ProjectTile
+          key={project.id}
+          id={project.id}
+          name={project.name}
+          image={project.photo_url}
+          iteration={project.version_id}
+        />
       )
     })
+
     return(
-      <div>
+      <div className="index-page-overview">
         <h1 className="site-title">Project Relay</h1>
         <div className="grid-x grid-margin-x align-spaced">
-          {projectDisplay}
+          {projects}
         </div>
       </div>
     )

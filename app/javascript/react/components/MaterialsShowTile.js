@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const MaterialsShowTile = (props) => {
   return(
-    <div>
+    <div className="materials-show-tile">
       <li>
         {props.name}
       </li>

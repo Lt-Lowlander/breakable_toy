@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HackGyver</title>
+  <title>Project Relay</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= favicon_link_tag 'digital_rain_favicon.gif' %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -12,14 +12,18 @@
 </head>
 <body>
 
-  <nav class="top-bar">
+  <nav class="">
     <ul class="title-area">
       <li class="name">
-        <h6><a href="/">HOME</a></h6>
+        <h6>
+          <a className="home" href="/">HOME</a>
+        </h6>
       </li>
     </ul>
-
-    <section class="top-bar-section">
+    <!-- <div>
+      <h1 className="site-title">Project Relay</h1>
+    </div> -->
+    <section class="">
       <ul class="right">
         <%- if current_user -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
