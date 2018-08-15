@@ -2,8 +2,8 @@ require 'faker'
 
 #create users
 users = User.create!([
-  {handle: "Splinter", email: "email3@proto.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "admin"},
-  {handle: "Tinker_Kid", email: "email4@proto.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "member"}
+  {handle: "Splinter", email: "email7@proto.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "admin"},
+  {handle: "Tinker_Kid", email: "email8@proto.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "member"}
 ])
 
 #create projects
@@ -31,8 +31,15 @@ materials = Material.create!([
   {id: '4', project_id: '2', material_name: "spokes"},
   {id: '5', project_id: '2', material_name: "chewing gum"},
 ])
-#
+
 # #create topics
-# topics = Topic.create!([
-#   {project_id}
-#   ])
+steps = Step.create!([
+  {id: '1', project_id: '1', sequence_number: '1', instruction: Faker::Zeke.unique.quote, step_photo: ""},
+  {id: '2', project_id: '1', sequence_number: '2', instruction: Faker::Zeke.unique.quote, step_photo: ""},
+  {id: '3', project_id: '1', sequence_number: '3', instruction: Faker::Zeke.unique.quote, step_photo: ""},
+  {id: '4', project_id: '1', sequence_number: '4', instruction: Faker::Zeke.unique.quote, step_photo: ""},
+  {id: '5', project_id: '1', sequence_number: '5', instruction: Faker::Zeke.unique.quote, step_photo: ""},
+  {id: '6', project_id: '1', sequence_number: '6', instruction: Faker::Zeke.unique.quote, step_photo: ""},
+  {id: '7', project_id: '1', sequence_number: '7', instruction: Faker::Zeke.unique.quote, step_photo: ""},
+  {id: '8', project_id: '1', sequence_number: '8', instruction: Faker::Zeke.unique.quote, step_photo: ""},
+])

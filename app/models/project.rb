@@ -4,4 +4,5 @@ class Project < ApplicationRecord
   has_many :project_submissions
   has_many :equipment
   has_many :materials
+  has_many :steps
 end

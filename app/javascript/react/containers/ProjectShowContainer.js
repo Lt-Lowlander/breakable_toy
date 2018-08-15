@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
-import StepsContainer from './StepsContainer';
+import StepsTile from '../components/StepsTile';
 import VersionHistoryContainer from './VersionHistoryContainer';
 import MaterialsShowTile from '../components/MaterialsShowTile';
 import EquipmentContainer from './EquipmentContainer';
@@ -13,7 +13,8 @@ class ProjectShowContainer extends Component {
     this.state = {
       project: {},
       equipment: [],
-      material: []
+      material: [],
+      step: []
     }
 
   }
@@ -34,7 +35,8 @@ class ProjectShowContainer extends Component {
       this.setState({
         project: body,
         equipment: body.equipment,
-        material: body.materials
+        material: body.materials,
+        step: body.steps
       })
     })
     .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
@@ -61,6 +63,22 @@ class ProjectShowContainer extends Component {
       />
     )
   })
+
+
+  const projectSteps = this.state.step;
+    let stepsList = projectSteps.map(step => {
+      return(
+        <StepsTile
+          key={step.id}
+          number={step.sequence_number}
+          info={step.instruction}
+          image={step.step_photo}
+        />
+      )
+    })
+
+
+
 
     return(
       <div>
@@ -102,9 +120,13 @@ class ProjectShowContainer extends Component {
           </div>
         </div>
 
-
-          <div className="cell small-12 medium-6 large-4">
-            <StepsContainer/>
+          <div className="cell">
+            <div className="steps-show-unit">
+              <div className="step-show-title">
+                Construction Guide
+              </div>
+                {stepsList}
+            </div>
           </div>
         </div>
       </div>

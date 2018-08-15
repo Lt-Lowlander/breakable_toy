@@ -33,16 +33,6 @@ ActiveRecord::Schema.define(version: 2018_08_09_182509) do
     t.index ["project_id"], name: "index_materials_on_project_id"
   end
 
-  create_table "project_steps", force: :cascade do |t|
-    t.bigint "projects_id"
-    t.integer "step_number", null: false
-    t.text "step_instructions", null: false
-    t.string "step_photo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["projects_id"], name: "index_project_steps_on_projects_id"
-  end
-
   create_table "project_submissions", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "project_id"
@@ -63,6 +53,16 @@ ActiveRecord::Schema.define(version: 2018_08_09_182509) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["users_id"], name: "index_projects_on_users_id"
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.bigint "project_id"
+    t.integer "sequence_number", null: false
+    t.text "instruction", null: false
+    t.string "step_photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_steps_on_project_id"
   end
 
   create_table "users", force: :cascade do |t|
