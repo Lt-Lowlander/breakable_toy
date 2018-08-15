@@ -16,8 +16,12 @@ class VersionHistoryContainer extends Component {
     let message = "VersionHistoryContainer";
 
     return(
-      <div>
-        {message}
+      <div className="version-history-container">
+        <div className="version-hist-cont-title">
+          {message}
+        </div>
+        <div className="version-hierarchy">
+        </div>
       </div>
     )
   }

@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2018_08_09_182509) do
     t.bigint "users_id", null: false
     t.string "name", null: false
     t.text "description", null: false
-    t.integer "version_id", null: false
     t.string "photo_url", null: false
     t.string "budget"
     t.string "topics"

@@ -22,8 +22,8 @@ class Api::V1::ProjectsController < ApiController
 
   def create
     project = Project.new(project_params)
+    binding.pry
     if project.save
-      
       render json: project
     else
       payload = { errors: project.errors.full_messages }
@@ -33,6 +33,6 @@ class Api::V1::ProjectsController < ApiController
 
   private
   def project_params
-    params.permit(:name, :description, :photo_url)
+    params.permit(:name, :description, :photo_url, :budget)
   end
 end

@@ -13,8 +13,7 @@ class ProjectShowContainer extends Component {
     this.state = {
       project: {},
       equipment: [],
-      material: [],
-
+      material: []
     }
 
   }
@@ -32,11 +31,10 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       this.setState({
         project: body,
-        equipment: body.equipment[0].tool_name,
-        material: body.materials[0].material_name
+        equipment: body.equipment,
+        material: body.materials
       })
     })
     .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
@@ -44,50 +42,70 @@ class ProjectShowContainer extends Component {
 
 
   render(){
+    const projectEquipment = this.state.equipment;
+    let equipmentList = projectEquipment.map(tool => {
+      return(
+        <EquipmentShowTile
+          key={tool.id}
+          tool={tool.tool_name}
+        />
+      )
+    })
+
+  const projectMaterials = this.state.material;
+  let materialsList = projectMaterials.map(ingredient => {
+    return(
+      <MaterialsShowTile
+        key={ingredient.id}
+        name={ingredient.material_name}
+      />
+    )
+  })
+
     return(
       <div>
-        <div>
-          <VersionHistoryContainer/>
-        </div>
-        <div>
-          <StepsContainer/>
-        </div>
-        <div>
-          <ProjectShowTile
-            key={this.state.project.id}
-            id={this.state.project.id}
-            name={this.state.project.name}
-            image={this.state.project.photo_url}
-            iteration={this.state.project.version_id}
-            desc={this.state.project.description}
-            budget={this.state.project.budget}
-            topics={this.state.project.topics}
-            user={this.state.project.user}
-          />
+        <div className="grid-x grid-margin-x align-spaced">
+          <div className="cell small-12 medium-6 large-4">
+            <VersionHistoryContainer/>
+          </div>
+          <div className="cell small-12 medium-6 large-4">
+            <ProjectShowTile
+              key={this.state.project.id}
+              id={this.state.project.id}
+              name={this.state.project.name}
+              image={this.state.project.photo_url}
+              iteration={this.state.project.version_id}
+              desc={this.state.project.description}
+              budget={this.state.project.budget}
+              topics={this.state.project.topics}
+              user={this.state.project.user}
+            />
+          </div>
+          <div className="cell small-12 medium-6 large-4">
+            <div className="listed-elements">
+              <div className="materials-list">
+                <div>
+                  <b>Materials</b>
+                </div>
+                <ul>
+                  {materialsList}
+                </ul>
+              </div>
+              <div className="equipment-list">
+                <div>
+                  <b>Equipment</b>
+                </div>
+                <ul>
+                  {equipmentList}
+                </ul>
+              </div>
+          </div>
         </div>
 
-        <div className="materials-list">
-          <div>
-            <b>Materials</b>
-          </div>
-          <ul>
-            <MaterialsShowTile
-              key={this.state.material.id}
-              name={this.state.material}
-            />
-          </ul>
-        </div>
 
-        <div className="equipment-list">
-          <div>
-            <b>Equipment</b>
+          <div className="cell small-12 medium-6 large-4">
+            <StepsContainer/>
           </div>
-          <ul>
-            <EquipmentShowTile
-              key={this.state.equipment.id}
-              tool={this.state.equipment}
-            />
-          </ul>
         </div>
       </div>
     )

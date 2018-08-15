@@ -1,0 +1,26 @@
+body {
+  background-image: url("graph_paper.jpg");
+  background-size: cover;
+}
+
+.right {
+  font-family: "DecoTech TL";
+  font-weight: bold;
+  font-size: 1rem;
+  list-style: none;
+  float: right;
+  margin-top: 11px;
+  margin-right: 20px;
+}
+
+.title-area {
+  list-style: none;
+  float: left;
+  margin-top: 15px;
+}
+
+a {
+  font-family: "DecoTech TL";
+  font-weight: bold;
+  font-size: 1.4rem;
+}

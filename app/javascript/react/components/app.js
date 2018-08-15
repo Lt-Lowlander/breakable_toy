@@ -16,6 +16,15 @@ class App extends Component {
     return(
       <Router history={browserHistory}>
         <Route path='/'>
+
+          <ul class="title-area top-bar">
+            <li class="name">
+              <h6>
+                <a className="home" href="/">HOME</a>
+              </h6>
+            </li>
+          </ul>
+
           <IndexRoute component={ProjectIndexContainer} />
           <Route path='/projects' component={ProjectIndexContainer} />
           <Route path='/projects/new' component={ProjectFormContainer} />
