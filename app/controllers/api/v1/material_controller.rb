@@ -11,3 +11,4 @@ class Api::V1::MaterialController < ApiController
     # materials = Material.where(project_id: params[:project_id])
     # render json: materials
   end
+end

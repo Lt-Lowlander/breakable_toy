@@ -2,32 +2,34 @@ require 'faker'
 
 #create users
 users = User.create!([
-  {handle: "Splinter", email: "email7@proto.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "admin"},
-  {handle: "Tinker_Kid", email: "email8@proto.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "member"}
+  {handle: "Splinter", email: "1email@proto.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "admin"},
+  {handle: "Tinker_Kid", email: "2email@proto.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "member"}
 ])
 
 #create projects
 projects = Project.create!([
-  {name: "Lenticular Splines", description: Faker::Zeke.unique.quote, photo_url: "https://i.imgur.com/6yYM25A.png", budget: "$30", topics: "cloud curvature", users_id: '1'},
-  {name: "Treadmill Bike", description: Faker::Zeke.unique.quote, photo_url: "http://www.bikeforest.com/tread/treadmillbike.jpg", budget: "$54", topics: "gear ratios", users_id: '1'},
-  {name: "Stiletto Umbrellas", description: Faker::Zeke.unique.quote, photo_url: "https://i.ytimg.com/vi/BmxR8tH7MQI/maxresdefault.jpg", budget: "$79", topics: "fashion", users_id: '2'},
+  {name: "4x4x4 LED Cube", description: Faker::Zeke.unique.quote, photo_url: "https://cdn.instructables.com/FAY/S5IT/GDLXYC2R/FAYS5ITGDLXYC2R.LARGE.jpg?auto=webp&width=430", budget: "$36", topics: "electronics", user_id: '2'},
+  {name: "Reticulating Splines", description: Faker::Zeke.unique.quote, photo_url: "https://i.imgur.com/6yYM25A.png", budget: "$30", topics: "cloud curvature", user_id: '1'},
+  {name: "Treadmill Bike", description: Faker::Zeke.unique.quote, photo_url: "http://www.bikeforest.com/tread/treadmillbike.jpg", budget: "$54", topics: "gear ratios", user_id: '1'},
   ])
 
 #create equipment
 equipment = Equipment.create!([
-  {id: '1', user_id: '1', project_id: '1', tool_name: "weather machine"},
-  {id: '2', user_id: '1', project_id: '1', tool_name: "french bezier curve"},
-  {id: '3', user_id: '1', project_id: '1', tool_name: "800 nm lens"},
-  {id: '4', user_id: '1', project_id: '2', tool_name: "bike pump"},
+  {id: '1', user_id: '1', project_id: '1', tool_name: "soldering iron"},
+  {id: '2', user_id: '1', project_id: '1', tool_name: "screw driver"},
+  {id: '3', user_id: '1', project_id: '1', tool_name: "wire strippers"},
+  {id: '4', user_id: '1', project_id: '1', tool_name: "needle nose pliers"},
   {id: '5', user_id: '1', project_id: '2', tool_name: "monkey wrench"},
   {id: '6', user_id: '1', project_id: '3', tool_name: "Singer sewing machine"},
 ])
 
 # create materials
 materials = Material.create!([
-  {id: '1', project_id: '1', material_name: "duct tape"},
-  {id: '2', project_id: '1', material_name: "water vapor"},
-  {id: '3', project_id: '2', material_name: "wheels"},
+  {id: '1', project_id: '1', material_name: "tin-based solder"},
+  {id: '2', project_id: '1', material_name: "64 LEDs"},
+  {id: '6', project_id: '1', material_name: "arduino"},
+  {id: '7', project_id: '1', material_name: "breadboard"},
+  {id: '3', project_id: '1', material_name: "resistors"},
   {id: '4', project_id: '2', material_name: "spokes"},
   {id: '5', project_id: '2', material_name: "chewing gum"},
 ])

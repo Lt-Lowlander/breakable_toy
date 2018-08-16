@@ -21,8 +21,7 @@ class Api::V1::ProjectsController < ApiController
   def new; end
 
   def create
-    project = Project.new(project_params)
-    binding.pry
+    project = Project.new(user_params)
     if project.save
       render json: project
     else
@@ -34,5 +33,9 @@ class Api::V1::ProjectsController < ApiController
   private
   def project_params
     params.permit(:name, :description, :photo_url, :budget)
+  end
+
+  def user_params
+    project_params.merge(user_id: current_user.id)
   end
 end

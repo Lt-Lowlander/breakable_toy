@@ -85,7 +85,7 @@ class ProjectFormContainer extends Component {
       .then(response => response.json())
       .then(body => {
         debugger
-        browserHistory.push(`/projects/${body.project.id}`)})
+        browserHistory.push(`/projects/${body.id}`)})
         .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
 
@@ -93,6 +93,7 @@ class ProjectFormContainer extends Component {
     return(
       <div className="grid-x grid-margin-x align-center">
         <div className="cell small-12 med-8  large-6">
+        <p></p>
           <form className="new-project-form" onSubmit={this.handleSubmit}>
             <ProjectInputTile
               label="Project Name"
@@ -122,7 +123,7 @@ class ProjectFormContainer extends Component {
               value={this.state.budget}
               handleChange={this.handleChange}
             />
-            <button type="submit" className="form-submit-button" value="Submit">
+            <button type="submit" className="button" value="Submit">
               Add Project
             </button>
           </form>

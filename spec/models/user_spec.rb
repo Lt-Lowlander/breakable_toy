@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
     let!(:user2) { FactoryBot.build(:user, bio: "") }
     let!(:user3) { FactoryBot.build(:user, email: "") }
     let!(:user4) { FactoryBot.build(:user, role: "") }
-    let!(:user5) { FactoryBot.build(:user, profile_photo: "") }
+
 
     it "is not valid without a handle" do
       expect(user1).to_not be_valid
@@ -29,9 +29,6 @@ RSpec.describe User, type: :model do
       expect(user5).to be_valid
     end
 
-    it "is valid with valid attributes" do
-      expect(user).to be_valid
-    end
   end
 
   describe "#admin?" do
