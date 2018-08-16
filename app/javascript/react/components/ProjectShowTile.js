@@ -10,7 +10,7 @@ const ProjectShowTile = (props) => {
             <div className="project-show-title">
               <b>{props.name}</b>
             </div>
-            <div>
+            <div className="ownership-group">
               <span className="project-show-version">
                 Mark {props.iteration}
               </span>
@@ -23,6 +23,11 @@ const ProjectShowTile = (props) => {
               <b>
                 Description:
               </b> {props.desc}
+            </div>
+            <div className="project-show-budget">
+                <b>
+                  Budget:
+                </b> {props.budget}
             </div>
           </div>
         </div>

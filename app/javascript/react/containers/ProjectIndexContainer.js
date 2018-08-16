@@ -8,7 +8,6 @@ class ProjectIndexContainer extends Component {
     this.state = {
       projectsArray: []
     }
-
   }
 
   componentDidMount(){
@@ -33,7 +32,6 @@ class ProjectIndexContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-
   render(){
     const foundProjects = this.state.projectsArray;
     let projects = foundProjects.map(project => {
@@ -51,8 +49,12 @@ class ProjectIndexContainer extends Component {
     return(
       <div className="index-page-overview">
         <h1 className="site-title">Project Relay</h1>
-        <div className="grid-x grid-margin-x align-spaced">
-          {projects}
+        <div className="cell">
+          <div className="right-pad-spacing">
+            <div className="grid-x grid-margin-x align-spaced">
+              {projects}
+            </div>
+          </div>
         </div>
       </div>
     )

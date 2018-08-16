@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const ProjectTile = (props) => {
   return(
-    <div className="cell small-12 medium-6 large-4">
+    <div className="cell small-12 medium-6 large-3">
       <div className="project-tile">
         <Link to={`/projects/${props.id}`}>
           <div className="">
@@ -13,7 +13,6 @@ const ProjectTile = (props) => {
                 {props.name}
               </div>
               <div className="project-index-version">
-                /* {props.iteration} */
               </div>
             </div>
           </div>
