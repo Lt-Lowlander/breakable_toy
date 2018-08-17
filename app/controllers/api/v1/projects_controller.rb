@@ -30,6 +30,10 @@ class Api::V1::ProjectsController < ApiController
     end
   end
 
+  def edit
+    # lkjashdfkjsa
+  end
+
   private
   def project_params
     params.permit(:name, :description, :photo_url, :budget)

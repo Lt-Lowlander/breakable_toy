@@ -84,7 +84,6 @@ class ProjectFormContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        debugger
         browserHistory.push(`/projects/${body.id}`)})
         .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
@@ -93,40 +92,42 @@ class ProjectFormContainer extends Component {
     return(
       <div className="grid-x grid-margin-x align-center">
         <div className="cell small-12 med-8  large-6">
-        <p></p>
-          <form className="new-project-form" onSubmit={this.handleSubmit}>
-            <ProjectInputTile
-              label="Project Name"
-              name="name"
-              type="text"
-              value={this.state.name}
-              handleChange={this.handleChange}
-            />
-            <ProjectInputTile
-              label="Project Description"
-              name="description"
-              type="text"
-              value={this.state.description}
-              handleChange={this.handleChange}
-            />
-            <ProjectInputTile
-              label="Project Cover Photo"
-              name="photo_url"
-              type="text"
-              value={this.state.photo_url}
-              handleChange={this.handleChange}
-            />
-            <ProjectInputTile
-              label="Overall Budget"
-              name="budget"
-              type="text"
-              value={this.state.budget}
-              handleChange={this.handleChange}
-            />
-            <button type="submit" className="button" value="Submit">
-              Add Project
-            </button>
-          </form>
+          <div className="notestyle rounders">
+            <p></p>
+            <form className="new-project-form" onSubmit={this.handleSubmit}>
+              <ProjectInputTile
+                label="Project Name"
+                name="name"
+                type="text"
+                value={this.state.name}
+                handleChange={this.handleChange}
+                />
+              <ProjectInputTile
+                label="Project Description"
+                name="description"
+                type="text"
+                value={this.state.description}
+                handleChange={this.handleChange}
+                />
+              <ProjectInputTile
+                label="Project Cover Photo"
+                name="photo_url"
+                type="text"
+                value={this.state.photo_url}
+                handleChange={this.handleChange}
+                />
+              <ProjectInputTile
+                label="Overall Budget"
+                name="budget"
+                type="text"
+                value={this.state.budget}
+                handleChange={this.handleChange}
+                />
+              <button type="submit" className="button" value="Submit">
+                Add Project
+              </button>
+            </form>
+          </div>
         </div>
       </div>
 

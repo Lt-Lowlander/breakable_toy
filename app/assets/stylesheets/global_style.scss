@@ -1,24 +1,24 @@
 body {
-  background-image: url("graph_paper.jpg");
+  background-image: url("blueprint_background_II.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   width: 100% !important;
-  // z-index: 0;
+  z-index: 0;
 }
-//
-// -webkit-background-size: cover;
-// -moz-background-size: cover;
-// -o-background-size: cover;
 
 .right {
-  font-family: "Futura";
+  font-family: "Good Times";
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   list-style: none;
   float: right;
   margin-top: 11px;
   margin-right: 20px;
+}
+
+.right a {
+  color: #c0c0c0;
 }
 
 .title-area {
@@ -29,15 +29,32 @@ body {
   font-size: 300%;
   list-style: none;
   float: left;
+  margin-top: 10px;
   margin-left: 30px;
 }
 
 .top-bar .name a {
-  color: black;
+  color: #c0c0c0;
 }
 
 .top-bar  {
-  background-color: rgba(128,128,128,.5);
+  background: linear-gradient(90deg, rgba(128,128,128,.5), rgba(128,128,128,0));
   height: 90px;
 }
-.top-bar ul {background-color: transparent;}
+
+.top-bar ul {
+  background-color: transparent;
+}
+
+.notestyle {
+  background-image: url("graph_paper.jpg");
+}
+
+.rounders {
+  border-radius: 8px;
+}
+
+#flash-messages {
+  float: right;
+  margin-right: 30px;
+}
