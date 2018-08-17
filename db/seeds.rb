@@ -4,6 +4,8 @@ require 'faker'
 users = User.create!([
   {handle: "Splinter", email: "1email@proto.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "admin"},
   {handle: "Tinker_Kid", email: "2email@proto.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "member"}
+  # {handle: "Splinter", email: "1email@proto.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "admin"},
+  # {handle: "Tinker_Kid", email: "2email@proto.com", password: "asdf123", bio: Faker::Zeke.unique.quote, role: "member"}
 ])
 
 #create projects

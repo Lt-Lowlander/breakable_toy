@@ -48,12 +48,9 @@ class ProjectIndexContainer extends Component {
 
     return(
       <div className="index-page-overview">
-        <h1 className="site-title">Project Relay</h1>
-        <div className="cell">
-          <div className="right-pad-spacing">
-            <div className="grid-x grid-margin-x align-spaced">
-              {projects}
-            </div>
+        <div className="prokaryote">
+          <div className="grid-x grid-margin-x align-spaced">
+            {projects}
           </div>
         </div>
       </div>
