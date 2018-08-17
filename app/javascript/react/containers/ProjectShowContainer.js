@@ -81,7 +81,7 @@ class ProjectShowContainer extends Component {
 
 
     return(
-      <div>
+      <div className="prokaryote">
         <div className="grid-x grid-margin-x align-spaced">
           <div className="cell small-12 medium-6 large-4">
             <VersionHistoryContainer/>
