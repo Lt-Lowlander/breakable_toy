@@ -21,9 +21,21 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :handle, 'User Name' %><br />
+    <%= f.text_field :handle, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bio %><br />
+    <%= f.text_field :bio, autocomplete: "off" %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div className="shared-passage">
+  <%= render "devise/shared/links" %>
+</div>

@@ -11,20 +11,10 @@ class App extends Component {
     }
   }
 
-  $(function(){
-        var flashDurationInSeconds = 5;
-        var flashContainerId = 'flash-messages';
-
-        function removeFlashMessages() {
-          $('#' + flashContainerId).remove();
-        }
-
-        setTimeout(removeFlashMessages, flashDurationInSeconds * 2000);
-      })
 
   render() {
     return(
-      
+
       <Router history={browserHistory}>
         <Route path='/'>
 

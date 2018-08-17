@@ -6,8 +6,6 @@
   <%= favicon_link_tag 'digital_rain_favicon.gif' %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
 
-    <%#= javascript_include_tag "vendor/modernizr" %>
-
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -43,7 +41,7 @@
     <%- end -%>
   </div>
 
-  <div>
+  <div className="is-this-devise">
     <%= yield %>
   </div>
 

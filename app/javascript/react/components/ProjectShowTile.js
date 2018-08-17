@@ -12,11 +12,11 @@ const ProjectShowTile = (props) => {
             </div>
             <div className="ownership-group">
               <span className="project-show-version">
-                Mark {props.iteration}
+                <b>Mark {props.iteration}</b>
               </span>
               <span>  </span>
               <span className="project-show-inventor">
-                by "Insert user handle here"
+                by <b>"Insert user handle here"</b>
               </span>
             </div>
             <div className="project-show-description">
