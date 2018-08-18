@@ -40,4 +40,4 @@ Things you may want to cover:
 
 * ...
 
-[![Build Status](https://codeship.com/projects/9f631d00-7d77-0136-6bc8-4eb24753254f/status?branch=master)
+<!-- [![Build Status](https://codeship.com/projects/9f631d00-7d77-0136-6bc8-4eb24753254f/status?branch=master) -->

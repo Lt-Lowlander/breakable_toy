@@ -30,8 +30,13 @@ class Api::V1::ProjectsController < ApiController
     end
   end
 
-  def edit
-    # lkjashdfkjsa
+  def update
+    updated_project = Project.find(params[:id])
+    if updated_project.update(project)
+        render json: { project: updated_project }
+    else
+      render json: { error: updated_project.errors }
+    end
   end
 
   private
@@ -40,6 +45,7 @@ class Api::V1::ProjectsController < ApiController
   end
 
   def user_params
-    project_params.merge(user_id: current_user.id)
+    binding.pry
+    project_params.merge(user_id: current_user.id, version_id: '1')
   end
 end
