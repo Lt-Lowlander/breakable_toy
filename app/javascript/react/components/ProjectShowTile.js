@@ -4,30 +4,41 @@ import { Link } from 'react-router';
 const ProjectShowTile = (props) => {
   return(
     <div className="project-show-tile">
-        <div className="">
+        <div className="main-image">
           <img src={props.image} alt={props.name} className="project-show-pic"/>
           <div className="project-show-info">
-            <div className="project-show-title">
-              <b>{props.name}</b>
+            <div className="cell side-left">
+              <div className="project-show-title">
+                <b>{props.name}</b>
+              </div>
+              <div className="ownership-group">
+                <span className="project-show-version">
+                  <b>Mark {props.iteration}</b>
+                </span>
+                <span>  </span>
+                <span className="project-show-inventor">
+                  by <b>{props.user}</b>
+                </span>
+              </div>
             </div>
-            <div className="ownership-group">
-              <span className="project-show-version">
-                <b>Mark {props.iteration}</b>
-              </span>
-              <span>  </span>
-              <span className="project-show-inventor">
-                by <b>{props.user}</b>
-              </span>
-            </div>
-            <div className="project-show-description">
-              <b>
-                Description:
-              </b> {props.desc}
-            </div>
-            <div className="project-show-budget">
+            <div className="side-right">
+              <div className="next-iteration button rounders">
                 <b>
-                  Budget:
-                </b> {props.budget}
+                  Build a new version!
+                </b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="desc-budg">
+          <div className="smaller-div">
+            <b>
+              Description:
+            </b> {props.desc}
+            <div className="project-show-budget">
+              <b>
+                Budget:
+              </b> {props.budget}
             </div>
           </div>
         </div>
