@@ -5,9 +5,9 @@ users = User.create!([
 
 #create projects
 projects = Project.create!([
-  {name: "4x4x4 LED Cube", description: "Faker::Zeke.unique.quote", photo_url: "https://cdn.instructables.com/FAY/S5IT/GDLXYC2R/FAYS5ITGDLXYC2R.LARGE.jpg?auto=webp&width=430", version_id: '1', budget: "$36", topics: "electronics", user_id: '1'},
-  {name: "Reticulating Splines", description: "Faker::Zeke.unique.quote", photo_url: "https://i.imgur.com/6yYM25A.png", version_id: '1', budget: "$30", topics: "cloud curvature", user_id: '1'},
-  {name: "Treadmill Bike", description: "Faker::Zeke.unique.quote", photo_url: "http://www.bikeforest.com/tread/treadmillbike.jpg", version_id: '1', budget: "$54", topics: "gear ratios", user_id: '1'},
+  {name: "4x4x4 LED Cube", description: "Faker::Zeke.unique.quote", photo_url: "https://cdn.instructables.com/FAY/S5IT/GDLXYC2R/FAYS5ITGDLXYC2R.LARGE.jpg?auto=webp&width=430", version_id: '1', budget: "$36", topics: "electronics", user_id: '1', handle: "Splinter"},
+  {name: "Reticulating Splines", description: "Faker::Zeke.unique.quote", photo_url: "https://i.imgur.com/6yYM25A.png", version_id: '1', budget: "$30", topics: "cloud curvature", user_id: '1', handle: "Splinter"},
+  {name: "Treadmill Bike", description: "Faker::Zeke.unique.quote", photo_url: "http://www.bikeforest.com/tread/treadmillbike.jpg", version_id: '1', budget: "$54", topics: "gear ratios", user_id: '1', handle: "Splinter"},
   ])
 
 #create equipment
