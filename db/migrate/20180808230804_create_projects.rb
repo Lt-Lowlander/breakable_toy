@@ -6,7 +6,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.text :description, null: false
       t.string :photo_url, null: false
-      t.integer :version_id, null: false
+      t.integer :version_id, null: false, default: "1"
       t.string :budget
       t.string :topics
 
