@@ -1,6 +1,6 @@
 #create users
 users = User.create!([
-  {handle: "Splinter", email: "lowlander@email.com", password: "hackgyver", bio: "check out the easter_egg file", role: "admin"},
+  {handle: "Splinter", email: "aerocricket@gmail.com", password: "hackgyver", bio: "check out the easter_egg file", role: "admin"},
 ])
 
 #create projects

@@ -9,7 +9,7 @@ class Api::V1::ProjectsController < ApiController
 
 
   def index
-    render json: Project.all
+    render json: Project.all.order(created_at: :desc)
   end
 
 
