@@ -6,7 +6,9 @@ class ProjectIndexContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      projectsArray: []
+      projectsArray: [],
+      member: false,
+      admin: false
     }
   }
 
@@ -26,29 +28,56 @@ class ProjectIndexContainer extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-          projectsArray: body
+          projectsArray: body.projects,
+          member: body.member,
+          admin: body.admin
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render(){
+    let member_settings;
+    let admin_settings;
     const foundProjects = this.state.projectsArray;
     let projects = foundProjects.map(project => {
+      if(this.state.admin){
+        admin_settings=
+        <div>
+          <Link to={`projects/${project.id}/edit`}>Edit Project</Link>
+          <span>  |  </span>
+          <Link to={`projects/${project.id}`} onClick={this.confirm}>Delete Project</Link>
+        </div>
+      }
       return(
-        <ProjectTile
-          key={project.id}
-          id={project.id}
-          name={project.name}
-          image={project.photo_url}
-          iteration={project.version_id}
-        />
+        <div className="project-tile-with-user notestyle">
+          <ProjectTile
+            key={project.id}
+            id={project.id}
+            name={project.name}
+            image={project.photo_url}
+            iteration={project.version_id}
+            />
+          <div className="admin-tile-settings">
+            {admin_settings}
+          </div>
+        </div>
       )
     })
-
+    if (this.state.member) {
+      member_settings=
+      <div className="cell">
+        <div className="add-project-button notestyle">
+          <Link to={'/projects/new'}>
+            Add a Project
+          </Link>
+        </div>
+      </div>
+    }
     return(
       <div className="index-page-overview">
         <div className="prokaryote">
+          {member_settings}
           <div className="grid-x grid-margin-x align-spaced">
             {projects}
           </div>

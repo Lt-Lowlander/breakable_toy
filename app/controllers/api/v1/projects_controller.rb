@@ -9,7 +9,28 @@ class Api::V1::ProjectsController < ApiController
 
 
   def index
-    render json: Project.all.order(created_at: :desc)
+    if current_user == nil
+      payload = {
+        projects: Project.all.order(created_at: :desc),
+        member: false,
+        admin: false
+      }
+      render json: payload
+    elsif current_user.role == "member"
+      payload = {
+        projects: Project.all.order(created_at: :desc),
+        member: true,
+        admin: false
+      }
+      render json: payload
+    elsif current_user.admin?
+      payload = {
+        projects: Project.all.order(created_at: :desc),
+        member: true,
+        admin: true
+      }
+      render json: payload
+    end
   end
 
 
@@ -45,7 +66,6 @@ class Api::V1::ProjectsController < ApiController
   end
 
   def user_params
-    binding.pry
-    project_params.merge(user_id: current_user.id, version_id: '1')
+    project_params.merge(user_id: current_user.id)
   end
 end
