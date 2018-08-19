@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import StepsTile from '../components/StepsTile';
-import VersionHistoryContainer from './VersionHistoryContainer';
+
 import MaterialsShowTile from '../components/MaterialsShowTile';
 import EquipmentContainer from './EquipmentContainer';
 import ProjectShowTile from '../components/ProjectShowTile';
@@ -23,7 +23,6 @@ class ProjectShowContainer extends Component {
     fetch(`/api/v1/projects/${this.props.params.id}`)
       .then(response => {
       if (response.ok) {
-
         return response;
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
@@ -33,7 +32,6 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-debugger
       this.setState({
         project: body,
         equipment: body.equipment,
@@ -85,10 +83,8 @@ debugger
     return(
       <div className="prokaryote">
         <div className="grid-x grid-margin-x align-spaced">
-          <div className="cell small-12 medium-6 large-4">
-            <VersionHistoryContainer/>
-          </div>
-          <div className="cell small-12 medium-6 large-4">
+
+          <div className="project-nucleus notestyle rounders">
             <ProjectShowTile
               key={this.state.project.id}
               id={this.state.project.id}
@@ -123,11 +119,11 @@ debugger
         </div>
 
           <div className="cell">
-            <div className="steps-show-unit">
+            <div className="steps-show-unit notestyle">
               <div className="step-show-title">
                 Construction Guide
               </div>
-              <div className="step-show-list notestyle">
+              <div className="step-show-list">
                 {stepsList}
               </div>
             </div>
