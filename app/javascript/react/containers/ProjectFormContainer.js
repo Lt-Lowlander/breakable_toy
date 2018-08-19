@@ -92,7 +92,7 @@ class ProjectFormContainer extends Component {
     return(
       <div className="grid-x grid-margin-x align-center">
         <div className="cell small-12 med-8  large-6">
-          <div className="notestyle rounders">
+          <div className="factor notestyle rounders">
             <p></p>
             <form className="new-project-form" onSubmit={this.handleSubmit}>
               <ProjectInputTile
