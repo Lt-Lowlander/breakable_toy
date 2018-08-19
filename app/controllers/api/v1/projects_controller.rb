@@ -66,6 +66,6 @@ class Api::V1::ProjectsController < ApiController
   end
 
   def user_params
-    project_params.merge(user_id: current_user.id)
+    project_params.merge(user_id: current_user.id, handle: current_user.handle)
   end
 end

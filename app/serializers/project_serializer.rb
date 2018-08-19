@@ -1,5 +1,5 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :photo_url, :version_id, :budget, :topics
+  attributes :id, :name, :description, :photo_url, :version_id, :handle, :budget, :topics
 
   has_many :equipment
   has_many :materials

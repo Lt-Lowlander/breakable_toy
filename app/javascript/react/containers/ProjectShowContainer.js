@@ -14,7 +14,7 @@ class ProjectShowContainer extends Component {
       project: {},
       equipment: [],
       material: [],
-      step: []
+      step: [],
     }
 
   }
@@ -23,6 +23,7 @@ class ProjectShowContainer extends Component {
     fetch(`/api/v1/projects/${this.props.params.id}`)
       .then(response => {
       if (response.ok) {
+
         return response;
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
@@ -32,6 +33,7 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+debugger
       this.setState({
         project: body,
         equipment: body.equipment,
@@ -96,7 +98,7 @@ class ProjectShowContainer extends Component {
               desc={this.state.project.description}
               budget={this.state.project.budget}
               topics={this.state.project.topics}
-              user={this.state.project.user}
+              user={this.state.project.handle}
             />
           </div>
           <div className="cell small-12 medium-6 large-4">

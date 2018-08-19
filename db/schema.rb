@@ -48,7 +48,8 @@ ActiveRecord::Schema.define(version: 2018_08_09_182509) do
     t.string "name", null: false
     t.text "description", null: false
     t.string "photo_url", null: false
-    t.integer "version_id", null: false
+    t.integer "version_id", default: 1, null: false
+    t.string "handle", null: false
     t.string "budget"
     t.string "topics"
     t.datetime "created_at", null: false
