@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import StepInput from '../components/StepInput';
+import MaterialInput from '../components/MaterialInput';
 
-class StepFormContainer extends Component {
+class MaterialsFormContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      instruction: '',
+      material: '',
     }
     this.handleChange=this.handleChange.bind(this)
     this.handleSubmit=this.handleSubmit.bind(this)
@@ -21,27 +21,27 @@ class StepFormContainer extends Component {
   handleSubmit(event){
     event.preventDefault()
     let body = {
-      instruction: this.state.instruction
+      material: this.state.material
     }
-    this.props.addNewInstruction(body)
+    this.props.addNewMaterial(body)
     this.handleClear()
   }
 
   handleClear(){
     this.setState({
-      instruction: ''
+      material: ''
     })
   }
 
   render() {
     return(
-      <div className="step-input-section">
-        <form className="new-article-form" onSubmit={this.handleSubmit}>
+      <div className="material-input-section">
+        <form className="new-material-form" onSubmit={this.handleSubmit}>
           <div className="field-and-button">
-            <StepInput className="step-field"
-              content={this.state.instruction}
-              label="New Step:"
-              name="instruction"
+            <MaterialInput className="step-field"
+              content={this.state.material}
+              label="New Material:"
+              name="material"
               handleChange={this.handleChange}
               />
           </div>
@@ -52,4 +52,4 @@ class StepFormContainer extends Component {
   }
 }
 
-export default StepFormContainer;
+export default MaterialsFormContainer;

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import StepInput from '../components/StepInput';
+import EquipmentInput from '../components/EquipmentInput';
 
-class StepFormContainer extends Component {
+class EquipmentFormContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      instruction: '',
+      equipment: '',
     }
     this.handleChange=this.handleChange.bind(this)
     this.handleSubmit=this.handleSubmit.bind(this)
@@ -21,27 +21,27 @@ class StepFormContainer extends Component {
   handleSubmit(event){
     event.preventDefault()
     let body = {
-      instruction: this.state.instruction
+      equipment: this.state.equipment
     }
-    this.props.addNewInstruction(body)
+    this.props.addNewEquipment(body)
     this.handleClear()
   }
 
   handleClear(){
     this.setState({
-      instruction: ''
+      equipment: ''
     })
   }
 
   render() {
     return(
-      <div className="step-input-section">
-        <form className="new-article-form" onSubmit={this.handleSubmit}>
+      <div className="equipment-input-section">
+        <form className="new-equipment-form" onSubmit={this.handleSubmit}>
           <div className="field-and-button">
-            <StepInput className="step-field"
-              content={this.state.instruction}
-              label="New Step:"
-              name="instruction"
+            <EquipmentInput className="step-field"
+              content={this.state.equipment}
+              label="New piece of Equipment:"
+              name="equipment"
               handleChange={this.handleChange}
               />
           </div>
@@ -52,4 +52,4 @@ class StepFormContainer extends Component {
   }
 }
 
-export default StepFormContainer;
+export default EquipmentFormContainer;
