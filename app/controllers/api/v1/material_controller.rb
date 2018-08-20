@@ -1,4 +1,4 @@
-class Api::V1::MaterialController < ApiController
+class Api::V1::MaterialsController < ApiController
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def authorize_user

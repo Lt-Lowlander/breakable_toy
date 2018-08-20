@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
-import StepsTile from '../components/StepsTile';
-import StepsFormContainer from './StepsFormContainer';
-import MaterialsShowTile from '../components/MaterialsShowTile';
-import EquipmentContainer from './EquipmentContainer';
 import ProjectShowTile from '../components/ProjectShowTile';
 import EquipmentShowTile from '../components/EquipmentShowTile';
+import MaterialsShowTile from '../components/MaterialsShowTile';
+import StepsTile from '../components/StepsTile';
+import EquipmentFormContainer from './EquipmentFormContainer';
+import MaterialsFormContainer from './MaterialsFormContainer';
+import StepsFormContainer from './StepsFormContainer';
 
 class ProjectShowContainer extends Component {
   constructor(props) {
@@ -17,6 +18,8 @@ class ProjectShowContainer extends Component {
       step: [],
     }
     this.addNewInstruction=this.addNewInstruction.bind(this)
+    this.addNewMaterial=this.addNewMaterial.bind(this)
+    this.addNewEquipment=this.addNewEquipment.bind(this)
   }
 
   addNewInstruction(body){
@@ -32,6 +35,38 @@ class ProjectShowContainer extends Component {
     .then(body => {
       let newArray = this.state.step.concat(body)
       this.setState({ step: newArray })
+    })
+  }
+
+  addNewMaterial(body){
+    let formPayload = body
+    formPayload['project_id'] = this.state.project.id
+    fetch(`/api/v1/projects/${this.props.params.id}/materials.json`, {
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify(body)
+    })
+    .then(response => response.json())
+    .then(body => {
+      let newArray = this.state.material.concat(body)
+      this.setState({ material: newArray })
+    })
+  }
+
+  addNewEquipment(body){
+    let formPayload = body
+    formPayload['project_id'] = this.state.project.id
+    fetch(`/api/v1/projects/${this.props.params.id}/equipment.json`, {
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify(body)
+    })
+    .then(response => response.json())
+    .then(body => {
+      let newArray = this.state.equipment.concat(body)
+      this.setState({ equipment: newArray })
     })
   }
 
@@ -58,7 +93,6 @@ class ProjectShowContainer extends Component {
     })
     .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
   }
-
 
   render(){
     const projectEquipment = this.state.equipment;
@@ -94,9 +128,6 @@ class ProjectShowContainer extends Component {
       )
     })
 
-
-
-
     return(
       <div className="prokaryote">
         <div className="grid-x grid-margin-x align-spaced">
@@ -123,6 +154,11 @@ class ProjectShowContainer extends Component {
                 <ul>
                   {materialsList}
                 </ul>
+                <div className="more-materials">
+                  <MaterialsFormContainer
+                    addNewMaterial={this.addNewMaterial}
+                  />
+                </div>
               </div>
               <div className="equipment-list">
                 <div>
@@ -131,6 +167,11 @@ class ProjectShowContainer extends Component {
                 <ul>
                   {equipmentList}
                 </ul>
+                <div className="more-equipment">
+                  <EquipmentFormContainer
+                    addNewEquipment={this.addNewEquipment}
+                  />
+                </div>
               </div>
           </div>
         </div>
