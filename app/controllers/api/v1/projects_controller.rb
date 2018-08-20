@@ -53,7 +53,7 @@ class Api::V1::ProjectsController < ApiController
 
   def update
     updated_project = Project.find(params[:id])
-    if updated_project.update(project)
+    if updated_project.update(user_params)
         render json: { project: updated_project }
     else
       render json: { error: updated_project.errors }
@@ -66,6 +66,11 @@ class Api::V1::ProjectsController < ApiController
   end
 
   def user_params
-    project_params.merge(user_id: current_user.id, handle: current_user.handle)
+    # if project.version_id
+    #   new_model = project.version_id + 1
+    # else
+    #   new_model = project.version_id
+    # end
+    project_params.merge(user_id: current_user.id, handle: current_user.handle, version_id: new_model)
   end
 end
