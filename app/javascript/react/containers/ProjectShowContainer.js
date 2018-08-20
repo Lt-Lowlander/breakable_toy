@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import StepsTile from '../components/StepsTile';
-
+import StepsFormContainer from './StepsFormContainer';
 import MaterialsShowTile from '../components/MaterialsShowTile';
 import EquipmentContainer from './EquipmentContainer';
 import ProjectShowTile from '../components/ProjectShowTile';
@@ -16,8 +16,25 @@ class ProjectShowContainer extends Component {
       material: [],
       step: [],
     }
-
+    this.addNewInstruction=this.addNewInstruction.bind(this)
   }
+
+  addNewInstruction(body){
+    let formPayload = body
+    formPayload['project_id'] = this.state.project.id
+    fetch(`/api/v1/projects/${this.props.params.id}/steps.json`, {
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify(body)
+    })
+    .then(response => response.json())
+    .then(body => {
+      let newArray = this.state.step.concat(body)
+      this.setState({ step: newArray })
+    })
+  }
+
     // Grab the associated project Info
   componentDidMount(){
     fetch(`/api/v1/projects/${this.props.params.id}`)
@@ -123,8 +140,15 @@ class ProjectShowContainer extends Component {
               <div className="step-show-title">
                 Construction Guide
               </div>
+              <div className="step-list-plus-add">
+              </div>
               <div className="step-show-list">
                 {stepsList}
+              </div>
+              <div className="step-input-field">
+                <StepsFormContainer
+                  addNewInstruction={this.addNewInstruction}
+                />
               </div>
             </div>
           </div>

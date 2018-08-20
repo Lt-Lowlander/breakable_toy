@@ -42,6 +42,7 @@ class App extends Component {
           <Route path='/projects/new' component={ProjectFormContainer} />
           <Route path='/projects/:id/edit' component={ProjectFormContainer} />
           <Route path='/projects/:id' component={ProjectShowContainer} />
+
         </Route>
       </Router>
     )
