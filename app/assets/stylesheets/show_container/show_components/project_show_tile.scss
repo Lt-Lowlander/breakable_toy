@@ -12,6 +12,7 @@
 .project-nucleus {
   margin: 15px;
   min-width: 800px;
+  max-width: 1000px;
 }
 
 .main-image {
@@ -20,8 +21,8 @@
 
 .project-show-pic {
   border-radius: 3px;
-  // max-width: 380;
-  // max-height: 320px;
+  // max-width: 700px;
+  max-height: 660px;
   display: block;
   // margin-left: auto;
   // margin-right: auto;
@@ -53,7 +54,7 @@
 .desc-budg {
   // border-style: solid;
   // border-color: red;
-  margin-top: 100px;
+  margin-top: 200px;
 }
 
 .project-show-description {

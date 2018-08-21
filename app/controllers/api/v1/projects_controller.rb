@@ -71,6 +71,6 @@ class Api::V1::ProjectsController < ApiController
     # else
     #   new_model = project.version_id
     # end
-    project_params.merge(user_id: current_user.id, handle: current_user.handle, version_id: new_model)
+    project_params.merge(user_id: current_user.id, handle: current_user.handle)
   end
 end
