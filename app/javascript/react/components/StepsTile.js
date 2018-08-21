@@ -16,7 +16,7 @@ const StepsTile = (props) => {
             </div>
           </div>
           <div className="cell small-12 medium-6 large-4">
-            <img className="step-show-pic" src={props.image} alt={props.number} />
+
           </div>
         </div>
     </div>
