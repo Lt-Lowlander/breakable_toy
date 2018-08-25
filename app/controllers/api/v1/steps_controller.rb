@@ -13,6 +13,7 @@ class Api::V1::StepsController < ApiController
     if step.save!
       render json: step
     else
+      binding.pry
       render json: { errors: step.errors.full_messages }
     end
   end

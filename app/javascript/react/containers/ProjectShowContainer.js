@@ -37,6 +37,7 @@ class ProjectShowContainer extends Component {
       let newArray = this.state.step.concat(body)
       this.setState({ step: newArray })
     })
+    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
   }
 
   addNewMaterial(body){
@@ -50,9 +51,11 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      debugger
       let newArray = this.state.material.concat(body)
       this.setState({ material: newArray })
     })
+    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
   }
 
   addNewEquipment(body){
@@ -69,6 +72,7 @@ class ProjectShowContainer extends Component {
       let newArray = this.state.equipment.concat(body)
       this.setState({ equipment: newArray })
     })
+    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
   }
 
     // Grab the associated project Info
@@ -85,6 +89,7 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      debugger
       this.setState({
         project: body,
         equipment: body.equipment,
@@ -106,28 +111,27 @@ class ProjectShowContainer extends Component {
       )
     })
 
-  const projectMaterials = this.state.material;
-  let materialsList = projectMaterials.map(ingredient => {
-    return(
-      <MaterialsShowTile
-        key={ingredient.id}
-        name={ingredient.material_name}
-      />
-    )
-  })
-
-
-  const projectSteps = this.state.step;
-    let stepsList = projectSteps.map(step => {
+    const projectMaterials = this.state.material;
+    let materialsList = projectMaterials.map(ingredient => {
       return(
-        <StepsTile
-          key={step.id}
-          number={step.sequence_number}
-          info={step.instruction}
-          image={step.step_photo}
+        <MaterialsShowTile
+          key={ingredient.id}
+          name={ingredient.material_name}
         />
       )
     })
+
+    const projectSteps = this.state.step;
+      let stepsList = projectSteps.map(step => {
+        return(
+          <StepsTile
+            key={step.id}
+            number={step.sequence_number}
+            info={step.instruction}
+            image={step.step_photo}
+          />
+        )
+      })
 
     return(
       <div className="prokaryote">

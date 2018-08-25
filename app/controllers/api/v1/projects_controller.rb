@@ -1,5 +1,5 @@
 class Api::V1::ProjectsController < ApiController
-  before_action :authorize_user, only: [:edit, :update, :destroy]
+  before_action :authorize_user, only: [:edit, :update, :create, :destroy]
 
   def authorize_user
     if !user_signed_in? || !current_user.admin?
