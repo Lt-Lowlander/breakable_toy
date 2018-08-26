@@ -41,8 +41,12 @@ paste this into line 85, indented from top div
  <div className="cell small-12 medium-6 large-4">
    <VersionHistoryContainer/>
  </div> -->
-<!-- 
+<!--
 ===============================================================================
 line 19 of StepsTile.js
 
  <img className="step-show-pic" src={props.image} alt={props.number} /> -->
+
+===============================================================================
+
+<!-- [![Build Status](https://codeship.com/projects/9f631d00-7d77-0136-6bc8-4eb24753254f/status?branch=master) -->

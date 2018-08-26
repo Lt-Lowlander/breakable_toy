@@ -22,22 +22,9 @@ Things you may want to cover:
 
 * Deployment instructions
   ToDo:
-    -create a ruby script to automate the setup shell commands.
+    -create a ruby script to automate the setup shell commands:
+    
+    $ ruby shell_commands.rb
 
-      * bundle install
-
-      * bundle
-
-      * yarn install
-
-      * rails db:drop && rails db:create
-
-      * rails db:migrate && rails db:rollback && rails db:migrate
-
-      * rails db:seed
-
-      * yarn run start
 
 * ...
-
-<!-- [![Build Status](https://codeship.com/projects/9f631d00-7d77-0136-6bc8-4eb24753254f/status?branch=master) -->

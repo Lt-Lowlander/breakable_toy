@@ -21,7 +21,7 @@ class MaterialsFormContainer extends Component {
   handleSubmit(event){
     event.preventDefault()
     let body = {
-      material: this.state.material
+      material_name: this.state.material
     }
     this.props.addNewMaterial(body)
     this.handleClear()
