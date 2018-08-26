@@ -16,16 +16,9 @@ class Api::V1::EquipmentController < ApiController
     project = Project.find(params[:project_id])
     equipment = Equipment.new(equipment_data)
     equipment.project = project
-    binding.pry
-    # if project.equipment.last.nil?
-    #   equipment.item_number = 1
-    # else
-    #   equipment.item_number = project.equipment.last.item_number + 1
-    # end
     if equipment.save!
       render json: equipment
     else
-      binding.pry
       render json: { errors: equipment.errors.full_messages }
     end
   end
