@@ -15,41 +15,41 @@ projects = Project.create!([
   {name: "LED cube", description: "An updated take on Splinter's original post", photo_url: "https://cdn.instructables.com/FUX/O1RW/GICYBAOS/FUXO1RWGICYBAOS.LARGE.jpg?auto=webp&width=933", version_id: '2', budget: "$67", topics: "electronics", user_id: '2', handle: "Tinker_Kid"},
   ])
 
-# # #create equipment
-# equipment = Equipment.create!([
-#   {id: '1', user_id: '1', project_id: '1', tool_name: "soldering iron"},
-#   {id: '2', user_id: '1', project_id: '1', tool_name: "screw driver"},
-#   {id: '3', user_id: '1', project_id: '1', tool_name: "wire strippers"},
-#   {id: '4', user_id: '1', project_id: '1', tool_name: "needle nose pliers"},
-#   {id: '5', user_id: '2', project_id: '6', tool_name: "3D Printer"},
-#   {id: '6', user_id: '2', project_id: '6', tool_name: "Laptop"},
-#   {id: '7', user_id: '2', project_id: '6', tool_name: "Soldering Iron"},
-#   {id: '8', user_id: '2', project_id: '6', tool_name: "Hot Glue Gun"},
-#   {id: '9', user_id: '2', project_id: '6', tool_name: "Breadboard"},
-#   {id: '10', user_id: '2', project_id: '7', tool_name: "soldering iron"},
-#   {id: '11', user_id: '2', project_id: '7', tool_name: "screw driver"},
-#   {id: '12', user_id: '2', project_id: '7', tool_name: "wire strippers"},
-#   {id: '13', user_id: '2', project_id: '7', tool_name: "needle nose pliers"}
-# ])
+# #create equipment
+equipment = Equipment.create!([
+  {user_id: '1', project_id: '1', tool_name: "soldering iron"},
+  {user_id: '1', project_id: '1', tool_name: "screw driver"},
+  {user_id: '1', project_id: '1', tool_name: "wire strippers"},
+  {user_id: '1', project_id: '1', tool_name: "needle nose pliers"},
+  {user_id: '2', project_id: '6', tool_name: "3D Printer"},
+  {user_id: '2', project_id: '6', tool_name: "Laptop"},
+  {user_id: '2', project_id: '6', tool_name: "Soldering Iron"},
+  {user_id: '2', project_id: '6', tool_name: "Hot Glue Gun"},
+  {user_id: '2', project_id: '6', tool_name: "Breadboard"},
+  {user_id: '2', project_id: '7', tool_name: "soldering iron"},
+  {user_id: '2', project_id: '7', tool_name: "screw driver"},
+  {user_id: '2', project_id: '7', tool_name: "wire strippers"},
+  {user_id: '2', project_id: '7', tool_name: "needle nose pliers"}
+])
 
 # create materials
-# materials = Material.create!([
-#   {id: '1', project_id: '1', item_number: '1', material_name: "tin-based solder"},
-#   {id: '2', project_id: '1', item_number: '2', material_name: "64 LEDs"},
-#   {id: '6', project_id: '1', item_number: '3', material_name: "arduino"},
-#   {id: '7', project_id: '1', item_number: '4', material_name: "breadboard"},
-#   {id: '3', project_id: '1', item_number: '5', material_name: "resistors"},
-#   {id: '4', project_id: '6', item_number: '1', material_name: "PLA filament"},
-#   {id: '5', project_id: '6', item_number: '2', material_name: "Nema 17 stepper motor"},
-#   {id: '8', project_id: '6', item_number: '3', material_name: "Arduino UNO"},
-#   {id: '9', project_id: '6', item_number: '4', material_name: "Neopixel LEDs"},
-#   {id: '10', project_id: '6', item_number: '5', material_name: "DC power adapter"},
-#   {id: '11', project_id: '6', item_number: '6', material_name: "1000 µF capacitor"},
-#   {id: '12', project_id: '6', item_number: '7', material_name: "500 Ω resistor"},
-#   {id: '13', project_id: '6', item_number: '8', material_name: "22 AWG wire"},
-#   {id: '14', project_id: '7', item_number: '1', material_name: "tin-based solder"},
-#   {id: '15', project_id: '7', item_number: '2', material_name: "512 LEDs"},
-#   {id: '16', project_id: '7', item_number: '3', material_name: "arduino"},
-#   {id: '17', project_id: '7', item_number: '4', material_name: "breadboard"},
-#   {id: '18', project_id: '7', item_number: '5', material_name: "resistors"},
-# ])
+materials = Material.create!([
+  {project_id: '1', item_number: '1', material_name: "tin-based solder"},
+  {project_id: '1', item_number: '2', material_name: "64 LEDs"},
+  {project_id: '1', item_number: '3', material_name: "arduino"},
+  {project_id: '1', item_number: '4', material_name: "breadboard"},
+  {project_id: '1', item_number: '5', material_name: "resistors"},
+  {project_id: '6', item_number: '1', material_name: "PLA filament"},
+  {project_id: '6', item_number: '2', material_name: "Nema 17 stepper motor"},
+  {project_id: '6', item_number: '3', material_name: "Arduino UNO"},
+  {project_id: '6', item_number: '4', material_name: "Neopixel LEDs"},
+  {project_id: '6', item_number: '5', material_name: "DC power adapter"},
+  {project_id: '6', item_number: '6', material_name: "1000 µF capacitor"},
+  {project_id: '6', item_number: '7', material_name: "500 Ω resistor"},
+  {project_id: '6', item_number: '8', material_name: "22 AWG wire"},
+  {project_id: '7', item_number: '1', material_name: "tin-based solder"},
+  {project_id: '7', item_number: '2', material_name: "512 LEDs"},
+  {project_id: '7', item_number: '3', material_name: "arduino"},
+  {project_id: '7', item_number: '4', material_name: "breadboard"},
+  {project_id: '7', item_number: '5', material_name: "resistors"},
+])
