@@ -21,7 +21,7 @@ class EquipmentFormContainer extends Component {
   handleSubmit(event){
     event.preventDefault()
     let body = {
-      equipment: this.state.equipment
+      tool_name: this.state.equipment
     }
     this.props.addNewEquipment(body)
     this.handleClear()
@@ -38,14 +38,18 @@ class EquipmentFormContainer extends Component {
       <div className="equipment-input-section">
         <form className="new-equipment-form" onSubmit={this.handleSubmit}>
           <div className="field-and-button">
-            <EquipmentInput className="step-field"
-              content={this.state.equipment}
-              label="New piece of Equipment:"
-              name="equipment"
-              handleChange={this.handleChange}
+            <div className="element-field">
+              <EquipmentInput
+                content={this.state.equipment}
+                label="New piece of Equipment:"
+                name="equipment"
+                handleChange={this.handleChange}
               />
+            </div>
+            <div className="element-button">
+              <input className="submit-clicker button" type="submit" value="Submit" />
+            </div>
           </div>
-          <input className="step-button button" type="submit" value="Submit" />
         </form>
       </div>
     )
