@@ -1,4 +1,4 @@
-class Api::V1::MaterialController < ApiController
+class Api::V1::MaterialsController < ApiController
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def authorize_user
@@ -16,7 +16,7 @@ class Api::V1::MaterialController < ApiController
     project = Project.find(params[:project_id])
     material = Material.new(material_data)
     material.project = project
-binding.pry
+    material.id = project.materials.last.id + 1
     if material.save
       render json: material
     else
@@ -32,6 +32,6 @@ binding.pry
 
   private
   def material_data
-    params.permit(:material, :project_id)
+    params.permit(:material_name, :project_id)
   end
 end

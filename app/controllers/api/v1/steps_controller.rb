@@ -10,6 +10,7 @@ class Api::V1::StepsController < ApiController
     step = Step.new(step_data_params)
     step.project = project
     step.sequence_number = project.steps.length + 1
+    binding.pry
     if step.save!
       render json: step
     else

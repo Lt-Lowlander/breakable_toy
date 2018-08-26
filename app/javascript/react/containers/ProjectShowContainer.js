@@ -51,7 +51,6 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       let newArray = this.state.material.concat(body)
       this.setState({ material: newArray })
     })
@@ -89,7 +88,6 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       this.setState({
         project: body,
         equipment: body.equipment,
