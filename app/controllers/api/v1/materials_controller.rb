@@ -22,7 +22,7 @@ class Api::V1::MaterialsController < ApiController
       material.item_number = project.materials.last.item_number + 1
     end
     # binding.pry
-    if material.save
+    if material.save!
       render json: material
     else
       render json: { errors: material.errors.full_messages }

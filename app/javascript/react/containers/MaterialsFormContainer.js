@@ -38,14 +38,18 @@ class MaterialsFormContainer extends Component {
       <div className="material-input-section">
         <form className="new-material-form" onSubmit={this.handleSubmit}>
           <div className="field-and-button">
-            <MaterialInput className="step-field"
-              content={this.state.material}
-              label="New Material:"
-              name="material"
-              handleChange={this.handleChange}
-              />
+            <div className="element-field">
+              <MaterialInput
+                content={this.state.material}
+                label="New Material:"
+                name="material"
+                handleChange={this.handleChange}
+                />
+            </div>
+            <div className="element-button">
+              <input className="submit-clicker button" type="submit" value="Submit" />
+            </div>
           </div>
-          <input className="step-button button" type="submit" value="Submit" />
         </form>
       </div>
     )

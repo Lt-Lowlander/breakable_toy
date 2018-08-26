@@ -153,7 +153,7 @@ class ProjectShowContainer extends Component {
           <div className="cell small-12 medium-6 large-4">
             <div className="listed-elements rounders notestyle">
               <div className="materials-list">
-                <div>
+                <div className="materials-header">
                   <b>Materials</b>
                 </div>
                 <ul>
@@ -166,7 +166,7 @@ class ProjectShowContainer extends Component {
                 </div>
               </div>
               <div className="equipment-list">
-                <div>
+                <div className="equipment-header">
                   <b>Equipment</b>
                 </div>
                 <ul>
