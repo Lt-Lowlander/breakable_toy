@@ -21,7 +21,7 @@ class EquipmentFormContainer extends Component {
   handleSubmit(event){
     event.preventDefault()
     let body = {
-      equipment: this.state.equipment
+      tool_name: this.state.equipment
     }
     this.props.addNewEquipment(body)
     this.handleClear()

@@ -15,22 +15,22 @@ projects = Project.create!([
   {name: "LED cube", description: "An updated take on Splinter's original post", photo_url: "https://cdn.instructables.com/FUX/O1RW/GICYBAOS/FUXO1RWGICYBAOS.LARGE.jpg?auto=webp&width=933", version_id: '2', budget: "$67", topics: "electronics", user_id: '2', handle: "Tinker_Kid"},
   ])
 
-# #create equipment
-equipment = Equipment.create!([
-  {id: '1', user_id: '1', project_id: '1', tool_name: "soldering iron"},
-  {id: '2', user_id: '1', project_id: '1', tool_name: "screw driver"},
-  {id: '3', user_id: '1', project_id: '1', tool_name: "wire strippers"},
-  {id: '4', user_id: '1', project_id: '1', tool_name: "needle nose pliers"},
-  {id: '5', user_id: '2', project_id: '6', tool_name: "3D Printer"},
-  {id: '6', user_id: '2', project_id: '6', tool_name: "Laptop"},
-  {id: '7', user_id: '2', project_id: '6', tool_name: "Soldering Iron"},
-  {id: '8', user_id: '2', project_id: '6', tool_name: "Hot Glue Gun"},
-  {id: '9', user_id: '2', project_id: '6', tool_name: "Breadboard"},
-  {id: '10', user_id: '2', project_id: '7', tool_name: "soldering iron"},
-  {id: '11', user_id: '2', project_id: '7', tool_name: "screw driver"},
-  {id: '12', user_id: '2', project_id: '7', tool_name: "wire strippers"},
-  {id: '13', user_id: '2', project_id: '7', tool_name: "needle nose pliers"}
-])
+# # #create equipment
+# equipment = Equipment.create!([
+#   {id: '1', user_id: '1', project_id: '1', tool_name: "soldering iron"},
+#   {id: '2', user_id: '1', project_id: '1', tool_name: "screw driver"},
+#   {id: '3', user_id: '1', project_id: '1', tool_name: "wire strippers"},
+#   {id: '4', user_id: '1', project_id: '1', tool_name: "needle nose pliers"},
+#   {id: '5', user_id: '2', project_id: '6', tool_name: "3D Printer"},
+#   {id: '6', user_id: '2', project_id: '6', tool_name: "Laptop"},
+#   {id: '7', user_id: '2', project_id: '6', tool_name: "Soldering Iron"},
+#   {id: '8', user_id: '2', project_id: '6', tool_name: "Hot Glue Gun"},
+#   {id: '9', user_id: '2', project_id: '6', tool_name: "Breadboard"},
+#   {id: '10', user_id: '2', project_id: '7', tool_name: "soldering iron"},
+#   {id: '11', user_id: '2', project_id: '7', tool_name: "screw driver"},
+#   {id: '12', user_id: '2', project_id: '7', tool_name: "wire strippers"},
+#   {id: '13', user_id: '2', project_id: '7', tool_name: "needle nose pliers"}
+# ])
 
 # create materials
 # materials = Material.create!([
