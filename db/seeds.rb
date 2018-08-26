@@ -33,23 +33,23 @@ equipment = Equipment.create!([
 ])
 
 # create materials
-materials = Material.create!([
-  {id: '1', project_id: '1', material_name: "tin-based solder"},
-  {id: '2', project_id: '1', material_name: "64 LEDs"},
-  {id: '6', project_id: '1', material_name: "arduino"},
-  {id: '7', project_id: '1', material_name: "breadboard"},
-  {id: '3', project_id: '1', material_name: "resistors"},
-  {id: '4', project_id: '6', material_name: "PLA filament"},
-  {id: '5', project_id: '6', material_name: "Nema 17 stepper motor"},
-  {id: '8', project_id: '6', material_name: "Arduino UNO"},
-  {id: '9', project_id: '6', material_name: "Neopixel LEDs"},
-  {id: '10', project_id: '6', material_name: "DC power adapter"},
-  {id: '11', project_id: '6', material_name: "1000 µF capacitor"},
-  {id: '12', project_id: '6', material_name: "500 Ω resistor"},
-  {id: '13', project_id: '6', material_name: "22 AWG wire"},
-  {id: '14', project_id: '7', material_name: "tin-based solder"},
-  {id: '15', project_id: '7', material_name: "512 LEDs"},
-  {id: '16', project_id: '7', material_name: "arduino"},
-  {id: '17', project_id: '7', material_name: "breadboard"},
-  {id: '18', project_id: '7', material_name: "resistors"},
-])
+# materials = Material.create!([
+#   {id: '1', project_id: '1', item_number: '1', material_name: "tin-based solder"},
+#   {id: '2', project_id: '1', item_number: '2', material_name: "64 LEDs"},
+#   {id: '6', project_id: '1', item_number: '3', material_name: "arduino"},
+#   {id: '7', project_id: '1', item_number: '4', material_name: "breadboard"},
+#   {id: '3', project_id: '1', item_number: '5', material_name: "resistors"},
+#   {id: '4', project_id: '6', item_number: '1', material_name: "PLA filament"},
+#   {id: '5', project_id: '6', item_number: '2', material_name: "Nema 17 stepper motor"},
+#   {id: '8', project_id: '6', item_number: '3', material_name: "Arduino UNO"},
+#   {id: '9', project_id: '6', item_number: '4', material_name: "Neopixel LEDs"},
+#   {id: '10', project_id: '6', item_number: '5', material_name: "DC power adapter"},
+#   {id: '11', project_id: '6', item_number: '6', material_name: "1000 µF capacitor"},
+#   {id: '12', project_id: '6', item_number: '7', material_name: "500 Ω resistor"},
+#   {id: '13', project_id: '6', item_number: '8', material_name: "22 AWG wire"},
+#   {id: '14', project_id: '7', item_number: '1', material_name: "tin-based solder"},
+#   {id: '15', project_id: '7', item_number: '2', material_name: "512 LEDs"},
+#   {id: '16', project_id: '7', item_number: '3', material_name: "arduino"},
+#   {id: '17', project_id: '7', item_number: '4', material_name: "breadboard"},
+#   {id: '18', project_id: '7', item_number: '5', material_name: "resistors"},
+# ])

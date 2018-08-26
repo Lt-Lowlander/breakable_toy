@@ -16,7 +16,12 @@ class Api::V1::MaterialsController < ApiController
     project = Project.find(params[:project_id])
     material = Material.new(material_data)
     material.project = project
-    material.id = project.materials.last.id + 1
+    if project.materials.last.nil?
+      material.item_number = 1
+    else
+      material.item_number = project.materials.last.item_number + 1
+    end
+    # binding.pry
     if material.save
       render json: material
     else
@@ -32,6 +37,6 @@ class Api::V1::MaterialsController < ApiController
 
   private
   def material_data
-    params.permit(:material_name, :project_id)
+    params.permit(:item_number, :material_name, :project_id)
   end
 end

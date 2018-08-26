@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_08_09_182509) do
 
   create_table "materials", force: :cascade do |t|
     t.bigint "project_id"
+    t.integer "item_number", null: false
     t.string "material_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
