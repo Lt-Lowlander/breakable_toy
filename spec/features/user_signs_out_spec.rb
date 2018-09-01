@@ -17,6 +17,8 @@ feature 'user signs out', %Q{
 
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
+    fill_in 'Handle', with: user.handle
+    fill_in 'Bio', with: user.bio
 
     click_button 'Log in'
 

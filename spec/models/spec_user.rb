@@ -1,8 +1,10 @@
 require 'rails_helper'
 
+
+
 RSpec.describe User, type: :model do
   describe "validations" do
-    let!(:user) { FactoryBot.build(:user) }
+    # let!(:user) { FactoryBot.build(:user) }
     let!(:user1) { FactoryBot.build(:user, handle: "") }
     let!(:user2) { FactoryBot.build(:user, bio: "") }
     let!(:user3) { FactoryBot.build(:user, email: "") }
