@@ -50,3 +50,19 @@ line 19 of StepsTile.js
 ===============================================================================
 
 <!-- [![Build Status](https://codeship.com/projects/9f631d00-7d77-0136-6bc8-4eb24753254f/status?branch=master) -->
+
+===============================================================================
+<!--
+# used to belong in spec/support/factory_bot.rb
+
+# require 'factory_bot'
+#
+# FactoryBot.define do
+#   factory :user do
+#     sequence(:email) {|n| "user#{n}@example.com" }
+#     password 'password'
+#     password_confirmation 'password'
+#   end
+#
+# end
+ -->
