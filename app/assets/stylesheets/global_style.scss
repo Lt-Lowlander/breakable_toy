@@ -54,7 +54,12 @@ body {
   border-radius: 8px;
 }
 
+.main-page {
+  z-index: -1;
+}
+
 #flash-messages {
   float: right;
   margin-right: 30px;
+  z-index: 1;
 }
