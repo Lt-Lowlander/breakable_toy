@@ -3,6 +3,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import ProjectIndexContainer from '../containers/ProjectIndexContainer';
 import ProjectShowContainer from '../containers/ProjectShowContainer';
 import ProjectFormContainer from '../containers/ProjectFormContainer';
+import UserShowContainer from '../containers/UserShowContainer';
 
 class App extends Component {
   constructor(props){
@@ -42,6 +43,7 @@ class App extends Component {
           <Route path='/projects/new' component={ProjectFormContainer} />
           <Route path='/projects/:id/edit' component={ProjectFormContainer} />
           <Route path='/projects/:id' component={ProjectShowContainer} />
+          <Route path='/users/:id' component={UserShowContainer} />
 
         </Route>
       </Router>
