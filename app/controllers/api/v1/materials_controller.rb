@@ -21,7 +21,6 @@ class Api::V1::MaterialsController < ApiController
     else
       material.item_number = project.materials.last.item_number + 1
     end
-    # binding.pry
     if material.save!
       render json: material
     else

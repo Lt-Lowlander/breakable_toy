@@ -1,5 +1,5 @@
 class Api::V1::ProjectsController < ApiController
-  before_action :authorize_user, only: [:edit, :update, :create, :destroy]
+  before_action :authorize_user, only: [:create, :edit, :update, :destroy]
 
   def authorize_user
     if !user_signed_in? || !current_user.admin?
@@ -35,8 +35,21 @@ class Api::V1::ProjectsController < ApiController
 
 
   def show
-    project = Project.find(params[:id])
-    render json: project
+    if current_user == nil
+      member = ""
+    else
+      member = current_user.handle
+    end
+    present_project = Project.find(params[:id])
+    ############################################
+    #Why don't the materials, equipment, and steps show when creating a payload???
+    ############################################
+    payload = {
+      viewing_member: member,
+      project: present_project
+      }
+    render json: payload
+    # render json: present_project
   end
 
   def new; end
@@ -66,11 +79,6 @@ class Api::V1::ProjectsController < ApiController
   end
 
   def user_params
-    # if project.version_id
-    #   new_model = project.version_id + 1
-    # else
-    #   new_model = project.version_id
-    # end
     project_params.merge(user_id: current_user.id, handle: current_user.handle)
   end
 end

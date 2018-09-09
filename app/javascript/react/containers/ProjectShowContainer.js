@@ -17,6 +17,7 @@ class ProjectShowContainer extends Component {
       equipment: [],
       material: [],
       step: [],
+      activeMember: ''
     }
     this.addNewInstruction=this.addNewInstruction.bind(this)
     this.addNewMaterial=this.addNewMaterial.bind(this)
@@ -89,13 +90,73 @@ class ProjectShowContainer extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        project: body,
-        equipment: body.equipment,
-        material: body.materials,
-        step: body.steps
+        project: body.project,
+        // material: body.material,
+        // equipment: body.equipment,
+        // step: body.step,
+        activeMember: body.viewing_member
       })
     })
     .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
+
+    // Lines 102-159 are a janky-ass workaround to get the equipment,
+    //materials, and steps to still show when the
+    //viewing_member id is passed through
+
+    fetch(`/api/v1/projects/${this.props.params.id}/materials`)
+      .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        material: body
+      })
+    })
+    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
+
+    fetch(`/api/v1/projects/${this.props.params.id}/equipment`)
+      .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        equipment: body
+      })
+    })
+    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
+
+    fetch(`/api/v1/projects/${this.props.params.id}/steps`)
+      .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        step: body
+      })
+    })
+    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
+    // here ends the workaround
   }
 
   render(){

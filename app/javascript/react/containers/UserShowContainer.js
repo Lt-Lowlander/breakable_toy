@@ -10,8 +10,12 @@ class UserShowContainer extends Component {
   }
 
   render(){
-    return(
+    const message = "Hi cat";
 
+    return(
+      <div>
+        {message}
+      </div>
     )
   }
 }
