@@ -41,15 +41,11 @@ class Api::V1::ProjectsController < ApiController
       member = current_user.handle
     end
     present_project = Project.find(params[:id])
-    ############################################
-    #Why don't the materials, equipment, and steps show when creating a payload???
-    ############################################
     payload = {
       viewing_member: member,
       project: present_project
       }
-    render json: payload
-    # render json: present_project
+    render json: payload, include: ["equipment", "materials", "steps"] 
   end
 
   def new; end
