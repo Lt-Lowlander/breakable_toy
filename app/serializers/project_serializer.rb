@@ -4,5 +4,4 @@ class ProjectSerializer < ActiveModel::Serializer
   has_many :equipment
   has_many :materials
   has_many :steps
-
 end

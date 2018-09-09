@@ -41,8 +41,8 @@ class App extends Component {
           <IndexRoute component={ProjectIndexContainer} />
           <Route path='/projects' component={ProjectIndexContainer} />
           <Route path='/projects/new' component={ProjectFormContainer} />
-          <Route path='/projects/:id/edit' component={ProjectFormContainer} />
           <Route path='/projects/:id' component={ProjectShowContainer} />
+          <Route path='/projects/:id/edit' component={ProjectFormContainer} />
           <Route path='/users/:id' component={UserShowContainer} />
 
         </Route>

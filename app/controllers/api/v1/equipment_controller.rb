@@ -14,7 +14,7 @@ class Api::V1::EquipmentController < ApiController
 
   def create
     project = Project.find(params[:project_id])
-    equipment = Equipment.new(equipment_data)
+    equipment = Equipment.new(tool_data)
     equipment.project = project
     if equipment.save!
       render json: equipment
@@ -29,10 +29,7 @@ class Api::V1::EquipmentController < ApiController
 
   private
   def tool_data
-    params.permit(:tool_name, :project_id)
+    params.permit(:tool_name, :project_id).merge(user_id: current_user.id)
   end
-
-  def equipment_data
-    tool_data.merge(user_id: current_user.id)
-  end
+  
 end
