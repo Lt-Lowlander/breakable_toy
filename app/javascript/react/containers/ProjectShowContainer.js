@@ -89,6 +89,7 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      debugger
       this.setState({
         project: body.project,
         material: body.project.materials,
@@ -101,7 +102,18 @@ class ProjectShowContainer extends Component {
   }
 
   render(){
-    let author_settings;
+    const author = this.state.project.handle;
+    const viewer = this.state.activeMember;
+    let access_settings;
+    if (viewer === author) {
+      access_settings =
+        <div>
+          <h1>
+            <Link to={`projects/${this.state.project.id}/edit`}>Edit Project</Link>
+          </h1>
+        </div>
+    }
+
     const projectEquipment = this.state.equipment;
     let equipmentList = projectEquipment.map(tool => {
       return(
@@ -136,6 +148,7 @@ class ProjectShowContainer extends Component {
 
     return(
       <div className="prokaryote">
+        {access_settings}
         <div className="grid-x grid-margin-x align-spaced">
           <div className="cell small-12 medium-6 large-4">
             <VersionHistoryContainer/>
