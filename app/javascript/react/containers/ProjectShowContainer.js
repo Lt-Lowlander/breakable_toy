@@ -22,10 +22,6 @@ class ProjectShowContainer extends Component {
     this.addNewInstruction=this.addNewInstruction.bind(this)
     this.addNewMaterial=this.addNewMaterial.bind(this)
     this.addNewEquipment=this.addNewEquipment.bind(this)
-
-    // this.editInstructionElement=this.editInstructionElement.bind(this)
-    // this.editMaterialElement=this.editMaterialElement.bind(this)
-    // this.editEquipmentElement=this.editEquipmentElement.bind(this)
   }
 
   addNewInstruction(body){
@@ -109,10 +105,15 @@ class ProjectShowContainer extends Component {
   }
 
   render(){
+    let ownership;
     const author = this.state.project.handle;
     const viewer = this.state.activeMember;
-    let access_settings;
     if (viewer === author) {
+      ownership = true;
+    }
+
+    let access_settings;
+    if (ownership) {
       access_settings =
         <div>
           <h1>
