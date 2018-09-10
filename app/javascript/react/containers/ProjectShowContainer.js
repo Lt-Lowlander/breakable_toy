@@ -22,6 +22,10 @@ class ProjectShowContainer extends Component {
     this.addNewInstruction=this.addNewInstruction.bind(this)
     this.addNewMaterial=this.addNewMaterial.bind(this)
     this.addNewEquipment=this.addNewEquipment.bind(this)
+
+    // this.editInstructionElement=this.editInstructionElement.bind(this)
+    // this.editMaterialElement=this.editMaterialElement.bind(this)
+    // this.editEquipmentElement=this.editEquipmentElement.bind(this)
   }
 
   addNewInstruction(body){
@@ -75,6 +79,10 @@ class ProjectShowContainer extends Component {
     .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
   }
 
+
+
+
+
     // Grab the associated project Info
   componentDidMount(){
     fetch(`/api/v1/projects/${this.props.params.id}`)
@@ -89,7 +97,6 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       this.setState({
         project: body.project,
         material: body.project.materials,
