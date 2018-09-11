@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 import ProjectShowTile from '../components/ProjectShowTile';
 import EquipmentShowTile from '../components/EquipmentShowTile';
+import EquipmentOwnerShowTile from '../components/EquipmentOwnerShowTile';
 import MaterialsShowTile from '../components/MaterialsShowTile';
 import StepsTile from '../components/StepsTile';
 import VersionHistoryContainer from './VersionHistoryContainer';
@@ -75,6 +76,10 @@ class ProjectShowContainer extends Component {
     .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
   }
 
+
+
+
+
     // Grab the associated project Info
   componentDidMount(){
     fetch(`/api/v1/projects/${this.props.params.id}`)
@@ -89,7 +94,6 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       this.setState({
         project: body.project,
         material: body.project.materials,
@@ -102,10 +106,15 @@ class ProjectShowContainer extends Component {
   }
 
   render(){
+    let ownership;
     const author = this.state.project.handle;
     const viewer = this.state.activeMember;
-    let access_settings;
     if (viewer === author) {
+      ownership = true;
+    }
+
+    let access_settings;
+    if (ownership) {
       access_settings =
         <div>
           <h1>
@@ -116,12 +125,21 @@ class ProjectShowContainer extends Component {
 
     const projectEquipment = this.state.equipment;
     let equipmentList = projectEquipment.map(tool => {
-      return(
-        <EquipmentShowTile
-          key={tool.id}
-          tool={tool.tool_name}
-        />
-      )
+      if (ownership) {
+        return(
+          <EquipmentOwnerShowTile
+            key={tool.id}
+            tool={tool.tool_name}
+          />
+        )
+      } else {
+        return(
+          <EquipmentShowTile
+            key={tool.id}
+            tool={tool.tool_name}
+            />
+        )
+      }
     })
 
     const projectMaterials = this.state.material;
