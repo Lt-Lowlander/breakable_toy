@@ -7,7 +7,7 @@ class EquipmentElementTile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      editClickState: ''
+      sitRep: ''
     }
     this.onEditClick=this.onEditClick.bind(this)
   }
@@ -17,12 +17,12 @@ class EquipmentElementTile extends Component {
 
   render(){
     let equipmentStatus;
-    if (this.state.editClickState == 'situationNormal') {
+    if (this.state.sitRep == 'situationNormal') {
       equipmentStatus = equipmentOwnerItem;
         <li>
           {EquipmentInput}
         </li>
-    } else if (this.state.editClickState == 'needUpdate') {
+    } else if (this.state.sitRep == 'needUpdate') {
       equipmentStatus =
         <li>
           <div>
