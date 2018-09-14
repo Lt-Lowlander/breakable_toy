@@ -23,6 +23,7 @@ class ProjectShowContainer extends Component {
     this.addNewInstruction=this.addNewInstruction.bind(this)
     this.addNewMaterial=this.addNewMaterial.bind(this)
     this.addNewEquipment=this.addNewEquipment.bind(this)
+    this.onEquipmentEditClick=this.onEquipmentEditClick.bind(this)
   }
 
   addNewInstruction(body){
@@ -76,7 +77,33 @@ class ProjectShowContainer extends Component {
     .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
   }
 
+  onEquipmentEditClick(payload, request_params) {
+    fetch(request_params.endpoint, {
+      credentials: 'same-origin',
+      method: request_params.method,
+      body: JSON.stringify(payload),
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      debugger
+      this.setState({
 
+      })
+    })
+    .catch(error => {
+      console.error(`Error in fetch: ${error.message}`)
+    });
+  }
 
 
 
