@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router';
 
 let EquipmentOwnerShowTile = (props) => {
+
   return(
     <div className="equipment-show-tile">
       <li>
-        <div>
+        <div className="equipment-line-item">
           <div>
             {props.tool}
           </div>
