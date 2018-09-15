@@ -157,6 +157,7 @@ class ProjectShowContainer extends Component {
           <EquipmentOwnerShowTile
             key={tool.id}
             tool={tool.tool_name}
+            onEditClick={this.onEditClick}
           />
         )
       } else {
@@ -164,11 +165,10 @@ class ProjectShowContainer extends Component {
           <EquipmentShowTile
             key={tool.id}
             tool={tool.tool_name}
-            />
+          />
         )
       }
     })
-
     const projectMaterials = this.state.material;
     let materialsList = projectMaterials.map(ingredient => {
       return(
@@ -180,25 +180,74 @@ class ProjectShowContainer extends Component {
     })
 
     const projectSteps = this.state.step;
-      let stepsList = projectSteps.map(step => {
-        return(
-          <StepsTile
-            key={step.id}
-            number={step.sequence_number}
-            info={step.instruction}
-            image={step.step_photo}
-          />
-        )
-      })
+    let stepsList = projectSteps.map(step => {
+      return(
+        <StepsTile
+          key={step.id}
+          number={step.sequence_number}
+          info={step.instruction}
+          image={step.step_photo}
+        />
+      )
+    })
+
+    let materialsAccess;
+    let equipmentAccess;
+    let stepsAccess;
+    if (ownership) {
+      materialsAccess=
+        <div>
+          <ul>
+            {materialsList}
+          </ul>
+          <div className="more-materials">
+            <MaterialsFormContainer
+              addNewMaterial={this.addNewMaterial}
+              />
+          </div>
+        </div>
+      equipmentAccess=
+        <div>
+          <ul>
+            {equipmentList}
+          </ul>
+          <div className="more-equipment">
+            <EquipmentFormContainer
+              addNewEquipment={this.addNewEquipment}
+              />
+          </div>
+        </div>
+      stepsAccess=
+        <div>
+          <div className="step-show-list">
+            {stepsList}
+          </div>
+          <div className="step-input-field">
+            <StepsFormContainer
+              addNewInstruction={this.addNewInstruction}
+              />
+          </div>
+        </div>
+    } else {
+      materialsAccess=
+        <ul>
+          {materialsList}
+        </ul>
+      equipmentAccess=
+        <ul>
+          {equipmentList}
+        </ul>
+      stepsAccess=
+        <div className="step-show-list">
+          {stepsList}
+        </div>
+    }
 
     return(
       <div className="prokaryote">
-        {access_settings}
         <div className="grid-x grid-margin-x align-spaced">
-          <div className="cell small-12 medium-6 large-4">
-            <VersionHistoryContainer/>
-          </div>
           <div className="project-nucleus notestyle rounders">
+            {access_settings}
             <ProjectShowTile
               key={this.state.project.id}
               id={this.state.project.id}
@@ -217,46 +266,22 @@ class ProjectShowContainer extends Component {
                 <div className="materials-header">
                   <b>Materials</b>
                 </div>
-                <ul>
-                  {materialsList}
-                </ul>
-                <div className="more-materials">
-                  <MaterialsFormContainer
-                    addNewMaterial={this.addNewMaterial}
-                  />
-                </div>
+                {materialsAccess}
               </div>
               <div className="equipment-list">
                 <div className="equipment-header">
                   <b>Equipment</b>
                 </div>
-                <ul>
-                  {equipmentList}
-                </ul>
-                <div className="more-equipment">
-                  <EquipmentFormContainer
-                    addNewEquipment={this.addNewEquipment}
-                  />
-                </div>
+                {equipmentAccess}
               </div>
           </div>
         </div>
-
           <div className="cell">
             <div className="steps-show-unit notestyle">
               <div className="step-show-title">
                 Construction Guide
               </div>
-              <div className="step-list-plus-add">
-              </div>
-              <div className="step-show-list">
-                {stepsList}
-              </div>
-              <div className="step-input-field">
-                <StepsFormContainer
-                  addNewInstruction={this.addNewInstruction}
-                />
-              </div>
+              {stepsAccess}
             </div>
           </div>
         </div>

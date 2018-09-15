@@ -6,15 +6,13 @@ let EquipmentOwnerShowTile = (props) => {
   return(
     <div className="equipment-show-tile">
       <li>
-        <div className="equipment-line-item">
-          <div>
-            {props.tool}
-          </div>
-          <div>
-            <i className="far fa-edit"></i>
-            <span>  |  </span>
-            <i className="far fa-trash-alt"></i>
-          </div>
+        <div className="element-item">
+          {props.tool}
+        </div>
+        <div className="element-actions">
+          <i className="far fa-edit"></i>
+          <span>  |  </span>
+          <i className="far fa-trash-alt"></i>
         </div>
       </li>
     </div>
