@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 import ProjectShowTile from '../components/ProjectShowTile';
 import EquipmentShowTile from '../components/EquipmentShowTile';
-import EquipmentElementTile from '../components/EquipmentElementTile';
+import EquipmentOwnerShowTile from '../components/EquipmentOwnerShowTile';
 import MaterialsShowTile from '../components/MaterialsShowTile';
 import StepsTile from '../components/StepsTile';
 import VersionHistoryContainer from './VersionHistoryContainer';
@@ -154,7 +154,7 @@ class ProjectShowContainer extends Component {
     let equipmentList = projectEquipment.map(tool => {
       if (ownership) {
         return(
-          <EquipmentElementTile
+          <EquipmentOwnerShowTile
             key={tool.id}
             tool={tool.tool_name}
             onEditClick={this.onEditClick}
