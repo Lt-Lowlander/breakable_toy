@@ -12,6 +12,11 @@ class Api::V1::MaterialsController < ApiController
     render json: materials
   end
 
+  def show
+    materials = Material.where(project_id: params[:project_id], id: params[:id])
+    render json: materials
+  end
+
   def create
     project = Project.find(params[:project_id])
     material = Material.new(material_data)

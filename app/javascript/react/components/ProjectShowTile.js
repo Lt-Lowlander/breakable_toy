@@ -24,7 +24,7 @@ const ProjectShowTile = (props) => {
             <div className="side-right">
               <div className="next-iteration button rounders">
                 <b>
-                  Build a new version!
+                  Build a new version
                 </b>
               </div>
             </div>

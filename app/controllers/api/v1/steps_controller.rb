@@ -2,6 +2,11 @@ class Api::V1::StepsController < ApiController
 
   def index; end
 
+  def show
+    step = Step.where(project_id: params[:project_id], id: params[:id])
+    render json: step
+  end
+
   def new; end
 
   def create
@@ -16,7 +21,9 @@ class Api::V1::StepsController < ApiController
     end
   end
 
-
+  def update
+    step = Step.find(params[:id])
+  end
 
   private
   def step_data_params
