@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 import ProjectShowTile from '../components/ProjectShowTile';
 import EquipmentShowTile from '../components/EquipmentShowTile';
-import EquipmentOwnerShowTile from '../components/EquipmentOwnerShowTile';
+import EquipmentElementTile from '../components/EquipmentElementTile';
 import MaterialsShowTile from '../components/MaterialsShowTile';
 import StepsTile from '../components/StepsTile';
 import VersionHistoryContainer from './VersionHistoryContainer';
@@ -23,7 +23,7 @@ class ProjectShowContainer extends Component {
     this.addNewInstruction=this.addNewInstruction.bind(this)
     this.addNewMaterial=this.addNewMaterial.bind(this)
     this.addNewEquipment=this.addNewEquipment.bind(this)
-    this.onEquipmentEditClick=this.onEquipmentEditClick.bind(this)
+    this.updateEquipment=this.updateEquipment.bind(this)
   }
 
   addNewInstruction(body){
@@ -77,10 +77,11 @@ class ProjectShowContainer extends Component {
     .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
   }
 
-  onEquipmentEditClick(payload, request_params) {
-    fetch(request_params.endpoint, {
+  updateEquipment(body) {
+    debugger
+    fetch(`/api/v1/projects/${this.props.params.id}/equipment/${body.tool_id}.json`, {
       credentials: 'same-origin',
-      method: request_params.method,
+      method: PATCH,
       body: JSON.stringify(payload),
       headers: {'Content-Type': 'application/json'}
     })
@@ -154,10 +155,11 @@ class ProjectShowContainer extends Component {
     let equipmentList = projectEquipment.map(tool => {
       if (ownership) {
         return(
-          <EquipmentOwnerShowTile
+          <EquipmentElementTile
             key={tool.id}
+            id={tool.id}
             tool={tool.tool_name}
-            onEditClick={this.onEditClick}
+            updateEquipment={this.updateEquipment}
           />
         )
       } else {
