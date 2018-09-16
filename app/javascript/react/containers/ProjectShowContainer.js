@@ -23,7 +23,6 @@ class ProjectShowContainer extends Component {
     this.addNewInstruction=this.addNewInstruction.bind(this)
     this.addNewMaterial=this.addNewMaterial.bind(this)
     this.addNewEquipment=this.addNewEquipment.bind(this)
-    this.updateEquipment=this.updateEquipment.bind(this)
   }
 
   addNewInstruction(body){
@@ -77,37 +76,6 @@ class ProjectShowContainer extends Component {
     .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
   }
 
-  updateEquipment(body) {
-    debugger
-    fetch(`/api/v1/projects/${this.props.params.id}/equipment/${body.tool_id}.json`, {
-      credentials: 'same-origin',
-      method: PATCH,
-      body: JSON.stringify(payload),
-      headers: {'Content-Type': 'application/json'}
-    })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-          error = new Error(errorMessage);
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      debugger
-      this.setState({
-
-      })
-    })
-    .catch(error => {
-      console.error(`Error in fetch: ${error.message}`)
-    });
-  }
-
-
-
     // Grab the associated project Info
   componentDidMount(){
     fetch(`/api/v1/projects/${this.props.params.id}`)
@@ -160,6 +128,7 @@ class ProjectShowContainer extends Component {
             id={tool.id}
             tool={tool.tool_name}
             updateEquipment={this.updateEquipment}
+            projectId={this.state.project.id}
           />
         )
       } else {

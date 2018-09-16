@@ -10,6 +10,7 @@ class EquipmentElementTile extends Component {
     }
     this.onClick=this.onClick.bind(this)
     this.handleChange=this.handleChange.bind(this)
+    // this.handleClear=this.handleClear.bind(this)
     this.handleSubmit=this.handleSubmit.bind(this)
   }
 
@@ -26,26 +27,54 @@ class EquipmentElementTile extends Component {
     this.setState({ [fieldInfo]: value })
   }
 
+  // handleClear(){
+  //   this.setState({
+  //     elementEdit: ''
+  //   })
+  // }
+
   handleSubmit(event){
     event.preventDefault()
-    let body = {
-      tool_id: this.props.id,
+    let payload = {
       tool_name: this.state.elementEdit
     }
-    this.props.updateEquipment(body)
-    this.setState({
-      sitRep: 'situationNormal'
+    fetch(`/api/v1/projects/${this.props.projectId}/equipment/${this.props.id}.json`, {
+      credentials: 'same-origin',
+      method: 'PATCH',
+      body: JSON.stringify(payload),
+      headers: {'Content-Type': 'application/json'}
     })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        elementEdit: `${body.equipment[0].tool_name}`,
+        sitRep: 'situationNormal'
+      })
+    })
+    .catch(error => {
+      console.error(`Error in fetch: ${error.message}`)
+    });
   }
 
   render(){
     let equipmentStatus;
+    let elementItem = this.props.tool;
+    debugger
     if (this.state.sitRep == 'situationNormal') {
         equipmentStatus =
         <div className="equipment-show-tile">
           <li>
             <div className="element-item">
-              {this.props.tool}
+                {elementItem}
             </div>
             <div className="element-actions">
               <i className="far fa-edit" onClick={this.onClick}></i>
@@ -57,8 +86,8 @@ class EquipmentElementTile extends Component {
     } else if (this.state.sitRep == 'needUpdate') {
       equipmentStatus =
       <li>
-        <form onSubmit={this.handleSubmit}>
-          <div className="field-and-button">
+        <div className="field-and-button">
+          <form onSubmit={this.handleSubmit}>
             <div className="element-field">
               <input
                 name='elementEdit'
@@ -70,8 +99,8 @@ class EquipmentElementTile extends Component {
             <div className="element-button">
               <input className="submit-clicker button" type="submit" value="Submit" />
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </li>
     }
 
