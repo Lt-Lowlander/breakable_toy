@@ -29,7 +29,12 @@ class Api::V1::EquipmentController < ApiController
   end
 
   def update
-    equipment = Equipment.find(params[:id])
+    edited_equipment = Equipment.where(project_id: params[:project_id], id: params[:id])
+    if edited_equipment.update(tool_params)
+      render json: { equipment: edited_equipment }
+    else
+      render json: {errors: edited_equipment.errors }
+    end
   end
 
   private
@@ -37,4 +42,7 @@ class Api::V1::EquipmentController < ApiController
     params.permit(:tool_name, :project_id).merge(user_id: current_user.id)
   end
 
+  def tool_params
+    params.permit(:tool_name)
+  end
 end
