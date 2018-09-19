@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EquipmentElementTile from '../components/EquipmentElementTile';
 import EquipmentShowTile from '../components/EquipmentShowTile';
+import EquipmentFormContainer from './EquipmentFormContainer';
 
 class EquipmentIndexContainer extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class EquipmentIndexContainer extends Component {
   }
 
   render(){
+
     let equipmentList = this.props.equipment.map(machine => {
       if (this.props.ownership) {
         return(
@@ -31,16 +33,34 @@ class EquipmentIndexContainer extends Component {
         )
       }
     })
-    return(
-      <div>
-        <div className="equipment-header">
-          <b>Equipment</b>
+    if (this.props.ownership) {
+      return(
+        <div>
+          <div className="equipment-header">
+            <b>Equipment</b>
+          </div>
+          <ul>
+            {equipmentList}
+          </ul>
+          <div className="more-equipment">
+            <EquipmentFormContainer
+              addNewEquipment={this.props.addNewEquipment}
+              />
+          </div>
         </div>
-        <ul>
-          {equipmentList}
-        </ul>
-      </div>
-    )
+      )
+    } else {
+      return(
+        <div>
+          <div className="equipment-header">
+            <b>Equipment</b>
+          </div>
+          <ul>
+            {equipmentList}
+          </ul>
+        </div>
+      )
+    }
   }
 
 }

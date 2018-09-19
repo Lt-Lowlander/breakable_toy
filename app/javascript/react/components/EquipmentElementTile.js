@@ -27,31 +27,11 @@ class EquipmentElementTile extends Component {
 
   handleSubmit(event){
     event.preventDefault()
-    let payload = {
-      id: this.props.id,
+    const path = `/api/v1/projects/${this.props.projectId}/equipment/${this.props.id}.json`
+    const payload = {
       tool_name: this.state.elementEdit
     }
-    fetch(`/api/v1/projects/${this.props.projectId}/equipment/${this.props.id}.json`, {
-      credentials: 'same-origin',
-      method: 'PATCH',
-      body: JSON.stringify(payload),
-      headers: {'Content-Type': 'application/json'}
-    })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-          error = new Error(errorMessage);
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(body => {})
-    .catch(error => {
-      console.error(`Error in fetch: ${error.message}`)
-    });
-    this.props.updateEquipment()
+    this.props.updateEquipment(payload, path)
     this.setState({
       sitRep: 'situationNormal'
     })

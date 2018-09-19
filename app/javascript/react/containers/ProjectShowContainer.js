@@ -7,7 +7,7 @@ import VersionHistoryContainer from './VersionHistoryContainer'
 import MaterialsFormContainer from './MaterialsFormContainer';
 import StepsFormContainer from './StepsFormContainer';
 import EquipmentIndexContainer from './EquipmentIndexContainer';
-import EquipmentFormContainer from './EquipmentFormContainer';
+
 
 class ProjectShowContainer extends Component {
   constructor(props) {
@@ -18,6 +18,7 @@ class ProjectShowContainer extends Component {
       material: [],
       step: [],
       activeMember: ''
+
     }
     this.addNewInstruction=this.addNewInstruction.bind(this)
     this.addNewMaterial=this.addNewMaterial.bind(this)
@@ -39,7 +40,7 @@ class ProjectShowContainer extends Component {
       let newArray = this.state.step.concat(body)
       this.setState({ step: newArray })
     })
-    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
+    .catch(error => console.error(`Error in project instruction add fetch: ${error.message}`));
   }
 
   addNewMaterial(body){
@@ -56,7 +57,7 @@ class ProjectShowContainer extends Component {
       let newArray = this.state.material.concat(body)
       this.setState({ material: newArray })
     })
-    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
+    .catch(error => console.error(`Error in project materials add fetch: ${error.message}`));
   }
 
   addNewEquipment(body){
@@ -73,11 +74,17 @@ class ProjectShowContainer extends Component {
       let newArray = this.state.equipment.concat(body)
       this.setState({ equipment: newArray })
     })
-    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
+    .catch(error => console.error(`Error in project equipment add fetch: ${error.message}`));
   }
 
-  updateEquipment(){
-    fetch(`/api/v1/projects/${this.props.params.id}`)
+  updateEquipment(payload, path){
+debugger
+    fetch(path, {
+      credentials: 'same-origin',
+      method: 'PATCH',
+      body: JSON.stringify(payload),
+      headers: {'Content-Type': 'application/json'}
+    })
       .then(response => {
       if (response.ok) {
         return response;
@@ -89,12 +96,12 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-debugger
+      debugger
       this.setState({
-        equipment: body.project.equipment,
+        equipment: body
       })
     })
-    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
+    .catch(error => console.error(`Error in project show patch fetch: ${error.message}`));
   }
 
     // Grab the associated project Info
@@ -179,12 +186,6 @@ debugger
             />
           </div>
         </div>
-      equipmentForm=
-        <div className="more-equipment">
-          <EquipmentFormContainer
-            addNewEquipment={this.addNewEquipment}
-            />
-        </div>
 
       stepsAccess=
         <div>
@@ -238,11 +239,9 @@ debugger
                   equipment={projectEquipment}
                   ownership={ownership}
                   updateEquipment={this.updateEquipment}
+                  addNewEquipment={this.addNewEquipment}
                   projectId={this.state.project.id}
                   />
-              </div>
-              <div>
-                {equipmentForm}
               </div>
           </div>
         </div>
