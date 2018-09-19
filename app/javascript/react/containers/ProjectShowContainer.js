@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import ProjectShowTile from '../components/ProjectShowTile';
-import EquipmentShowTile from '../components/EquipmentShowTile';
-import EquipmentElementTile from '../components/EquipmentElementTile';
 import MaterialsShowTile from '../components/MaterialsShowTile';
 import StepsTile from '../components/StepsTile';
-import VersionHistoryContainer from './VersionHistoryContainer';
-import EquipmentFormContainer from './EquipmentFormContainer';
+import VersionHistoryContainer from './VersionHistoryContainer'
 import MaterialsFormContainer from './MaterialsFormContainer';
 import StepsFormContainer from './StepsFormContainer';
+import EquipmentIndexContainer from './EquipmentIndexContainer';
+import EquipmentFormContainer from './EquipmentFormContainer';
 
 class ProjectShowContainer extends Component {
   constructor(props) {
@@ -131,6 +130,8 @@ debugger
       ownership = true;
     }
 
+    let projectEquipment = this.state.equipment;
+
     let access_settings;
     if (ownership) {
       access_settings =
@@ -141,27 +142,6 @@ debugger
         </div>
     }
 
-    const projectEquipment = this.state.equipment;
-    let equipmentList = projectEquipment.map(tool => {
-      if (ownership) {
-        return(
-          <EquipmentElementTile
-            key={tool.id}
-            id={tool.id}
-            tool={tool.tool_name}
-            updateEquipment={this.updateEquipment}
-            projectId={this.state.project.id}
-          />
-        )
-      } else {
-        return(
-          <EquipmentShowTile
-            key={tool.id}
-            tool={tool.tool_name}
-          />
-        )
-      }
-    })
     const projectMaterials = this.state.material;
     let materialsList = projectMaterials.map(ingredient => {
       return(
@@ -185,7 +165,7 @@ debugger
     })
 
     let materialsAccess;
-    let equipmentAccess;
+    let equipmentForm;
     let stepsAccess;
     if (ownership) {
       materialsAccess=
@@ -196,20 +176,16 @@ debugger
           <div className="more-materials">
             <MaterialsFormContainer
               addNewMaterial={this.addNewMaterial}
-              />
+            />
           </div>
         </div>
-      equipmentAccess=
-        <div>
-          <ul>
-            {equipmentList}
-          </ul>
-          <div className="more-equipment">
-            <EquipmentFormContainer
-              addNewEquipment={this.addNewEquipment}
-              />
-          </div>
+      equipmentForm=
+        <div className="more-equipment">
+          <EquipmentFormContainer
+            addNewEquipment={this.addNewEquipment}
+            />
         </div>
+
       stepsAccess=
         <div>
           <div className="step-show-list">
@@ -225,10 +201,6 @@ debugger
       materialsAccess=
         <ul>
           {materialsList}
-        </ul>
-      equipmentAccess=
-        <ul>
-          {equipmentList}
         </ul>
       stepsAccess=
         <div className="step-show-list">
@@ -262,10 +234,15 @@ debugger
                 {materialsAccess}
               </div>
               <div className="equipment-list">
-                <div className="equipment-header">
-                  <b>Equipment</b>
-                </div>
-                {equipmentAccess}
+                <EquipmentIndexContainer
+                  equipment={projectEquipment}
+                  ownership={ownership}
+                  updateEquipment={this.updateEquipment}
+                  projectId={this.state.project.id}
+                  />
+              </div>
+              <div>
+                {equipmentForm}
               </div>
           </div>
         </div>
