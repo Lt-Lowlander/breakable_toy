@@ -23,6 +23,7 @@ class ProjectShowContainer extends Component {
     this.addNewInstruction=this.addNewInstruction.bind(this)
     this.addNewMaterial=this.addNewMaterial.bind(this)
     this.addNewEquipment=this.addNewEquipment.bind(this)
+    this.updateEquipment=this.updateEquipment.bind(this)
   }
 
   addNewInstruction(body){
@@ -72,6 +73,27 @@ class ProjectShowContainer extends Component {
     .then(body => {
       let newArray = this.state.equipment.concat(body)
       this.setState({ equipment: newArray })
+    })
+    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
+  }
+
+  updateEquipment(){
+    fetch(`/api/v1/projects/${this.props.params.id}`)
+      .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+debugger
+      this.setState({
+        equipment: body.project.equipment,
+      })
     })
     .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
   }

@@ -10,7 +10,6 @@ class EquipmentElementTile extends Component {
     }
     this.onClick=this.onClick.bind(this)
     this.handleChange=this.handleChange.bind(this)
-    // this.handleClear=this.handleClear.bind(this)
     this.handleSubmit=this.handleSubmit.bind(this)
   }
 
@@ -27,15 +26,10 @@ class EquipmentElementTile extends Component {
     this.setState({ [fieldInfo]: value })
   }
 
-  // handleClear(){
-  //   this.setState({
-  //     elementEdit: ''
-  //   })
-  // }
-
   handleSubmit(event){
     event.preventDefault()
     let payload = {
+      id: this.props.id,
       tool_name: this.state.elementEdit
     }
     fetch(`/api/v1/projects/${this.props.projectId}/equipment/${this.props.id}.json`, {
@@ -54,21 +48,19 @@ class EquipmentElementTile extends Component {
       }
     })
     .then(response => response.json())
-    .then(body => {
-      this.setState({
-        elementEdit: `${body.equipment[0].tool_name}`,
-        sitRep: 'situationNormal'
-      })
-    })
+    .then(body => {})
     .catch(error => {
       console.error(`Error in fetch: ${error.message}`)
     });
+    this.props.updateEquipment()
+    this.setState({
+      sitRep: 'situationNormal'
+    })
   }
 
   render(){
     let equipmentStatus;
     let elementItem = this.props.tool;
-    debugger
     if (this.state.sitRep == 'situationNormal') {
         equipmentStatus =
         <div className="equipment-show-tile">
@@ -85,9 +77,9 @@ class EquipmentElementTile extends Component {
         </div>
     } else if (this.state.sitRep == 'needUpdate') {
       equipmentStatus =
-      <li>
-        <div className="field-and-button">
-          <form onSubmit={this.handleSubmit}>
+      <div className="field-and-button">
+        <form onSubmit={this.handleSubmit}>
+          <li>
             <div className="element-field">
               <input
                 name='elementEdit'
@@ -99,9 +91,9 @@ class EquipmentElementTile extends Component {
             <div className="element-button">
               <input className="submit-clicker button" type="submit" value="Submit" />
             </div>
-          </form>
-        </div>
-      </li>
+          </li>
+        </form>
+      </div>
     }
 
     return(

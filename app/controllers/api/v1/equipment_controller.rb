@@ -8,12 +8,12 @@ class Api::V1::EquipmentController < ApiController
   end
 
   def index
-    equipment = Equipment.where(project_id: params[:project_id])
+      equipment = Equipment.where(project_id: params[:project_id])
     render json: equipment
   end
 
   def show
-    equipment = Equipment.where(project_id: params[:project_id], id: params[:id])
+    equipment = Equipment.where(project_id: params[:project_id])
     render json: equipment
   end
 
