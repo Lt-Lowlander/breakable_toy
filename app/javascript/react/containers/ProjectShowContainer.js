@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import ProjectShowTile from '../components/ProjectShowTile';
-import EquipmentShowTile from '../components/EquipmentShowTile';
-import EquipmentElementTile from '../components/EquipmentElementTile';
 import MaterialsShowTile from '../components/MaterialsShowTile';
 import StepsTile from '../components/StepsTile';
-import VersionHistoryContainer from './VersionHistoryContainer';
-import EquipmentFormContainer from './EquipmentFormContainer';
+import VersionHistoryContainer from './VersionHistoryContainer'
 import MaterialsFormContainer from './MaterialsFormContainer';
 import StepsFormContainer from './StepsFormContainer';
+import EquipmentIndexContainer from './EquipmentIndexContainer';
+
 
 class ProjectShowContainer extends Component {
   constructor(props) {
@@ -19,6 +18,7 @@ class ProjectShowContainer extends Component {
       material: [],
       step: [],
       activeMember: ''
+
     }
     this.addNewInstruction=this.addNewInstruction.bind(this)
     this.addNewMaterial=this.addNewMaterial.bind(this)
@@ -40,7 +40,7 @@ class ProjectShowContainer extends Component {
       let newArray = this.state.step.concat(body)
       this.setState({ step: newArray })
     })
-    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
+    .catch(error => console.error(`Error in project instruction add fetch: ${error.message}`));
   }
 
   addNewMaterial(body){
@@ -57,7 +57,7 @@ class ProjectShowContainer extends Component {
       let newArray = this.state.material.concat(body)
       this.setState({ material: newArray })
     })
-    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
+    .catch(error => console.error(`Error in project materials add fetch: ${error.message}`));
   }
 
   addNewEquipment(body){
@@ -74,11 +74,17 @@ class ProjectShowContainer extends Component {
       let newArray = this.state.equipment.concat(body)
       this.setState({ equipment: newArray })
     })
-    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
+    .catch(error => console.error(`Error in project equipment add fetch: ${error.message}`));
   }
 
-  updateEquipment(){
-    fetch(`/api/v1/projects/${this.props.params.id}`)
+  updateEquipment(payload, path){
+debugger
+    fetch(path, {
+      credentials: 'same-origin',
+      method: 'PATCH',
+      body: JSON.stringify(payload),
+      headers: {'Content-Type': 'application/json'}
+    })
       .then(response => {
       if (response.ok) {
         return response;
@@ -90,12 +96,12 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-debugger
+      debugger
       this.setState({
-        equipment: body.project.equipment,
+        equipment: body
       })
     })
-    .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
+    .catch(error => console.error(`Error in project show patch fetch: ${error.message}`));
   }
 
     // Grab the associated project Info
@@ -131,6 +137,8 @@ debugger
       ownership = true;
     }
 
+    let projectEquipment = this.state.equipment;
+
     let access_settings;
     if (ownership) {
       access_settings =
@@ -141,27 +149,6 @@ debugger
         </div>
     }
 
-    const projectEquipment = this.state.equipment;
-    let equipmentList = projectEquipment.map(tool => {
-      if (ownership) {
-        return(
-          <EquipmentElementTile
-            key={tool.id}
-            id={tool.id}
-            tool={tool.tool_name}
-            updateEquipment={this.updateEquipment}
-            projectId={this.state.project.id}
-          />
-        )
-      } else {
-        return(
-          <EquipmentShowTile
-            key={tool.id}
-            tool={tool.tool_name}
-          />
-        )
-      }
-    })
     const projectMaterials = this.state.material;
     let materialsList = projectMaterials.map(ingredient => {
       return(
@@ -185,7 +172,7 @@ debugger
     })
 
     let materialsAccess;
-    let equipmentAccess;
+    let equipmentForm;
     let stepsAccess;
     if (ownership) {
       materialsAccess=
@@ -196,20 +183,10 @@ debugger
           <div className="more-materials">
             <MaterialsFormContainer
               addNewMaterial={this.addNewMaterial}
-              />
+            />
           </div>
         </div>
-      equipmentAccess=
-        <div>
-          <ul>
-            {equipmentList}
-          </ul>
-          <div className="more-equipment">
-            <EquipmentFormContainer
-              addNewEquipment={this.addNewEquipment}
-              />
-          </div>
-        </div>
+
       stepsAccess=
         <div>
           <div className="step-show-list">
@@ -225,10 +202,6 @@ debugger
       materialsAccess=
         <ul>
           {materialsList}
-        </ul>
-      equipmentAccess=
-        <ul>
-          {equipmentList}
         </ul>
       stepsAccess=
         <div className="step-show-list">
@@ -262,10 +235,13 @@ debugger
                 {materialsAccess}
               </div>
               <div className="equipment-list">
-                <div className="equipment-header">
-                  <b>Equipment</b>
-                </div>
-                {equipmentAccess}
+                <EquipmentIndexContainer
+                  equipment={projectEquipment}
+                  ownership={ownership}
+                  updateEquipment={this.updateEquipment}
+                  addNewEquipment={this.addNewEquipment}
+                  projectId={this.state.project.id}
+                  />
               </div>
           </div>
         </div>

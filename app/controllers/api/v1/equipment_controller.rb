@@ -8,12 +8,12 @@ class Api::V1::EquipmentController < ApiController
   end
 
   def index
-      equipment = Equipment.where(project_id: params[:project_id])
+      equipment = Equipment.where(project_id: params[:project_id]).order(id: :asc)
     render json: equipment
   end
 
   def show
-    equipment = Equipment.where(project_id: params[:project_id])
+    equipment = Equipment.where(project_id: params[:project_id]).order(id: :asc)
     render json: equipment
   end
 
@@ -31,7 +31,8 @@ class Api::V1::EquipmentController < ApiController
   def update
     edited_equipment = Equipment.where(project_id: params[:project_id], id: params[:id])
     if edited_equipment.update(tool_params)
-      render json: { equipment: edited_equipment }
+      equipment = Equipment.where(project_id: params[:project_id]).order(id: :asc)
+      render json: equipment
     else
       render json: {errors: edited_equipment.errors }
     end
