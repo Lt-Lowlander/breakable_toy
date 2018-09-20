@@ -1,11 +1,6 @@
-# def d4
-#   i = rand(4) + 1
-#   return i
-# end
-#
-# puts `echo d4`   # outputs the name of the function
-# puts `echo #{d4}`   # outputs the result of the function
-# puts d4          # outputs the result of the function
+# <i class="fab fa-rebel"></i>   ##### Rebel Alliance symbol
+# <i class="fab fa-empire"></i>  ##### Imperial symbol
+# <i class="fas fa-fire-extinguisher"></i>  #### Fire extinguisher
 
 puts `echo bundle install`
 puts `bundle install`
