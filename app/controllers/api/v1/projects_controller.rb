@@ -45,7 +45,7 @@ class Api::V1::ProjectsController < ApiController
       viewing_member: member,
       project: present_project
       }
-    render json: payload, include: ["equipment", "materials", "steps"] 
+    render json: payload, include: ["equipment", "materials", "steps"]
   end
 
   def new; end

@@ -8,12 +8,12 @@ class Api::V1::MaterialsController < ApiController
   end
 
   def index
-    materials = Material.where(project_id: params[:project_id])
+    materials = Material.where(project_id: params[:project_id]).order(id: :asc)
     render json: materials
   end
 
   def show
-    materials = Material.where(project_id: params[:project_id], id: params[:id])
+    materials = Material.where(project_id: params[:project_id], id: params[:id]).order(id: :asc)
     render json: materials
   end
 
@@ -35,12 +35,22 @@ class Api::V1::MaterialsController < ApiController
 
 
   def update
-    material = Material.find(params[:id])
+    edited_material = Material.where(project.id: params[:project_id], id: params[:id])
+    if edited_material.update(mats_params)
+      materials = Material.where(project_id: params[:project_id]).order(id: :asc)
+      render json: materials
+    else
+      render json: {errors: edited_material.errors}
+    end
   end
 
 
   private
   def material_data
     params.permit(:item_number, :material_name, :project_id)
+  end
+
+  def mats_params
+    params.permit(:material_name)
   end
 end
