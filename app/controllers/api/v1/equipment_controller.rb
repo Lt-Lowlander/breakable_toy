@@ -38,6 +38,14 @@ class Api::V1::EquipmentController < ApiController
     end
   end
 
+  def destroy
+    equipment_termination = Equipment.where(project_id: params[:project_id], id: params[:id])
+    if equipment_termination.destroy(tool_obits)
+      equipment = Equipment.where(project_id: params[:project_id]).order(id: :asc)
+      render json: equipment
+    end
+  end
+
   private
   def tool_data
     params.permit(:tool_name, :project_id).merge(user_id: current_user.id)
@@ -45,5 +53,9 @@ class Api::V1::EquipmentController < ApiController
 
   def tool_params
     params.permit(:tool_name)
+  end
+
+  def tool_obits
+    params.require(:id)
   end
 end

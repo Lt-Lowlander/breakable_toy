@@ -10,9 +10,17 @@ class EquipmentFormContainer extends Component {
     this.handleChange=this.handleChange.bind(this)
     this.handleSubmit=this.handleSubmit.bind(this)
     this.handleClear=this.handleClear.bind(this)
+    this.fetchScout=this.fetchScout.bind(this)
+  }
+
+  fetchScout(event){
+    event.preventDefault()
+    const input = 'POST'
+    this.props.methodChange(input)
   }
 
   handleChange(event) {
+    event.preventDefault()
     let fieldInfo = event.target.name
     let value = event.target.value
     this.setState({ [fieldInfo]: value })
@@ -20,10 +28,13 @@ class EquipmentFormContainer extends Component {
 
   handleSubmit(event){
     event.preventDefault()
-    let body = {
-      tool_name: this.state.equipment
+    const traverse = `/api/v1/projects/${this.props.projectId}/equipment.json`
+    const request = 'POST'
+    let payload = {
+      tool_name: this.state.equipment,
+      project_id: this.props.projectId
     }
-    this.props.addNewEquipment(body)
+    this.props.changeEquipment(payload, request, traverse)
     this.handleClear()
   }
 
@@ -35,7 +46,7 @@ class EquipmentFormContainer extends Component {
 
   render() {
     return(
-      <div className="equipment-input-section">
+      <div className="equipment-input-section" onFocus={this.fetchScout}>
         <form className="new-equipment-form" onSubmit={this.handleSubmit}>
           <div className="field-and-button">
             <div className="element-field">

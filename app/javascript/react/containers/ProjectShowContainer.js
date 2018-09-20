@@ -17,13 +17,18 @@ class ProjectShowContainer extends Component {
       equipment: [],
       material: [],
       step: [],
-      activeMember: ''
+      activeMember: '',
+      method: ''
 
     }
     this.addNewInstruction=this.addNewInstruction.bind(this)
     this.addNewMaterial=this.addNewMaterial.bind(this)
-    this.addNewEquipment=this.addNewEquipment.bind(this)
-    this.updateEquipment=this.updateEquipment.bind(this)
+    this.changeEquipment=this.changeEquipment.bind(this)
+    this.methodChange=this.methodChange.bind(this)
+  }
+
+  methodChange(input){
+    this.setState({method: input})
   }
 
   addNewInstruction(body){
@@ -60,31 +65,14 @@ class ProjectShowContainer extends Component {
     .catch(error => console.error(`Error in project materials add fetch: ${error.message}`));
   }
 
-  addNewEquipment(body){
-    let formPayload = body
-    formPayload['project_id'] = this.state.project.id
-    fetch(`/api/v1/projects/${this.props.params.id}/equipment.json`, {
+  changeEquipment(payload, request, traverse){
+    fetch(traverse, {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin',
-      method: 'POST',
-      body: JSON.stringify(body)
+      method: request,
+      body: JSON.stringify(payload)
     })
-    .then(response => response.json())
-    .then(body => {
-      let newArray = this.state.equipment.concat(body)
-      this.setState({ equipment: newArray })
-    })
-    .catch(error => console.error(`Error in project equipment add fetch: ${error.message}`));
-  }
-
-  updateEquipment(payload, path){
-    fetch(path, {
-      credentials: 'same-origin',
-      method: 'PATCH',
-      body: JSON.stringify(payload),
-      headers: {'Content-Type': 'application/json'}
-    })
-      .then(response => {
+    .then(response => {
       if (response.ok) {
         return response;
       } else {
@@ -95,11 +83,21 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      this.setState({
-        equipment: body
-      })
+      const current_method = this.state.method
+      if ( current_method == 'POST') {
+        let newArray = this.state.equipment.concat(body)
+        this.setState({
+          equipment: newArray,
+          method: ''
+        })
+      } else if (current_method == 'PATCH' || current_method == 'DELETE') {
+        this.setState({
+          equipment: body,
+          method: ''
+        })
+      }
     })
-    .catch(error => console.error(`Error in project show patch fetch: ${error.message}`));
+    .catch(error => console.error(`Error in project equipment add fetch: ${error.message}`));
   }
 
     // Grab the associated project Info
@@ -237,7 +235,8 @@ class ProjectShowContainer extends Component {
                   equipment={projectEquipment}
                   ownership={ownership}
                   updateEquipment={this.updateEquipment}
-                  addNewEquipment={this.addNewEquipment}
+                  changeEquipment={this.changeEquipment}
+                  methodChange={this.methodChange}
                   projectId={this.state.project.id}
                   />
               </div>
