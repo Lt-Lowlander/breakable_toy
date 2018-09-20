@@ -34,7 +34,7 @@ class Api::V1::EquipmentController < ApiController
       equipment = Equipment.where(project_id: params[:project_id]).order(id: :asc)
       render json: equipment
     else
-      render json: {errors: edited_equipment.errors }
+      render json: {errors: edited_equipment.errors}
     end
   end
 
