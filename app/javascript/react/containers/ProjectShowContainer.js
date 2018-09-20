@@ -78,7 +78,6 @@ class ProjectShowContainer extends Component {
   }
 
   updateEquipment(payload, path){
-debugger
     fetch(path, {
       credentials: 'same-origin',
       method: 'PATCH',
@@ -96,7 +95,6 @@ debugger
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       this.setState({
         equipment: body
       })
