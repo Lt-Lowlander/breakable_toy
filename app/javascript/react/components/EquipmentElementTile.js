@@ -86,52 +86,46 @@ class EquipmentElementTile extends Component {
     let elementItem = this.props.tool;
     if (this.state.sitRep == 'situationNormal') {
         equipmentStatus =
-        <div className="equipment-show-tile">
-          <li>
-            <div className="element-item">
-                {elementItem}
-            </div>
-            <div className="element-actions">
-              <i className="far fa-edit" onClick={this.onEditClick}></i>
-              <span>  |  </span>
-              <i className="far fa-trash-alt" onClick={this.onDeleteClick}></i>
-            </div>
-          </li>
+        <div className="equipment-list-element">
+          <div className="element-item">
+              {elementItem}
+          </div>
+          <div className="element-actions">
+            <i className="far fa-edit" onClick={this.onEditClick}></i>
+            <span>  |  </span>
+            <i className="far fa-trash-alt" onClick={this.onDeleteClick}></i>
+          </div>
         </div>
     } else if (this.state.sitRep == 'needUpdate') {
       equipmentStatus =
       <div className="field-and-button">
         <form onSubmit={this.handleSubmit}>
-          <li>
-            <div className="element-field">
-              <input
-                name='elementEdit'
-                type='text'
-                value={this.state.elementEdit}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="element-button">
-              <input className="submit-clicker button" type="submit" value="Submit" />
-            </div>
-          </li>
+          <div className="element-field">
+            <input
+              name='elementEdit'
+              type='text'
+              value={this.state.elementEdit}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="element-button">
+            <input className="submit-clicker button" type="submit" value="Submit" />
+          </div>
         </form>
       </div>
     } else if (this.state.sitRep == 'youMayFireWhenReady') {
       equipmentStatus =
       <div>
-        <li>
-          <div className="equipment-show-tile">
-            <div className="element-item">
-              You may fire when ready:
-            </div>
-            <div className="element-actions">
-              <i className="fab fa-empire" onClick={this.onBlastedClick}></i>
-              <span>  |  </span>
-              <i className="fab fa-rebel" onClick={this.onReturnClick}></i>
-            </div>
+        <div className="equipment-list-element">
+          <div className="element-item">
+            You may fire when ready:
           </div>
-        </li>
+          <div className="element-actions">
+            <i className="fab fa-empire" onClick={this.onBlastedClick}></i>
+            <span>  |  </span>
+            <i className="fab fa-rebel" onClick={this.onReturnClick}></i>
+          </div>
+        </div>
       </div>
     }
 
