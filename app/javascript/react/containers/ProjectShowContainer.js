@@ -66,7 +66,6 @@ class ProjectShowContainer extends Component {
   }
 
   changeEquipment(payload, request, traverse){
-debugger
     fetch(traverse, {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin',
@@ -74,7 +73,6 @@ debugger
       body: JSON.stringify(payload)
     })
     .then(response => {
-debugger
       if (response.ok) {
         return response;
       } else {
