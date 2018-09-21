@@ -168,7 +168,6 @@ class ProjectShowContainer extends Component {
     })
 
     let materialsAccess;
-    let equipmentForm;
     let stepsAccess;
     if (ownership) {
       materialsAccess=
@@ -222,7 +221,7 @@ class ProjectShowContainer extends Component {
               user={this.state.project.handle}
             />
           </div>
-          <div className="cell small-12 medium-6 large-4">
+          <div className="cell small-12 medium-6 large-5">
             <div className="listed-elements rounders notestyle">
               <div className="materials-list">
                 <div className="materials-header">
