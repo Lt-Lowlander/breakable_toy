@@ -49,8 +49,6 @@ class EquipmentElementTile extends Component {
     this.setState({
       sitRep: 'situationNormal'
     })
-    const input = ''
-    this.props.methodChange(input)
   }
 
   handleChange(event) {
@@ -86,19 +84,19 @@ class EquipmentElementTile extends Component {
     let elementItem = this.props.tool;
     if (this.state.sitRep == 'situationNormal') {
         equipmentStatus =
-        <div className="equipment-list-element">
+        <li className="equipment-list-element">
           <div className="element-item">
-              {elementItem}
+            {elementItem}
           </div>
           <div className="element-actions">
             <i className="far fa-edit" onClick={this.onEditClick}></i>
             <span>  |  </span>
             <i className="far fa-trash-alt" onClick={this.onDeleteClick}></i>
           </div>
-        </div>
+        </li>
     } else if (this.state.sitRep == 'needUpdate') {
       equipmentStatus =
-      <div className="field-and-button">
+      <li className="edit-field-and-button">
         <form onSubmit={this.handleSubmit}>
           <div className="element-field">
             <input
@@ -108,25 +106,24 @@ class EquipmentElementTile extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="element-button">
+          <div className="edit-button">
             <input className="submit-clicker button" type="submit" value="Submit" />
           </div>
         </form>
-      </div>
+      </li>
     } else if (this.state.sitRep == 'youMayFireWhenReady') {
+      const terminationMessage = 'You may fire when ready:'
       equipmentStatus =
-      <div>
-        <div className="equipment-list-element">
-          <div className="element-item">
-            You may fire when ready:
-          </div>
-          <div className="element-actions">
-            <i className="fab fa-empire" onClick={this.onBlastedClick}></i>
-            <span>  |  </span>
-            <i className="fab fa-rebel" onClick={this.onReturnClick}></i>
-          </div>
+      <li className="termination-list-element">
+        <div className="element-item">
+          {terminationMessage}
         </div>
-      </div>
+        <div className="element-actions">
+          <i className="fab fa-empire" onClick={this.onBlastedClick}></i>
+          <span>  |  </span>
+          <i className="fab fa-rebel" onClick={this.onReturnClick}></i>
+        </div>
+      </li>
     }
 
     return(
