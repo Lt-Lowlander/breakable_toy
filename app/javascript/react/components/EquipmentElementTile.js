@@ -37,17 +37,18 @@ class EquipmentElementTile extends Component {
 
   onBlastedClick(event) {
     event.preventDefault();
+    this.handleDestroy()
     this.setState({
       sitRep: 'situationNormal',
       elementEdit: ''
     })
-    this.handleDestroy()
   }
 
   onReturnClick(event) {
     event.preventDefault();
     this.setState({
-      sitRep: 'situationNormal'
+      sitRep: 'situationNormal',
+      elementEdit: ''
     })
   }
 
