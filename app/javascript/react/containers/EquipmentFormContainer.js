@@ -15,8 +15,9 @@ class EquipmentFormContainer extends Component {
 
   fetchScout(event){
     event.preventDefault()
+    const elem = 'equipment'
     const input = 'POST'
-    this.props.methodChange(input)
+    this.props.methodUpdate(input, elem)
   }
 
   handleChange(event) {
@@ -34,7 +35,7 @@ class EquipmentFormContainer extends Component {
       tool_name: this.state.equipment,
       project_id: this.props.projectId
     }
-    this.props.changeEquipment(payload, request, traverse)
+    this.props.changeElement(payload, request, traverse)
     this.handleClear()
   }
 

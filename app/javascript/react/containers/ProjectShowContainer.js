@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import ProjectShowTile from '../components/ProjectShowTile';
-import MaterialsShowTile from '../components/MaterialsShowTile';
 import StepsTile from '../components/StepsTile';
 import VersionHistoryContainer from './VersionHistoryContainer'
-import MaterialsFormContainer from './MaterialsFormContainer';
 import StepsFormContainer from './StepsFormContainer';
 import EquipmentIndexContainer from './EquipmentIndexContainer';
-
+import MaterialsIndexContainer from './MaterialsIndexContainer';
 
 class ProjectShowContainer extends Component {
   constructor(props) {
@@ -18,17 +16,19 @@ class ProjectShowContainer extends Component {
       material: [],
       step: [],
       activeMember: '',
-      method: ''
-
+      fetchType: '',
+      element: ''
     }
     this.addNewInstruction=this.addNewInstruction.bind(this)
-    this.addNewMaterial=this.addNewMaterial.bind(this)
-    this.changeEquipment=this.changeEquipment.bind(this)
-    this.methodChange=this.methodChange.bind(this)
+    this.changeElement=this.changeElement.bind(this)
+    this.methodUpdate=this.methodUpdate.bind(this)
   }
 
-  methodChange(input){
-    this.setState({method: input})
+  methodUpdate(input, elem){
+    this.setState({
+      fetchType: input,
+      element: elem
+    })
   }
 
   addNewInstruction(body){
@@ -48,24 +48,7 @@ class ProjectShowContainer extends Component {
     .catch(error => console.error(`Error in project instruction add fetch: ${error.message}`));
   }
 
-  addNewMaterial(body){
-    let formPayload = body
-    formPayload['project_id'] = this.state.project.id
-    fetch(`/api/v1/projects/${this.props.params.id}/materials.json`, {
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'same-origin',
-      method: 'POST',
-      body: JSON.stringify(body)
-    })
-    .then(response => response.json())
-    .then(body => {
-      let newArray = this.state.material.concat(body)
-      this.setState({ material: newArray })
-    })
-    .catch(error => console.error(`Error in project materials add fetch: ${error.message}`));
-  }
-
-  changeEquipment(payload, request, traverse){
+  changeElement(payload, request, traverse){
     fetch(traverse, {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin',
@@ -83,18 +66,38 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      const current_method = this.state.method
-      if ( current_method == 'POST') {
-        let newArray = this.state.equipment.concat(body)
-        this.setState({
-          equipment: newArray,
-          method: ''
-        })
-      } else if (current_method == 'PATCH' || current_method == 'DELETE') {
-        this.setState({
-          equipment: body,
-          method: ''
-        })
+      const factor = this.state.element
+      const current_method = this.state.fetchType
+      if (factor == 'materials') {
+        if ( current_method == 'POST') {
+          let newArray = this.state.equipment.concat(body)
+          this.setState({
+            material: newArray,
+            fetchType: '',
+            element: ''
+          })
+        } else if (current_method == 'PATCH' || current_method == 'DELETE') {
+          this.setState({
+            material: body,
+            fetchType: '',
+            element: ''
+          })
+        }
+      } else if (factor == 'equipment') {
+        if ( current_method == 'POST') {
+          let newArray = this.state.equipment.concat(body)
+          this.setState({
+            equipment: newArray,
+            fetchType: '',
+            element: ''
+          })
+        } else if (current_method == 'PATCH' || current_method == 'DELETE') {
+          this.setState({
+            equipment: body,
+            fetchType: '',
+            element: ''
+          })
+        }
       }
     })
     .catch(error => console.error(`Error in project equipment add fetch: ${error.message}`));
@@ -132,7 +135,7 @@ class ProjectShowContainer extends Component {
     if (viewer === author) {
       ownership = true;
     }
-
+    let projectMaterials = this.state.material;
     let projectEquipment = this.state.equipment;
 
     let access_settings;
@@ -144,16 +147,6 @@ class ProjectShowContainer extends Component {
           </h1>
         </div>
     }
-
-    const projectMaterials = this.state.material;
-    let materialsList = projectMaterials.map(ingredient => {
-      return(
-        <MaterialsShowTile
-          key={ingredient.id}
-          name={ingredient.material_name}
-        />
-      )
-    })
 
     const projectSteps = this.state.step;
     let stepsList = projectSteps.map(step => {
@@ -167,21 +160,8 @@ class ProjectShowContainer extends Component {
       )
     })
 
-    let materialsAccess;
     let stepsAccess;
     if (ownership) {
-      materialsAccess=
-        <div>
-          <ul>
-            {materialsList}
-          </ul>
-          <div className="more-materials">
-            <MaterialsFormContainer
-              addNewMaterial={this.addNewMaterial}
-            />
-          </div>
-        </div>
-
       stepsAccess=
         <div>
           <div className="step-show-list">
@@ -194,10 +174,6 @@ class ProjectShowContainer extends Component {
           </div>
         </div>
     } else {
-      materialsAccess=
-        <ul>
-          {materialsList}
-        </ul>
       stepsAccess=
         <div className="step-show-list">
           {stepsList}
@@ -221,22 +197,24 @@ class ProjectShowContainer extends Component {
               user={this.state.project.handle}
             />
           </div>
-          <div className="cell small-12 medium-6 large-5">
+          <div className="cell small-12 medium-6 large-4">
             <div className="listed-elements rounders notestyle">
               <div className="materials-list">
-                <div className="materials-header">
-                  <b>Materials</b>
-                </div>
-                {materialsAccess}
+                <MaterialsIndexContainer
+                  ownership={ownership}
+                  materials={projectMaterials}
+                  projectId={this.state.project.id}
+                  changeElement={this.changeElement}
+                  methodUpdate={this.methodUpdate}
+                  />
               </div>
               <div className="equipment-list">
                 <EquipmentIndexContainer
-                  equipment={projectEquipment}
                   ownership={ownership}
-                  updateEquipment={this.updateEquipment}
-                  changeEquipment={this.changeEquipment}
-                  methodChange={this.methodChange}
+                  equipment={projectEquipment}
                   projectId={this.state.project.id}
+                  changeElement={this.changeElement}
+                  methodUpdate={this.methodUpdate}
                   />
               </div>
           </div>

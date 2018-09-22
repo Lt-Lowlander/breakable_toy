@@ -13,19 +13,14 @@ class Api::V1::MaterialsController < ApiController
   end
 
   def show
-    materials = Material.where(project_id: params[:project_id], id: params[:id]).order(id: :asc)
+    materials = Material.where(project_id: params[:project_id]).order(id: :asc)
     render json: materials
   end
 
   def create
     project = Project.find(params[:project_id])
-    material = Material.new(material_data)
+    material = Material.new(mats_data)
     material.project = project
-    if project.materials.last.nil?
-      material.item_number = 1
-    else
-      material.item_number = project.materials.last.item_number + 1
-    end
     if material.save!
       render json: material
     else
@@ -33,9 +28,8 @@ class Api::V1::MaterialsController < ApiController
     end
   end
 
-
   def update
-    edited_material = Material.where(project.id: params[:project_id], id: params[:id])
+    edited_material = Material.where(project_id: params[:project_id], id: params[:id])
     if edited_material.update(mats_params)
       materials = Material.where(project_id: params[:project_id]).order(id: :asc)
       render json: materials
@@ -44,13 +38,24 @@ class Api::V1::MaterialsController < ApiController
     end
   end
 
+  def destroy
+    material_termination = Material.where(project_id: params[:project_id], id: params[:id])
+    if material_termination.destroy(mats_obits)
+      material = Material.where(project_id: params[:project_id])
+      render json: material
+    end
+  end
 
   private
-  def material_data
-    params.permit(:item_number, :material_name, :project_id)
+  def mats_data
+    params.permit(:material_name, :project_id)
   end
 
   def mats_params
     params.permit(:material_name)
+  end
+
+  def mats_obits
+    params.require(:id)
   end
 end
