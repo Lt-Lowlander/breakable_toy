@@ -5,7 +5,7 @@ class MaterialsFormContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      material: '',
+      materialUpdate: '',
     }
     this.handleChange=this.handleChange.bind(this)
     this.handleSubmit=this.handleSubmit.bind(this)
@@ -28,11 +28,12 @@ class MaterialsFormContainer extends Component {
   }
 
   handleSubmit(event){
+    debugger
     event.preventDefault()
     const traverse = `/api/v1/projects/${this.props.projectId}/materials.json`
     const request = 'POST'
     let payload = {
-      material_name: this.state.material,
+      material_name: this.state.materialUpdate,
       project_id: this.props.projectId
     }
     this.props.changeElement(payload, request, traverse)
@@ -41,20 +42,20 @@ class MaterialsFormContainer extends Component {
 
   handleClear(){
     this.setState({
-      material: ''
+      materialUpdate: ''
     })
   }
 
   render() {
     return(
-      <div className="equipment-input-section" onFocus={this.fetchScout}>
-        <form className="new-equipment-form" onSubmit={this.handleSubmit}>
+      <div className="materials-input-section" onFocus={this.fetchScout}>
+        <form className="new-materials-form" onSubmit={this.handleSubmit}>
           <div className="field-and-button">
             <div className="element-field">
               <MaterialInput
-                content={this.state.equipment}
+                content={this.state.materialUpdate}
                 label="New Material:"
-                name="material"
+                name="materialUpdate"
                 handleChange={this.handleChange}
               />
             </div>

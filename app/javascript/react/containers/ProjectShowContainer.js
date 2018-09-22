@@ -47,7 +47,9 @@ class ProjectShowContainer extends Component {
     })
     .catch(error => console.error(`Error in project instruction add fetch: ${error.message}`));
   }
-
+  
+  /* This fetch request handles the POST, PATCH, and DELETE functions for the
+  Equipment list, and Materials list (so far) */
   changeElement(payload, request, traverse){
     fetch(traverse, {
       headers: { 'Content-Type': 'application/json' },
@@ -70,7 +72,7 @@ class ProjectShowContainer extends Component {
       const current_method = this.state.fetchType
       if (factor == 'materials') {
         if ( current_method == 'POST') {
-          let newArray = this.state.equipment.concat(body)
+          let newArray = this.state.material.concat(body)
           this.setState({
             material: newArray,
             fetchType: '',
