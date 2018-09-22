@@ -19,9 +19,8 @@ class EquipmentIndexContainer extends Component {
             key={machine.id}
             id={machine.id}
             tool={machine.tool_name}
-            changeEquipment={this.props.changeEquipment}
-            updateEquipment={this.props.updateEquipment}
-            methodChange={this.props.methodChange}
+            changeElement={this.props.changeElement}
+            methodUpdate={this.props.methodUpdate}
             projectId={this.props.projectId}
             />
         )
@@ -46,8 +45,8 @@ class EquipmentIndexContainer extends Component {
           </ul>
           <div className="more-equipment">
             <EquipmentFormContainer
-              changeEquipment={this.props.changeEquipment}
-              methodChange={this.props.methodChange}
+              changeElement={this.props.changeElement}
+              methodUpdate={this.props.methodUpdate}
               projectId={this.props.projectId}
               />
           </div>

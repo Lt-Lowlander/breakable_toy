@@ -22,8 +22,9 @@ class EquipmentElementTile extends Component {
       sitRep: 'needUpdate',
       elementEdit: `${this.props.tool}`
     })
+    const elem = 'equipment'
     const input = 'PATCH'
-    this.props.methodChange(input)
+    this.props.methodUpdate(input, elem)
   }
 
   onDeleteClick(event) {
@@ -31,23 +32,25 @@ class EquipmentElementTile extends Component {
     this.setState({
       sitRep: 'youMayFireWhenReady'
     })
+    const elem = 'equipment'
     const input = 'DELETE'
-    this.props.methodChange(input)
+    this.props.methodUpdate(input, elem)
   }
 
   onBlastedClick(event) {
     event.preventDefault();
+    this.handleDestroy()
     this.setState({
       sitRep: 'situationNormal',
       elementEdit: ''
     })
-    this.handleDestroy()
   }
 
   onReturnClick(event) {
     event.preventDefault();
     this.setState({
-      sitRep: 'situationNormal'
+      sitRep: 'situationNormal',
+      elementEdit: ''
     })
   }
 
@@ -65,7 +68,7 @@ class EquipmentElementTile extends Component {
     }
     const request = 'DELETE'
     const traverse = `/api/v1/projects/${this.props.projectId}/equipment/${this.props.id}.json`
-    this.props.changeEquipment(payload, request, traverse)
+    this.props.changeElement(payload, request, traverse)
   }
 
   handleSubmit(event){
@@ -73,7 +76,7 @@ class EquipmentElementTile extends Component {
     const payload = { tool_name: this.state.elementEdit }
     const request = 'PATCH'
     const traverse = `/api/v1/projects/${this.props.projectId}/equipment/${this.props.id}.json`
-    this.props.changeEquipment(payload, request, traverse)
+    this.props.changeElement(payload, request, traverse)
     this.setState({
       sitRep: 'situationNormal'
     })

@@ -5,7 +5,7 @@ const MaterialsShowTile = (props) => {
   return(
     <div className="materials-show-tile">
       <li>
-        {props.name}
+        {props.gizmo}
       </li>
     </div>
   )
