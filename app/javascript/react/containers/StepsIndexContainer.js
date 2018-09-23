@@ -21,15 +21,16 @@ class StepsIndexContainer extends Component {
             image={imcrement.step_photo}
             />
         )
+      } else {
+        return(
+          <StepsTile
+            key={increment.id}
+            number={increment.sequence_number}
+            info={increment.instruction}
+            image={increment.step_photo}
+            />
+        )
       }
-      return(
-        <StepsTile
-          key={increment.id}
-          number={increment.sequence_number}
-          info={increment.instruction}
-          image={increment.step_photo}
-        />
-      )
     })
     if (this.props.ownership) {
       return(
