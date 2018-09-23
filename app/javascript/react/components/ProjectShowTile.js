@@ -2,8 +2,15 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const ProjectShowTile = (props) => {
+  if (props.ownership) {
+    projectEdits =
+    <h1>
+      <Link to={`projects/${this.state.project.id}/edit`}>Edit Project</Link>
+    </h1>
+  }
   return(
     <div className="project-show-tile">
+        {projectEdits}
         <div className="main-image">
           <img src={props.image} alt={props.name} className="project-show-pic"/>
           <div className="project-show-info">

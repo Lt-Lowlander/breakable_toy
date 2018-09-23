@@ -10,7 +10,7 @@ class StepsIndexContainer extends Component {
     }
   }
   render(){
-    let stepsList = this.props.projectSteps.map(increment => {
+    let stepsList = this.props.steps.map(increment => {
       if (this.props.ownership) {
         return(
           <StepsElementTile
