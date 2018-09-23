@@ -6,6 +6,7 @@ import VersionHistoryContainer from './VersionHistoryContainer'
 import StepsFormContainer from './StepsFormContainer';
 import EquipmentIndexContainer from './EquipmentIndexContainer';
 import MaterialsIndexContainer from './MaterialsIndexContainer';
+import StepsIndexContainer from './StepsIndexContainer';
 
 class ProjectShowContainer extends Component {
   constructor(props) {
@@ -22,12 +23,20 @@ class ProjectShowContainer extends Component {
     this.addNewInstruction=this.addNewInstruction.bind(this)
     this.changeElement=this.changeElement.bind(this)
     this.methodUpdate=this.methodUpdate.bind(this)
+    this.clearInputs=this.clearInputs.bind(this)
   }
 
   methodUpdate(input, elem){
     this.setState({
       fetchType: input,
       element: elem
+    })
+  }
+
+  clearInputs(){
+    this.setState({
+      fetchType: '',
+      element: ''
     })
   }
 
@@ -47,7 +56,7 @@ class ProjectShowContainer extends Component {
     })
     .catch(error => console.error(`Error in project instruction add fetch: ${error.message}`));
   }
-  
+
   /* This fetch request handles the POST, PATCH, and DELETE functions for the
   Equipment list, and Materials list (so far) */
   changeElement(payload, request, traverse){
@@ -74,31 +83,27 @@ class ProjectShowContainer extends Component {
         if ( current_method == 'POST') {
           let newArray = this.state.material.concat(body)
           this.setState({
-            material: newArray,
-            fetchType: '',
-            element: ''
+            material: newArray
           })
+          this.clearInputs()
         } else if (current_method == 'PATCH' || current_method == 'DELETE') {
           this.setState({
-            material: body,
-            fetchType: '',
-            element: ''
+            material: body
           })
+          this.clearInputs()
         }
       } else if (factor == 'equipment') {
         if ( current_method == 'POST') {
           let newArray = this.state.equipment.concat(body)
           this.setState({
-            equipment: newArray,
-            fetchType: '',
-            element: ''
+            equipment: newArray
           })
+          this.clearInputs()
         } else if (current_method == 'PATCH' || current_method == 'DELETE') {
           this.setState({
-            equipment: body,
-            fetchType: '',
-            element: ''
+            equipment: body
           })
+          this.clearInputs()
         }
       }
     })
@@ -139,6 +144,7 @@ class ProjectShowContainer extends Component {
     }
     let projectMaterials = this.state.material;
     let projectEquipment = this.state.equipment;
+    let projectSteps = this.state.step;
 
     let access_settings;
     if (ownership) {
@@ -150,17 +156,7 @@ class ProjectShowContainer extends Component {
         </div>
     }
 
-    const projectSteps = this.state.step;
-    let stepsList = projectSteps.map(step => {
-      return(
-        <StepsTile
-          key={step.id}
-          number={step.sequence_number}
-          info={step.instruction}
-          image={step.step_photo}
-        />
-      )
-    })
+
 
     let stepsAccess;
     if (ownership) {
@@ -202,6 +198,9 @@ class ProjectShowContainer extends Component {
           <div className="cell small-12 medium-6 large-4">
             <div className="listed-elements rounders notestyle">
               <div className="materials-list">
+                <div className="materials-header">
+                  <b>Materials</b>
+                </div>
                 <MaterialsIndexContainer
                   ownership={ownership}
                   materials={projectMaterials}
@@ -211,6 +210,9 @@ class ProjectShowContainer extends Component {
                   />
               </div>
               <div className="equipment-list">
+                <div className="equipment-header">
+                  <b>Equipment</b>
+                </div>
                 <EquipmentIndexContainer
                   ownership={ownership}
                   equipment={projectEquipment}
@@ -226,7 +228,13 @@ class ProjectShowContainer extends Component {
               <div className="step-show-title">
                 Construction Guide
               </div>
-              {stepsAccess}
+              <StepsIndexContainer
+                ownership={ownership}
+                steps={projectSteps}
+                projectId={this.state.project.id}
+                changeElement={this.changeElement}
+                methodUpdate={this.methodUpdate}
+                />
             </div>
           </div>
         </div>
