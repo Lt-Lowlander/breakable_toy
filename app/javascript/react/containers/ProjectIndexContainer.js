@@ -44,9 +44,13 @@ class ProjectIndexContainer extends Component {
       if(this.state.admin){
         admin_settings=
         <div>
-          <Link to={`projects/${project.id}/edit`}>Edit Project</Link>
+          <Link to={`projects/${project.id}/edit`}>
+            <i className="far fa-edit"></i>
+          </Link>
           <span>  |  </span>
-          <Link to={`projects/${project.id}`} onClick={this.confirm}>Delete Project</Link>
+          <Link to={`projects/${project.id}`} onClick={this.confirm}>
+            <i className="far fa-trash-alt"></i>
+          </Link>
         </div>
       }
       return(

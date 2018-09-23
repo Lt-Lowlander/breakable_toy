@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import ProjectShowTile from '../components/ProjectShowTile';
-import StepsTile from '../components/StepsTile';
 import VersionHistoryContainer from './VersionHistoryContainer'
-import StepsFormContainer from './StepsFormContainer';
 import EquipmentIndexContainer from './EquipmentIndexContainer';
 import MaterialsIndexContainer from './MaterialsIndexContainer';
 import StepsIndexContainer from './StepsIndexContainer';
@@ -57,8 +55,8 @@ class ProjectShowContainer extends Component {
     .catch(error => console.error(`Error in project instruction add fetch: ${error.message}`));
   }
 
-  /* This fetch request handles the POST, PATCH, and DELETE functions for the
-  Equipment list, and Materials list (so far) */
+  /* This fetch callback handles the POST, PATCH, and DELETE functions for the
+  Equipment list, Materials list, and Steps list */
   changeElement(payload, request, traverse){
     fetch(traverse, {
       headers: { 'Content-Type': 'application/json' },
@@ -105,6 +103,19 @@ class ProjectShowContainer extends Component {
           })
           this.clearInputs()
         }
+      } else if (factor == 'steps') {
+        if ( current_method == 'POST') {
+          let newArray = this.state.step.concat(body)
+          this.setState({
+            step: newArray
+          })
+          this.clearInputs()
+        } else if (current_method == 'PATCH' || current_method == 'DELETE') {
+          this.setState({
+            step: body
+          })
+          this.clearInputs()
+        }
       }
     })
     .catch(error => console.error(`Error in project equipment add fetch: ${error.message}`));
@@ -146,43 +157,10 @@ class ProjectShowContainer extends Component {
     let projectEquipment = this.state.equipment;
     let projectSteps = this.state.step;
 
-    let access_settings;
-    if (ownership) {
-      access_settings =
-        <div>
-          <h1>
-            <Link to={`projects/${this.state.project.id}/edit`}>Edit Project</Link>
-          </h1>
-        </div>
-    }
-
-
-
-    let stepsAccess;
-    if (ownership) {
-      stepsAccess=
-        <div>
-          <div className="step-show-list">
-            {stepsList}
-          </div>
-          <div className="step-input-field">
-            <StepsFormContainer
-              addNewInstruction={this.addNewInstruction}
-              />
-          </div>
-        </div>
-    } else {
-      stepsAccess=
-        <div className="step-show-list">
-          {stepsList}
-        </div>
-    }
-
     return(
       <div className="prokaryote">
         <div className="grid-x grid-margin-x align-spaced">
           <div className="project-nucleus notestyle rounders">
-            {access_settings}
             <ProjectShowTile
               key={this.state.project.id}
               id={this.state.project.id}
@@ -193,6 +171,7 @@ class ProjectShowContainer extends Component {
               budget={this.state.project.budget}
               topics={this.state.project.topics}
               user={this.state.project.handle}
+              ownership={ownership}
             />
           </div>
           <div className="cell small-12 medium-6 large-4">
