@@ -36,9 +36,6 @@ class MaterialsIndexContainer extends Component {
     if (this.props.ownership) {
       return(
         <div>
-          <div className="equipment-header">
-            <b>Materials</b>
-          </div>
           <ul>
             {materialsList}
           </ul>
@@ -54,9 +51,6 @@ class MaterialsIndexContainer extends Component {
     } else {
       return(
         <div>
-          <div className="materials-header">
-            <b>Materials</b>
-          </div>
           <ul>
             {materialsList}
           </ul>

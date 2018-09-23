@@ -28,7 +28,6 @@ class MaterialsFormContainer extends Component {
   }
 
   handleSubmit(event){
-    debugger
     event.preventDefault()
     const traverse = `/api/v1/projects/${this.props.projectId}/materials.json`
     const request = 'POST'
