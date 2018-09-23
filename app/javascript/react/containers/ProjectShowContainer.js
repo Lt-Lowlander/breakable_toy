@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import ProjectShowTile from '../components/ProjectShowTile';
-import StepsTile from '../components/StepsTile';
 import VersionHistoryContainer from './VersionHistoryContainer'
-import StepsFormContainer from './StepsFormContainer';
 import EquipmentIndexContainer from './EquipmentIndexContainer';
 import MaterialsIndexContainer from './MaterialsIndexContainer';
 import StepsIndexContainer from './StepsIndexContainer';
@@ -102,6 +100,19 @@ class ProjectShowContainer extends Component {
         } else if (current_method == 'PATCH' || current_method == 'DELETE') {
           this.setState({
             equipment: body
+          })
+          this.clearInputs()
+        }
+      } else if (factor == 'steps') {
+        if ( current_method == 'POST') {
+          let newArray = this.state.step.concat(body)
+          this.setState({
+            step: newArray
+          })
+          this.clearInputs()
+        } else if (current_method == 'PATCH' || current_method == 'DELETE') {
+          this.setState({
+            step: body
           })
           this.clearInputs()
         }
