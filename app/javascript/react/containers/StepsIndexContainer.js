@@ -38,9 +38,11 @@ class StepsIndexContainer extends Component {
     if (this.props.ownership) {
       return(
         <div>
-          <div className="step-show-list">
-            {stepsList}
-          </div>
+          <ol className="order-in-the-steps">
+            <div className="step-show-list">
+              {stepsList}
+            </div>
+          </ol>
           <div className="step-input-field">
             <StepsFormContainer
               changeElement={this.props.changeElement}
@@ -53,9 +55,11 @@ class StepsIndexContainer extends Component {
     } else {
       return (
         <div>
-          <div className="step-show-list">
-            {stepsList}
-          </div>
+          <ol className="order-in-the-steps">
+            <div className="step-show-list">
+              {stepsList}
+            </div>
+          </ol>
         </div>
       )
     }

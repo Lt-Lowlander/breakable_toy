@@ -1,4 +1,11 @@
 class Api::V1::StepsController < ApiController
+  before_action :authorize_user, only: [:edit, :update, :destroy]
+
+  def authorize_user
+    if !user_signed_in? || !current_user.admin?
+      raise ActionController::RoutingError.new("Not Found")
+    end
+  end
 
   def index; end
 
@@ -14,9 +21,7 @@ class Api::V1::StepsController < ApiController
     step = Step.new(step_data_params)
     step.project = project
     step.sequence_number = project.steps.length + 1
-    binding.pry
     if step.save!
-      binding.pry
       render json: step
     else
       render json: {errors: step.errors.full_messages}
@@ -25,7 +30,6 @@ class Api::V1::StepsController < ApiController
 
   def update
     edited_step = Step.where(project_id: params[:project_id], id: params[:id])
-    binding.pry
     if edited_step.update(phase_args)
       step = Step.where(project_id: params[:project_id]).order(sequence_number: :asc)
       render json: step
@@ -36,16 +40,8 @@ class Api::V1::StepsController < ApiController
 
   def destroy
     step_termination = Step.where(project_id: params[:project_id], id: params[:id])
-    # binding.pry
-    # phase_shift = step_termination.sequence_number
-    # binding.pry
     if step_termination.destroy(step_obits)
       steps = Step.where(project_id: params[:project_id])
-      # steps.each do |stage|
-      #   if stage.sequence_number > phase_shift
-      #     stage.sequence_number -= 1
-      #   end
-      # end
       render json: steps
     end
   end

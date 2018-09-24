@@ -7,12 +7,22 @@
 .step-sequence {
   font-family: "Futura";
   font-weight: bold;
-  text-decoration: underline;
+  // text-decoration: underline;
   font-size: 1.5em;
 }
 
 .step-instruction {
   font-size: 1.5em;
+}
+
+.step-word {
+  float: left;
+  margin-right: 6px;
+  // text-decoration: underline;
+}
+
+.step-list-normal {
+  float: left;
 }
 
 .step-edelet {
@@ -22,4 +32,15 @@
 
 .step-element-actions {
   margin-left: 10px;
+}
+
+ol {
+    counter-reset: item;
+    list-style-type: none;
+}
+
+.ordered-list-item { display: block; }
+.ordered-list-item:before {
+    content: counter(item) "";
+    counter-increment: item
 }
