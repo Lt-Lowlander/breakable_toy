@@ -18,7 +18,10 @@ class StepsIndexContainer extends Component {
             id={increment.id}
             number={increment.sequence_number}
             info={increment.instruction}
-            image={imcrement.step_photo}
+            image={increment.step_photo}
+            changeElement={this.props.changeElement}
+            methodUpdate={this.props.methodUpdate}
+            projectId={this.props.projectId}
             />
         )
       } else {

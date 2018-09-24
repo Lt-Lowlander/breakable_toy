@@ -41,8 +41,8 @@ class Api::V1::MaterialsController < ApiController
   def destroy
     material_termination = Material.where(project_id: params[:project_id], id: params[:id])
     if material_termination.destroy(mats_obits)
-      material = Material.where(project_id: params[:project_id])
-      render json: material
+      materials = Material.where(project_id: params[:project_id])
+      render json: materials
     end
   end
 

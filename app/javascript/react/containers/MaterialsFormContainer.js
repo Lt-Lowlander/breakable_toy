@@ -29,12 +29,12 @@ class MaterialsFormContainer extends Component {
 
   handleSubmit(event){
     event.preventDefault()
-    const traverse = `/api/v1/projects/${this.props.projectId}/materials.json`
-    const request = 'POST'
     let payload = {
       material_name: this.state.materialUpdate,
       project_id: this.props.projectId
     }
+    const request = 'POST'
+    const traverse = `/api/v1/projects/${this.props.projectId}/materials.json`
     this.props.changeElement(payload, request, traverse)
     this.handleClear()
   }

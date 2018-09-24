@@ -10,6 +10,14 @@ class StepFormContainer extends Component {
     this.handleChange=this.handleChange.bind(this)
     this.handleSubmit=this.handleSubmit.bind(this)
     this.handleClear=this.handleClear.bind(this)
+    this.fetchScout=this.fetchScout.bind(this)
+  }
+
+  fetchScout(event){
+    event.preventDefault()
+    const elem = 'steps'
+    const input = 'POST'
+    this.props.methodUpdate(input, elem)
   }
 
   handleChange(event) {
@@ -20,10 +28,12 @@ class StepFormContainer extends Component {
 
   handleSubmit(event){
     event.preventDefault()
-    let body = {
+    const payload = {
       instruction: this.state.instruction
     }
-    this.props.addNewInstruction(body)
+    const request = 'POST'
+    const traverse = `/api/v1/projects/${this.props.projectId}/steps.json`
+    this.props.changeElement(payload, request, traverse)
     this.handleClear()
   }
 
@@ -35,7 +45,7 @@ class StepFormContainer extends Component {
 
   render() {
     return(
-      <div className="step-input-section">
+      <div className="step-input-section" onFocus={this.fetchScout}>
         <form className="new-article-form" onSubmit={this.handleSubmit}>
           <div className="field-and-button">
             <StepInput className="step-field"

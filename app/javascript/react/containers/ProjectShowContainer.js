@@ -118,7 +118,7 @@ class ProjectShowContainer extends Component {
         }
       }
     })
-    .catch(error => console.error(`Error in project equipment add fetch: ${error.message}`));
+    .catch(error => console.error(`Error in project elementChange fetch: ${error.message}`));
   }
 
     // Grab the associated project Info
