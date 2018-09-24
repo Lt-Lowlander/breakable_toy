@@ -16,7 +16,6 @@ class StepsIndexContainer extends Component {
           <StepsElementTile
             key={increment.id}
             id={increment.id}
-            number={increment.sequence_number}
             info={increment.instruction}
             image={increment.step_photo}
             changeElement={this.props.changeElement}
@@ -28,7 +27,6 @@ class StepsIndexContainer extends Component {
         return(
           <StepsTile
             key={increment.id}
-            number={increment.sequence_number}
             info={increment.instruction}
             image={increment.step_photo}
             />

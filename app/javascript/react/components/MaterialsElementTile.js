@@ -22,7 +22,7 @@ class MaterialsElementTile extends Component {
       sitRep: 'needUpdate',
       elementEdit: `${this.props.gizmo}`
     })
-    const elem = 'materials'
+    const elem = 'material'
     const input = 'PATCH'
     this.props.methodUpdate(input, elem)
   }
@@ -32,7 +32,7 @@ class MaterialsElementTile extends Component {
     this.setState({
       sitRep: 'youMayFireWhenReady'
     })
-    const elem = 'materials'
+    const elem = 'material'
     const input = 'DELETE'
     this.props.methodUpdate(input, elem)
   }

@@ -31,7 +31,7 @@ class Api::V1::StepsController < ApiController
   def update
     edited_step = Step.where(project_id: params[:project_id], id: params[:id])
     if edited_step.update(phase_args)
-      step = Step.where(project_id: params[:project_id]).order(sequence_number: :asc)
+      step = Step.where(project_id: params[:project_id]).order(id: :asc)
       render json: step
     else
       render json: {errors: edited_step.errors}
