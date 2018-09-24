@@ -1,7 +1,3 @@
-# <i class="fab fa-rebel"></i>   ##### Rebel Alliance symbol
-# <i class="fab fa-empire"></i>  ##### Imperial symbol
-# <i class="fas fa-fire-extinguisher"></i>  #### Fire extinguisher
-
 puts `echo bundle install`
 puts `bundle install`
 
@@ -22,6 +18,3 @@ puts `rails db:migrate && rails db:rollback && rails db:migrate`
 
 puts `echo rails db:seed`
 puts `rails db:seed`
-
-puts `echo yarn run start`
-puts `yarn run start`

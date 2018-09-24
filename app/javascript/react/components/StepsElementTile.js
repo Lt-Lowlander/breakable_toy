@@ -88,16 +88,23 @@ class StepsElementTile extends Component {
     if (this.state.sitRep == 'situationNormal') {
         stepsStatus =
           <div className="project-show-info">
-            <span className="step-sequence">
-              Step {this.props.number}
-            </span>
-            <span className="step-edelet">
-              <i className="far fa-edit" onClick={this.onEditClick}></i>
-              <span>  |  </span>
-              <i className="far fa-trash-alt" onClick={this.onDeleteClick}></i>
-            </span>
+            <div className="full-step-title">
+              <div className="step-sequence">
+                <div className="step-word">
+                  Step
+                </div>
+                <div className="step-list-normal">
+                  <li className="ordered-list-item"/>
+                </div>
+              </div>
+              <span className="step-edelet">
+                <i className="far fa-edit" onClick={this.onEditClick}></i>
+                <span>  |  </span>
+                <i className="far fa-trash-alt" onClick={this.onDeleteClick}></i>
+              </span>
+            </div>
             <div className="step-instruction">
-             {elementItem}
+              {elementItem}
             </div>
             <div className="cell small-12 medium-6 large-4">
               <div className="step-photo">
@@ -107,8 +114,15 @@ class StepsElementTile extends Component {
     } else if (this.state.sitRep == 'needUpdate') {
       stepsStatus =
         <div className="project-show-info">
-          <div className="step-sequence">
-            Step {this.props.number}
+          <div className="full-step-title">
+            <div className="step-sequence">
+              <div className="step-word">
+                Step
+              </div>
+              <div className="step-list-number">
+                <li className="ordered-list-item"/>
+              </div>
+            </div>
           </div>
           <div className="edit-field-and-button">
             <form onSubmit={this.handleSubmit}>
@@ -130,8 +144,15 @@ class StepsElementTile extends Component {
       const terminationMessage = 'You may fire when ready:'
       stepsStatus =
       <div className="project-show-info">
-        <div className="step-sequence">
-          Step {this.props.number}
+        <div className="full-step-title">
+          <div className="step-sequence">
+            <div className="step-word">
+              Step
+            </div>
+            <div className="step-list-number">
+              <li className="ordered-list-item"/>
+            </div>
+          </div>
         </div>
         <div className="step-instruction">
           <span className="step-element-item">
