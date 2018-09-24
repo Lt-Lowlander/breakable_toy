@@ -87,58 +87,53 @@ class StepsElementTile extends Component {
     let elementItem = this.props.info;
     if (this.state.sitRep == 'situationNormal') {
         stepsStatus =
-        <div className="cell">
-            <div className="step-show-tile">
-              <div className="cell small-12 medium-6 large-4">
-                <div className="project-show-info">
-                  <span className="step-sequence">
-                    Step {this.props.number}
-                  </span>
-                  <span className="step-edelet">
-                    <i className="far fa-edit" onClick={this.onEditClick}></i>
-                    <span>  |  </span>
-                    <i className="far fa-trash-alt" onClick={this.onDeleteClick}></i>
-                  </span>
-                  <div className="step-instruction">
-                   {elementItem}
-                  </div>
-                </div>
-              </div>
-              <div className="cell small-12 medium-6 large-4">
-
+          <div className="project-show-info">
+            <span className="step-sequence">
+              Step {this.props.number}
+            </span>
+            <span className="step-edelet">
+              <i className="far fa-edit" onClick={this.onEditClick}></i>
+              <span>  |  </span>
+              <i className="far fa-trash-alt" onClick={this.onDeleteClick}></i>
+            </span>
+            <div className="step-instruction">
+             {elementItem}
+            </div>
+            <div className="cell small-12 medium-6 large-4">
+              <div className="step-photo">
               </div>
             </div>
-        </div>
+          </div>
     } else if (this.state.sitRep == 'needUpdate') {
       stepsStatus =
-      <div>
-        <div className="step-sequence">
-          Step {this.props.number}
+        <div className="project-show-info">
+          <div className="step-sequence">
+            Step {this.props.number}
+          </div>
+          <div className="edit-field-and-button">
+            <form onSubmit={this.handleSubmit}>
+              <div className="element-field">
+                <input
+                  name='elementEdit'
+                  type='text'
+                  value={this.state.elementEdit}
+                  onChange={this.handleChange}
+                  />
+              </div>
+              <div className="edit-button">
+                <input className="submit-clicker button" type="submit" value="Submit" />
+              </div>
+            </form>
+          </div>
         </div>
-        <div className="edit-field-and-button">
-          <form onSubmit={this.handleSubmit}>
-            <div className="element-field">
-              <input
-                name='elementEdit'
-                type='text'
-                value={this.state.elementEdit}
-                onChange={this.handleChange}
-                />
-            </div>
-            <div className="edit-button">
-              <input className="submit-clicker button" type="submit" value="Submit" />
-            </div>
-          </form>
-        </div>
-      </div>
     } else if (this.state.sitRep == 'youMayFireWhenReady') {
       const terminationMessage = 'You may fire when ready:'
       stepsStatus =
-      <div className="step-termination-list-element">
+      <div className="project-show-info">
         <div className="step-sequence">
           Step {this.props.number}
         </div>
-        <div>
+        <div className="step-instruction">
           <span className="step-element-item">
             {terminationMessage}
           </span>
@@ -152,8 +147,12 @@ class StepsElementTile extends Component {
     }
 
     return(
-      <div>
-        {stepsStatus}
+      <div className="cell">
+        <div className="step-show-tile">
+          <div className="cell small-12 medium-6 large-4">
+            {stepsStatus}
+          </div>
+        </div>
       </div>
     )
   }

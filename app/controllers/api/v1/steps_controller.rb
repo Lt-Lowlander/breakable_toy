@@ -14,7 +14,9 @@ class Api::V1::StepsController < ApiController
     step = Step.new(step_data_params)
     step.project = project
     step.sequence_number = project.steps.length + 1
+    binding.pry
     if step.save!
+      binding.pry
       render json: step
     else
       render json: {errors: step.errors.full_messages}
@@ -23,9 +25,10 @@ class Api::V1::StepsController < ApiController
 
   def update
     edited_step = Step.where(project_id: params[:project_id], id: params[:id])
+    binding.pry
     if edited_step.update(phase_args)
-      steps = Step.where(project_id: params[:project_id]).order(sequence_number: :asc)
-      render json: steps
+      step = Step.where(project_id: params[:project_id]).order(sequence_number: :asc)
+      render json: step
     else
       render json: {errors: edited_step.errors}
     end

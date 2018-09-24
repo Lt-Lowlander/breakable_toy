@@ -162,6 +162,7 @@ class ProjectShowContainer extends Component {
         <div className="grid-x grid-margin-x align-spaced">
           <div className="project-nucleus notestyle rounders">
             <ProjectShowTile
+              ownership={ownership}
               key={this.state.project.id}
               id={this.state.project.id}
               name={this.state.project.name}
@@ -171,7 +172,6 @@ class ProjectShowContainer extends Component {
               budget={this.state.project.budget}
               topics={this.state.project.topics}
               user={this.state.project.handle}
-              ownership={ownership}
             />
           </div>
           <div className="cell small-12 medium-6 large-4">
