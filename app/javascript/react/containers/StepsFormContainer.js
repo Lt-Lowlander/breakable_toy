@@ -15,7 +15,7 @@ class StepFormContainer extends Component {
 
   fetchScout(event){
     event.preventDefault()
-    const elem = 'steps'
+    const elem = 'step'
     const input = 'POST'
     this.props.methodUpdate(input, elem)
   }

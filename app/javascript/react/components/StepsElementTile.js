@@ -22,7 +22,7 @@ class StepsElementTile extends Component {
       sitRep: 'needUpdate',
       elementEdit: `${this.props.info}`
     })
-    const elem = 'steps'
+    const elem = 'step'
     const input = 'PATCH'
     this.props.methodUpdate(input, elem)
   }
@@ -32,7 +32,7 @@ class StepsElementTile extends Component {
     this.setState({
       sitRep: 'youMayFireWhenReady'
     })
-    const elem = 'steps'
+    const elem = 'step'
     const input = 'DELETE'
     this.props.methodUpdate(input, elem)
   }

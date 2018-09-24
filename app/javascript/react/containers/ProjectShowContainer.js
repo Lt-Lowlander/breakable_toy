@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import ProjectShowTile from '../components/ProjectShowTile';
-import VersionHistoryContainer from './VersionHistoryContainer'
 import EquipmentIndexContainer from './EquipmentIndexContainer';
 import MaterialsIndexContainer from './MaterialsIndexContainer';
 import StepsIndexContainer from './StepsIndexContainer';
@@ -18,7 +17,6 @@ class ProjectShowContainer extends Component {
       fetchType: '',
       element: ''
     }
-    this.addNewInstruction=this.addNewInstruction.bind(this)
     this.changeElement=this.changeElement.bind(this)
     this.methodUpdate=this.methodUpdate.bind(this)
     this.clearInputs=this.clearInputs.bind(this)
@@ -36,23 +34,6 @@ class ProjectShowContainer extends Component {
       fetchType: '',
       element: ''
     })
-  }
-
-  addNewInstruction(body){
-    let formPayload = body
-    formPayload['project_id'] = this.state.project.id
-    fetch(`/api/v1/projects/${this.props.params.id}/steps.json`, {
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'same-origin',
-      method: 'POST',
-      body: JSON.stringify(body)
-    })
-    .then(response => response.json())
-    .then(body => {
-      let newArray = this.state.step.concat(body)
-      this.setState({ step: newArray })
-    })
-    .catch(error => console.error(`Error in project instruction add fetch: ${error.message}`));
   }
 
   /* This fetch callback handles the POST, PATCH, and DELETE functions for the
@@ -77,45 +58,24 @@ class ProjectShowContainer extends Component {
     .then(body => {
       const factor = this.state.element
       const current_method = this.state.fetchType
-      if (factor == 'materials') {
-        if ( current_method == 'POST') {
-          let newArray = this.state.material.concat(body)
-          this.setState({
-            material: newArray
-          })
-          this.clearInputs()
-        } else if (current_method == 'PATCH' || current_method == 'DELETE') {
-          this.setState({
-            material: body
-          })
-          this.clearInputs()
+      if ( current_method == 'POST') {
+        let newArray;
+        if (factor == 'material') {
+          newArray = this.state.material.concat(body)
+        } else if (factor == 'equipment') {
+          newArray = this.state.equipment.concat(body)
+        } else if (factor == 'step') {
+          newArray = this.state.step.concat(body)
         }
-      } else if (factor == 'equipment') {
-        if ( current_method == 'POST') {
-          let newArray = this.state.equipment.concat(body)
-          this.setState({
-            equipment: newArray
-          })
-          this.clearInputs()
-        } else if (current_method == 'PATCH' || current_method == 'DELETE') {
-          this.setState({
-            equipment: body
-          })
-          this.clearInputs()
-        }
-      } else if (factor == 'steps') {
-        if ( current_method == 'POST') {
-          let newArray = this.state.step.concat(body)
-          this.setState({
-            step: newArray
-          })
-          this.clearInputs()
-        } else if (current_method == 'PATCH' || current_method == 'DELETE') {
-          this.setState({
-            step: body
-          })
-          this.clearInputs()
-        }
+        this.setState({
+          [factor]: newArray
+        })
+        this.clearInputs()
+      } else if (current_method == 'PATCH' || current_method == 'DELETE') {
+        this.setState({
+          [factor]: body
+        })
+        this.clearInputs()
       }
     })
     .catch(error => console.error(`Error in project elementChange fetch: ${error.message}`));

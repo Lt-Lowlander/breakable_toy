@@ -15,7 +15,7 @@ class MaterialsFormContainer extends Component {
 
   fetchScout(event){
     event.preventDefault()
-    const elem = 'materials'
+    const elem = 'material'
     const input = 'POST'
     this.props.methodUpdate(input, elem)
   }
