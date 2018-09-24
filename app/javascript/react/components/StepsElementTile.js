@@ -20,7 +20,7 @@ class StepsElementTile extends Component {
     event.preventDefault();
     this.setState({
       sitRep: 'needUpdate',
-      // elementEdit: `${this.props.}`
+      elementEdit: `${this.props.info}`
     })
     const elem = 'steps'
     const input = 'PATCH'
@@ -63,7 +63,7 @@ class StepsElementTile extends Component {
   handleDestroy(){
     const payload = {
       id: this.props.id,
-      // material_name: this.props.gizmo,
+      instruction: this.props.info,
       project_id: this.props.projectId
     }
     const request = 'DELETE'
@@ -73,7 +73,7 @@ class StepsElementTile extends Component {
 
   handleSubmit(event){
     event.preventDefault()
-    const payload = { material_name: this.state.elementEdit }
+    const payload = { instruction: this.state.elementEdit }
     const request = 'PATCH'
     const traverse = `/api/v1/projects/${this.props.projectId}/steps/${this.props.id}.json`
     this.props.changeElement(payload, request, traverse)
@@ -84,49 +84,71 @@ class StepsElementTile extends Component {
 
   render(){
     let stepsStatus;
-    // let elementItem = this.props.gizmo;
+    let elementItem = this.props.info;
     if (this.state.sitRep == 'situationNormal') {
         stepsStatus =
-        <li className="materials-list-element">
-          <div className="element-item">
-            {elementItem}
-          </div>
-          <div className="element-actions">
-            <i className="far fa-edit" onClick={this.onEditClick}></i>
-            <span>  |  </span>
-            <i className="far fa-trash-alt" onClick={this.onDeleteClick}></i>
-          </div>
-        </li>
+        <div className="cell">
+            <div className="step-show-tile">
+              <div className="cell small-12 medium-6 large-4">
+                <div className="project-show-info">
+                  <span className="step-sequence">
+                    Step {this.props.number}
+                  </span>
+                  <span className="step-edelet">
+                    <i className="far fa-edit" onClick={this.onEditClick}></i>
+                    <span>  |  </span>
+                    <i className="far fa-trash-alt" onClick={this.onDeleteClick}></i>
+                  </span>
+                  <div className="step-instruction">
+                   {elementItem}
+                  </div>
+                </div>
+              </div>
+              <div className="cell small-12 medium-6 large-4">
+
+              </div>
+            </div>
+        </div>
     } else if (this.state.sitRep == 'needUpdate') {
       stepsStatus =
-      <li className="edit-field-and-button">
-        <form onSubmit={this.handleSubmit}>
-          <div className="element-field">
-            <input
-              // name='elementEdit'
-              type='text'
-              // value={this.state.elementEdit}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="edit-button">
-            <input className="submit-clicker button" type="submit" value="Submit" />
-          </div>
-        </form>
-      </li>
+      <div>
+        <div className="step-sequence">
+          Step {this.props.number}
+        </div>
+        <div className="edit-field-and-button">
+          <form onSubmit={this.handleSubmit}>
+            <div className="element-field">
+              <input
+                name='elementEdit'
+                type='text'
+                value={this.state.elementEdit}
+                onChange={this.handleChange}
+                />
+            </div>
+            <div className="edit-button">
+              <input className="submit-clicker button" type="submit" value="Submit" />
+            </div>
+          </form>
+        </div>
+      </div>
     } else if (this.state.sitRep == 'youMayFireWhenReady') {
       const terminationMessage = 'You may fire when ready:'
       stepsStatus =
-      <li className="termination-list-element">
-        <div className="element-item">
-          {terminationMessage}
+      <div className="step-termination-list-element">
+        <div className="step-sequence">
+          Step {this.props.number}
         </div>
-        <div className="element-actions">
-          <i className="fab fa-empire" onClick={this.onBlastedClick}></i>
-          <span>  |  </span>
-          <i className="fab fa-rebel" onClick={this.onReturnClick}></i>
+        <div>
+          <span className="step-element-item">
+            {terminationMessage}
+          </span>
+          <span className="step-element-actions">
+            <i className="fab fa-empire" onClick={this.onBlastedClick}></i>
+            <span>  |  </span>
+            <i className="fab fa-rebel" onClick={this.onReturnClick}></i>
+          </span>
         </div>
-      </li>
+      </div>
     }
 
     return(
@@ -135,6 +157,6 @@ class StepsElementTile extends Component {
       </div>
     )
   }
-  }
+}
 
-  export default StepsElementTile;
+export default StepsElementTile;
