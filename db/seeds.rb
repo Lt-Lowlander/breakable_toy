@@ -1,6 +1,6 @@
 #create users
 users = User.create!([
-  {handle: "Splinter", email: "aerocricket@gmail.com", password: "hackgyver", bio: "run 'ruby config/message.rb' in your terminal to learn more about me", role: "admin"},
+  {handle: "Splinter", email: "aerocricket@gmail.com", password: "hackgyver", bio: "Try out the Konami Code (↑, ↑, ↓, ↓, ←, →, ←, →, b, a, enter) anywhere on this site to learn more about me", role: "admin"},
   {handle: "Tinker_Kid", email: "example@email.com", password: "asdf123", bio: "Building the dream", role: "member"},
 ])
 

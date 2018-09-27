@@ -33,6 +33,10 @@ Rails.application.configure do
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
+  # Help Heroku correctly display jpeg & png files.
+  config.serve_static_assets = true
+  config.assets.compile = true
+
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 

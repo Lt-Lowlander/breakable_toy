@@ -5,12 +5,11 @@ class UserShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
     }
   }
 
   render(){
-    const message = "Hi cat";
+    let message = "Hi cat";
 
     return(
       <div>
