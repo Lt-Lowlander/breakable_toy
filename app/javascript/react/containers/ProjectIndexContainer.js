@@ -54,7 +54,7 @@ class ProjectIndexContainer extends Component {
         </div>
       }
       return(
-        <div className="project-tile-with-user notestyle">
+        <div className="project-tile-with-owner notestyle">
           <ProjectTile
             key={project.id}
             id={project.id}

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
+import MemberIndexTile from '../components/MemberIndexTile.js';
 
-class UserIndexContainer extends Component {
+class MemberIndexContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -32,14 +33,22 @@ class UserIndexContainer extends Component {
   }
 
   render(){
-    let message = "Hi cat"
-
+    let members = this.state.userList.map(indiv => {
+      return(
+        <MemberIndexTile
+          key={indiv.id}
+          id={indiv.id}
+          handle={indiv.handle}
+          bio={indiv.bio}
+        />
+      )
+    })
     return(
       <div>
-        <p>"yo dawg!"</p>
+        {members}
       </div>
     )
   }
 }
 
-export default UserIndexContainer;
+export default MemberIndexContainer;
