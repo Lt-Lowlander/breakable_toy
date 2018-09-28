@@ -32,11 +32,11 @@ class UserIndexContainer extends Component {
   }
 
   render(){
-    let message = "Hi cat";
+    let message = "Hi cat"
 
     return(
       <div>
-        {message}
+        <p>"yo dawg!"</p>
       </div>
     )
   }
