@@ -3,8 +3,8 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import ProjectIndexContainer from '../containers/ProjectIndexContainer';
 import ProjectShowContainer from '../containers/ProjectShowContainer';
 import ProjectFormContainer from '../containers/ProjectFormContainer';
-import UserIndexContainer from '../containers/UserIndexContainer';
-import UserShowContainer from '../containers/UserShowContainer';
+import MemberIndexContainer from '../containers/MemberIndexContainer';
+import MemberShowContainer from '../containers/MemberShowContainer';
 
 class App extends Component {
   constructor(props){
@@ -90,8 +90,8 @@ class App extends Component {
           <Route path='/projects/new' component={ProjectFormContainer} />
           <Route path='/projects/:id' component={ProjectShowContainer} />
           <Route path='/projects/:id/edit' component={ProjectFormContainer} />
-          <Route path='/users' component={UserIndexContainer} />
-          <Route path='/users/:id' component={UserShowContainer} />
+          <Route path='/users' component={MemberIndexContainer} />
+          <Route path='/users/:id' component={MemberShowContainer} />
 
         </Route>
       </Router>

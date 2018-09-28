@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
+import MemberIndexTile from '../components/MemberIndexTile.js';
 
-class UserIndexContainer extends Component {
+class MemberIndexContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      userList: []
+      userList: {}
     }
   }
 
@@ -42,4 +43,4 @@ class UserIndexContainer extends Component {
   }
 }
 
-export default UserIndexContainer;
+export default MemberIndexContainer;
