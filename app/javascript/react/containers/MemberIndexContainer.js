@@ -6,7 +6,7 @@ class MemberIndexContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      userList: {}
+      userList: []
     }
   }
 
@@ -33,11 +33,19 @@ class MemberIndexContainer extends Component {
   }
 
   render(){
-    let message = "Hi cat"
-
+    let members = this.state.userList.map(indiv => {
+      return(
+        <MemberIndexTile
+          key={indiv.id}
+          id={indiv.id}
+          handle={indiv.handle}
+          bio={indiv.bio}
+        />
+      )
+    })
     return(
       <div>
-        <p>"yo dawg!"</p>
+        {members}
       </div>
     )
   }
