@@ -8,10 +8,8 @@ class User < ApplicationRecord
   validates :handle, presence: true
   validates :bio, presence: true
 
-  has_many :project_submissions
-  has_many :projects, through: :project_submissions
-  has_many :equipment
-  has_many :projects, through: :equipment
+  has_many :projects
+  has_many :equipment, through: :projects
 
   def admin?
     role == "admin"

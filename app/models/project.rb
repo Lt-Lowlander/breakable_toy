@@ -5,4 +5,6 @@ class Project < ApplicationRecord
   has_many :equipment
   has_many :materials
   has_many :steps
+
+  belongs_to :user
 end

@@ -4,6 +4,8 @@
 Project Relay is a hub of How-To guides for your favorite DIY projects.
 Create original projects, and branch new versions of others.
 
+* On the web: https://project-relay.herokuapp.com/
+
 * Local Deployment instructions:
 
   A) In one tab of your command line application run:
