@@ -20,7 +20,7 @@ class Api::V1::StepsController < ApiController
     project = Project.find(params[:project_id])
     step = Step.new(step_data_params)
     step.project = project
-    step.sequence_number = project.steps.length + 1
+    # step.sequence_number = project.steps.length + 1
     if step.save!
       render json: step
     else
