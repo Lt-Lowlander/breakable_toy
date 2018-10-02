@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:index, :show] do
         resources :projects, only: [:index, :show]
+        resources :equipment_in_projects, only: [:index, :show]
         resources :equipment, only: [:index]
       end
       resources :projects do

@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 2018_10_01_212227) do
   end
 
   create_table "equipment_in_projects", force: :cascade do |t|
-    t.bigint "equipment_id", null: false
     t.bigint "project_id", null: false
     t.bigint "user_id", null: false
+    t.bigint "equipment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["equipment_id"], name: "index_equipment_in_projects_on_equipment_id"
