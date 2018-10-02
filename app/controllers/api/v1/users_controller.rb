@@ -9,6 +9,7 @@ class Api::V1::UsersController < ApiController
 
   def index
     users = User.all.order(created_at: :desc)
+    # binding.pry
     render json: users
   end
 

@@ -1,4 +1,5 @@
 class EquipmentSerializer < ActiveModel::Serializer
   attributes :id, :tool_name
-  belongs_to :user
+
+  has_many :equipment_in_project
 end

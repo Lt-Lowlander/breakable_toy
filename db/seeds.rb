@@ -17,20 +17,31 @@ projects = Project.create!([
 
 # #create equipment
 equipment = Equipment.create!([
-  {user_id: '1', project_id: '1', tool_name: "soldering iron"},
-  {user_id: '1', project_id: '1', tool_name: "screw driver"},
-  {user_id: '1', project_id: '1', tool_name: "wire strippers"},
-  {user_id: '1', project_id: '1', tool_name: "needle nose pliers"},
-  {user_id: '2', project_id: '6', tool_name: "3D Printer"},
-  {user_id: '2', project_id: '6', tool_name: "Laptop"},
-  {user_id: '2', project_id: '6', tool_name: "Soldering Iron"},
-  {user_id: '2', project_id: '6', tool_name: "Hot Glue Gun"},
-  {user_id: '2', project_id: '6', tool_name: "Breadboard"},
-  {user_id: '2', project_id: '7', tool_name: "soldering iron"},
-  {user_id: '2', project_id: '7', tool_name: "screw driver"},
-  {user_id: '2', project_id: '7', tool_name: "wire strippers"},
-  {user_id: '2', project_id: '7', tool_name: "needle nose pliers"}
+  {id: '1', tool_name: "soldering iron"},
+  {id: '2', tool_name: "screw driver"},
+  {id: '3', tool_name: "wire strippers"},
+  {id: '4', tool_name: "needle nose pliers"},
+  {id: '5', tool_name: "3D Printer"},
+  {id: '6', tool_name: "Laptop"},
+  {id: '7', tool_name: "Hot Glue Gun"},
+  {id: '8', tool_name: "screw driver"},
 ])
+
+# create equipment in projects
+equipment_in_projects = EquipmentInProjects.create!([
+  {equipment_id: '1', project_id: '1', user_id: '1'},
+  {equipment_id: '2', project_id: '1', user_id: '1'},
+  {equipment_id: '3', project_id: '1', user_id: '1'},
+  {equipment_id: '4', project_id: '1', user_id: '1'},
+  {equipment_id: '5', project_id: '6', user_id: '2'},
+  {equipment_id: '6', project_id: '6', user_id: '2'},
+  {equipment_id: '7', project_id: '6', user_id: '2'},
+  {equipment_id: '1', project_id: '7', user_id: '2'},
+  {equipment_id: '2', project_id: '7', user_id: '2'},
+  {equipment_id: '3', project_id: '7', user_id: '2'},
+  {equipment_id: '4', project_id: '7', user_id: '2'},
+  {equipment_id: '8', project_id: '7', user_id: '2'},
+  ])
 
 # create materials
 materials = Material.create!([
