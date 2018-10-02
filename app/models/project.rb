@@ -3,7 +3,8 @@ class Project < ApplicationRecord
 
   belongs_to :user
 
-  has_many :equipment
+  has_many :equipment_in_projects
+  has_many :equipment, through: :equipment_in_projects
   has_many :materials
   has_many :steps
 
