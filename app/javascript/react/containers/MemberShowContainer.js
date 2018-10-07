@@ -8,6 +8,26 @@ class UserShowContainer extends Component {
     }
   }
 
+  componentDidMount(){
+    fetch(`/api/v1/users/${this.props.params.id}`)
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+debugger
+      this.setState ({
+
+      })
+    })
+  }
+
   render(){
     let message = "Hi cat";
 
