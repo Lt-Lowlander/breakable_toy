@@ -26,7 +26,7 @@ let ProjectShowTile = (props) => {
                 <span>  </span>
                 <span className="project-show-inventor">
                   by
-                  <Link to={`users/${props.userNum}`} className="user-title-path">
+                  <Link to={`/users/${props.userNum}`} className="user-title-path">
                     <b>{props.user}</b>
                   </Link>
                 </span>

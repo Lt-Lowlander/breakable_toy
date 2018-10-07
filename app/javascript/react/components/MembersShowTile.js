@@ -23,6 +23,7 @@ class MembersShowTile extends Component {
     })
     const elem = 'bio'
     this.props.infoUpdate(elem)
+  }
 
   onHandleClick(event){
     event.preventDefault();
@@ -32,93 +33,99 @@ class MembersShowTile extends Component {
     })
     const elem = 'handle'
     this.props.infoUpdate(elem)
+  }
 
-    manageChange(event) {
-      event.preventDefault();
-      let fieldInfo = event.target.name;
-      let value = event.target.value;
-      this.setState({ [fieldInfo]: value })
-    }
+  manageChange(event) {
+    event.preventDefault();
+    let fieldInfo = event.target.name;
+    let value = event.target.value;
+    this.setState({ [fieldInfo]: value })
+  }
 
-    manageHandleSubmit(event) {
-      event.preventDefault();
-      const payload = { handle: this.state.elementEdit }
-      this.props.changeElement(payload)
-      this.setState({ handleSitRep: 'situationNormal'})
-    }
+  manageHandleSubmit(event) {
+    event.preventDefault();
+    const payload = { handle: this.state.elementEdit }
+    this.props.changeElement(payload)
+    this.setState({ handleSitRep: 'situationNormal'})
+  }
 
-    manageBioSubmit(event) {
-      event.preventDefault();
-      const payload = { bio: this.state.elementEdit }
-      this.props.changeElement(payload)
-      this.setState({ bioSitRep: 'situationNormal'})
-    }
-
+  manageBioSubmit(event) {
+    event.preventDefault();
+    const payload = { bio: this.state.elementEdit }
+    this.props.changeElement(payload)
+    this.setState({ bioSitRep: 'situationNormal'})
   }
 
   render(){
-    let memberStatus =
-    <div className="user-details">
-      <div className="user-handle-cell">
-        if (this.state.handleSitRep == 'situationNormal') {
+    let handleEdit;
+    let bioEdit;
+    if (this.props.ownership) {
+      handleEdit =
+      <div className="user-handle-edit">
+        <i className="far fa-edit" onClick={this.onHandleClick}></i>
+      </div>
+      bioEdit =
+      <div className="user-bio-edit">
+        <i className="far fa-edit" onClick={this.onBioClick}></i>
+      </div>
+    }
+    let handleStatus;
+    let bioStatus;
+      if (this.state.handleSitRep == 'situationNormal') {
+        handleStatus=
+        <div className="user-handle-cell">
           <div className="user-handle-text">
             {this.props.handle}
           </div>
-          if (this.props.ownership) {
-            <div className="user-handle-edit">
-              <i className="far fa-edit" onClick={this.onHandleClick}></i>
-            </div>
-          }
-        } else if (this.state.handleSitRep == 'needUpdate') {
-          <form onSubmit={this.manageHandleSubmit}>
-            <div className="element-field">
-              <input
-                name='elementEdit'
-                type='text'
-                value={this.state.elementEdit}
-                onChange={this.manageChange}
-              />
-            </div>
-            <div className="edit-button">
-              <input className="submit-clicker button" type="submit" value="submit" />
-            </div>
-          </form>
-        }
-      </div>
-      <div className="user-bio-cell">
-        if (this.state.bioSitRep == 'situationNormal') {
+            {handleEdit}
+        </div>
+      } else if (this.state.handleSitRep == 'needUpdate') {
+        handleStatus =
+        <form onSubmit={this.manageHandleSubmit}>
+          <div className="element-field">
+            <input
+              name='elementEdit'
+              type='text'
+              value={this.state.elementEdit}
+              onChange={this.manageChange}
+            />
+          </div>
+          <div className="edit-button">
+            <input className="submit-clicker button" type="submit" value="submit" />
+          </div>
+        </form>
+      }
+      if (this.state.bioSitRep == 'situationNormal') {
+        bioStatus=
+        <div className="user-bio-cell">
           <div className="user-bio-text">
             {this.props.bio}
           </div>
-          if (this.props.ownership) {
-            <div className="user-bio-edit">
-              <i className="far fa-edit" onClick={this.onBioClick}></i>
-            </div>
-          }
-        } else if (this.state.bioSitRep == 'needUpdate') {
-          <form onSubmit={this.manageBioSubmit}>
-            <div className="element-field">
-              <input
-                name='elementEdit'
-                type='text'
-                value={this.state.elementEdit}
-                onChange={this.manageChange}
-              />
-            </div>
-            <div className="edit-button">
-              <input className="submit-clicker button" type="submit" value="submit" />
-            </div>
-          </form>
-        }
+            {bioEdit}
+        </div>
+      } else if (this.state.bioSitRep == 'needUpdate') {
+        bioStatus=
+        <form onSubmit={this.manageBioSubmit}>
+          <div className="element-field">
+            <input
+              name='elementEdit'
+              type='text'
+              value={this.state.elementEdit}
+              onChange={this.manageChange}
+            />
+          </div>
+          <div className="edit-button">
+            <input className="submit-clicker button" type="submit" value="submit" />
+          </div>
+        </form>
+      }
+    return(
+      <div className="user-details">
+        {handleStatus}
+        {bioStatus}
       </div>
-    </div>
+    )
   }
-
-  return(
-    <div>
-      {memberStatus}
-    </div>
-  )
 }
 
 export default MembersShowTile;
