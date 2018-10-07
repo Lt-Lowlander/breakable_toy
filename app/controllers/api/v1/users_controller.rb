@@ -16,7 +16,7 @@ class Api::V1::UsersController < ApiController
       if current_user == nil
         member = ""
       else
-        member = current_user.handle
+        member = current_user.id
       end
       user = User.find(params[:id])
       payload = {
@@ -24,6 +24,9 @@ class Api::V1::UsersController < ApiController
         user: user
       }
       render json: payload, include: ["equipment", "projects"]
+  end
+
+  def update
   end
 
 end

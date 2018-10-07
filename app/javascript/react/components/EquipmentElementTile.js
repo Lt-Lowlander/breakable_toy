@@ -55,8 +55,8 @@ class EquipmentElementTile extends Component {
   }
 
   handleChange(event) {
-    let fieldInfo = event.target.name
-    let value = event.target.value
+    let fieldInfo = event.target.name;
+    let value = event.target.value;
     this.setState({ [fieldInfo]: value })
   }
 
@@ -84,7 +84,7 @@ class EquipmentElementTile extends Component {
 
   render(){
     let equipmentStatus;
-    let elementItem = this.props.tool;
+    const elementItem = this.props.tool;
     if (this.state.sitRep == 'situationNormal') {
         equipmentStatus =
         <li className="equipment-list-element">

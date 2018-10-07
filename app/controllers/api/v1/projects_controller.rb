@@ -38,7 +38,7 @@ class Api::V1::ProjectsController < ApiController
     if current_user == nil
       member = ""
     else
-      member = current_user.handle
+      member = current_user.id
     end
     present_project = Project.find(params[:id])
     payload = {
