@@ -108,7 +108,7 @@ class ProjectShowContainer extends Component {
 
   render(){
     let ownership;
-    const author = this.state.project.handle;
+    const author = this.state.project.user_id;
     const viewer = this.state.activeMember;
     if (viewer === author) {
       ownership = true;
