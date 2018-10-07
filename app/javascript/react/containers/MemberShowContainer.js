@@ -5,6 +5,10 @@ class UserShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      userInfo: {},
+      userEquipment: [],
+      userProjects: [],
+      activeMember: ''
     }
   }
 
@@ -21,19 +25,24 @@ class UserShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-debugger
+      debugger
       this.setState ({
-
+        userInfo: body.user,
+        userEquipment: body.user.equipment,
+        userProjects: body.user.projects,
+        activeMember: body.viewing_member
       })
     })
   }
 
   render(){
-    let message = "Hi cat";
+    const memberDetails = this.state.userInfo;
+    const memberEquipment = this.state.userEquipment;
+    const memberProjects = this.state.userProjects;
 
     return(
       <div>
-        {message}
+
       </div>
     )
   }
