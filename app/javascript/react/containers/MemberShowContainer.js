@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import MembersShowTile from '../components/MembersShowTile';
-import MembersProjectsContainer from './MembersProjectsContainer';
-import MembersEquipmentContainer from './MembersEquipmentContainer';
 
 class MemberShowContainer extends Component {
   constructor(props) {
@@ -34,7 +31,7 @@ class MemberShowContainer extends Component {
   }
 
   changeElement(payload){
-    fetch(`api/v1/users/${this.props.params.id}.json`, {
+    fetch(`/api/v1/users/${this.props.params.id}`, {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin',
       method: 'PATCH',
@@ -52,9 +49,15 @@ class MemberShowContainer extends Component {
     .then(response => response.json())
     .then(body => {
       const factor = this.state.element
-      this.setState({
-        [factor]: body
-      })
+      if (factor == 'handle') {
+        this.setState({
+          handle: body[0].handle
+        })
+      } else if (factor == 'bio') {
+        this.setState({
+          bio: body[0].bio
+        })
+      }
       this.clearInputs()
     })
   }
@@ -92,7 +95,6 @@ class MemberShowContainer extends Component {
     }
     const memberEquipment = this.state.userEquipment;
     const memberProjects = this.state.userProjects;
-
     return(
       <div>
         <MembersShowTile
