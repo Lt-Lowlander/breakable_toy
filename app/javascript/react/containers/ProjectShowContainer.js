@@ -132,6 +132,7 @@ class ProjectShowContainer extends Component {
               budget={this.state.project.budget}
               topics={this.state.project.topics}
               user={this.state.project.handle}
+              userNum={this.state.project.user_id}
             />
           </div>
           <div className="cell small-12 medium-6 large-4">

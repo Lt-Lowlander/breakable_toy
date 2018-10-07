@@ -9,16 +9,21 @@ class Api::V1::UsersController < ApiController
 
   def index
     users = User.all.order(created_at: :desc)
-    # binding.pry
     render json: users
   end
 
   def show
+      if current_user == nil
+        member = ""
+      else
+        member = current_user.handle
+      end
       user = User.find(params[:id])
-      # projects = Project.where(user_id: params[:user_id])
-      # equipment = Equipment.where(user_id: params[:user_id])
-      # user.projects = projects
-      render json: user
+      payload = {
+        viewing_member: member,
+        user: user
+      }
+      render json: payload, include: ["equipment", "projects"]
   end
 
 end
