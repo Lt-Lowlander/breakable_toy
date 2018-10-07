@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
+import MembersShowTile from '../components/MembersShowTile';
 
 class UserShowContainer extends Component {
   constructor(props) {
@@ -25,7 +26,6 @@ class UserShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       this.setState ({
         userInfo: body.user,
         userEquipment: body.user.equipment,
@@ -36,13 +36,24 @@ class UserShowContainer extends Component {
   }
 
   render(){
+    let ownership;
+    const author = this.state.userInfo.handle;
+    const viewer = this.state.activeMember;
+    if (viewer === author) {
+      ownership = true;
+    }
     const memberDetails = this.state.userInfo;
     const memberEquipment = this.state.userEquipment;
     const memberProjects = this.state.userProjects;
 
     return(
       <div>
-
+        <MembersShowTile
+          ownership={ownership}
+          key={memberDetails.id}
+          id={memberDetails.id}
+          handle={memberDetails.handle}
+        />
       </div>
     )
   }
