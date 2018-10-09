@@ -101,6 +101,7 @@ class MemberShowContainer extends Component {
           ownership={ownership}
           key={this.state.userInfo.id}
           id={this.state.userInfo.id}
+          role={this.state.userInfo.role}
           handle={this.state.handle}
           bio={this.state.bio}
           changeElement={this.changeElement}

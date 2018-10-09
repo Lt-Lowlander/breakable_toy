@@ -25,7 +25,6 @@ class MemberIndexContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       this.setState({
         userList: body
       })
@@ -41,12 +40,15 @@ class MemberIndexContainer extends Component {
           id={indiv.id}
           handle={indiv.handle}
           bio={indiv.bio}
+          role={indiv.role}
         />
       )
     })
     return(
-      <div>
-        {members}
+      <div className="grid-x">
+        <ul className="cell small-6 medium-4 large-3">
+          {members}
+        </ul>
       </div>
     )
   }

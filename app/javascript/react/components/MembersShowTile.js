@@ -61,12 +61,12 @@ class MembersShowTile extends Component {
     let bioEdit;
     if (this.props.ownership) {
       handleEdit =
-      <div className="user-handle-edit">
-        <i className="far fa-edit" onClick={this.onHandleClick}></i>
+      <div className="user-handle-edit" onClick={this.onHandleClick}>
+        <i className="far fa-edit"></i>
       </div>
       bioEdit =
-      <div className="user-bio-edit">
-        <i className="far fa-edit" onClick={this.onBioClick}></i>
+      <div className="user-bio-edit" onClick={this.onBioClick}>
+        <i className="far fa-edit"></i>
       </div>
     }
     let handleStatus;
@@ -74,10 +74,10 @@ class MembersShowTile extends Component {
       if (this.state.handleSitRep == 'situationNormal') {
         handleStatus=
         <div className="user-handle-cell">
+          {handleEdit}
           <div className="user-handle-text">
             {this.props.handle}
           </div>
-            {handleEdit}
         </div>
       } else if (this.state.handleSitRep == 'needUpdate') {
         handleStatus =
@@ -98,10 +98,10 @@ class MembersShowTile extends Component {
       if (this.state.bioSitRep == 'situationNormal') {
         bioStatus=
         <div className="user-bio-cell">
+          {bioEdit}
           <div className="user-bio-text">
             {this.props.bio}
           </div>
-            {bioEdit}
         </div>
       } else if (this.state.bioSitRep == 'needUpdate') {
         bioStatus=
@@ -120,9 +120,33 @@ class MembersShowTile extends Component {
         </form>
       }
     return(
-      <div className="user-details">
-        {handleStatus}
-        {bioStatus}
+      <div className="grid-x">
+        <div className="user-details notestyle rounders  cell small-12 medium-6 large-5">
+          <div className="handle-unit margin-spacing">
+            <div className="handle-label">
+              User Name:
+            </div>
+            <div className="handle-entry">
+              {handleStatus}
+            </div>
+          </div>
+          <div className="role-unit margin-spacing">
+            <div className="role-label">
+              Role:
+            </div>
+            <div className="role-entry">
+              {this.props.role}
+            </div>
+          </div>
+          <div className="bio-unit margin-spacing">
+            <div className="bio-label">
+              Bio:
+            </div>
+            <div className="bio-entry">
+              {bioStatus}
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
