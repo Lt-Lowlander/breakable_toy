@@ -120,29 +120,31 @@ class MembersShowTile extends Component {
         </form>
       }
     return(
-      <div className="user-details notestyle rounders">
-        <div className="handle-cell">
-          <div className="handle-label">
-            user name:
+      <div className="grid-x">
+        <div className="user-details notestyle rounders  cell small-12 medium-6 large-5">
+          <div className="handle-unit margin-spacing">
+            <div className="handle-label">
+              User Name:
+            </div>
+            <div className="handle-entry">
+              {handleStatus}
+            </div>
           </div>
-          <div className="handle-entry">
-            {handleStatus}
+          <div className="role-unit margin-spacing">
+            <div className="role-label">
+              Role:
+            </div>
+            <div className="role-entry">
+              {this.props.role}
+            </div>
           </div>
-        </div>
-        <div className="role-cell">
-          <div className="role-label">
-            role:
-          </div>
-          <div className="role-entry">
-            {this.props.role}
-          </div>
-        </div>
-        <div className="bio-cell">
-          <div className="bio-label">
-            bio:
-          </div>
-          <div className="bio-entry">
-            {bioStatus}
+          <div className="bio-unit margin-spacing">
+            <div className="bio-label">
+              Bio:
+            </div>
+            <div className="bio-entry">
+              {bioStatus}
+            </div>
           </div>
         </div>
       </div>

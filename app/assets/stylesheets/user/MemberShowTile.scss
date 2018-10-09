@@ -1,26 +1,37 @@
-.handle-label {
-  float: left;
+.user-details {
+  font-family: "Futura";
+  font-weight: bold;
+  color: #4c4c4c;
+  margin: 20px 0px 20px 40px;
 }
 
-    .handle-entry {
-      margin-left: 6px;
-    }
+.margin-spacing {
+  margin: 10px 0px 10px 10px;
+}
+
+.handle-label {
+  float: left;
+  margin-right: 10px;
+}
+
+  .handle-entry {
+    margin-left: 6px;
+  }
 
     .user-handle-edit {
       float: left;
       margin-left: 10px;
+      margin-right: 10px;
     }
 
     .user-handle-text {
-      margin-left: 10px;
+      margin-top: 20px;
+      margin-left: 32px;
     }
 
 .role-label {
   float: left;
-}
-
-.role-entry {
-  margin-left: 6px;
+  margin-right: 10px;
 }
 
 .bio-label {
@@ -34,8 +45,9 @@
     .user-bio-edit {
       float: left;
       margin-left: 10px;
+      margin-right: 10px;
     }
-    
-    .user-handle-text {
-      margin-left: 10px;
+
+    .user-bio-text {
+      margin-left: 32px;
     }
