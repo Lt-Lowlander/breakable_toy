@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Konami from './KonamiCode';
+import SecretComponent from './SecretComponent';
 import ProjectIndexContainer from '../containers/ProjectIndexContainer';
 import ProjectShowContainer from '../containers/ProjectShowContainer';
 import ProjectFormContainer from '../containers/ProjectFormContainer';
@@ -27,7 +28,7 @@ class App extends Component {
 
     // This gets called any time a user enters the Konami Code
     let secretOp = () => {
-    alert("If you're reading this, then you're on the\nteam I want to work for!\n\nIf you too are interested, please be sure\nto mention your favorite music band/artist\nso I know that you've been here!")
+      window.location = '/white_rabbit';
     }
     const whiteRabbit = new Konami(secretOp);
 
@@ -50,6 +51,7 @@ class App extends Component {
           <Route path='/projects/:id/edit' component={ProjectFormContainer} />
           <Route path='/users' component={MemberIndexContainer} />
           <Route path='/users/:id' component={MemberShowContainer} />
+          <Route path='/white_rabbit' component={SecretComponent} />
 
         </Route>
       </Router>
