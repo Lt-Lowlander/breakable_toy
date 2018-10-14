@@ -6,7 +6,7 @@ let ProjectShowTile = (props) => {
   if (props.ownership) {
     projectEdits =
     <h1>
-      <Link to={`projects/${props.id}/edit`}>Edit Project</Link>
+      <Link to={`/projects/${props.id}/edit`}>Edit Project</Link>
     </h1>
   }
   return(
