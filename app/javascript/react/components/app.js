@@ -36,7 +36,7 @@ class App extends Component {
       <Router history={browserHistory}>
         <Route path='/'>
 
-          <ul className="title-area top-bar">
+          <ul className="title-area good-times top-bar">
             <li class="name">
               <h6>
                 <a className="home" href="/">HOME</a>

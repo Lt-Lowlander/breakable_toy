@@ -71,7 +71,7 @@ class ProjectIndexContainer extends Component {
     if (this.state.member) {
       member_settings=
       <div className="cell">
-        <div className="add-project-button notestyle">
+        <div className="add-project-button good-times notestyle">
           <Link to={'/projects/new'}>
             Add a Project
           </Link>
