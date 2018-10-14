@@ -14,15 +14,15 @@
   <div id="container-helm" class="top-bar-container" data-sticky-container>
     <div id="sticky-helm" class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: small;">
       <nav id="nav-helm" class="top-bar">
-        <ul id="title-helm" class="title-area">
+        <ul id="title-helm" class="title-area good-times">
           <li class="name">
             <a href="/">
               Project Relay
             </a>
           </li>
         </ul>
-        <section class="">
-          <ul class="right">
+        <section class="session-options">
+          <ul class="right good-times">
             <%- if current_user -%>
             <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
             <%- else -%>

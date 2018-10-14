@@ -24,7 +24,6 @@ equipment = Equipment.create!([
   {id: '5', tool_name: "3D Printer"},
   {id: '6', tool_name: "Laptop"},
   {id: '7', tool_name: "Hot Glue Gun"},
-  {id: '8', tool_name: "screw driver"},
 ])
 
 # create equipment in projects
@@ -40,7 +39,6 @@ equipment_in_projects = EquipmentInProject.create!([
   {equipment_id: '2', project_id: '7', user_id: '2'},
   {equipment_id: '3', project_id: '7', user_id: '2'},
   {equipment_id: '4', project_id: '7', user_id: '2'},
-  {equipment_id: '8', project_id: '7', user_id: '2'},
   ])
 
 # create materials

@@ -7,15 +7,17 @@ body {
   z-index: 0;
 }
 
+.session-options {
+
+}
+
 .right {
-  font-family: "Good Times";
-  src: url('Good Times.ttf');
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   list-style: none;
   float: right;
-  margin-top: 11px;
-  margin-right: 20px;
+  margin-top: 0.25rem;
+  margin-right: 1.5rem;
 }
 
 .right a {
@@ -31,16 +33,14 @@ body {
 }
 
 .title-area {
-  font-family: "Good Times";
-  src: url('Good Times.ttf');
   font-weight: bold;
   text-align: center;
   text-decoration: none;
   font-size: 300%;
   list-style: none;
   float: left;
-  margin-top: 10px;
-  margin-left: 30px;
+  margin-top: 0.4rem;
+  margin-left: 2rem;
 }
 
 .top-bar .name a {
@@ -68,11 +68,17 @@ body {
   z-index: -1;
 }
 
+.good-times {
+  font-family: "Good Times";
+  src: url('./GoodTimes.ttf') format('truetype');
+}
+
 #flash-messages {
   float: right;
-  margin-right: 30px;
+  margin-right: 25%;
   z-index: 1;
   font-family: "Good Times";
-  font-size: 200%;
+  src: url('./GoodTimes.ttf') format('truetype');
+  font-size: 175%;
   color: #c0c0c0;
 }

@@ -33,7 +33,7 @@ let ProjectShowTile = (props) => {
               </div>
             </div>
             <div className="side-right">
-              <div className="next-iteration button rounders">
+              <div className="next-iteration good-times button rounders">
                 <b>
                   Build a new version
                 </b>
