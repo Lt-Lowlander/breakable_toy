@@ -13,8 +13,8 @@ class SecretComponent extends Component {
     document.getElementById("nav-helm").className = "";
     document.getElementById("title-helm").className = "";
     let message =
-    <div className="grid-x grid-margin-x align-spaced">
-      <div className="cell small-11 medium-8 large-5">
+    <div className="grid-x align-spaced elbumper">
+      <div className="cell small-12 medium-8 large-5">
         <b>
           <p>
             If you're reading this, then you're on the team I want to work for!
