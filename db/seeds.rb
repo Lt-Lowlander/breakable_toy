@@ -28,7 +28,7 @@ equipment = Equipment.create!([
 ])
 
 # create equipment in projects
-equipment_in_projects = EquipmentInProjects.create!([
+equipment_in_projects = EquipmentInProject.create!([
   {equipment_id: '1', project_id: '1', user_id: '1'},
   {equipment_id: '2', project_id: '1', user_id: '1'},
   {equipment_id: '3', project_id: '1', user_id: '1'},

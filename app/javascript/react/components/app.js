@@ -34,7 +34,6 @@ class App extends Component {
 
     return(
       <Router history={browserHistory}>
-        <Route path='/white_rabbit' component={SecretComponent} />
         <Route path='/'>
 
           <ul className="title-area top-bar">
@@ -52,6 +51,7 @@ class App extends Component {
           <Route path='/projects/:id/edit' component={ProjectFormContainer} />
           <Route path='/users' component={MemberIndexContainer} />
           <Route path='/users/:id' component={MemberShowContainer} />
+          <Route path='/white_rabbit' component={SecretComponent} />
 
         </Route>
       </Router>
