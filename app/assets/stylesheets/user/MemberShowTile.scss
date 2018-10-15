@@ -2,12 +2,13 @@
   font-family: "Futura";
   font-weight: bold;
   color: #4c4c4c;
-  margin: 20px 0px 20px 40px;
+  margin: 1rem 0 2rem 4rem;
 }
 
 .margin-spacing {
   margin: 10px 0px 10px 10px;
 }
+
 
 .handle-label {
   float: left;
@@ -51,3 +52,18 @@
     .user-bio-text {
       margin-left: 32px;
     }
+
+.details-and-equipment {
+  width: 100%
+}
+
+  .member-info-tile {
+    width: 60rem;
+    float: left;
+  }
+
+  .member-equipment-tile {
+    
+    width: 16rem;
+    margin-left: 36rem;
+  }

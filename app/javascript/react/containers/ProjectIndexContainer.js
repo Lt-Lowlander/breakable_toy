@@ -48,7 +48,7 @@ class ProjectIndexContainer extends Component {
             <i className="far fa-edit"></i>
           </Link>
           <span>  |  </span>
-          <Link to={`projects/${project.id}`} onClick={this.confirm}>
+          <Link to={`/projects/${project.id}`} onClick={this.confirm}>
             <i className="far fa-trash-alt"></i>
           </Link>
         </div>
