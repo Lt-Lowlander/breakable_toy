@@ -19,11 +19,15 @@ class MemberEquipmentContainer extends Component {
       )
     })
     return(
-      <div className="equipment-prof-sec">
-        Equipment Proficiency
-        <ul>
-          {userTools}
-        </ul>
+      <div className="notestyle rounders user-details">
+        <div className="equipment-prof-sec">
+          Equipment Proficiencies
+        </div>
+        <div className="eq-list-elems">
+          <ul>
+            {userTools}
+          </ul>
+        </div>
       </div>
     )
   }

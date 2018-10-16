@@ -2,7 +2,7 @@
   font-family: "Futura";
   font-weight: bold;
   color: #4c4c4c;
-  margin: 1rem 0 2rem 4rem;
+  margin: 1rem 0 2rem 2rem;
 }
 
 .margin-spacing {
@@ -37,6 +37,7 @@
 
 .bio-label {
   float: left;
+  margin-right: 10px;
 }
 
     .bio-entry {
@@ -49,21 +50,69 @@
       margin-right: 10px;
     }
 
-    .user-bio-text {
-      margin-left: 32px;
-    }
-
 .details-and-equipment {
-  width: 100%
+  // border-radius: 4px;
+  // border-style: solid;
+  // border-color: red;
+  font-size: 120%;
+  width: 35%;
+}
+
+.user-projects-container {
+  // border-radius: 4px;
+  // border-style: solid;
+  // border-color: red;
+  width: 55%;
+}
+
+.inner-user-projects-container {
+  margin-right: 2rem;
+}
+
+.user-submissions-title {
+  font-family: "Futura";
+  font-size: 300%;
+  font-weight: bold;
+  text-align: center;
+  color: #c0c0c0;
+}
+
+.user-project-index-pic {
+  border-radius: 3px;
+  width: 220px;
+  height: 185px;
+}
+
+.user-project-tile-with-owner {
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+  border-radius: 4px;
+  text-align: center;
+  font-family: "Futura";
+  font-weight: bold;
+  font-size: 1.5em;
+  width: 230px;
+  margin: 20px;
+  padding: 15px;
+}
+
+.member-info {
+  max-width: 36rem;
 }
 
   .member-info-tile {
-    width: 60rem;
-    float: left;
+
+  }
+
+  .equipment-prof-sec {
+    font-size: 2rem;
+    padding-top: 10px;
+    margin-left: 10px;
   }
 
   .member-equipment-tile {
-    
-    width: 16rem;
-    margin-left: 36rem;
+    max-width: 36rem;
   }
+
+    .eq-list-elems {
+      padding-bottom: 10px;
+    }

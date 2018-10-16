@@ -97,8 +97,8 @@ class MemberShowContainer extends Component {
     }
 
     return(
-      <div className="grid-x grid-margin-x">
-        <div className="details-and-equipment">
+      <div className="user-overview grid-x">
+        <div className="cell small-12 medium-6 large-5 details-and-equipment">
           <div className="member-info-tile">
             <MembersShowTile
               ownership={ownership}
@@ -117,10 +117,12 @@ class MemberShowContainer extends Component {
               />
           </div>
         </div>
-        <div className="member-projects-tile">
-          <MemberProjectsContainer
-            memberProjects={this.state.userProjects}
-            />
+        <div className="cell small-12 medium-8 large-7 user-projects-container">
+          <div className="inner-user-projects-container">
+            <MemberProjectsContainer
+              memberProjects={this.state.userProjects}
+              />
+          </div>
         </div>
       </div>
     )

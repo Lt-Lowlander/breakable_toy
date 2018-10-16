@@ -22,7 +22,7 @@ class MemberProjectsContainer extends Component {
     })
     return(
       <div className="user-project-container">
-        <div>
+        <div className="user-submissions-title">
           Submitted Projects
         </div>
         <div className="user-projects grid-x grid-margin-x align-spaced">
