@@ -3,6 +3,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  height: 100vh;
   width: 100% !important;
   z-index: 0;
 }
@@ -16,8 +17,7 @@ body {
   font-size: 0.9rem;
   list-style: none;
   float: right;
-  margin-top: 0.25rem;
-  margin-right: 1.5rem;
+  margin: 0.25rem 1.5rem 2rem 0;
 }
 
 .right a {

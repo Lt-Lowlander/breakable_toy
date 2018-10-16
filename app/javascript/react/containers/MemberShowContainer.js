@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import MembersShowTile from '../components/MembersShowTile';
+import MemberEquipmentContainer from './MemberEquipmentContainer';
+import MemberProjectsContainer from './MemberProjectsContainer';
 
 class MemberShowContainer extends Component {
   constructor(props) {
@@ -93,20 +95,35 @@ class MemberShowContainer extends Component {
     if (viewer === author) {
       ownership = true;
     }
-    const memberEquipment = this.state.userEquipment;
-    const memberProjects = this.state.userProjects;
+
     return(
-      <div>
-        <MembersShowTile
-          ownership={ownership}
-          key={this.state.userInfo.id}
-          id={this.state.userInfo.id}
-          role={this.state.userInfo.role}
-          handle={this.state.handle}
-          bio={this.state.bio}
-          changeElement={this.changeElement}
-          infoUpdate={this.infoUpdate}
-        />
+      <div className="user-overview grid-x">
+        <div className="cell small-12 medium-6 large-5 details-and-equipment">
+          <div className="member-info-tile">
+            <MembersShowTile
+              ownership={ownership}
+              key={this.state.userInfo.id}
+              id={this.state.userInfo.id}
+              role={this.state.userInfo.role}
+              handle={this.state.handle}
+              bio={this.state.bio}
+              changeElement={this.changeElement}
+              infoUpdate={this.infoUpdate}
+              />
+          </div>
+          <div className="member-equipment-tile">
+            <MemberEquipmentContainer
+              memberEquipment={this.state.userEquipment}
+              />
+          </div>
+        </div>
+        <div className="cell small-12 medium-8 large-7 user-projects-container">
+          <div className="inner-user-projects-container">
+            <MemberProjectsContainer
+              memberProjects={this.state.userProjects}
+              />
+          </div>
+        </div>
       </div>
     )
   }

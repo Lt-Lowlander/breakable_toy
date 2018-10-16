@@ -11,7 +11,6 @@ class EquipmentIndexContainer extends Component {
   }
 
   render(){
-
     let equipmentList = this.props.equipment.map(machine => {
       if (this.props.ownership) {
         return(

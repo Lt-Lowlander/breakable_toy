@@ -120,8 +120,8 @@ class MembersShowTile extends Component {
         </form>
       }
     return(
-      <div className="grid-x">
-        <div className="user-details notestyle rounders  cell small-12 medium-6 large-5">
+      <div className="member-info">
+        <div className="user-details notestyle rounders">
           <div className="handle-unit margin-spacing">
             <div className="handle-label">
               User Name:
