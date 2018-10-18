@@ -17,13 +17,19 @@ projects = Project.create!([
 
 # #create equipment
 equipment = Equipment.create!([
-  {id: '1', tool_name: "soldering iron"},
-  {id: '2', tool_name: "screw driver"},
-  {id: '3', tool_name: "wire strippers"},
-  {id: '4', tool_name: "needle nose pliers"},
+  {id: '1', tool_name: "Soldering Iron"},
+  {id: '2', tool_name: "Screwdriver"},
+  {id: '3', tool_name: "Wire Strippers"},
+  {id: '4', tool_name: "Needle-nose Pliers"},
   {id: '5', tool_name: "3D Printer"},
   {id: '6', tool_name: "Laptop"},
   {id: '7', tool_name: "Hot Glue Gun"},
+  {id: '8', tool_name: "Planer"},
+  {id: '9', tool_name: "Jointer"},
+  {id: '10', tool_name: "Table Saw"},
+  {id: '11', tool_name: "Table Router"},
+  {id: '12', tool_name: "Drill Press"},
+
 ])
 
 # create equipment in projects
@@ -32,6 +38,11 @@ equipment_in_projects = EquipmentInProject.create!([
   {equipment_id: '2', project_id: '1', user_id: '1'},
   {equipment_id: '3', project_id: '1', user_id: '1'},
   {equipment_id: '4', project_id: '1', user_id: '1'},
+  {equipment_id: '8', project_id: '3', user_id: '1'},
+  {equipment_id: '9', project_id: '3', user_id: '1'},
+  {equipment_id: '10', project_id: '3', user_id: '1'},
+  {equipment_id: '11', project_id: '3', user_id: '1'},
+  {equipment_id: '12', project_id: '3', user_id: '1'},
   {equipment_id: '5', project_id: '6', user_id: '2'},
   {equipment_id: '6', project_id: '6', user_id: '2'},
   {equipment_id: '7', project_id: '6', user_id: '2'},
