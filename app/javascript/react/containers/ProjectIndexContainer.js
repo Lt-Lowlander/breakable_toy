@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router'
 import { Link } from 'react-router';
+
 import ProjectTile from '../components/ProjectTile';
 
 class ProjectIndexContainer extends Component {
@@ -10,7 +12,40 @@ class ProjectIndexContainer extends Component {
       member: false,
       admin: false
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.postNewProject = this.postNewProject.bind(this);
   }
+
+  handleSubmit(event){
+    event.preventDefault();
+    let newProject = new FormData();
+    newProject.append("name", "fill me in!");
+    newProject.append("description", "fill me in!");
+    newProject.append("photo_url", "fill me in!");
+    newProject.append("budget", "fill me in!");
+    this.postNewProject(newProject);
+  }
+
+  postNewProject(infoPayload) {
+    fetch('/api/v1/projects', {
+      credentials: 'same-origin',
+      method: 'POST',
+      body: infoPayload
+    })
+      .then(response => {
+        if(response.ok){
+          return response
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+             error = new Error(errorMessage)
+         throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        browserHistory.push(`/projects/${body.id}/edit`)})
+        .catch(error => console.error(`Error in fetch: ${error.message}`));
+    }
 
   componentDidMount(){
     fetch(`/api/v1/projects`, {
@@ -71,11 +106,14 @@ class ProjectIndexContainer extends Component {
     if (this.state.member) {
       member_settings=
       <div className="cell">
-        <div className="add-project-button good-times notestyle">
-          <Link to={'/projects/new'}>
-            Add a Project
-          </Link>
-        </div>
+        <form onSubmit={this.handleSubmit}>
+          <button type="submit" value="submit">
+            <div className="add-project-button good-times notestyle">
+              Add a Project
+            </div>
+          </button>
+
+        </form>
       </div>
     }
     return(

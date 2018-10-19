@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { browserHistory } from 'react-router'
 import ProjectInputTile from '../components/ProjectInputTile';
 
-class ProjectFormContainer extends Component {
+class EditProjectFormContainer extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -10,30 +10,18 @@ class ProjectFormContainer extends Component {
       description:"",
       photo_url:"",
       budget:"",
+      familyId: "",
+      projectId: "",
       errors: {}
     }
-    this.validateEntry = this.validateEntry.bind(this);
+
     this.handleChange = this.handleChange.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.postNewProject = this.postNewProject.bind(this);
-  }
-
-  validateEntry(name, fieldValue){
-    if (fieldValue.trim() === '') {
-      let newError = { [name]: `You must enter a ${name}`};
-      this.setState({ errors: Object.assign(this.state.errors, newError) });
-      return false;
-    } else {
-      let errorState = this.state.errors;
-      delete errorState[name];
-      this.setState({ errors: errorState });
-      return true;
-    }
+    this.sendEditedProject = this.sendEditedProject.bind(this);
   }
 
   handleChange(event){
-    this.validateEntry(event.target.name, event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -45,35 +33,39 @@ class ProjectFormContainer extends Component {
       description:"",
       photo_url:"",
       budget:"",
+      familyId: "",
+      projectId: "",
       errors: {}
     });
   }
 
   handleSubmit(event){
     event.preventDefault();
-    Object.keys(this.state).forEach(key => {
-      if (key !="errors") {
-        this.validateEntry(key, this.state[key])
+    if (Object.keys(this.state.errors).length == 0) {
+      let editedProject = new FormData();
+      editedProject.append("name", this.state.name);
+      editedProject.append("description", this.state.description);
+      editedProject.append("photo_url", this.state.photo_url);
+      editedProject.append("budget", this.state.budget);
+      if (this.state.familyId == 0) {
+        this.setState({
+          familyId: this.state.projectId
+        })
       }
-    })
-    if (Object.keys(this.state.errors).length ==0) {
-      let newProject = new FormData();
-      newProject.append("name", this.state.name);
-      newProject.append("description", this.state.description);
-      newProject.append("photo_url", this.state.photo_url);
-      newProject.append("budget", this.state.budget);
-      this.postNewProject(newProject);
+      editedProject.append("family_id", this.state.familyId);
+      this.sendEditedProject(editedProject);
       this.handleClear();
     }
   }
 
-  postNewProject(infoPayload) {
-    fetch('/api/v1/projects', {
+  sendEditedProject(infoPayload) {
+    fetch(`/api/v1/projects/${this.state.projectId}`, {
       credentials: 'same-origin',
-      method: 'POST',
+      method: 'PATCH',
       body: infoPayload
     })
       .then(response => {
+debugger
         if(response.ok){
           return response
         } else {
@@ -84,8 +76,34 @@ class ProjectFormContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        browserHistory.push(`/projects/${body.id}`)})
+        browserHistory.push(`/projects/${body.project.id}`)})
         .catch(error => console.error(`Error in fetch: ${error.message}`));
+    }
+
+    componentDidMount(){
+      fetch(`/api/v1/projects/${this.props.params.id}`)
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+debugger
+        this.setState({
+          name: body.project.name,
+          description: body.project.description,
+          photo_url: body.project.photo_url,
+          budget: body.project.budget,
+          familyId: body.project.family_id,
+          projectId: body.project.id
+        })
+      })
+      .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
     }
 
   render(){
@@ -124,7 +142,7 @@ class ProjectFormContainer extends Component {
                 handleChange={this.handleChange}
                 />
               <button type="submit" className="button" value="Submit">
-                Add Project
+                Update Project
               </button>
             </form>
           </div>
@@ -135,4 +153,4 @@ class ProjectFormContainer extends Component {
   }
 }
 
-export default ProjectFormContainer;
+export default EditProjectFormContainer

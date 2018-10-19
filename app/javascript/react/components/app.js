@@ -5,6 +5,7 @@ import SecretComponent from './SecretComponent';
 import ProjectIndexContainer from '../containers/ProjectIndexContainer';
 import ProjectShowContainer from '../containers/ProjectShowContainer';
 import ProjectFormContainer from '../containers/ProjectFormContainer';
+import EditProjectFormContainer from '../containers/EditProjectFormContainer';
 import MemberIndexContainer from '../containers/MemberIndexContainer';
 import MemberShowContainer from '../containers/MemberShowContainer';
 
@@ -40,7 +41,7 @@ class App extends Component {
           <Route path='/projects' component={ProjectIndexContainer} />
           <Route path='/projects/new' component={ProjectFormContainer} />
           <Route path='/projects/:id' component={ProjectShowContainer} />
-          <Route path='/projects/:id/edit' component={ProjectFormContainer} />
+          <Route path='/projects/:id/edit' component={EditProjectFormContainer} />
           <Route path='/users' component={MemberIndexContainer} />
           <Route path='/users/:id' component={MemberShowContainer} />
           <Route path='/white_rabbit' component={SecretComponent} />

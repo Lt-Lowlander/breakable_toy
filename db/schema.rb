@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2018_10_01_212227) do
     t.string "budget"
     t.string "topics"
     t.integer "parent_id"
-    t.integer "family_id"
+    t.integer "family_id", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
