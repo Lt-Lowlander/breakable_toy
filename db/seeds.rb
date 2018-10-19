@@ -6,13 +6,13 @@ users = User.create!([
 
 #create projects
 projects = Project.create!([
-  {name: "LED Cube", description: "A Raspberry Pi-driven display", photo_url: "https://cdn.instructables.com/F5E/3GU8/GR392YQI/F5E3GU8GR392YQI.LARGE.jpg", version_id: '1', budget: "$100", topics: "electronics", user_id: '1', handle: "Splinter"},
+  {name: "LED Cube", description: "A Raspberry Pi-driven display", photo_url: "https://cdn.instructables.com/F5E/3GU8/GR392YQI/F5E3GU8GR392YQI.LARGE.jpg", version_id: '1', budget: "$100", topics: "electronics", user_id: '1', handle: "Splinter", family_id: '1'},
   {name: "Smart Mirror", description: "A Raspberry Pi-driven display", photo_url: "https://i.imgur.com/h9JGNtM.png", version_id: '1', budget: "$100", topics: "electronics", user_id: '1', handle: "Splinter"},
   {name: "Wooden Puzzle Box", description: "Secret compartments and yosegi veneer work", photo_url: "https://images-na.ssl-images-amazon.com/images/I/41z1M%2BSSdJL._SX355_.jpg", version_id: '1', budget: "$40", topics: "woodworking", user_id: '1', handle: "Splinter"},
   {name: "Ammo Crate Speaker", description: "Upcycling at it's finest", photo_url: "https://i.imgur.com/dD9n9ph.png", version_id: '1', budget: "$80", topics: "Audio Gear", user_id: '1', handle: "Splinter"},
   {name: "3D printed Planter", description: "Great for having at your work desk", photo_url: "https://i.imgur.com/BR46zcp.jpg", version_id: '1', budget: "$15", topics: "Desktop Printing", user_id: '1', handle: "Splinter"},
   {name: "Arduino-powered Stargate", description: "Check out this rotating Stargate! The printed files can be found here: https://www.thingiverse.com/thing:571853 ", photo_url: "https://thingiverse-production-new.s3.amazonaws.com/assets/5a/ea/65/db/98/HeroWide.jpg", version_id: '1', budget: "$36", topics: "Desktop Printing", user_id: '2', handle: "Tinker_Kid"},
-  {name: "LED cube", description: "An updated take on Splinter's original post", photo_url: "https://cdn.instructables.com/FUX/O1RW/GICYBAOS/FUXO1RWGICYBAOS.LARGE.jpg?auto=webp&width=933", version_id: '2', budget: "$67", topics: "electronics", user_id: '2', handle: "Tinker_Kid"},
+  {name: "LED cube", description: "An updated take on Splinter's original post", photo_url: "https://cdn.instructables.com/FUX/O1RW/GICYBAOS/FUXO1RWGICYBAOS.LARGE.jpg?auto=webp&width=933", version_id: '2', budget: "$67", topics: "electronics", user_id: '2', handle: "Tinker_Kid", parent_id: '1', family_id: '1'},
   ])
 
 # #create equipment

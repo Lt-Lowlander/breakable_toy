@@ -10,6 +10,8 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :handle, null: false
       t.string :budget
       t.string :topics
+      t.integer :parent_id
+      t.integer :family_id
 
       t.timestamps null: false
 

@@ -15,7 +15,10 @@ class ProjectShowContainer extends Component {
       step: [],
       activeMember: '',
       fetchType: '',
-      element: ''
+      element: '',
+      offSpringVersion_id: '',
+      offSpringParent_id: '',
+      family_id: ''
     }
     this.changeElement=this.changeElement.bind(this)
     this.methodUpdate=this.methodUpdate.bind(this)
