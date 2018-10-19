@@ -113,6 +113,7 @@ class ProjectShowContainer extends Component {
     if (viewer === author) {
       ownership = true;
     }
+    let project = this.state.project;
     let projectMaterials = this.state.material;
     let projectEquipment = this.state.equipment;
     let projectSteps = this.state.step;
@@ -123,16 +124,18 @@ class ProjectShowContainer extends Component {
           <div className="project-nucleus notestyle rounders">
             <ProjectShowTile
               ownership={ownership}
-              key={this.state.project.id}
-              id={this.state.project.id}
-              name={this.state.project.name}
-              image={this.state.project.photo_url}
-              iteration={this.state.project.version_id}
-              desc={this.state.project.description}
-              budget={this.state.project.budget}
-              topics={this.state.project.topics}
-              user={this.state.project.handle}
-              userNum={this.state.project.user_id}
+              key={project.id}
+              id={project.id}
+              name={project.name}
+              image={project.photo_url}
+              iteration={project.version_id}
+              desc={project.description}
+              budget={project.budget}
+              topics={project.topics}
+              user={project.handle}
+              userNum={project.user_id}
+              fam={project.family_id}
+              parent={project.parent_id}
             />
           </div>
           <div className="cell small-12 medium-6 large-4">

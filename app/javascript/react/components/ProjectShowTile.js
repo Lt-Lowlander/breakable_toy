@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import OffSpringFormComponent from './OffSpringFormComponent';
 
 let projectEdits;
 let ProjectShowTile = (props) => {
@@ -33,11 +34,13 @@ let ProjectShowTile = (props) => {
               </div>
             </div>
             <div className="side-right">
-              <div className="next-iteration good-times button rounders">
-                <b>
-                  Build a new version
-                </b>
-              </div>
+              <OffSpringFormComponent
+                handle={props.user}
+                userId={props.userNum}
+                family={props.fam}
+                version={props.iteration + 1}
+                parent={props.parent}
+              />
             </div>
           </div>
         </div>

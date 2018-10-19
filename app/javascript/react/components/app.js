@@ -10,9 +10,9 @@ import MemberShowContainer from '../containers/MemberShowContainer';
 
 class App extends Component {
   constructor(props){
-    super(props)
+    super(props);
     this.state = {
-    }
+    };
   }
 
   render() {
@@ -24,25 +24,17 @@ class App extends Component {
         $('#' + flashContainerId).remove();
       }
       setTimeout(removeFlashMessages, flashDurationInSeconds * 1000);
-    })
+    });
 
     // This gets called any time a user enters the Konami Code
     let secretOp = () => {
       window.location = '/white_rabbit';
-    }
+    };
     const whiteRabbit = new Konami(secretOp);
 
     return(
       <Router history={browserHistory}>
         <Route path='/'>
-
-          <ul className="title-area good-times top-bar">
-            <li class="name">
-              <h6>
-                <a className="home" href="/">HOME</a>
-              </h6>
-            </li>
-          </ul>
 
           <IndexRoute component={ProjectIndexContainer} />
           <Route path='/projects' component={ProjectIndexContainer} />

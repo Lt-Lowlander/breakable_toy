@@ -1,12 +1,4 @@
 class Api::V1::ProjectsController < ApiController
-  before_action :authorize_user, only: [:create, :edit, :update, :destroy]
-
-  def authorize_user
-    if !user_signed_in? || !current_user.admin?
-      raise ActionController::RoutingError.new("Not Found")
-    end
-  end
-
 
   def index
     if current_user == nil
@@ -52,6 +44,9 @@ class Api::V1::ProjectsController < ApiController
 
   def create
     project = Project.new(user_params)
+    if project.parent_id == ''
+      project.family_id = project.id
+    end
     if project.save
       render json: project
     else
@@ -71,7 +66,7 @@ class Api::V1::ProjectsController < ApiController
 
   private
   def project_params
-    params.permit(:name, :description, :photo_url, :budget)
+    params.permit(:name, :description, :photo_url, :budget, :version_id, :parent_id, :family_id)
   end
 
   def user_params
