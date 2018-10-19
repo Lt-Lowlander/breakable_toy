@@ -39,7 +39,7 @@ let ProjectShowTile = (props) => {
                 userId={props.userNum}
                 family={props.fam}
                 version={props.iteration + 1}
-                parent={props.parent}
+                parent={props.id}
               />
             </div>
           </div>
