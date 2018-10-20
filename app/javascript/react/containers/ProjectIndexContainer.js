@@ -21,8 +21,7 @@ class ProjectIndexContainer extends Component {
     let newProject = new FormData();
     newProject.append("name", "fill me in!");
     newProject.append("description", "fill me in!");
-    newProject.append("photo_url", "fill me in!");
-    newProject.append("budget", "fill me in!");
+    newProject.append("photo_url", "https://i.imgur.com/I54DjMs.jpg");
     this.postNewProject(newProject);
   }
 
@@ -107,12 +106,9 @@ class ProjectIndexContainer extends Component {
       member_settings=
       <div className="cell">
         <form onSubmit={this.handleSubmit}>
-          <button type="submit" value="submit">
-            <div className="add-project-button good-times notestyle">
+          <button className="add-project-button good-times notestyle" type="submit" value="submit">
               Add a Project
-            </div>
           </button>
-
         </form>
       </div>
     }

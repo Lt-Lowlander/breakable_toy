@@ -18,10 +18,9 @@ class OffSpringFormComponent extends Component {
     newProject.append("handle", this.props.handle);
     newProject.append("version_id", this.props.version);
     newProject.append("family_id", this.props.family);
-    newProject.append("name", "fill me in!");
-    newProject.append("description", "fill me in!");
-    newProject.append("photo_url", "fill me in!");
-    newProject.append("budget", "fill me in!");
+    newProject.append("name", "what's my name?");
+    newProject.append("description", "How would you describe me?");
+    newProject.append("photo_url", "https://i.imgur.com/I54DjMs.jpg");
     this.postNewProject(newProject);
   }
 
@@ -50,10 +49,8 @@ class OffSpringFormComponent extends Component {
     return(
       <div>
         <form className="spawn-sequel" onSubmit={this.handleSubmit}>
-          <button className="next-iteration good-times button rounders" type="submit" value="submit">
-            <b>
-              Build a new version
-            </b>
+          <button className="next-iteration button good-times rounders" type="submit" value="submit">
+            Build a new version
           </button>
         </form>
       </div>

@@ -10,7 +10,6 @@ class EditProjectFormContainer extends Component {
       name: "",
       description: "",
       photo_url: "",
-      budget: "",
       familyId: "",
       errors: {}
     }
@@ -32,7 +31,6 @@ class EditProjectFormContainer extends Component {
       name: "",
       description: "",
       photo_url: "",
-      budget: "",
       familyId: "",
       errors: {}
     });
@@ -45,7 +43,6 @@ class EditProjectFormContainer extends Component {
       editedProject.append("name", this.state.name);
       editedProject.append("description", this.state.description);
       editedProject.append("photo_url", this.state.photo_url);
-      editedProject.append("budget", this.state.budget);
       editedProject.append("family_id", this.state.familyId);
       this.sendEditedProject(editedProject);
       this.handleClear();
@@ -99,12 +96,10 @@ class EditProjectFormContainer extends Component {
           idNum: body.project.id,
           name: body.project.name,
           description: body.project.description,
-          photo_url: body.project.photo_url,
-          budget: body.project.budget
+          photo_url: body.project.photo_url
         })
       })
     }
-
   render(){
     return(
       <div className="grid-x grid-margin-x align-center">
@@ -133,13 +128,6 @@ class EditProjectFormContainer extends Component {
                 value={this.state.photo_url}
                 handleChange={this.handleChange}
                 />
-              <ProjectInputTile
-                label="Overall Budget"
-                name="budget"
-                type="text"
-                value={this.state.budget}
-                handleChange={this.handleChange}
-                />
               <button type="submit" className="button" value="Submit">
                 Update Project
               </button>
@@ -147,7 +135,6 @@ class EditProjectFormContainer extends Component {
           </div>
         </div>
       </div>
-
     )
   }
 }
