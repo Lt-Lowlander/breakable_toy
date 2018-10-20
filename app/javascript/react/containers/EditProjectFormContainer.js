@@ -10,7 +10,6 @@ class EditProjectFormContainer extends Component {
       name: "",
       description: "",
       photo_url: "",
-      budget: "",
       familyId: "",
       errors: {}
     }
@@ -32,7 +31,6 @@ class EditProjectFormContainer extends Component {
       name: "",
       description: "",
       photo_url: "",
-      budget: "",
       familyId: "",
       errors: {}
     });
@@ -45,7 +43,6 @@ class EditProjectFormContainer extends Component {
       editedProject.append("name", this.state.name);
       editedProject.append("description", this.state.description);
       editedProject.append("photo_url", this.state.photo_url);
-      editedProject.append("budget", this.state.budget);
       editedProject.append("family_id", this.state.familyId);
       this.sendEditedProject(editedProject);
       this.handleClear();
@@ -99,55 +96,45 @@ class EditProjectFormContainer extends Component {
           idNum: body.project.id,
           name: body.project.name,
           description: body.project.description,
-          photo_url: body.project.photo_url,
-          budget: body.project.budget
+          photo_url: body.project.photo_url
         })
       })
     }
-
   render(){
     return(
       <div className="grid-x grid-margin-x align-center">
         <div className="cell small-12 med-8  large-6">
-          <div className="factor notestyle rounders">
-            <p></p>
+          <div className="factor-entries notestyle rounders">
+            <p className="step-show-title">Edits & Updates</p>
             <form className="new-project-form" onSubmit={this.handleSubmit}>
               <ProjectInputTile
-                label="Project Name"
+                label="Name"
                 name="name"
                 type="text"
                 value={this.state.name}
                 handleChange={this.handleChange}
                 />
               <ProjectInputTile
-                label="Project Description"
+                label="Description"
                 name="description"
                 type="text"
                 value={this.state.description}
                 handleChange={this.handleChange}
                 />
               <ProjectInputTile
-                label="Project Cover Photo"
+                label="Cover Photo"
                 name="photo_url"
                 type="text"
                 value={this.state.photo_url}
                 handleChange={this.handleChange}
                 />
-              <ProjectInputTile
-                label="Overall Budget"
-                name="budget"
-                type="text"
-                value={this.state.budget}
-                handleChange={this.handleChange}
-                />
               <button type="submit" className="button" value="Submit">
-                Update Project
+                Enter Changes
               </button>
             </form>
           </div>
         </div>
       </div>
-
     )
   }
 }
