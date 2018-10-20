@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     // This is the flash message that appears when someone logs in or out
     $(function(){
-      var flashDurationInSeconds = 2;
+      var flashDurationInSeconds = 1;
       var flashContainerId = 'flash-messages';
       function removeFlashMessages() {
         $('#' + flashContainerId).remove();
@@ -39,7 +39,7 @@ class App extends Component {
 
           <IndexRoute component={ProjectIndexContainer} />
           <Route path='/projects' component={ProjectIndexContainer} />
-          <Route path='/projects/new' component={ProjectFormContainer} />
+          // <Route path='/projects/new' component={ProjectFormContainer} />
           <Route path='/projects/:id' component={ProjectShowContainer} />
           <Route path='/projects/:id/edit' component={EditProjectFormContainer} />
           <Route path='/users' component={MemberIndexContainer} />

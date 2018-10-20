@@ -9,6 +9,7 @@ class ProjectIndexContainer extends Component {
     super(props)
     this.state = {
       projectsArray: [],
+      viewing_member: '',
       member: false,
       admin: false
     }
@@ -61,8 +62,10 @@ class ProjectIndexContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      debugger
       this.setState({
           projectsArray: body.projects,
+          viewing_member: body.viewing_member,
           member: body.member,
           admin: body.admin
       })

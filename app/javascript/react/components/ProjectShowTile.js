@@ -6,56 +6,54 @@ let projectEdits;
 let ProjectShowTile = (props) => {
   if (props.ownership) {
     projectEdits =
-    <h1>
-      <Link to={`/projects/${props.id}/edit`}>Edit Project</Link>
-    </h1>
+    <Link to={`/projects/${props.id}/edit`}>
+      <i className="far fa-edit edit-icon"></i>
+    </Link>
   }
   return(
     <div className="project-show-tile">
-        {projectEdits}
-        <div className="main-image">
-          <img src={props.image} alt={props.name} className="project-show-pic"/>
-          <div className="project-show-info">
-            <div className="cell side-left">
+      <div className="main-image">
+        <img src={props.image} alt={props.name} className="project-show-pic"/>
+        <div className="project-show-info">
+          <div className="cell side-left">
+            <div className="title-group">
               <div className="project-show-title">
                 <b>{props.name}</b>
               </div>
-              <div className="ownership-group">
-                <span className="project-show-version">
-                  <b>Mark {props.iteration}</b>
-                </span>
-                <span>  </span>
-                <span className="project-show-inventor">
-                  by
-                  <Link to={`/users/${props.userNum}`} className="user-title-path">
-                    <b>{props.user}</b>
-                  </Link>
-                </span>
+              <div className="">
+                {projectEdits}
               </div>
             </div>
-            <div className="side-right">
-              <OffSpringFormComponent
-                handle={props.user}
-                userId={props.userNum}
-                family={props.fam}
-                version={props.iteration + 1}
-                parent={props.id}
-              />
+            <div className="ownership-group">
+              <div className="project-show-version">
+                Mark {props.iteration}
+              </div>
+              <div className="project-show-inventor">
+                by
+                <Link to={`/users/${props.userNum}`} className="user-title-path">
+                  <b>{props.user}</b>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="desc-budg">
-          <div className="smaller-div">
-            <b>
-              Description:
-            </b> {props.desc}
-            <div className="project-show-budget">
-              <b>
-                Budget:
-              </b> {props.budget}
-            </div>
+          <div className="side-right">
+            <OffSpringFormComponent
+              handle={props.user}
+              userId={props.userNum}
+              family={props.fam}
+              version={props.iteration + 1}
+              parent={props.id}
+            />
           </div>
         </div>
+      </div>
+      <div className="descr">
+        <div className="smaller-div">
+          <b>
+            Description:
+          </b> {props.desc}
+        </div>
+      </div>
     </div>
   )
 }

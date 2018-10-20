@@ -104,32 +104,32 @@ class EditProjectFormContainer extends Component {
     return(
       <div className="grid-x grid-margin-x align-center">
         <div className="cell small-12 med-8  large-6">
-          <div className="factor notestyle rounders">
-            <p></p>
+          <div className="factor-entries notestyle rounders">
+            <p className="step-show-title">Edits & Updates</p>
             <form className="new-project-form" onSubmit={this.handleSubmit}>
               <ProjectInputTile
-                label="Project Name"
+                label="Name"
                 name="name"
                 type="text"
                 value={this.state.name}
                 handleChange={this.handleChange}
                 />
               <ProjectInputTile
-                label="Project Description"
+                label="Description"
                 name="description"
                 type="text"
                 value={this.state.description}
                 handleChange={this.handleChange}
                 />
               <ProjectInputTile
-                label="Project Cover Photo"
+                label="Cover Photo"
                 name="photo_url"
                 type="text"
                 value={this.state.photo_url}
                 handleChange={this.handleChange}
                 />
               <button type="submit" className="button" value="Submit">
-                Update Project
+                Enter Changes
               </button>
             </form>
           </div>
