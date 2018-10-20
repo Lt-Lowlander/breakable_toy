@@ -6,15 +6,14 @@ class EditProjectFormContainer extends Component {
   constructor(props){
     super(props)
     this.state = {
-      name:"",
-      description:"",
-      photo_url:"",
-      budget:"",
+      idNum: "",
+      name: "",
+      description: "",
+      photo_url: "",
+      budget: "",
       familyId: "",
-      projectId: "",
       errors: {}
     }
-
     this.handleChange = this.handleChange.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,12 +28,12 @@ class EditProjectFormContainer extends Component {
 
   handleClear(){
     this.setState({
-      name:"",
-      description:"",
-      photo_url:"",
-      budget:"",
+      idNum: "",
+      name: "",
+      description: "",
+      photo_url: "",
+      budget: "",
       familyId: "",
-      projectId: "",
       errors: {}
     });
   }
@@ -47,11 +46,6 @@ class EditProjectFormContainer extends Component {
       editedProject.append("description", this.state.description);
       editedProject.append("photo_url", this.state.photo_url);
       editedProject.append("budget", this.state.budget);
-      if (this.state.familyId == 0) {
-        this.setState({
-          familyId: this.state.projectId
-        })
-      }
       editedProject.append("family_id", this.state.familyId);
       this.sendEditedProject(editedProject);
       this.handleClear();
@@ -59,13 +53,12 @@ class EditProjectFormContainer extends Component {
   }
 
   sendEditedProject(infoPayload) {
-    fetch(`/api/v1/projects/${this.state.projectId}`, {
+    fetch(`/api/v1/projects/${this.state.idNum}`, {
       credentials: 'same-origin',
       method: 'PATCH',
       body: infoPayload
     })
       .then(response => {
-debugger
         if(response.ok){
           return response
         } else {
@@ -93,17 +86,23 @@ debugger
       })
       .then(response => response.json())
       .then(body => {
-debugger
+        if (body.project.family_id == 0) {
+          this.setState({
+            familyId: body.project.id
+          })
+        } else {
+          this.setState({
+            familyId: body.project.family_id
+          })
+        }
         this.setState({
+          idNum: body.project.id,
           name: body.project.name,
           description: body.project.description,
           photo_url: body.project.photo_url,
-          budget: body.project.budget,
-          familyId: body.project.family_id,
-          projectId: body.project.id
+          budget: body.project.budget
         })
       })
-      .catch(error => console.error(`Error in project show mount fetch: ${error.message}`));
     }
 
   render(){
