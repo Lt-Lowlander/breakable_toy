@@ -9,7 +9,7 @@ class ProjectIndexContainer extends Component {
     super(props)
     this.state = {
       projectsArray: [],
-      viewing_member: '',
+      activeMember: '',
       member: false,
       admin: false
     }
@@ -62,10 +62,9 @@ class ProjectIndexContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       this.setState({
           projectsArray: body.projects,
-          viewing_member: body.viewing_member,
+          activeMember: body.viewing_member,
           member: body.member,
           admin: body.admin
       })
@@ -74,39 +73,28 @@ class ProjectIndexContainer extends Component {
   }
 
   render(){
-    let member_settings;
-    let admin_settings;
+    let button_settings;
+    const admin = this.state.admin;
+    const viewer = this.state.activeMember;
     const foundProjects = this.state.projectsArray;
     let projects = foundProjects.map(project => {
-      if(this.state.admin){
-        admin_settings=
-        <div>
-          <Link to={`projects/${project.id}/edit`}>
-            <i className="far fa-edit"></i>
-          </Link>
-          <span>  |  </span>
-          <Link to={`/projects/${project.id}`} onClick={this.confirm}>
-            <i className="far fa-trash-alt"></i>
-          </Link>
-        </div>
-      }
       return(
         <div className="project-tile-with-owner notestyle">
           <ProjectTile
             key={project.id}
             id={project.id}
+            viewer={viewer}
+            admin={admin}
+            author={project.user_id}
             name={project.name}
             image={project.photo_url}
             iteration={project.version_id}
-            />
-          <div className="admin-tile-settings">
-            {admin_settings}
-          </div>
+          />
         </div>
       )
     })
     if (this.state.member) {
-      member_settings=
+      button_settings=
       <div className="cell">
         <form onSubmit={this.handleSubmit}>
           <button className="add-project-button good-times notestyle" type="submit" value="submit">
@@ -118,7 +106,7 @@ class ProjectIndexContainer extends Component {
     return(
       <div className="index-page-overview">
         <div className="prokaryote">
-          {member_settings}
+          {button_settings}
           <div className="grid-x grid-margin-x align-spaced">
             {projects}
           </div>
