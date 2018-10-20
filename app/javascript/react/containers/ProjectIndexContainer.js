@@ -43,8 +43,8 @@ class ProjectIndexContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        browserHistory.push(`/projects/${body.id}/edit`)})
-        .catch(error => console.error(`Error in fetch: ${error.message}`));
+        browserHistory.push(`/projects/${body.id}/edit`)
+      });
     }
 
   componentDidMount(){
