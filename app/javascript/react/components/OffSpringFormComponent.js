@@ -46,13 +46,18 @@ class OffSpringFormComponent extends Component {
     }
 
   render(){
-    return(
-      <div>
+    let branchButton;
+    if (this.props.visitor != '') {
+      branchButton =
         <form className="spawn-sequel" onSubmit={this.handleSubmit}>
           <button className="next-iteration button good-times rounders" type="submit" value="submit">
             Build a new version
           </button>
         </form>
+    }
+    return(
+      <div>
+        {branchButton}
       </div>
     )
   }
