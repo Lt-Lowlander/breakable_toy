@@ -17,6 +17,7 @@ class ProjectShowContainer extends Component {
       fetchType: '',
       element: ''
     }
+    this.romanize=this.romanize.bind(this)
     this.changeElement=this.changeElement.bind(this)
     this.methodUpdate=this.methodUpdate.bind(this)
     this.clearInputs=this.clearInputs.bind(this)
@@ -81,6 +82,19 @@ class ProjectShowContainer extends Component {
     .catch(error => console.error(`Error in project elementChange fetch: ${error.message}`));
   }
 
+  romanize(num) {
+    let i;
+    let lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},
+        roman = '';
+    for ( i in lookup ) {
+      while ( num >= lookup[i] ) {
+        roman += i;
+        num -= lookup[i];
+      }
+    }
+    return roman;
+  }
+
     // Grab the associated project Info
   componentDidMount(){
     fetch(`/api/v1/projects/${this.props.params.id}`)
@@ -118,6 +132,8 @@ class ProjectShowContainer extends Component {
     let projectEquipment = this.state.equipment;
     let projectSteps = this.state.step;
 
+    let numeral = this.romanize(this.state.project.version_id);
+
     return(
       <div className="prokaryote">
         <div className="grid-x grid-margin-x align-spaced">
@@ -129,6 +145,7 @@ class ProjectShowContainer extends Component {
               name={project.name}
               image={project.photo_url}
               iteration={project.version_id}
+              numeral={numeral}
               desc={project.description}
               budget={project.budget}
               topics={project.topics}
