@@ -13,8 +13,42 @@ class ProjectIndexContainer extends Component {
       member: false,
       admin: false
     }
+    this.confirm = this.confirm.bind(this);
+    this.destroyProject = this.destroyProject.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.postNewProject = this.postNewProject.bind(this);
+  }
+
+  confirm(event){
+    if(confirm("Are you sure you want to destroy this project?")) {
+      this.destroyProject(event);
+    } else {
+      event.preventDefault();
+    }
+  }
+
+  destroyProject(event){
+    event.preventDefault();
+    fetch(`/api/v1/${event.currentTarget.attributes.href.value}`, {
+    credentials: 'same-origin',
+    method: 'DELETE'
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState ({
+        projectsArray: body
+      })
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   handleSubmit(event){
@@ -89,6 +123,7 @@ class ProjectIndexContainer extends Component {
             name={project.name}
             image={project.photo_url}
             iteration={project.version_id}
+            confirmDelete={this.confirm}
           />
         </div>
       )
