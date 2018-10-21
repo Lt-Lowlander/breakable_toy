@@ -10,9 +10,7 @@ const ProjectTile = (props) => {
         <i className="far fa-edit"></i>
       </Link>
       <span>  |  </span>
-      <Link to={`/users/${props.author}`}>
-        <i className="far fa-trash-alt"></i>
-      </Link>
+        <i className="far fa-trash-alt" href={`projects/${props.id}`} onClick={props.confirmDelete}></i>
     </div>
   } else if (props.viewer != props.author) {
     revisionPermission = ""

@@ -36,7 +36,6 @@ class Api::V1::ProjectsController < ApiController
     end
   end
 
-
   def show
     if current_user == nil
       member = ""
@@ -72,6 +71,14 @@ class Api::V1::ProjectsController < ApiController
     end
   end
 
+  def destroy
+    project_death = Project.where(id: params[:id])
+    if project_death.destroy(hacksaw)
+      project = Project.all.order(created_at: :desc)
+      render json: project
+    end
+  end
+
   private
   def project_params
     params.permit(:name, :description, :photo_url, :budget, :version_id, :parent_id, :family_id)
@@ -79,5 +86,9 @@ class Api::V1::ProjectsController < ApiController
 
   def user_params
     project_params.merge(user_id: current_user.id, handle: current_user.handle)
+  end
+
+  def hacksaw
+    params.require(:id)
   end
 end
