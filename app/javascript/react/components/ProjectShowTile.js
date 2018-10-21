@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import OffSpringFormComponent from './OffSpringFormComponent';
 
 let projectEdits;
+let numeral;
 let ProjectShowTile = (props) => {
   if (props.ownership) {
     projectEdits =
@@ -10,6 +11,7 @@ let ProjectShowTile = (props) => {
       <i className="far fa-edit edit-icon"></i>
     </Link>
   }
+
   return(
     <div className="project-show-tile">
       <div className="main-image">
@@ -26,7 +28,7 @@ let ProjectShowTile = (props) => {
             </div>
             <div className="ownership-group">
               <div className="project-show-version">
-                Mark {props.iteration}
+                Mark {props.numeral}
               </div>
               <div className="project-show-inventor">
                 by
