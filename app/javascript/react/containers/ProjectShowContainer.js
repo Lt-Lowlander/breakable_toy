@@ -136,6 +136,7 @@ class ProjectShowContainer extends Component {
               userNum={project.user_id}
               fam={project.family_id}
               parent={project.parent_id}
+              viewer={this.state.activeMember}
             />
           </div>
           <div className="cell small-12 medium-6 large-4">

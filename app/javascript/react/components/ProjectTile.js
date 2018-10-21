@@ -5,7 +5,7 @@ let revisionPermission;
 const ProjectTile = (props) => {
   if (props.viewer == props.author || props.admin){
     revisionPermission =
-    <div>
+    <div className="revision-permission">
       <Link to={`/projects/${props.id}/edit`}>
         <i className="far fa-edit"></i>
       </Link>
