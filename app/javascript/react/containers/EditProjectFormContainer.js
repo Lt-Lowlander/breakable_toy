@@ -43,7 +43,7 @@ class EditProjectFormContainer extends Component {
       editedProject.append("name", this.state.name);
       editedProject.append("description", this.state.description);
       editedProject.append("photo_url", this.state.photo_url);
-      editedProject.append("family_id", this.state.familyId);
+      editedProject.append("fam_id", this.state.familyId);
       this.sendEditedProject(editedProject);
       this.handleClear();
     }
@@ -83,13 +83,13 @@ class EditProjectFormContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        if (body.project.family_id == 0) {
+        if (body.project.fam_id == 0) {
           this.setState({
             familyId: body.project.id
           })
         } else {
           this.setState({
-            familyId: body.project.family_id
+            familyId: body.project.fam_id
           })
         }
         this.setState({

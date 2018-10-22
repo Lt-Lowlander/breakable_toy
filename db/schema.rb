@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_01_212227) do
+ActiveRecord::Schema.define(version: 2018_10_22_200604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 2018_10_01_212227) do
     t.index ["user_id"], name: "index_equipment_in_projects_on_user_id"
   end
 
+  create_table "fams", force: :cascade do |t|
+    t.integer "famNum"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "materials", force: :cascade do |t|
     t.bigint "project_id"
     t.string "material_name", null: false
@@ -42,6 +48,7 @@ ActiveRecord::Schema.define(version: 2018_10_01_212227) do
 
   create_table "projects", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "fam_id", default: 0, null: false
     t.string "name", null: false
     t.text "description", null: false
     t.string "photo_url", null: false
@@ -50,9 +57,9 @@ ActiveRecord::Schema.define(version: 2018_10_01_212227) do
     t.string "budget"
     t.string "topics"
     t.integer "parent_id"
-    t.integer "family_id", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["fam_id"], name: "index_projects_on_fam_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 

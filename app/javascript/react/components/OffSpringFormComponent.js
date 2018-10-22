@@ -17,7 +17,7 @@ class OffSpringFormComponent extends Component {
     newProject.append("user_id", this.props.userId);
     newProject.append("handle", this.props.handle);
     newProject.append("version_id", this.props.version);
-    newProject.append("family_id", this.props.family);
+    newProject.append("fam_id", this.props.family);
     newProject.append("name", "what's my name?");
     newProject.append("description", "How would you describe me?");
     newProject.append("photo_url", "https://i.imgur.com/I54DjMs.jpg");
