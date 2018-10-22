@@ -82,6 +82,7 @@ class ProjectShowContainer extends Component {
     .catch(error => console.error(`Error in project elementChange fetch: ${error.message}`));
   }
 
+// this outputs the project version number in Roman Numerals
   romanize(num) {
     let i;
     let lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},
@@ -151,7 +152,7 @@ class ProjectShowContainer extends Component {
               topics={project.topics}
               user={project.handle}
               userNum={project.user_id}
-              fam={project.family_id}
+              fam={project.fam_id}
               parent={project.parent_id}
               viewer={this.state.activeMember}
             />

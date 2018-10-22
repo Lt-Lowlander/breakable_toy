@@ -83,20 +83,12 @@ class EditProjectFormContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        if (body.project.fam_id == 0) {
-          this.setState({
-            familyId: body.project.id
-          })
-        } else {
-          this.setState({
-            familyId: body.project.fam_id
-          })
-        }
         this.setState({
           idNum: body.project.id,
           name: body.project.name,
           description: body.project.description,
-          photo_url: body.project.photo_url
+          photo_url: body.project.photo_url,
+          familyId: body.project.fam_id
         })
       })
     }
