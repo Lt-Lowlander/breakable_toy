@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :projects
   resources :users, only: [:index, :show, :update]
+  resources :families
   resources :white_rabbit, only: [:index]
 
   namespace :api do
@@ -17,6 +18,9 @@ Rails.application.routes.draw do
         resources :equipment
         resources :materials
         resources :steps
+      end
+      resources :families do
+        resources :projects, only: [:index]
       end
     end
   end
