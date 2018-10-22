@@ -8,8 +8,11 @@ class Api::V1::EquipmentController < ApiController
   # end
 
   def index
-    equipment = Equipment.where(project_id: params[:project_id]).order(id: :asc)
-    render json: equipment
+binding.pry
+  # if controller_path == "api/v1/equipment"
+  # end
+    machines = Equipment.all.order(id: :asc)
+    render json: machines
   end
 
   def show

@@ -8,8 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :equipment do
-      end
+      resources :equipment
 
       resources :fams do
         resources :projects, only: [:index]
