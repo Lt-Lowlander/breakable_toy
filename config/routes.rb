@@ -18,6 +18,9 @@ Rails.application.routes.draw do
         resources :materials
         resources :steps
       end
+      resources :fams do
+        resources :projects, only: [:index]
+      end
     end
   end
 

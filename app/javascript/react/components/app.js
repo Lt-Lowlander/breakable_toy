@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Konami from './KonamiCode';
 import SecretComponent from './SecretComponent';
-import ProjectIndexContainer from '../containers/ProjectIndexContainer';
-import ProjectShowContainer from '../containers/ProjectShowContainer';
-import ProjectFormContainer from '../containers/ProjectFormContainer';
 import EditProjectFormContainer from '../containers/EditProjectFormContainer';
 import MemberIndexContainer from '../containers/MemberIndexContainer';
 import MemberShowContainer from '../containers/MemberShowContainer';
+import ProjectIndexContainer from '../containers/ProjectIndexContainer';
+import ProjectShowContainer from '../containers/ProjectShowContainer';
+import ProjectFormContainer from '../containers/ProjectFormContainer';
 
 class App extends Component {
   constructor(props){
@@ -36,7 +36,6 @@ class App extends Component {
     return(
       <Router history={browserHistory}>
         <Route path='/'>
-
           <IndexRoute component={ProjectIndexContainer} />
           <Route path='/projects' component={ProjectIndexContainer} />
           // <Route path='/projects/new' component={ProjectFormContainer} />
@@ -45,7 +44,6 @@ class App extends Component {
           <Route path='/users' component={MemberIndexContainer} />
           <Route path='/users/:id' component={MemberShowContainer} />
           <Route path='/white_rabbit' component={SecretComponent} />
-
         </Route>
       </Router>
     )

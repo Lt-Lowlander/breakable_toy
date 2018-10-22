@@ -16,6 +16,7 @@ class ProjectIndexContainer extends Component {
     this.confirm = this.confirm.bind(this);
     this.destroyProject = this.destroyProject.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.newLitFam = this.newLitFam.bind(this);
     this.postNewProject = this.postNewProject.bind(this);
   }
 
@@ -54,13 +55,34 @@ class ProjectIndexContainer extends Component {
   handleSubmit(event){
     event.preventDefault();
     let newProject = new FormData();
-    newProject.append("name", "fill me in!");
-    newProject.append("description", "fill me in!");
+    newProject.append("name", "What's my name?");
+    newProject.append("description", "How would you describe me?");
     newProject.append("photo_url", "https://i.imgur.com/I54DjMs.jpg");
-    this.postNewProject(newProject);
+    this.newLitFam(newProject);
+  }
+  newLitFam(relevantData) {
+    fetch('/api/v1/fams', {
+      credentials: 'same-origin',
+      method: 'POST'
+    })
+    .then(response => {
+      if(response.ok){
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+           error = new Error(errorMessage)
+       throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      relevantData.append("fam_id", `${body.id}`)
+      this.postNewProject(relevantData)
+    });
   }
 
-  postNewProject(infoPayload) {
+
+  postNewProject(infoPayload, crest) {
     fetch('/api/v1/projects', {
       credentials: 'same-origin',
       method: 'POST',
