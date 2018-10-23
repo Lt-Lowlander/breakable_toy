@@ -22,9 +22,7 @@ class Api::V1::FamsController < ApiController
     end
   end
 
-
   private
-
   def fam_data
     params.permit(:id)
   end

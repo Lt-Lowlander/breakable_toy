@@ -8,18 +8,21 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:index, :show, :update] do
-        resources :projects, only: [:index, :show]
-        resources :equipment_in_projects, only: [:index, :show]
-        resources :equipment, only: [:index]
+      resources :equipment
+      resources :equipment_in_projects, only: [:index, :show]
+
+      resources :fams do
+        resources :projects, only: [:index]
       end
       resources :projects do
         resources :equipment
         resources :materials
         resources :steps
       end
-      resources :fams do
-        resources :projects, only: [:index]
+      resources :users, only: [:index, :show, :update] do
+        resources :projects, only: [:index, :show]
+        resources :equipment_in_projects, only: [:index, :show]
+        resources :equipment, only: [:index]
       end
     end
   end
