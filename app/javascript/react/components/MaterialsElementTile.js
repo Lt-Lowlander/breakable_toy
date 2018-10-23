@@ -16,17 +16,6 @@ class MaterialsElementTile extends Component {
     this.onReturnClick=this.onReturnClick.bind(this)
   }
 
-  onEditClick(event) {
-    event.preventDefault();
-    this.setState({
-      sitRep: 'needUpdate',
-      elementEdit: `${this.props.gizmo}`
-    })
-    const elem = 'material'
-    const input = 'PATCH'
-    this.props.methodUpdate(input, elem)
-  }
-
   onDeleteClick(event) {
     event.preventDefault();
     this.setState({
@@ -34,6 +23,18 @@ class MaterialsElementTile extends Component {
     })
     const elem = 'material'
     const input = 'DELETE'
+    this.props.methodUpdate(input, elem)
+  }
+
+  onEditClick(event) {
+    event.preventDefault();
+    this.props.reset();
+    this.setState({
+      sitRep: 'needUpdate',
+      elementEdit: `${this.props.gizmo}`
+    })
+    const elem = 'material'
+    const input = 'PATCH'
     this.props.methodUpdate(input, elem)
   }
 
@@ -99,7 +100,7 @@ class MaterialsElementTile extends Component {
         </li>
     } else if (this.state.sitRep == 'needUpdate') {
       materialsStatus =
-      <li className="edit-field-and-button">
+      <li className="edit-field-and-button" onBlur={this.onReturnClick}>
         <form onSubmit={this.handleSubmit}>
           <div className="element-field">
             <input

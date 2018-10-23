@@ -11,10 +11,12 @@ class MaterialsFormContainer extends Component {
     this.handleSubmit=this.handleSubmit.bind(this)
     this.handleClear=this.handleClear.bind(this)
     this.fetchScout=this.fetchScout.bind(this)
+    this.blankOut=this.blankOut.bind(this)
   }
 
   fetchScout(event){
-    event.preventDefault()
+    event.preventDefault();
+    this.props.reset();
     const elem = 'material'
     const input = 'POST'
     this.props.methodUpdate(input, elem)
@@ -45,9 +47,15 @@ class MaterialsFormContainer extends Component {
     })
   }
 
+  blankOut(event){
+    event.preventDefault();
+    this.props.reset();
+    this.handleClear();
+  }
+
   render() {
     return(
-      <div className="materials-input-section" onFocus={this.fetchScout}>
+      <div className="materials-input-section" onFocus={this.fetchScout} onBlur={this.blankOut}>
         <form className="new-materials-form" onSubmit={this.handleSubmit}>
           <div className="field-and-button">
             <div className="element-field">

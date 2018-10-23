@@ -21,6 +21,7 @@ class MaterialsIndexContainer extends Component {
             changeElement={this.props.changeElement}
             methodUpdate={this.props.methodUpdate}
             projectId={this.props.projectId}
+            reset={this.props.reset}
             />
         )
       } else {
@@ -44,6 +45,7 @@ class MaterialsIndexContainer extends Component {
               changeElement={this.props.changeElement}
               methodUpdate={this.props.methodUpdate}
               projectId={this.props.projectId}
+              reset={this.props.reset}
               />
           </div>
         </div>
