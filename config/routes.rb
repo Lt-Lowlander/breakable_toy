@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :equipment
+      resources :equipment_in_projects, only: [:index, :show]
 
       resources :fams do
         resources :projects, only: [:index]
