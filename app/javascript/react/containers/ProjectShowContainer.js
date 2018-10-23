@@ -17,10 +17,10 @@ class ProjectShowContainer extends Component {
       fetchType: '',
       element: ''
     }
-    this.romanize=this.romanize.bind(this)
     this.changeElement=this.changeElement.bind(this)
     this.methodUpdate=this.methodUpdate.bind(this)
     this.clearInputs=this.clearInputs.bind(this)
+    this.romanize=this.romanize.bind(this)
   }
 
   methodUpdate(input, elem){
@@ -169,6 +169,7 @@ class ProjectShowContainer extends Component {
                   projectId={this.state.project.id}
                   changeElement={this.changeElement}
                   methodUpdate={this.methodUpdate}
+                  reset={this.clearInputs}
                   />
               </div>
               <div className="equipment-list">
@@ -181,6 +182,7 @@ class ProjectShowContainer extends Component {
                   projectId={this.state.project.id}
                   changeElement={this.changeElement}
                   methodUpdate={this.methodUpdate}
+                  reset={this.clearInputs}
                   />
               </div>
           </div>
@@ -196,6 +198,7 @@ class ProjectShowContainer extends Component {
                 projectId={this.state.project.id}
                 changeElement={this.changeElement}
                 methodUpdate={this.methodUpdate}
+                reset={this.clearInputs}
                 />
             </div>
           </div>

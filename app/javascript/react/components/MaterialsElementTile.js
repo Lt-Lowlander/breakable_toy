@@ -14,26 +14,45 @@ class MaterialsElementTile extends Component {
     this.onDeleteClick=this.onDeleteClick.bind(this)
     this.onEditClick=this.onEditClick.bind(this)
     this.onReturnClick=this.onReturnClick.bind(this)
+    this.tileEdits=this.tileEdits.bind(this)
+    this.tileDeletions=this.tileDeletions.bind(this)
+    this.containerEdits=this.containerEdits.bind(this)
+  }
+
+  onDeleteClick(event) {
+    event.preventDefault();
+    this.containerEdits();
+    this.tileDeletions();
+  }
+
+  tileDeletions() {
+    this.setState({
+      sitRep: 'youMayFireWhenReady'
+    })
+    const elem = 'material'
+    const input = 'DELETE'
+    this.props.methodUpdate(input, elem)
   }
 
   onEditClick(event) {
     event.preventDefault();
+    this.containerEdits();
+    this.tileEdits();
+  }
+
+  containerEdits(){
+    let sprocket = this.props.gizmo;
+    this.props.reset();
+    this.props.gizmoCharge(sprocket);
+  }
+
+  tileEdits(){
     this.setState({
       sitRep: 'needUpdate',
       elementEdit: `${this.props.gizmo}`
     })
     const elem = 'material'
     const input = 'PATCH'
-    this.props.methodUpdate(input, elem)
-  }
-
-  onDeleteClick(event) {
-    event.preventDefault();
-    this.setState({
-      sitRep: 'youMayFireWhenReady'
-    })
-    const elem = 'material'
-    const input = 'DELETE'
     this.props.methodUpdate(input, elem)
   }
 
@@ -48,6 +67,7 @@ class MaterialsElementTile extends Component {
 
   onReturnClick(event) {
     event.preventDefault();
+    this.props.reset();
     this.setState({
       sitRep: 'situationNormal',
       elementEdit: ''
@@ -85,7 +105,7 @@ class MaterialsElementTile extends Component {
   render(){
     let materialsStatus;
     let elementItem = this.props.gizmo;
-    if (this.state.sitRep == 'situationNormal') {
+    if (this.state.sitRep == 'situationNormal' || this.props.gizmoSR != elementItem) {
         materialsStatus =
         <li className="materials-list-element">
           <div className="element-item">
@@ -97,9 +117,9 @@ class MaterialsElementTile extends Component {
             <i className="far fa-trash-alt" onClick={this.onDeleteClick}></i>
           </div>
         </li>
-    } else if (this.state.sitRep == 'needUpdate') {
+    } else if (this.state.sitRep == 'needUpdate' && this.props.gizmoSR == elementItem) {
       materialsStatus =
-      <li className="edit-field-and-button">
+      <li className="edit-field-and-button" onBlur={this.onReturnClick}>
         <form onSubmit={this.handleSubmit}>
           <div className="element-field">
             <input
@@ -114,10 +134,10 @@ class MaterialsElementTile extends Component {
           </div>
         </form>
       </li>
-    } else if (this.state.sitRep == 'youMayFireWhenReady') {
+    } else if (this.state.sitRep == 'youMayFireWhenReady' && this.props.gizmoSR == elementItem) {
       const terminationMessage = 'You may fire when ready:'
       materialsStatus =
-      <li className="termination-list-element">
+      <li className="termination-list-element" onBlur={this.onReturnClick}>
         <div className="element-item">
           {terminationMessage}
         </div>
