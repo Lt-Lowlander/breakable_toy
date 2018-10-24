@@ -38,6 +38,7 @@ class StepFormContainer extends Component {
   }
 
   handleClear(){
+    this.props.reset();
     this.setState({
       instruction: ''
     })
@@ -45,7 +46,7 @@ class StepFormContainer extends Component {
 
   render() {
     return(
-      <div className="step-input-section" onFocus={this.fetchScout}>
+      <div className="step-input-section" onFocus={this.fetchScout} onBlur={this.handleClear}>
         <form className="new-article-form" onSubmit={this.handleSubmit}>
           <div className="field-and-button">
             <StepInput className="step-field"
