@@ -14,26 +14,45 @@ class StepsElementTile extends Component {
     this.onDeleteClick=this.onDeleteClick.bind(this)
     this.onEditClick=this.onEditClick.bind(this)
     this.onReturnClick=this.onReturnClick.bind(this)
+    this.tileEdits=this.tileEdits.bind(this)
+    this.tileDeletions=this.tileDeletions.bind(this)
+    this.containerEdits=this.containerEdits.bind(this)
+  }
+
+  onDeleteClick(event) {
+    event.preventDefault();
+    this.containerEdits();
+    this.tileDeletions();
+  }
+
+  tileDeletions() {
+    this.setState({
+      sitRep: 'youMayFireWhenReady'
+    })
+    const elem = 'step'
+    const input = 'DELETE'
+    this.props.methodUpdate(input, elem)
   }
 
   onEditClick(event) {
     event.preventDefault();
+    this.containerEdits();
+    this.tileEdits();
+  }
+
+  containerEdits(){
+    let stage = this.props.info;
+    this.props.reset();
+    this.props.sequenceCharge(stage);
+  }
+
+  tileEdits(){
     this.setState({
       sitRep: 'needUpdate',
       elementEdit: `${this.props.info}`
     })
     const elem = 'step'
     const input = 'PATCH'
-    this.props.methodUpdate(input, elem)
-  }
-
-  onDeleteClick(event) {
-    event.preventDefault();
-    this.setState({
-      sitRep: 'youMayFireWhenReady'
-    })
-    const elem = 'step'
-    const input = 'DELETE'
     this.props.methodUpdate(input, elem)
   }
 
@@ -86,7 +105,7 @@ class StepsElementTile extends Component {
   render(){
     let stepsStatus;
     let elementItem = this.props.info;
-    if (this.state.sitRep == 'situationNormal') {
+    if (this.state.sitRep == 'situationNormal' || this.props.sequenceSR != elementItem) {
         stepsStatus =
           <div className="project-show-info">
             <div className="full-step-title">
@@ -112,7 +131,7 @@ class StepsElementTile extends Component {
               </div>
             </div>
           </div>
-    } else if (this.state.sitRep == 'needUpdate') {
+    } else if (this.state.sitRep == 'needUpdate' && this.props.sequenceSR == elementItem) {
       stepsStatus =
         <div className="project-show-info">
           <div className="full-step-title">
@@ -125,7 +144,7 @@ class StepsElementTile extends Component {
               </div>
             </div>
           </div>
-          <div className="edit-field-and-button" onBlur={this.onReturnClick}>
+          <div className="edit-field-and-button">
             <form onSubmit={this.handleSubmit}>
               <div className="element-field">
                 <input
@@ -141,7 +160,7 @@ class StepsElementTile extends Component {
             </form>
           </div>
         </div>
-    } else if (this.state.sitRep == 'youMayFireWhenReady') {
+    } else if (this.state.sitRep == 'youMayFireWhenReady' && this.props.sequenceSR == elementItem) {
       const terminationMessage = 'You may fire when ready:'
       stepsStatus =
       <div className="project-show-info">

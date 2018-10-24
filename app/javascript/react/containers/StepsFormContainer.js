@@ -11,10 +11,13 @@ class StepFormContainer extends Component {
     this.handleSubmit=this.handleSubmit.bind(this)
     this.handleClear=this.handleClear.bind(this)
     this.fetchScout=this.fetchScout.bind(this)
+    this.blankOut=this.blankOut.bind(this)
   }
 
   fetchScout(event){
-    event.preventDefault()
+    event.preventDefault();
+    this.props.reset();
+    this.props.sequenceCharge(this.state.instruction)
     const elem = 'step'
     const input = 'POST'
     this.props.methodUpdate(input, elem)
@@ -24,6 +27,7 @@ class StepFormContainer extends Component {
     let fieldInfo = event.target.name
     let value = event.target.value
     this.setState({ [fieldInfo]: value })
+        this.props.sequenceCharge(this.state.instruction)
   }
 
   handleSubmit(event){
@@ -38,15 +42,19 @@ class StepFormContainer extends Component {
   }
 
   handleClear(){
-    this.props.reset();
     this.setState({
       instruction: ''
     })
   }
 
+  blankOut(event){
+    event.preventDefault();
+    this.props.reset();
+  }
+
   render() {
     return(
-      <div className="step-input-section" onFocus={this.fetchScout} onBlur={this.handleClear}>
+      <div className="step-input-section" onFocus={this.fetchScout} onBlur={this.blankOut}>
         <form className="new-article-form" onSubmit={this.handleSubmit}>
           <div className="field-and-button">
             <StepInput className="step-field"
