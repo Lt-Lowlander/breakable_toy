@@ -8,16 +8,12 @@
   padding: 1rem;
 }
 
-
 .project-nucleus {
   margin: 1rem;
-  // min-width: 800px;
-  // max-width: 900px;
 }
 
 .project-show-pic {
   border-radius: 0.25rem;
-  // max-height: 660px;
   display: block;
   width: 70%;
 }
@@ -38,11 +34,11 @@
   text-align: left;
   font-weight: bold;
   padding-top: 0.2rem;
-  padding-left: 1.5rem;
 }
 
 .bifurcation{
   display: flex;
+  flex-wrap: wrap;
 }
 
     .side-left {
@@ -55,6 +51,7 @@
           .project-show-version {
             order: 1;
             margin-right: 0.5rem;
+            margin-left: 1.5rem;
           }
 
           .project-show-inventor {
@@ -64,8 +61,7 @@
           }
 
     .edit-engage {
-      padding-left: 1rem;
-      margin-right: 2rem;
+      padding-right: 1rem;
     }
 
     .side-right {
@@ -81,6 +77,10 @@
   padding: 0.4rem;
 }
 
+.title-buffer {
+  padding: 0.8rem;
+}
+
 .next-iteration {
   background-color: #2249A6;
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.4);
@@ -88,11 +88,10 @@
   font-weight: bold;
   font-size: 1rem;
   padding: 1rem;
-  margin-left: 2rem;
   z-index: 2;
-
 }
 
 .user-title-path {
   margin-left: 5px;
+  margin-right: 2rem;
 }

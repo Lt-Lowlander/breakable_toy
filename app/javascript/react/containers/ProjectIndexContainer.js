@@ -152,8 +152,8 @@ class ProjectIndexContainer extends Component {
     })
     if (this.state.member) {
       button_settings=
-      <div className="cell">
-        <form onSubmit={this.handleSubmit}>
+      <div className="grid-x">
+        <form onSubmit={this.handleSubmit} className="cell small-8 medium-10 large-12">
           <button className="add-project-button good-times notestyle" type="submit" value="submit">
               Add a Project
           </button>
