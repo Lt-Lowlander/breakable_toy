@@ -8,35 +8,26 @@
   padding: 1rem;
 }
 
+
 .project-nucleus {
   margin: 15px;
   min-width: 800px;
   max-width: 900px;
 }
 
-.main-image {
-}
-
 .project-show-pic {
-  border-radius: 3px;
+  border-radius: 4px;
   max-height: 660px;
   display: block;
   width: 70%;
 }
-.project-show-info {
-  margin-top: 30px;
-}
 
-.title-group {
-  width: 100%;
+.project-show-info{
+  font-weight: bolder;
+  font-size: 2.2rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
 }
-
-      .project-show-title{
-        float: left;
-        margin-right: 1.2rem;
-        font-size: 1.8rem;
-        margin-bottom: 0.75rem;
-      }
 
       .edit-icon {
           margin-top: 0.4rem;
@@ -46,38 +37,48 @@
 .ownership-group {
   text-align: left;
   font-weight: bold;
-  margin-left: 1.5rem;
+  padding-top: 0.2rem;
+  padding-left: 1.5rem;
 }
 
-      .project-show-version {
-        float: left;
-        margin-right: 0.5rem;
-      }
-
-      .project-show-inventor {
-      }
-
-.descr {
+.bifurcation{
+  display: flex;
 }
+
+    .side-left {
+      order: 1;
+      display: flex;
+      font-style: "Futura";
+      font-weight: bold;
+    }
+
+          .project-show-version {
+            order: 1;
+            margin-right: 0.5rem;
+          }
+
+          .project-show-inventor {
+            order: 2;
+            font-weight: bold;
+            margin-right: 0.5rem;
+          }
+
+    .edit-engage {
+      padding-left: 1rem;
+      margin-right: 2rem;
+    }
+
+    .side-right {
+      order: 2;
+      display: flex;
+    }
 
 .project-show-description {
   margin-top: 0.5rem;
 }
 
-.side-left {
-  font-style: "Futura";
-  font-weight: bold;
-  width: 50%;
-  float: left;
-  text-align: left;
-  margin-bottom: 1.4rem;
-}
-
-.side-right {
-  width: 50%;
-  float: right;
-  padding-left: 1rem;
-  margin-bottom: 3rem;
+.buffer {
+  padding: 0.4rem;
 }
 
 .next-iteration {
@@ -87,6 +88,7 @@
   font-weight: bold;
   font-size: 1rem;
   padding: 1rem;
+  margin-left: 2rem;
   z-index: 2;
 
 }
