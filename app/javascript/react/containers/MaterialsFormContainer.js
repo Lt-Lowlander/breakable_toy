@@ -17,6 +17,7 @@ class MaterialsFormContainer extends Component {
   fetchScout(event){
     event.preventDefault();
     this.props.reset();
+    this.props.gizmoCharge(this.state.materialUpdate)
     const elem = 'material'
     const input = 'POST'
     this.props.methodUpdate(input, elem)
@@ -27,6 +28,7 @@ class MaterialsFormContainer extends Component {
     let fieldInfo = event.target.name
     let value = event.target.value
     this.setState({ [fieldInfo]: value })
+    this.props.gizmoCharge(this.state.materialUpdate)
   }
 
   handleSubmit(event){
@@ -50,7 +52,6 @@ class MaterialsFormContainer extends Component {
   blankOut(event){
     event.preventDefault();
     this.props.reset();
-    this.handleClear();
   }
 
   render() {

@@ -7,16 +7,7 @@ class MaterialsIndexContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentItem: ''
     }
-    this.itemUpdate=this.itemUpdate.bind(this)
-  }
-
-  itemUpdate(zapper){
-    this.setState({
-      currentItem: zapper
-    })
-    this.props.reset();
   }
 
   render(){
@@ -31,8 +22,8 @@ class MaterialsIndexContainer extends Component {
             methodUpdate={this.props.methodUpdate}
             projectId={this.props.projectId}
             reset={this.props.reset}
-            gizmoSR={this.state.currentItem}
-            gizmoCharge={this.itemUpdate}
+            gizmoSR={this.props.currentItem}
+            gizmoCharge={this.props.itemUpdate}
             />
         )
       } else {
@@ -57,6 +48,8 @@ class MaterialsIndexContainer extends Component {
               methodUpdate={this.props.methodUpdate}
               projectId={this.props.projectId}
               reset={this.props.reset}
+              gizmoSR={this.props.currentItem}
+              gizmoCharge={this.props.itemUpdate}
               />
           </div>
         </div>

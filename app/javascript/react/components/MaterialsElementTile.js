@@ -67,7 +67,6 @@ class MaterialsElementTile extends Component {
 
   onReturnClick(event) {
     event.preventDefault();
-    this.props.reset();
     this.setState({
       sitRep: 'situationNormal',
       elementEdit: ''
@@ -119,7 +118,7 @@ class MaterialsElementTile extends Component {
         </li>
     } else if (this.state.sitRep == 'needUpdate' && this.props.gizmoSR == elementItem) {
       materialsStatus =
-      <li className="edit-field-and-button" onBlur={this.onReturnClick}>
+      <li className="edit-field-and-button">
         <form onSubmit={this.handleSubmit}>
           <div className="element-field">
             <input
@@ -137,7 +136,7 @@ class MaterialsElementTile extends Component {
     } else if (this.state.sitRep == 'youMayFireWhenReady' && this.props.gizmoSR == elementItem) {
       const terminationMessage = 'You may fire when ready:'
       materialsStatus =
-      <li className="termination-list-element" onBlur={this.onReturnClick}>
+      <li className="termination-list-element">
         <div className="element-item">
           {terminationMessage}
         </div>

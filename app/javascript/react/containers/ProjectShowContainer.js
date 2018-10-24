@@ -15,12 +15,21 @@ class ProjectShowContainer extends Component {
       step: [],
       activeMember: '',
       fetchType: '',
-      element: ''
+      element: '',
+      currentItem: ''
     }
     this.changeElement=this.changeElement.bind(this)
     this.methodUpdate=this.methodUpdate.bind(this)
     this.clearInputs=this.clearInputs.bind(this)
     this.romanize=this.romanize.bind(this)
+    this.itemUpdate=this.itemUpdate.bind(this)
+  }
+
+  itemUpdate(zapper){
+    this.clearInputs();
+    this.setState({
+      currentItem: zapper
+    })
   }
 
   methodUpdate(input, elem){
@@ -125,9 +134,7 @@ class ProjectShowContainer extends Component {
     let ownership;
     const author = this.state.project.user_id;
     const viewer = this.state.activeMember;
-    if (viewer === author) {
-      ownership = true;
-    }
+    if (viewer === author) { ownership = true; }
     let project = this.state.project;
     let projectMaterials = this.state.material;
     let projectEquipment = this.state.equipment;
@@ -154,6 +161,7 @@ class ProjectShowContainer extends Component {
               userNum={project.user_id}
               fam={project.fam_id}
               parent={project.parent_id}
+              currentItem={this.state.currentItem}
               viewer={this.state.activeMember}
             />
           </div>
@@ -170,6 +178,8 @@ class ProjectShowContainer extends Component {
                   changeElement={this.changeElement}
                   methodUpdate={this.methodUpdate}
                   reset={this.clearInputs}
+                  currentItem={this.state.currentItem}
+                  itemUpdate={this.itemUpdate}
                   />
               </div>
               <div className="equipment-list">
@@ -183,6 +193,8 @@ class ProjectShowContainer extends Component {
                   changeElement={this.changeElement}
                   methodUpdate={this.methodUpdate}
                   reset={this.clearInputs}
+                  currentItem={this.state.currentItem}
+                  itemUpdate={this.itemUpdate}
                   />
               </div>
           </div>
@@ -199,6 +211,8 @@ class ProjectShowContainer extends Component {
                 changeElement={this.changeElement}
                 methodUpdate={this.methodUpdate}
                 reset={this.clearInputs}
+                currentItem={this.state.currentItem}
+                itemUpdate={this.itemUpdate}
                 />
             </div>
           </div>

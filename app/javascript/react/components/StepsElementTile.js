@@ -48,6 +48,7 @@ class StepsElementTile extends Component {
 
   onReturnClick(event) {
     event.preventDefault();
+    this.props.reset();
     this.setState({
       sitRep: 'situationNormal',
       elementEdit: ''
@@ -124,7 +125,7 @@ class StepsElementTile extends Component {
               </div>
             </div>
           </div>
-          <div className="edit-field-and-button">
+          <div className="edit-field-and-button" onBlur={this.onReturnClick}>
             <form onSubmit={this.handleSubmit}>
               <div className="element-field">
                 <input
