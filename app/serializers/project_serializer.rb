@@ -1,5 +1,5 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :name, :description, :photo_url, :version_id, :handle, :budget, :topics, :parent_id, :fam_id
+  attributes :id, :user_id, :name, :description, :photo_url, :version_id, :handle, :budget, :topics, :duration, :difficulty, :parent_id, :fam_id
 
   belongs_to :user
   belongs_to :fam
