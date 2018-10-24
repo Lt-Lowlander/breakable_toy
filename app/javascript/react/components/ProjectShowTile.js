@@ -19,6 +19,8 @@ let ProjectShowTile = (props) => {
       </div>
       <div className="project-show-info">
         {props.name}
+        <span className="title-buffer"></span>
+        {projectEdits}
       </div>
       <div className="bifurcation">
         <div className="side-left ownership-group">
@@ -33,7 +35,6 @@ let ProjectShowTile = (props) => {
           </div>
         </div>
         <div className="side-right">
-          {projectEdits}
           <OffSpringFormComponent
             handle={props.user}
             userId={props.userNum}
