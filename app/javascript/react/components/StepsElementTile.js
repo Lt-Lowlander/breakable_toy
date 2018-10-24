@@ -107,7 +107,7 @@ class StepsElementTile extends Component {
             <div className="step-instruction">
               {elementItem}
             </div>
-            <div className="cell small-12 medium-6 large-4">
+            <div className="cell small-12 medium-6 large-4 bounder">
               <div className="step-photo">
               </div>
             </div>

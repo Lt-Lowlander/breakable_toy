@@ -11,9 +11,8 @@ Rails.application.routes.draw do
       resources :equipment
       resources :equipment_in_projects, only: [:index, :show]
 
-      resources :fams do
-        resources :projects, only: [:index]
-      end
+      resources :fams
+      
       resources :projects do
         resources :equipment
         resources :materials

@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2018_10_22_200604) do
   end
 
   create_table "fams", force: :cascade do |t|
-    t.integer "famNum"
+    t.string "famName"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2018_10_22_200604) do
 
   create_table "projects", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "fam_id", default: 0, null: false
+    t.bigint "fam_id", null: false
     t.string "name", null: false
     t.text "description", null: false
     t.string "photo_url", null: false
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 2018_10_22_200604) do
     t.string "handle", null: false
     t.string "budget"
     t.string "topics"
+    t.string "duration"
+    t.string "difficulty"
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
