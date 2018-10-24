@@ -147,7 +147,7 @@ class ProjectShowContainer extends Component {
     return(
       <div className="prokaryote">
         <div className="grid-x grid-margin-x align-spaced">
-          <div className="project-nucleus notestyle rounders">
+          <div className="project-nucleus notestyle rounders cell small-12 medium-8 large-6">
             <ProjectShowTile
               ownership={ownership}
               key={project.id}
@@ -199,9 +199,9 @@ class ProjectShowContainer extends Component {
                   itemUpdate={this.itemUpdate}
                   />
               </div>
+            </div>
           </div>
-        </div>
-          <div className="cell">
+          <div className="cell small-12 medium-12 large-11">
             <div className="steps-show-unit notestyle">
               <div className="step-show-title">
                 Construction Guide
