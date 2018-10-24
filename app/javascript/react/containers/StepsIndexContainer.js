@@ -22,12 +22,15 @@ class StepsIndexContainer extends Component {
             methodUpdate={this.props.methodUpdate}
             projectId={this.props.projectId}
             reset={this.props.reset}
+            sequenceSR={this.props.currentItem}
+            sequenceCharge={this.props.itemUpdate}
             />
         )
       } else {
         return(
           <StepsTile
             key={increment.id}
+            id={increment.id}
             info={increment.instruction}
             image={increment.step_photo}
             />
@@ -48,6 +51,8 @@ class StepsIndexContainer extends Component {
               methodUpdate={this.props.methodUpdate}
               projectId={this.props.projectId}
               reset={this.props.reset}
+              sequenceSR={this.props.currentItem}
+              sequenceCharge={this.props.itemUpdate}
               />
           </div>
         </div>

@@ -1,24 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router';
 
 const StepsTile = (props) => {
   return(
-    <div className="cell">
-        <div className="step-show-tile">
-          <div className="cell small-12 medium-6 large-4">
-            <div className="project-show-info">
-                <span className="step-sequence">
-                  Step {props.number}
-                </span>
-              <div className="step-instruction">
-               {props.info}
-              </div>
-            </div>
+    <div className="project-show-info">
+      <div className="full-step-title">
+        <div className="step-sequence">
+          <div className="step-word">
+            Step
           </div>
-          <div className="cell small-12 medium-6 large-4">
-
+          <div className="step-list-normal">
+            <li className="ordered-list-item"/>
           </div>
         </div>
+      </div>
+      <div className="step-instruction">
+        {props.info}
+      </div>
+      <div className="cell small-12 medium-6 large-4 bounder">
+        <div className="step-photo">
+        </div>
+      </div>
     </div>
   )
 }
