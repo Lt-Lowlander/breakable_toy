@@ -3,7 +3,7 @@ class Api::V1::ProjectsController < ApiController
   def index
     if current_user == nil
       payload = {
-        projects: Project.all.order(created_at: :desc),
+        projects: Project.all.order(created_at: :asc),
         viewing_member: '',
         member: false,
         admin: false
@@ -12,7 +12,7 @@ class Api::V1::ProjectsController < ApiController
     elsif current_user.role == "member"
       present_member = current_user.id
       payload = {
-        projects: Project.all.order(created_at: :desc),
+        projects: Project.all.order(created_at: :asc),
         viewing_member: present_member,
         member: true,
         admin: false
@@ -20,7 +20,7 @@ class Api::V1::ProjectsController < ApiController
       render json: payload
     elsif current_user.admin?
       payload = {
-        projects: Project.all.order(created_at: :desc),
+        projects: Project.all.order(created_at: :asc),
         viewing_member: '',
         member: true,
         admin: true
