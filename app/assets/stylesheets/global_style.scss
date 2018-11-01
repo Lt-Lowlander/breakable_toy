@@ -73,7 +73,7 @@ body {
 
 .good-times {
   font-family: "Good Times";
-  src: url('./GoodTimes.ttf') format('truetype');
+  src: url('./GOODTIME.woff') format('woff');
 }
 
 #flash-messages {
@@ -81,7 +81,7 @@ body {
   margin-right: 25%;
   z-index: 1;
   font-family: "Good Times";
-  src: url('./GoodTimes.ttf') format('truetype');
+  src: url('./GOODTIME.woff') format('woff');
   font-size: 175%;
   color: #c0c0c0;
 }
