@@ -71,9 +71,18 @@ body {
   z-index: -1;
 }
 
-.good-times {
+@font-face {
   font-family: "Good Times";
   src: url('./GOODTIME.woff') format('woff');
+  src: url('./GoodTimes.ttf') format('truetype');
+}
+
+.good-times {
+  font-family: "Good Times";
+}
+
+.emboldened {
+  font-weight: bold;
 }
 
 #flash-messages {
@@ -81,7 +90,6 @@ body {
   margin-right: 25%;
   z-index: 1;
   font-family: "Good Times";
-  src: url('./GOODTIME.woff') format('woff');
   font-size: 175%;
   color: #c0c0c0;
 }

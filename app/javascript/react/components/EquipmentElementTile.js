@@ -118,7 +118,7 @@ class EquipmentElementTile extends Component {
       const terminationMessage = 'You may fire when ready:'
       equipmentStatus =
       <li className="termination-list-element">
-        <div className="element-item">
+        <div className="element-item emboldened">
           {terminationMessage}
         </div>
         <div className="element-actions">

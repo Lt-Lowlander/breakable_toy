@@ -175,7 +175,7 @@ class StepsElementTile extends Component {
           </div>
         </div>
         <div className="step-instruction">
-          <span className="step-element-item">
+          <span className="step-element-item emboldened">
             {terminationMessage}
           </span>
           <span className="step-element-actions">
