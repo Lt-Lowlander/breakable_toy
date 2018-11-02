@@ -200,3 +200,4 @@ class StepsElementTile extends Component {
 }
 
 export default StepsElementTile;
+// fix the formatting for the update & delete icons on this tile

@@ -33,11 +33,11 @@
   margin-left: 10px;
 }
 
+// these tags are to format the step numbers
 ol {
     counter-reset: item;
     list-style-type: none;
 }
-
 .ordered-list-item { display: block; }
 .ordered-list-item:before {
     content: counter(item) "";
