@@ -52,3 +52,4 @@ let ProjectShowTile = (props) => {
 }
 
 export default ProjectShowTile;
+// add in the extra elements: budget, time, skill, topics
