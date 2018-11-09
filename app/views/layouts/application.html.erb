@@ -24,7 +24,19 @@
         <section class="session-options">
           <ul class="right good-times">
             <%- if current_user -%>
-            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+            <li id="user-info" class="current_user-display">
+              <div class="user-flex">
+                <div class="username">
+                  <%= current_user.handle %>
+                </div>
+                <img
+                class="profile_pic" src="<%= current_user.profile_photo %>" alt="<%= current_user.handle %>"
+                />
+              </div>
+              <div class="sign-out">
+                <%= link_to '<i class="fas fa-sign-out-alt"></i>'.html_safe, destroy_user_session_path, method: :delete %>
+              </div>
+            </li>
             <%- else -%>
             <li><%= link_to 'Sign Up', new_user_registration_path %></li>
             <li><%= link_to 'Sign In', new_user_session_path %></li>

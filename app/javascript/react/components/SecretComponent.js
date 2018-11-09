@@ -12,6 +12,7 @@ class SecretComponent extends Component {
     document.getElementById("sticky-helm").className = "";
     document.getElementById("nav-helm").className = "";
     document.getElementById("title-helm").className = "";
+    document.getElementById("user-info").className = "hide";
     let message =
     <div className="grid-x align-spaced elbumper">
       <div className="cell small-12 medium-8 large-5">

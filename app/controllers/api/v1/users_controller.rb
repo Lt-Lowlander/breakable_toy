@@ -38,7 +38,7 @@ class Api::V1::UsersController < ApiController
 
   private
   def user_data
-    params.permit(:handle, :bio)
+    params.permit(:handle, :bio, :profile_photo)
   end
 
 end

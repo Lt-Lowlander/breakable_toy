@@ -3,11 +3,11 @@ import Dropzone from 'react-dropzone';
 
 let DZTile = (props) => {
   return(
-    <div>
+    <div className="dzTile">
       <section>
-        <div className="dropzone">
+        <div className="file-uploader">
           <Dropzone onDrop={props.onDrop}>
-            <p>Drop a file here or click to select a file to upload.</p>
+            <label className="interior-text">Drop a file here or click to select a file to upload.</label>
           </Dropzone>
         </div>
       </section>

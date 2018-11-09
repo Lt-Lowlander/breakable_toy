@@ -13,7 +13,7 @@ class EditProjectFormContainer extends Component {
       description: "",
       photo_url: "",
       image: [],
-      picName: "none",
+      picName: "",
       familyId: "",
       errors: {}
     }
@@ -46,7 +46,7 @@ class EditProjectFormContainer extends Component {
   onDrop(file) {
     if (file.length == 1) {
       this.setState({
-        image: file,
+        image: file[0],
         picName: file[0].name
       })
     } else {
@@ -56,21 +56,19 @@ class EditProjectFormContainer extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-debugger
     if (Object.keys(this.state.errors).length == 0) {
-      let picture = this.state.image[0];
+      let picture = this.state.image;
       let picSource = picture;
       if (picture === undefined || picture.length == 0) {
         picSource = this.state.photo_url
       }
-debugger
+  debugger
       let editedProject = new FormData();
       editedProject.append("name", this.state.name);
       editedProject.append("description", this.state.description);
       editedProject.append("photo_url", picSource);
       editedProject.append("fam_id", this.state.familyId);
       console.log(editedProject)
-debugger
       this.sendEditedProject(editedProject);
       this.handleClear();
     }
@@ -93,6 +91,7 @@ debugger
       })
       .then(response => response.json())
       .then(body => {
+debugger
         browserHistory.push(`/projects/${body.project.id}`)})
         .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
@@ -120,6 +119,14 @@ debugger
       })
     }
   render(){
+    let imageTitle = this.state.picName;
+    let imageSize = this.state.image.size;
+    let imageName;
+    if (this.state.picName == "") {
+      imageName = "none"
+    } else {
+      imageName = `${imageTitle} - ${imageSize} bytes`;
+    }
     return(
       <div className="grid-x grid-margin-x align-center">
         <div className="cell small-12 med-8  large-6">
@@ -140,21 +147,33 @@ debugger
                 value={this.state.description}
                 handleChange={this.handleChange}
                 />
-              <ProjectInputTile
-                label="Cover Photo"
-                name="photo_url"
-                type="text"
-                value={this.state.photo_url}
-                handleChange={this.handleChange}
-                />
-              <DZTile
-                image={this.state.image}
-                onDrop={this.onDrop}
-                />
-                <aside>
-                  <h6>File chosen:</h6>
-                  <ul><li> {this.state.picName} </li></ul>
-                </aside>
+              <div className="visual-semblance">
+                <label>
+                  Current Cover Photo
+                </label>
+                <div className="cover-picture-handling">
+                  <img className="extant-image" src={this.state.photo_url} />
+                  <div className="image-uploading">
+                    <DZTile
+                      image={this.state.image}
+                      onDrop={this.onDrop}
+                      />
+                    <div className="pic-prev-info">
+                      <label>Preview:</label>
+                      <img className="pic-preview" src={this.state.image.preview} />
+                      <br/>
+                      <label>File chosen:</label>
+                      <ul>
+                        <label>
+                          <li>
+                            {imageName}
+                          </li>
+                        </label>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                </div>
               <button type="submit" className="button" value="Submit">
                 Enter Changes
               </button>

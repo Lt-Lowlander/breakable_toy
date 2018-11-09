@@ -5,8 +5,42 @@
   color: #2740AD;
   // margin: 60px;
 }
+.cover-picture-handling {
+  display: flex;
+  margin-bottom: 1rem;
+}
 
 .factor-entries {
   margin-top: 2rem;
   padding: 3rem;
+}
+.extant-image {
+  order: 1;
+  width: auto;
+  height: 200px;
+  margin-right: 1rem;
+}
+.image-uploading {
+  order: 2;
+  display: flex;
+}
+
+.dzTile {
+  order: 1;
+  height: 12rem;
+  margin-right: 1rem;
+}
+
+.pic-prev-info {
+  order: 2;
+}
+
+.pic-preview {
+  width: auto;
+  height: 6rem;
+}
+
+.interior-text {
+  font-size: 80%;
+  padding: 1rem;
 }
