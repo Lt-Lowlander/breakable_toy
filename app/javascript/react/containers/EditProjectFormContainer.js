@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router'
+import Dropzone from 'react-dropzone';
+import { browserHistory } from 'react-router';
 import ProjectInputTile from '../components/ProjectInputTile';
+import DZTile from '../components/DZTile';
 
 class EditProjectFormContainer extends Component {
   constructor(props){
@@ -10,12 +12,15 @@ class EditProjectFormContainer extends Component {
       name: "",
       description: "",
       photo_url: "",
+      image: [],
+      picName: "none",
       familyId: "",
       errors: {}
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onDrop = this.onDrop.bind(this);
     this.sendEditedProject = this.sendEditedProject.bind(this);
   }
 
@@ -31,19 +36,40 @@ class EditProjectFormContainer extends Component {
       name: "",
       description: "",
       photo_url: "",
+      image: [],
+      picName: "",
       familyId: "",
       errors: {}
     });
   }
 
+  onDrop(file) {
+    if (file.length == 1) {
+      this.setState({
+        image: file,
+        picName: file[0].name
+      })
+    } else {
+      this.setState({ message: 'You can only upload one file per image.'});
+    }
+  }
+
   handleSubmit(event){
     event.preventDefault();
     if (Object.keys(this.state.errors).length == 0) {
+      let picture = this.state.image[0];
+      let picSource = picture;
+      if (picture === undefined || picture.length == 0) {
+        picSource = this.state.photo_url
+      }
+debugger
       let editedProject = new FormData();
       editedProject.append("name", this.state.name);
       editedProject.append("description", this.state.description);
-      editedProject.append("photo_url", this.state.photo_url);
+      editedProject.append("photo_url", picSource);
       editedProject.append("fam_id", this.state.familyId);
+      console.log(editedProject)
+debugger
       this.sendEditedProject(editedProject);
       this.handleClear();
     }
@@ -120,6 +146,14 @@ class EditProjectFormContainer extends Component {
                 value={this.state.photo_url}
                 handleChange={this.handleChange}
                 />
+              <DZTile
+                image={this.state.image}
+                onDrop={this.onDrop}
+                />
+                <aside>
+                  <h6>File chosen:</h6>
+                  <ul><li> {this.state.picName} </li></ul>
+                </aside>
               <button type="submit" className="button" value="Submit">
                 Enter Changes
               </button>

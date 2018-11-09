@@ -62,3 +62,5 @@ gem 'foundation-rails'
 gem 'webpacker', '~> 3.3'
 gem 'active_model_serializers'
 gem 'carrierwave'
+
+gem "loofah", ">= 2.2.3"

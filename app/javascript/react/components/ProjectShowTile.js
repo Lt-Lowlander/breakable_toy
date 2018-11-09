@@ -14,7 +14,7 @@ let ProjectShowTile = (props) => {
   return(
     <div className="project-show-tile">
       <div className="main-image">
-        <img src={props.image} alt={props.name} className="project-show-pic"/>
+        <img src={props.image} alt={props.image} className="project-show-pic"/>
       </div>
       <div className="project-show-info">
         {props.name}
