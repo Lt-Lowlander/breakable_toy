@@ -122,6 +122,7 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+debugger
       this.setState({
         project: body.project,
         material: body.project.materials,
