@@ -57,7 +57,7 @@ class ProjectIndexContainer extends Component {
     let newProject = new FormData();
     newProject.append("name", "What's my name?");
     newProject.append("description", "How would you describe me?");
-    newProject.append("photo_url", "https://i.imgur.com/I54DjMs.jpg");
+    newProject.append("photo_url", "How do I look?");
     this.newLitFam(newProject);
   }
   newLitFam(relevantData) {
@@ -76,13 +76,14 @@ class ProjectIndexContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+debugger
       relevantData.append("fam_id", `${body.id}`)
       this.postNewProject(relevantData)
     });
   }
 
 
-  postNewProject(infoPayload, crest) {
+  postNewProject(infoPayload) {
     fetch('/api/v1/projects', {
       credentials: 'same-origin',
       method: 'POST',
@@ -99,6 +100,7 @@ class ProjectIndexContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
+debugger
         browserHistory.push(`/projects/${body.id}/edit`)
       });
     }
@@ -143,7 +145,7 @@ class ProjectIndexContainer extends Component {
             admin={admin}
             author={project.user_id}
             name={project.name}
-            image={project.photo_url}
+            image={project.photo_url.url}
             iteration={project.version_id}
             confirmDelete={this.confirm}
           />

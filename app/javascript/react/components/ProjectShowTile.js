@@ -11,6 +11,7 @@ let ProjectShowTile = (props) => {
       <i className="far fa-edit edit-icon"></i>
     </Link>
   }
+debugger
   return(
     <div className="project-show-tile">
       <div className="main-image">
@@ -52,4 +53,3 @@ let ProjectShowTile = (props) => {
 }
 
 export default ProjectShowTile;
-// add in the extra elements: budget, time, skill, topics

@@ -56,6 +56,7 @@ class EditProjectFormContainer extends Component {
 
   handleSubmit(event){
     event.preventDefault();
+debugger
     if (Object.keys(this.state.errors).length == 0) {
       let picture = this.state.image[0];
       let picSource = picture;
@@ -113,7 +114,7 @@ debugger
           idNum: body.project.id,
           name: body.project.name,
           description: body.project.description,
-          photo_url: body.project.photo_url,
+          photo_url: body.project.photo_url.url,
           familyId: body.project.fam_id
         })
       })

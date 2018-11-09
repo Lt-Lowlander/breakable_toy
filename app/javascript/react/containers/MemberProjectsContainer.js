@@ -15,7 +15,7 @@ class MemberProjectsContainer extends Component {
           key={work.id}
           id={work.id}
           name={work.name}
-          image={work.photo_url}
+          image={work.photo_url.url}
           iteration={work.version_id}
           />
       )
