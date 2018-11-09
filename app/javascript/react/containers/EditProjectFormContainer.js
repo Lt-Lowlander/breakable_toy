@@ -62,7 +62,7 @@ class EditProjectFormContainer extends Component {
       if (picture === undefined || picture.length == 0) {
         picSource = this.state.photo_url
       }
-debugger
+  debugger
       let editedProject = new FormData();
       editedProject.append("name", this.state.name);
       editedProject.append("description", this.state.description);

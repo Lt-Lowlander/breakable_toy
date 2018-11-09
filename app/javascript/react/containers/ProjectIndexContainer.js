@@ -10,7 +10,7 @@ class ProjectIndexContainer extends Component {
     this.state = {
       projectsArray: [],
       activeMember: '',
-      
+
       member: false,
       admin: false
     }
@@ -61,7 +61,9 @@ class ProjectIndexContainer extends Component {
     newProject.append("photo_url", );
     this.newLitFam(newProject);
   }
+
   newLitFam(relevantData) {
+debugger
     fetch('/api/v1/fams', {
       credentials: 'same-origin',
       method: 'POST'
@@ -138,19 +140,17 @@ debugger
     const foundProjects = this.state.projectsArray;
     let projects = foundProjects.map(project => {
       return(
-        <div className="project-tile-with-owner notestyle">
-          <ProjectTile
-            key={project.id}
-            id={project.id}
-            viewer={viewer}
-            admin={admin}
-            author={project.user_id}
-            name={project.name}
-            image={project.photo_url.url}
-            iteration={project.version_id}
-            confirmDelete={this.confirm}
-          />
-        </div>
+        <ProjectTile
+          key={project.id}
+          id={project.id}
+          viewer={viewer}
+          admin={admin}
+          author={project.user_id}
+          name={project.name}
+          image={project.photo_url.url}
+          iteration={project.version_id}
+          confirmDelete={this.confirm}
+        />
       )
     })
     if (this.state.member) {

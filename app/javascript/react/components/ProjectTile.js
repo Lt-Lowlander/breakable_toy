@@ -17,7 +17,7 @@ const ProjectTile = (props) => {
   }
   return(
     <div className="cell small-12 medium-6 large-4">
-      <div className="project-tile">
+      <div className="project-tile-with-owner notestyle">
         <Link to={`/projects/${props.id}`}>
           <div className="">
             <img src={props.image} alt={props.name} className="project-index-pic"/>
@@ -30,9 +30,9 @@ const ProjectTile = (props) => {
             </div>
           </div>
         </Link>
-      </div>
-      <div className="admin-tile-settings">
-        {revisionPermission}
+        <div className="admin-tile-settings">
+          {revisionPermission}
+        </div>
       </div>
     </div>
   )
