@@ -15,6 +15,7 @@ const ProjectTile = (props) => {
   } else if (props.viewer != props.author) {
     revisionPermission = ""
   }
+debugger
   return(
     <div className="cell small-12 medium-6 large-4">
       <div className="project-tile">

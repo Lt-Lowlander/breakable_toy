@@ -56,9 +56,8 @@ class ProjectIndexContainer extends Component {
     event.preventDefault();
     let newProject = new FormData();
     newProject.append("name", "What's my name?");
-debugger
     newProject.append("description", "How would you describe me?");
-    newProject.append("photo_url", default_url());
+    newProject.append("photo_url", "How do I look?");
     this.newLitFam(newProject);
   }
   newLitFam(relevantData) {

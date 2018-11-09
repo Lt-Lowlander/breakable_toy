@@ -10,6 +10,7 @@ class ProjectShowContainer extends Component {
     super(props)
     this.state = {
       project: {},
+      coverImage: '',
       equipment: [],
       material: [],
       step: [],
@@ -122,9 +123,9 @@ class ProjectShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-debugger
       this.setState({
         project: body.project,
+        coverImage: body.project.photo_url.url,
         material: body.project.materials,
         equipment: body.project.equipment,
         step: body.project.steps,
@@ -154,7 +155,7 @@ debugger
               key={project.id}
               id={project.id}
               name={project.name}
-              image={project.photo_url}
+              image={this.state.coverImage}
               iteration={project.version_id}
               numeral={numeral}
               desc={project.description}
