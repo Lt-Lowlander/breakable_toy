@@ -32,6 +32,11 @@
         <%= f.text_field :bio, autofocus: true, autocomplete: "bio" %>
       </div>
 
+      <div class="field">
+        <%= f.label :profile_photo, "Profile Photo" %><br />
+        <%= f.file_field :profile_photo %>
+      </div>
+      <br/>
       <div class="actions">
         <%= f.submit "Sign up" %>
       </div>

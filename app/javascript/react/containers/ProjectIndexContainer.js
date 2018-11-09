@@ -10,6 +10,7 @@ class ProjectIndexContainer extends Component {
     this.state = {
       projectsArray: [],
       activeMember: '',
+      
       member: false,
       admin: false
     }
@@ -57,7 +58,7 @@ class ProjectIndexContainer extends Component {
     let newProject = new FormData();
     newProject.append("name", "What's my name?");
     newProject.append("description", "How would you describe me?");
-    newProject.append("photo_url", "How do I look?");
+    newProject.append("photo_url", );
     this.newLitFam(newProject);
   }
   newLitFam(relevantData) {

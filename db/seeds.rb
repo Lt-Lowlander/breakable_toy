@@ -1,7 +1,7 @@
 #create users
 users = User.create!([
-  {handle: "Splinter", email: "aerocricket@gmail.com", password: "hackgyver", bio: "Try out the Konami Code (↑, ↑, ↓, ↓, ←, →, ←, →, b, a, enter) anywhere on this site to learn more about me", role: "admin"},
-  {handle: "Tinker_Kid", email: "example@email.com", password: "asdf123", bio: "Building the dream", role: "member"},
+  {handle: "Splinter", email: "aerocricket@gmail.com", password: "hackgyver", bio: "Try out the Konami Code (↑, ↑, ↓, ↓, ←, →, ←, →, b, a, enter) anywhere on this site to learn more about me", role: "admin", profile_photo: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/users/digital_rain.gif'), 'image/gif')},
+  {handle: "Tinker_Kid", email: "example@email.com", password: "asdf123", bio: "Building the dream", role: "member", profile_photo: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/users/michael_scott.png'), 'image/png')},
 ])
 
 # create families
