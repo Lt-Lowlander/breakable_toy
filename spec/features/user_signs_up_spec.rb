@@ -21,10 +21,12 @@ feature 'user registers', %Q{
     fill_in 'Handle', with: 'handle'
     fill_in 'Bio', with: 'bio'
 
+    attach_file :user_profile_photo, "#{Rails.root}/spec/support/profile_default.png"
+
     click_button 'Sign up'
 
     expect(page).to have_content('Welcome! You have signed up successfully.')
-    expect(page).to have_content('Sign Out')
+    expect(page).to have_content('|')
   end
 
   scenario 'provide invalid registration information' do
@@ -32,6 +34,6 @@ feature 'user registers', %Q{
 
     click_button 'Sign up'
     expect(page).to have_content("can't be blank")
-    expect(page).to_not have_content('Sign Out')
+    expect(page).to_not have_content('|')
   end
 end
