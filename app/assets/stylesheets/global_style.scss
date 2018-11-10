@@ -13,6 +13,12 @@ body {
 
 }
 
+// This class is for an element that is necessary to have on the page for rspec to recognize because rspec doesn't work for the fontawesome symbol I've switched to for the link functionality. It's there, just invisible.
+.veiled {
+  font-size: 0.2rem;
+  opacity: 0.0;
+}
+
 .right {
   font-weight: bold;
   font-size: 0.9rem;

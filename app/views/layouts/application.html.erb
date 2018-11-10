@@ -34,7 +34,7 @@
                 />
               </div>
               <div class="sign-out">
-                <%= link_to '<i class="fas fa-sign-out-alt"></i>'.html_safe, destroy_user_session_path, method: :delete %>
+                <%= link_to '<span class="veiled">|</span><i class="fas fa-sign-out-alt"></i>'.html_safe, destroy_user_session_path, method: :delete %>
               </div>
             </li>
             <%- else -%>

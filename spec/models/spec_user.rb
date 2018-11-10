@@ -9,6 +9,7 @@ RSpec.describe User, type: :model do
     let!(:user2) { FactoryBot.build(:user, bio: "") }
     let!(:user3) { FactoryBot.build(:user, email: "") }
     let!(:user4) { FactoryBot.build(:user, role: "") }
+    let!(:user5) { FactoryBot.build(:user, profile_photo: "") }
 
 
     it "is not valid without a handle" do
@@ -27,8 +28,8 @@ RSpec.describe User, type: :model do
       expect(user4).to be_valid
     end
 
-    it "is valid without a profile photo" do
-      expect(user5).to be_valid
+    it "is not valid without a profile photo" do
+      expect(user5).to_not be_valid
     end
 
   end
