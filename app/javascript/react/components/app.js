@@ -17,6 +17,10 @@ class App extends Component {
   }
 
   render() {
+    let relString;
+    // extracts user info from the navbar (written in .erb).  could be useful for linking to the user page.
+    relString = this._reactInternalInstance._hostContainerInfo._node.offsetParent.innerText;
+debugger
     // This is the flash message that appears when someone logs in or out
     $(function(){
       var flashDurationInSeconds = 1;
@@ -34,18 +38,18 @@ class App extends Component {
     const whiteRabbit = new Konami(secretOp);
 
     return(
-      <Router history={browserHistory}>
-        <Route path='/'>
-          <IndexRoute component={ProjectIndexContainer} />
-          <Route path='/projects' component={ProjectIndexContainer} />
-          // <Route path='/projects/new' component={ProjectFormContainer} />
-          <Route path='/projects/:id' component={ProjectShowContainer} />
-          <Route path='/projects/:id/edit' component={EditProjectFormContainer} />
-          <Route path='/users' component={MemberIndexContainer} />
-          <Route path='/users/:id' component={MemberShowContainer} />
-          <Route path='/white_rabbit' component={SecretComponent} />
-        </Route>
-      </Router>
+        <Router history={browserHistory}>
+          <Route path='/'>
+            <IndexRoute component={ProjectIndexContainer} />
+            <Route path='/projects' component={ProjectIndexContainer} />
+            // <Route path='/projects/new' component={ProjectFormContainer} />
+            <Route path='/projects/:id' component={ProjectShowContainer} />
+            <Route path='/projects/:id/edit' component={EditProjectFormContainer} />
+            <Route path='/users' component={MemberIndexContainer} />
+            <Route path='/users/:id' component={MemberShowContainer} />
+            <Route path='/white_rabbit' component={SecretComponent} />
+          </Route>
+        </Router>
     )
   }
 }
