@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2018_10_22_200604) do
     t.datetime "updated_at", null: false
     t.string "role", default: "member", null: false
     t.string "handle", null: false
-    t.string "profile_photo", null: false
+    t.string "profile_photo"
     t.text "bio", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
