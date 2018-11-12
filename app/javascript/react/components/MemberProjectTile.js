@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const MemberProjectTile = (props) => {
+let MemberProjectTile = (props) => {
+  
   return(
     <div className="cell small-6 medium-5 large-4">
       <div className="user-project-tile-with-owner notestyle rounders">

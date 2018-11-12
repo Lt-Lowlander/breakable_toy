@@ -10,6 +10,7 @@ class MemberShowContainer extends Component {
       userInfo: {},
       handle: '',
       bio: '',
+      image: [],
       userEquipment: [],
       userProjects: [],
       activeMember: '',
@@ -59,6 +60,10 @@ class MemberShowContainer extends Component {
         this.setState({
           bio: body[0].bio
         })
+      } else if (factor == 'image') {
+        this.setState({
+          image: body[0].image
+        })
       }
       this.clearInputs()
     })
@@ -81,6 +86,7 @@ class MemberShowContainer extends Component {
         userInfo: body.user,
         handle: body.user.handle,
         bio: body.user.bio,
+        image: body.user.profile_photo.url,
         userEquipment: body.user.equipment,
         userProjects: body.user.projects,
         activeMember: body.viewing_member
@@ -107,6 +113,7 @@ class MemberShowContainer extends Component {
               role={this.state.userInfo.role}
               handle={this.state.handle}
               bio={this.state.bio}
+              image={this.state.image}
               changeElement={this.changeElement}
               infoUpdate={this.infoUpdate}
               />

@@ -16,15 +16,33 @@
 *= require foundation_and_overrides
 */
 
+.website-body {
+  display: flex;
+  flex-direction: column;
+}
+
+  .top-bar-container {
+    order: 1;
+  }
+
+  .website-content {
+    order: 2;
+  }
+
+.bridge-flex {
+  display: flex;
+}
+
+
 .current_user-display {
   display: flex;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
 }
 
 .user-flex {
   order: 1;
   display: flex;
-  margin-right: 1rem;
+  margin-right: 0.4rem;
 }
 
 .username {
@@ -32,18 +50,66 @@
   color: #c0c0c0;
   font-size: 120%;
   vertical-align: text-bottom;
-  margin: 1rem 1rem 0 0;
+  margin: 1rem 0.4rem 0 0;
 }
 
-.profile_pic {
+.bridge-profile-pic {
   order: 2;
   width: auto;
-  height: 45px;
+  height: 25px;
   margin-top: 1rem;
 }
 
 .sign-out {
   order: 2;
   font-size: 140%;
+  margin-top: 0.85rem;
+}
+
+.title-area {
+  order: 1;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  font-size: 300%;
+  list-style: none;
+  float: left;
   margin-top: 1rem;
+  margin-left: 2rem;
+}
+
+.top-bar .name a {
+  color: #c0c0c0;
+}
+
+.top-bar  {
+  background: linear-gradient(90deg, rgba(128,128,128,.5), rgba(128,128,128,0));
+  height: 4rem;
+}
+
+.top-bar ul {
+  background-color: transparent;
+}
+
+.session-options {
+  order: 2;
+}
+
+/*
+// This class is for an element that is necessary to have on the page for rspec to recognize because rspec doesn't work for the fontawesome symbol I've switched to for the link functionality. It's there, just invisible. */
+.veiled {
+  font-size: 0.2rem;
+  opacity: 0.0;
+}
+
+.right {
+  font-weight: bold;
+  font-size: 0.9rem;
+  list-style: none;
+  float: right;
+  margin: 0.25rem 1.5rem 2rem 0;
+}
+
+.right a {
+  color: #c0c0c0;
 }

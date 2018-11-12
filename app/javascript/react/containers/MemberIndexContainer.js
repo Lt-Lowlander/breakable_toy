@@ -41,12 +41,14 @@ class MemberIndexContainer extends Component {
           handle={indiv.handle}
           bio={indiv.bio}
           role={indiv.role}
+          image={indiv.profile_photo.thumb.url}
+
         />
       )
     })
     return(
-      <div className="grid-x">
-        <ul className="cell small-6 medium-4 large-3">
+      <div className="">
+        <ul className="">
           {members}
         </ul>
       </div>
