@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2018_10_22_200604) do
     t.bigint "fam_id", null: false
     t.string "name", null: false
     t.text "description", null: false
-    t.string "photo_url", null: false
+    t.string "photo_url"
     t.integer "version_id", default: 1, null: false
     t.string "handle", null: false
     t.string "budget"
