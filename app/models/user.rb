@@ -7,7 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :role, :handle, :bio, :profile_photo, presence: true
+  validates :role, :handle, :bio, presence: true
 
   has_many :projects
   has_many :equipment_in_projects

@@ -17,10 +17,12 @@ class App extends Component {
   }
 
   render() {
-    let relString;
-    // extracts user info from the navbar (written in .erb).  could be useful for linking to the user page.
-    relString = this._reactInternalInstance._hostContainerInfo._node.offsetParent.innerText;
-debugger
+//     // extracts user info from the navbar (written in .erb).  could be useful for linking to the user page.
+//     let relString;
+//     relString = this._reactInternalInstance._hostContainerInfo._node.offsetParent.innerText;
+// debugger
+
+
     // This is the flash message that appears when someone logs in or out
     $(function(){
       var flashDurationInSeconds = 1;

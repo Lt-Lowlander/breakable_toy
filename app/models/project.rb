@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   mount_uploader :photo_url, ProjectPhotoUploader
 
-  validates :name, :description, :photo_url, :version_id, :handle, :user_id, :fam_id, presence: true
+  validates :name, :description, :version_id, :handle, :user_id, :fam_id, presence: true
 
   belongs_to :user
   belongs_to :fam
