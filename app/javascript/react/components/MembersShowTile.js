@@ -1,18 +1,37 @@
 import React, { Component } from 'react';
+import DZTile from './DZTile';
 
 class MembersShowTile extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      newPhoto: [],
+      picName: '',
       handleSitRep: 'situationNormal',
       bioSitRep: 'situationNormal',
+      imageSitRep: 'situationNormal',
       elementEdit: ''
     }
     this.manageChange=this.manageChange.bind(this)
     this.manageHandleSubmit=this.manageHandleSubmit.bind(this)
     this.manageBioSubmit=this.manageBioSubmit.bind(this)
+    this.manageImageSubmit=this.manageImageSubmit.bind(this)
     this.onHandleClick=this.onHandleClick.bind(this)
     this.onBioClick=this.onBioClick.bind(this)
+    this.onImageClick=this.onImageClick.bind(this)
+    this.onDrop=this.onDrop.bind(this)
+  }
+
+  onDrop(file) {
+    if (file.length == 1) {
+debugger
+      this.setState({
+        newPhoto: file[0],
+        picName: file[0].name
+      })
+    } else {
+      this.setState({ message: 'You can only upload one file per image.'});
+    }
   }
 
   onBioClick(event){
@@ -22,6 +41,15 @@ class MembersShowTile extends Component {
       elementEdit: `${this.props.bio}`
     })
     const elem = 'bio'
+    this.props.infoUpdate(elem)
+  }
+
+  onImageClick(event){
+    event.preventDefault();
+    this.setState({
+      imageSitRep: 'needUpdate'
+    })
+    const elem = 'image'
     this.props.infoUpdate(elem)
   }
 
@@ -56,9 +84,17 @@ class MembersShowTile extends Component {
     this.setState({ bioSitRep: 'situationNormal'})
   }
 
+  manageImageSubmit(event) {
+    event.preventDefault();
+    const payload = { profile_photo: this.state.newPhoto }
+    this.props.changeElement(payload)
+    this.setState({ imageSitRep: 'situationNormal'})
+  }
+
   render(){
     let handleEdit;
     let bioEdit;
+    let imageEdit;
     if (this.props.ownership) {
       handleEdit =
       <div className="user-handle-edit" onClick={this.onHandleClick}>
@@ -68,9 +104,22 @@ class MembersShowTile extends Component {
       <div className="user-bio-edit" onClick={this.onBioClick}>
         <i className="far fa-edit"></i>
       </div>
+      imageEdit =
+      <div className="user-bio-edit" onClick={this.onImageClick}>
+        <i className="far fa-edit"></i>
+      </div>
     }
     let handleStatus;
     let bioStatus;
+    let imageStatus;
+    let imageTitle = this.state.picName;
+    let imageSize = this.state.newPhoto.size;
+    let imageName;
+    if (this.state.picName == "") {
+      imageName = "none"
+    } else {
+      imageName = `${imageTitle} - ${imageSize} bytes`;
+    }
       if (this.state.handleSitRep == 'situationNormal') {
         handleStatus=
         <div className="user-handle-cell">
@@ -119,32 +168,79 @@ class MembersShowTile extends Component {
           </div>
         </form>
       }
+      if (this.state.imageSitRep == 'situationNormal') {
+        imageStatus=
+        <div className="user-image-cell">
+          {imageEdit}
+          <div className="user-image-pic">
+            <img src={this.props.image} alt={this.props.handle} />
+          </div>
+        </div>
+      } else if (this.state.imageSitRep == 'needUpdate') {
+        imageStatus=
+        <form onSubmit={this.manageImageSubmit}>
+          <div className="visual-semblance">
+            <label>
+              Current Profile Photo
+            </label>
+            <div className="cover-picture-handling">
+              <img className="extant-image" src={this.props.image} />
+              <div className="image-uploading">
+                <DZTile
+                  onDrop={this.onDrop}
+                  />
+                <div className="pic-prev-info">
+                  <label>Preview:</label>
+                  <img className="pic-preview" src={this.state.newPhoto.preview} />
+                  <br/>
+                  <label>File chosen:</label>
+                  <ul>
+                    <label>
+                      <li>
+                        {imageName}
+                      </li>
+                    </label>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" className="button" value="Submit">
+            Enter Changes
+          </button>
+        </form>
+      }
     return(
       <div className="member-info">
         <div className="user-details notestyle rounders">
-          <div className="handle-unit margin-spacing">
-            <div className="handle-label">
-              User Name:
+          <div className="user-text">
+            <div className="handle-unit margin-spacing">
+              <div className="handle-label">
+                User Name:
+              </div>
+              <div className="handle-entry">
+                {handleStatus}
+              </div>
             </div>
-            <div className="handle-entry">
-              {handleStatus}
+            <div className="role-unit margin-spacing">
+              <div className="role-label">
+                Role:
+              </div>
+              <div className="role-entry">
+                {this.props.role}
+              </div>
+            </div>
+            <div className="bio-unit margin-spacing">
+              <div className="bio-label">
+                Bio:
+              </div>
+              <div className="bio-entry">
+                {bioStatus}
+              </div>
             </div>
           </div>
-          <div className="role-unit margin-spacing">
-            <div className="role-label">
-              Role:
-            </div>
-            <div className="role-entry">
-              {this.props.role}
-            </div>
-          </div>
-          <div className="bio-unit margin-spacing">
-            <div className="bio-label">
-              Bio:
-            </div>
-            <div className="bio-entry">
-              {bioStatus}
-            </div>
+          <div className="user-profile-pic">
+            {imageStatus}
           </div>
         </div>
       </div>

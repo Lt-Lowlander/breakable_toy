@@ -1,21 +1,42 @@
+.membership-list {
+  list-style: none;
+}
+
+.individual-members {
+  display: inline-block;
+}
+
 .member-index-tile {
+  display: flex;
+  flex-direction: row;
   font-family: "Futura";
   color: #4c4c4c;
-  padding: 10px 0px;
+  padding: 0.4rem 1rem;
   margin: 20px 0px 20px 40px;
+  width: auto;
 }
 
 .index-role {
+  order: 1;
   font-weight: bold;
   float: left;
   margin: 0px 10px 10px 10px;
 }
 
 .index-divider {
+  order: 2;
   float: left;
   margin-right: 10px;
 }
 
 .index-handle {
+  order: 3;
   font-weight: bold;
+  margin-right: 10px;
+}
+
+.member-index-photo {
+  order: 4;
+  width: auto;
+  height: 50px;
 }

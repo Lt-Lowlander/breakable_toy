@@ -62,7 +62,6 @@ class EditProjectFormContainer extends Component {
       if (picture === undefined || picture.length == 0) {
         picSource = this.state.photo_url
       }
-  debugger
       let editedProject = new FormData();
       editedProject.append("name", this.state.name);
       editedProject.append("description", this.state.description);
@@ -91,7 +90,6 @@ class EditProjectFormContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-debugger
         browserHistory.push(`/projects/${body.project.id}`)})
         .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
@@ -173,7 +171,7 @@ debugger
                     </div>
                   </div>
                 </div>
-                </div>
+              </div>
               <button type="submit" className="button" value="Submit">
                 Enter Changes
               </button>
