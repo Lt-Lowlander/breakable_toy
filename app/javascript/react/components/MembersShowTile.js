@@ -24,6 +24,7 @@ class MembersShowTile extends Component {
 
   onDrop(file) {
     if (file.length == 1) {
+debugger
       this.setState({
         newPhoto: file[0],
         picName: file[0].name
@@ -46,8 +47,7 @@ class MembersShowTile extends Component {
   onImageClick(event){
     event.preventDefault();
     this.setState({
-      imageSitRep: 'needUpdate',
-      elementEdit: `${this.props.image}`
+      imageSitRep: 'needUpdate'
     })
     const elem = 'image'
     this.props.infoUpdate(elem)
@@ -86,7 +86,7 @@ class MembersShowTile extends Component {
 
   manageImageSubmit(event) {
     event.preventDefault();
-    const payload = { image: this.state.elementEdit }
+    const payload = { profile_photo: this.state.newPhoto }
     this.props.changeElement(payload)
     this.setState({ imageSitRep: 'situationNormal'})
   }
@@ -181,18 +181,17 @@ class MembersShowTile extends Component {
         <form onSubmit={this.manageImageSubmit}>
           <div className="visual-semblance">
             <label>
-              Current Cover Photo
+              Current Profile Photo
             </label>
             <div className="cover-picture-handling">
-              <img className="extant-image" src={this.state.photo_url} />
+              <img className="extant-image" src={this.props.image} />
               <div className="image-uploading">
                 <DZTile
-                  image={this.state.image}
                   onDrop={this.onDrop}
                   />
                 <div className="pic-prev-info">
                   <label>Preview:</label>
-                  <img className="pic-preview" src={this.state.image.preview} />
+                  <img className="pic-preview" src={this.state.newPhoto.preview} />
                   <br/>
                   <label>File chosen:</label>
                   <ul>
