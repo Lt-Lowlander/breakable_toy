@@ -24,7 +24,6 @@ class MembersShowTile extends Component {
 
   onDrop(file) {
     if (file.length == 1) {
-debugger
       this.setState({
         newPhoto: file[0],
         picName: file[0].name
@@ -173,7 +172,7 @@ debugger
         <div className="user-image-cell">
           {imageEdit}
           <div className="user-image-pic">
-            <img src={this.props.image} alt={this.props.handle} />
+            <img src={this.props.image} alt={this.props.image} />
           </div>
         </div>
       } else if (this.state.imageSitRep == 'needUpdate') {
