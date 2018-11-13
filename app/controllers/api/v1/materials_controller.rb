@@ -1,4 +1,6 @@
 class Api::V1::MaterialsController < ApiController
+  skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
 
   def index
     materials = Material.where(project_id: params[:project_id]).order(id: :asc)
