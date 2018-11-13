@@ -55,11 +55,14 @@ class ProjectIndexContainer extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    let newProject = new FormData();
-    newProject.append("name", "What's my name?");
-    newProject.append("description", "How would you describe me?");
-
-    this.newLitFam(newProject);
+    if (this.state.activeMember != '') {
+      let newProject = new FormData();
+      newProject.append("name", "What's my name?");
+      newProject.append("description", "How would you describe me?");
+      this.newLitFam(newProject);
+    } else {
+      window.location = '/users/sign_in'
+    }
   }
 
   newLitFam(relevantData) {
@@ -134,7 +137,6 @@ debugger
   }
 
   render(){
-    let button_settings;
     const admin = this.state.admin;
     const viewer = this.state.activeMember;
     const foundProjects = this.state.projectsArray;
@@ -153,20 +155,17 @@ debugger
         />
       )
     })
-    if (this.state.member) {
-      button_settings=
-      <div className="grid-x">
-        <form onSubmit={this.handleSubmit} className="cell small-8 medium-10 large-12">
-          <button className="add-project-button good-times notestyle" type="submit" value="submit">
-              Add a Project
-          </button>
-        </form>
-      </div>
-    }
+
     return(
       <div className="index-page-overview">
         <div className="prokaryote">
-          {button_settings}
+          <div className="grid-x">
+            <form onSubmit={this.handleSubmit} className="cell small-8 medium-10 large-12">
+              <button className="add-project-button good-times notestyle" type="submit" value="submit">
+                  Add a Project
+              </button>
+            </form>
+          </div>
           <div className="grid-x grid-margin-x align-spaced">
             {projects}
           </div>

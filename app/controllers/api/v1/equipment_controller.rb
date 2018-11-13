@@ -1,4 +1,6 @@
 class Api::V1::EquipmentController < ApiController
+  skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
 
   def index
   # if controller_path == "api/v1/equipment"

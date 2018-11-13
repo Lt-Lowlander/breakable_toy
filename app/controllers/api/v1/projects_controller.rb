@@ -1,4 +1,6 @@
 class Api::V1::ProjectsController < ApiController
+  skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     if current_user == nil
