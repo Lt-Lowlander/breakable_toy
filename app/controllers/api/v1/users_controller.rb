@@ -8,17 +8,17 @@ class Api::V1::UsersController < ApiController
   end
 
   def show
-      if current_user == nil
-        member = ""
-      else
-        member = current_user.id
-      end
-      user = User.find(params[:id])
-      payload = {
-        viewing_member: member,
-        user: user
-      }
-      render json: payload, include: ["equipment", "projects"]
+    if current_user == nil
+      member = ""
+    else
+      member = current_user.id
+    end
+    user = User.find(params[:id])
+    payload = {
+      viewing_member: member,
+      user: user
+    }
+    render json: payload, include: ["equipment", "projects"]
   end
 
   def update
@@ -33,7 +33,7 @@ class Api::V1::UsersController < ApiController
 
   private
   def user_data
-    params.permit(:handle, :bio, :profile_photo)
+    params.permit(:id, :handle, :bio, :profile_photo, :user)
   end
 
 end
