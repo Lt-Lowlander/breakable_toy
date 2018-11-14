@@ -10,7 +10,6 @@ class ProjectIndexContainer extends Component {
     this.state = {
       projectsArray: [],
       activeMember: '',
-
       member: false,
       admin: false
     }
@@ -66,7 +65,6 @@ class ProjectIndexContainer extends Component {
   }
 
   newLitFam(relevantData) {
-debugger
     fetch('/api/v1/fams', {
       credentials: 'same-origin',
       method: 'POST'
@@ -82,12 +80,10 @@ debugger
     })
     .then(response => response.json())
     .then(body => {
-debugger
       relevantData.append("fam_id", `${body.id}`)
       this.postNewProject(relevantData)
     });
   }
-
 
   postNewProject(infoPayload) {
     fetch('/api/v1/projects', {
@@ -106,7 +102,6 @@ debugger
       })
       .then(response => response.json())
       .then(body => {
-debugger
         browserHistory.push(`/projects/${body.id}/edit`)
       });
     }
@@ -127,10 +122,10 @@ debugger
     .then(response => response.json())
     .then(body => {
       this.setState({
-          projectsArray: body.projects,
-          activeMember: body.viewing_member,
-          member: body.member,
-          admin: body.admin
+        projectsArray: body.projects,
+        activeMember: body.viewing_member,
+        member: body.member,
+        admin: body.admin
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -162,7 +157,7 @@ debugger
           <div className="grid-x">
             <form onSubmit={this.handleSubmit} className="cell small-8 medium-10 large-12">
               <button className="add-project-button good-times notestyle" type="submit" value="submit">
-                  Add a Project
+                Add a Project
               </button>
             </form>
           </div>

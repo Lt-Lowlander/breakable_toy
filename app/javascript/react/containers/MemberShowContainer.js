@@ -10,7 +10,7 @@ class MemberShowContainer extends Component {
       userInfo: {},
       handle: '',
       bio: '',
-      image: [],
+      image: '',
       userEquipment: [],
       userProjects: [],
       activeMember: '',
@@ -64,7 +64,7 @@ debugger
         })
       } else if (factor == 'image') {
         this.setState({
-          image: body[0].profile_photo.url
+          image: body[0].profile_photo.thumb.url
         })
       }
       this.clearInputs()
@@ -88,7 +88,7 @@ debugger
         userInfo: body.user,
         handle: body.user.handle,
         bio: body.user.bio,
-        image: body.user.profile_photo.url,
+        image: body.user.profile_photo.thumb.url,
         userEquipment: body.user.equipment,
         userProjects: body.user.projects,
         activeMember: body.viewing_member

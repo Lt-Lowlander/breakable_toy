@@ -74,6 +74,7 @@ class EditProjectFormContainer extends Component {
   }
 
   sendEditedProject(infoPayload) {
+debugger
     fetch(`/api/v1/projects/${this.state.idNum}`, {
       credentials: 'same-origin',
       method: 'PATCH',
@@ -90,6 +91,7 @@ class EditProjectFormContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
+debugger
         browserHistory.push(`/projects/${body.project.id}`)})
         .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
@@ -107,6 +109,7 @@ class EditProjectFormContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
+debugger
         this.setState({
           idNum: body.project.id,
           name: body.project.name,
