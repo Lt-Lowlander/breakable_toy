@@ -23,9 +23,11 @@ let ProjectShowTile = (props) => {
       </div>
       <div className="bifurcation">
         <div className="side-left ownership-group">
-          <div className="project-show-version">
-            Mark {props.numeral}
-          </div>
+          <Link to={`/fams/${props.fam}`} className="user-title-path">
+            <div className="project-show-version">
+              Gen {props.numeral}
+            </div>
+          </Link>
           <div className="project-show-inventor">
             by
             <Link to={`/users/${props.userNum}`} className="user-title-path">

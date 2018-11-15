@@ -14,7 +14,7 @@ let FamShowTile = (props) => {
               <img src={props.image} alt={props.name} className="project-index-pic"/>
               <div className="project-index-info">
                 <div className="project-index-title">
-                  {props.name}
+                  Gen {props.version} <span></span> by {props.handle}
                 </div>
                 <div className="project-index-version">
                 </div>
