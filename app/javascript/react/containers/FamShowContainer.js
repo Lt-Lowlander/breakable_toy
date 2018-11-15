@@ -59,6 +59,7 @@ class FamShowContainer extends Component {
           {house} Progression
         </div>
         <div className="grid-x grid-margin-x align-spaced">
+          
           {famList}
         </div>
       </div>
