@@ -54,13 +54,13 @@ class ProjectIndexContainer extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    if (this.state.activeMember != '') {
+    if (!this.state.member) {
+      window.location = '/users/sign_in'
+    } else {
       let newProject = new FormData();
       newProject.append("name", "What's my name?");
       newProject.append("description", "How would you describe me?");
       this.newLitFam(newProject);
-    } else {
-      window.location = '/users/sign_in'
     }
   }
 
