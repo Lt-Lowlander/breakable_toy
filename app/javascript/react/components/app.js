@@ -8,6 +8,7 @@ import MemberShowContainer from '../containers/MemberShowContainer';
 import ProjectIndexContainer from '../containers/ProjectIndexContainer';
 import ProjectShowContainer from '../containers/ProjectShowContainer';
 import ProjectFormContainer from '../containers/ProjectFormContainer';
+import FamShowContainer from '../containers/FamShowContainer';
 
 class App extends Component {
   constructor(props){
@@ -49,6 +50,7 @@ class App extends Component {
             <Route path='/projects/:id/edit' component={EditProjectFormContainer} />
             <Route path='/users' component={MemberIndexContainer} />
             <Route path='/users/:id' component={MemberShowContainer} />
+            <Route path='/fams/:id' component={FamShowContainer} />
             <Route path='/white_rabbit' component={SecretComponent} />
           </Route>
         </Router>

@@ -1,15 +1,24 @@
 class Api::V1::FamsController < ApiController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
-  
+
   def index
     families = Fam.all
     render json: families
   end
 
   def show
+    if current_user == nil
+      member = ""
+    else
+      member = current_user.id
+    end
     family = Fam.where(id: params[:id])
-    render json: family
+    payload = {
+      viewing_member: member,
+      fam: family
+    }
+    render json: payload, include: ["projects"]
   end
 
   def create

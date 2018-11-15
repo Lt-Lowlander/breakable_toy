@@ -41,6 +41,9 @@ let ProjectShowTile = (props) => {
             version={props.iteration + 1}
             parent={props.id}
             visitor={props.viewer}
+            name={props.name}
+            picture={props.image}
+            description={props.desc}
             />
         </div>
       </div>
