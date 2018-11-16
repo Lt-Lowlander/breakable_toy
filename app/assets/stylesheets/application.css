@@ -66,6 +66,10 @@
   margin-top: 0.85rem;
 }
 
+.visitor-options {
+  margin-top: 1rem;
+}
+
 .title-area {
   order: 1;
   font-weight: bold;
