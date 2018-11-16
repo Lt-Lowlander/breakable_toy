@@ -1,6 +1,6 @@
 class Api::V1::FamsController < ApiController
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     families = Fam.all
