@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+// similar to the project index tile
 let FamShowTile = (props) => {
   return(
     <div>

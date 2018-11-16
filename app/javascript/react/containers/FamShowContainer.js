@@ -11,7 +11,7 @@ class FamShowContainer extends Component {
     }
     this.rumplestiltzkin=this.rumplestiltzkin.bind(this)
   }
-
+  // this iterates through all the projects in the family, finds the progenitor, and uses its name for the page title
   rumplestiltzkin(){
     for (var i = 0; i < this.state.projectsArray.length; i++) {
       if (this.state.projectsArray[i].parent_id === null) {
