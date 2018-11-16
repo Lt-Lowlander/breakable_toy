@@ -11,59 +11,55 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="website-body">
-    <div id="container-helm" class="top-bar-container" data-sticky-container>
-      <div id="sticky-helm" class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: small;">
-        <nav id="nav-helm" class="top-bar bridge-flex">
-          <ul id="title-helm" class="title-area good-times">
-            <li class="name">
-              <a href="/">
-                Project Relay
-              </a>
-            </li>
-          </ul>
-          <section class="session-options">
-            <ul class="right good-times">
-              <%- if current_user -%>
-              <li id="user-info" class="current_user-display">
-                <a href="/users/<%=current_user.id%>">
-                  <div class="user-flex">
-                    <div class="username">
-                      <%= current_user.handle %>
-                    </div>
-                    <div class="veiled">
-                      <%= current_user.id %>
-                    </div>
-                    <img
-                    class="bridge-profile-pic" src="<%= current_user.profile_photo.thumb.url %>" alt="<%= current_user.handle %>"
-                    />
+  <div id="container-helm" class="top-bar-container" data-sticky-container>
+    <div id="sticky-helm" class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: small;">
+      <nav id="nav-helm" class="top-bar bridge-flex">
+        <ul id="title-helm" class="title-area good-times">
+          <li class="name">
+            <a href="/">
+              Project Relay
+            </a>
+          </li>
+        </ul>
+        <section class="session-options">
+          <ul class="right good-times">
+            <%- if current_user -%>
+            <li id="user-info" class="current_user-display">
+              <a href="/users/<%=current_user.id%>">
+                <div class="user-flex">
+                  <div class="username">
+                    <%= current_user.handle %>
                   </div>
-                </a>
-                <div class="sign-out">
-                  <%= link_to '<span class="veiled">|</span><i class="fas fa-sign-out-alt"></i>'.html_safe, destroy_user_session_path, method: :delete %>
+                  <div class="veiled">
+                    <%= current_user.id %>
+                  </div>
+                  <img
+                  class="bridge-profile-pic" src="<%= current_user.profile_photo.thumb.url %>" alt="<%= current_user.handle %>"
+                  />
                 </div>
-              </li>
-              <%- else -%>
-              <li class="visitor-options"><%= link_to 'Sign Up', new_user_registration_path %></li>
-              <li><%= link_to 'Sign In', new_user_session_path %></li>
-              <%- end -%>
-            </ul>
-          </section>
-        </nav>
-      </div>
+              </a>
+              <div class="sign-out">
+                <%= link_to '<span class="veiled">|</span><i class="fas fa-sign-out-alt"></i>'.html_safe, destroy_user_session_path, method: :delete %>
+              </div>
+            </li>
+            <%- else -%>
+            <li class="visitor-options"><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <li><%= link_to 'Sign In', new_user_session_path %></li>
+            <%- end -%>
+          </ul>
+        </section>
+      </nav>
     </div>
-    <div class="website-content">
-      <div id="flash-messages">
-        <%- flash.each do |key, value| -%>
-        <div class="flash flash-<%= key %>">
-          <%= value %>
-        </div>
-        <%- end -%>
-      </div>
-      <div className="main-page">
-        <%= yield %>
-      </div>
+  </div>
+  <div id="flash-messages">
+    <%- flash.each do |key, value| -%>
+    <div class="flash flash-<%= key %>">
+      <%= value %>
     </div>
+    <%- end -%>
+  </div>
+  <div className="main-page">
+    <%= yield %>
   </div>
 
   <%= javascript_include_tag 'application' %>
