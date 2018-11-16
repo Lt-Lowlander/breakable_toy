@@ -16,7 +16,7 @@
 *= require foundation_and_overrides
 */
 
-.website-body {
+/* .website-body {
   display: flex;
   flex-direction: column;
 }
@@ -27,7 +27,7 @@
 
   .website-content {
     order: 2;
-  }
+  } */
 
 .bridge-flex {
   display: flex;
