@@ -24,6 +24,8 @@ class ProjectShowContainer extends Component {
     this.clearInputs=this.clearInputs.bind(this)
     this.romanize=this.romanize.bind(this)
     this.itemUpdate=this.itemUpdate.bind(this)
+    this.cleanHouse=this.cleanHouse.bind(this)
+    this.ownership=this.ownership.bind(this)
   }
   // The currentItem state element serves as a dynamic switch to constrain
   // component/tile functionality to only one component/tile at a time
@@ -42,6 +44,26 @@ class ProjectShowContainer extends Component {
     })
   }
 
+  ownership() {
+    if (this.state.project.user_id === this.state.activeMember) {
+      return(true)
+    }
+  }
+
+  cleanHouse(){
+    window.location = `/fams/${this.state.project.fam_id}`;
+    this.setState({
+      project: {},
+      coverImage: '',
+      equipment: [],
+      material: [],
+      step: [],
+      activeMember: '',
+      fetchType: '',
+      element: '',
+      currentItem: ''
+    })
+  }
   // Resets state elements to neutral values
   clearInputs(){
     this.setState({
@@ -136,10 +158,6 @@ class ProjectShowContainer extends Component {
   }
 
   render(){
-    let ownership;
-    const author = this.state.project.user_id;
-    const viewer = this.state.activeMember;
-    if (viewer === author) { ownership = true; }
     let project = this.state.project;
     let projectMaterials = this.state.material;
     let projectEquipment = this.state.equipment;
@@ -151,7 +169,7 @@ class ProjectShowContainer extends Component {
         <div className="grid-x grid-margin-x align-spaced">
           <div className="project-nucleus notestyle rounders cell small-12 medium-8 large-6">
             <ProjectShowTile
-              ownership={ownership}
+              ownership={this.ownership}
               key={project.id}
               id={project.id}
               name={project.name}
@@ -163,10 +181,9 @@ class ProjectShowContainer extends Component {
               topics={project.topics}
               user={project.handle}
               userNum={project.user_id}
-              fam={project.fam_id}
               parent={project.parent_id}
-              currentItem={this.state.currentItem}
               viewer={this.state.activeMember}
+              stately={this.cleanHouse}
             />
           </div>
           <div className="cell small-12 medium-6 large-4">
@@ -176,7 +193,7 @@ class ProjectShowContainer extends Component {
                   <b>Materials</b>
                 </div>
                 <MaterialsIndexContainer
-                  ownership={ownership}
+                  ownership={this.ownership}
                   materials={projectMaterials}
                   projectId={this.state.project.id}
                   changeElement={this.changeElement}
@@ -191,7 +208,7 @@ class ProjectShowContainer extends Component {
                   <b>Equipment</b>
                 </div>
                 <EquipmentIndexContainer
-                  ownership={ownership}
+                  ownership={this.ownership}
                   equipment={projectEquipment}
                   projectId={this.state.project.id}
                   changeElement={this.changeElement}
@@ -209,7 +226,7 @@ class ProjectShowContainer extends Component {
                 Construction Guide
               </div>
               <StepsIndexContainer
-                ownership={ownership}
+                ownership={this.ownership}
                 steps={projectSteps}
                 projectId={this.state.project.id}
                 changeElement={this.changeElement}

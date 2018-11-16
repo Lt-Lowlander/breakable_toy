@@ -12,7 +12,7 @@ class MaterialsIndexContainer extends Component {
 
   render(){
     let materialsList = this.props.materials.map(widget => {
-      if (this.props.ownership) {
+      if (this.props.ownership()) {
         return(
           <MaterialsElementTile
             key={widget.id}
@@ -36,7 +36,7 @@ class MaterialsIndexContainer extends Component {
         )
       }
     })
-    if (this.props.ownership) {
+    if (this.props.ownership()) {
       return(
         <div>
           <ul>

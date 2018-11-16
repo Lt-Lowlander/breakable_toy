@@ -5,7 +5,8 @@ import OffSpringFormComponent from './OffSpringFormComponent';
 let projectEdits;
 let numeral;
 let ProjectShowTile = (props) => {
-  if (props.ownership) {
+  const owner = (props.ownership())
+  if (props.ownership()) {
     projectEdits =
     <Link to={`/projects/${props.id}/edit`} className="edit-engage">
       <i className="far fa-edit edit-icon"></i>
@@ -23,11 +24,9 @@ let ProjectShowTile = (props) => {
       </div>
       <div className="bifurcation">
         <div className="side-left ownership-group">
-          <Link to={`/fams/${props.fam}`} className="user-title-path">
-            <div className="project-show-version">
-              Gen {props.numeral}
-            </div>
-          </Link>
+          <div className="project-show-version" onClick={props.stately}>
+            Gen {props.numeral}
+          </div>
           <div className="project-show-inventor">
             by
             <Link to={`/users/${props.userNum}`} className="user-title-path">

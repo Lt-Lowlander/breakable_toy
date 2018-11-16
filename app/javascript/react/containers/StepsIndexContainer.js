@@ -11,7 +11,7 @@ class StepsIndexContainer extends Component {
   }
   render(){
     let stepsList = this.props.steps.map(increment => {
-      if (this.props.ownership) {
+      if (this.props.ownership()) {
         return(
           <StepsElementTile
             key={increment.id}
@@ -37,7 +37,7 @@ class StepsIndexContainer extends Component {
         )
       }
     })
-    if (this.props.ownership) {
+    if (this.props.ownership()) {
       return(
         <div>
           <ol className="order-in-the-steps">
