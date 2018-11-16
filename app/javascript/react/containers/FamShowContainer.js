@@ -9,13 +9,17 @@ class FamShowContainer extends Component {
       activeMember: '',
       surname: ''
     }
-    this.nomenclature=this.nomenclature.bind(this)
+    this.rumplestiltzkin=this.rumplestiltzkin.bind(this)
   }
 
-  nomenclature(nickname){
-    this.setState({
-      surname: nickname
-    })
+  rumplestiltzkin(){
+    for (var i = 0; i < this.state.projectsArray.length; i++) {
+      if (this.state.projectsArray[i].parent_id === null) {
+        return(
+          this.state.projectsArray[i].name
+        )
+      }
+    }
   }
 
   componentDidMount(){
@@ -38,18 +42,16 @@ class FamShowContainer extends Component {
   }
 
   render(){
-    let house = this.state.surname;
+    let house = this.rumplestiltzkin();
     let famList = this.state.projectsArray.map(kindred => {
       return(
         <FamShowTile
           key={kindred.id}
           id={kindred.id}
-          ancestor={kindred.parent_id}
           name={kindred.name}
           handle={kindred.handle}
           version={kindred.version_id}
           image={kindred.photo_url.url}
-          lastName={this.nomenclature}
         />
       )
     });
@@ -59,7 +61,7 @@ class FamShowContainer extends Component {
           {house} Progression
         </div>
         <div className="grid-x grid-margin-x align-spaced">
-          
+
           {famList}
         </div>
       </div>

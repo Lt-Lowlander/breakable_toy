@@ -2,9 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 
 let FamShowTile = (props) => {
-  if (props.ancestor == null) {
-    props.lastName(props.name)
-  }
   return(
     <div>
       <div className="cell small-12 medium-6 large-4">
