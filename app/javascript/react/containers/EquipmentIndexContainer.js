@@ -12,7 +12,7 @@ class EquipmentIndexContainer extends Component {
 
   render(){
     let equipmentList = this.props.equipment.map(machine => {
-      if (this.props.ownership) {
+      if (this.props.ownership()) {
         return(
           <EquipmentElementTile
             key={machine.id}
@@ -33,7 +33,7 @@ class EquipmentIndexContainer extends Component {
         )
       }
     })
-    if (this.props.ownership) {
+    if (this.props.ownership()) {
       return(
         <div>
           <ul>

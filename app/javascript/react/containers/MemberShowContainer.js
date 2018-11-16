@@ -19,6 +19,7 @@ class MemberShowContainer extends Component {
     this.changeElement=this.changeElement.bind(this)
     this.infoUpdate=this.infoUpdate.bind(this)
     this.clearInputs=this.clearInputs.bind(this)
+    this.ownership=this.ownership.bind(this)
   }
 
   infoUpdate(elem){
@@ -31,6 +32,12 @@ class MemberShowContainer extends Component {
     this.setState({
       element: ''
     })
+  }
+
+  ownership() {
+    if (this.state.userInfo.id === this.state.activeMember) {
+      return(true)
+    }
   }
 
   changeElement(payload){
@@ -97,19 +104,12 @@ debugger
   }
 
   render(){
-    let ownership;
-    const author = this.state.userInfo.id;
-    const viewer = this.state.activeMember;
-    if (viewer === author) {
-      ownership = true;
-    }
-
     return(
       <div className="user-overview grid-x">
         <div className="cell small-12 medium-6 large-5 details-and-equipment">
           <div className="member-info-tile">
             <MembersShowTile
-              ownership={ownership}
+              ownership={this.ownership}
               key={this.state.userInfo.id}
               id={this.state.userInfo.id}
               role={this.state.userInfo.role}
