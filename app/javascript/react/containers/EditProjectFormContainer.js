@@ -67,7 +67,6 @@ class EditProjectFormContainer extends Component {
       editedProject.append("description", this.state.description);
       editedProject.append("photo_url", picSource);
       editedProject.append("fam_id", this.state.familyId);
-      console.log(editedProject)
       this.sendEditedProject(editedProject);
       this.handleClear();
     }

@@ -25,7 +25,6 @@ class Api::V1::UsersController < ApiController
     edited_user = User.where(id: params[:id])
     if edited_user.update(user_data)
       user = User.where(id: params[:id])
-binding.pry
       render json: user
     else
       render json: {errors: edited_user.errors}

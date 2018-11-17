@@ -20,6 +20,7 @@ class MemberShowContainer extends Component {
     this.infoUpdate=this.infoUpdate.bind(this)
     this.clearInputs=this.clearInputs.bind(this)
     this.ownership=this.ownership.bind(this)
+    this.sendPicUpdate=this.sendPicUpdate.bind(this)
   }
 
   infoUpdate(elem){
@@ -40,8 +41,31 @@ class MemberShowContainer extends Component {
     }
   }
 
+  sendPicUpdate(imagePayload) {
+    fetch(`/api/v1/users/${this.props.params.id}`, {
+      credentials: 'same-origin',
+      method: 'PATCH',
+      body: imagePayload
+    })
+    .then(response => {
+      if(response.ok){
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+           error = new Error(errorMessage)
+       throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        image: body[0].profile_photo.thumb.url
+      })
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
   changeElement(payload){
-debugger
     fetch(`/api/v1/users/${this.props.params.id}`, {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin',
@@ -60,7 +84,6 @@ debugger
     .then(response => response.json())
     .then(body => {
       const factor = this.state.element
-debugger
       if (factor == 'handle') {
         this.setState({
           handle: body[0].handle
@@ -68,10 +91,6 @@ debugger
       } else if (factor == 'bio') {
         this.setState({
           bio: body[0].bio
-        })
-      } else if (factor == 'image') {
-        this.setState({
-          image: body[0].profile_photo.thumb.url
         })
       }
       this.clearInputs()
@@ -118,6 +137,7 @@ debugger
               image={this.state.image}
               changeElement={this.changeElement}
               infoUpdate={this.infoUpdate}
+              sendPicUpdate={this.sendPicUpdate}
               />
           </div>
           <div className="member-equipment-tile">

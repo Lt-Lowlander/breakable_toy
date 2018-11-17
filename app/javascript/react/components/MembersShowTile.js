@@ -20,6 +20,7 @@ class MembersShowTile extends Component {
     this.onBioClick=this.onBioClick.bind(this)
     this.onImageClick=this.onImageClick.bind(this)
     this.onDrop=this.onDrop.bind(this)
+    this.clearPic=this.clearPic.bind(this)
   }
 
   onDrop(file) {
@@ -31,6 +32,12 @@ class MembersShowTile extends Component {
     } else {
       this.setState({ message: 'You can only upload one file per image.'});
     }
+  }
+
+  clearPic(){
+    this.setState({
+      newPhoto: []
+    })
   }
 
   onBioClick(event){
@@ -85,9 +92,11 @@ class MembersShowTile extends Component {
 
   manageImageSubmit(event) {
     event.preventDefault();
-    const payload = { profile_photo: this.state.newPhoto }
-    this.props.changeElement(payload)
-    this.setState({ imageSitRep: 'situationNormal'})
+    let editedImage = new FormData();
+    editedImage.append("profile_photo", this.state.newPhoto);
+    this.props.sendPicUpdate(editedImage);
+    this.clearPic();
+    this.setState({ imageSitRep: 'situationNormal' });
   }
 
   render(){
