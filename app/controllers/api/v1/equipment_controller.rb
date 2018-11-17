@@ -5,7 +5,6 @@ class Api::V1::EquipmentController < ApiController
   def index
   # if controller_path == "api/v1/equipment"
   # end
-  binding.pry
     equipment_in_projects = Equipment.where(equipment_id: params[:equipment_id])
     machines = Equipment.all.order(id: :asc)
     render json: machines

@@ -103,17 +103,17 @@ class MembersShowTile extends Component {
     let handleEdit;
     let bioEdit;
     let imageEdit;
-    if (this.props.ownership) {
+    if (this.props.ownership()) {
       handleEdit =
-      <div className="user-handle-edit" onClick={this.onHandleClick}>
+      <span className="user-handle-edit" onClick={this.onHandleClick}>
         <i className="far fa-edit"></i>
-      </div>
+      </span>
       bioEdit =
       <div className="user-bio-edit" onClick={this.onBioClick}>
         <i className="far fa-edit"></i>
       </div>
       imageEdit =
-      <div className="user-bio-edit" onClick={this.onImageClick}>
+      <div className="user-image-edit" onClick={this.onImageClick}>
         <i className="far fa-edit"></i>
       </div>
     }
@@ -130,11 +130,10 @@ class MembersShowTile extends Component {
     }
       if (this.state.handleSitRep == 'situationNormal') {
         handleStatus=
-        <div className="user-handle-cell">
-          {handleEdit}
-          <div className="user-handle-text">
-            {this.props.handle}
-          </div>
+        <div className="handle-user-unit">
+          <span className="user-handle-cell">
+            {handleEdit} {this.props.handle}
+          </span>
         </div>
       } else if (this.state.handleSitRep == 'needUpdate') {
         handleStatus =
@@ -181,7 +180,7 @@ class MembersShowTile extends Component {
         <div className="user-image-cell">
           {imageEdit}
           <div className="user-image-pic">
-            <img src={this.props.image} alt={this.props.image} />
+            <img className="user-pic" src={this.props.image} alt={this.props.image} />
           </div>
         </div>
       } else if (this.state.imageSitRep == 'needUpdate') {
@@ -222,20 +221,27 @@ class MembersShowTile extends Component {
       <div className="member-info">
         <div className="user-details notestyle rounders">
           <div className="user-text">
-            <div className="handle-unit margin-spacing">
-              <div className="handle-label">
-                User Name:
+            <div className="name-role-pic">
+              <div className="name-and-role">
+                <div className="handle-unit margin-spacing">
+                  <div className="handle-label">
+                    User Name:
+                  </div>
+                  <div className="handle-entry">
+                    {handleStatus}
+                  </div>
+                </div>
+                <div className="role-unit margin-spacing">
+                  <div className="role-label">
+                    Role: {this.props.role}
+                  </div>
+                  <div className="role-entry">
+
+                  </div>
+                </div>
               </div>
-              <div className="handle-entry">
-                {handleStatus}
-              </div>
-            </div>
-            <div className="role-unit margin-spacing">
-              <div className="role-label">
-                Role:
-              </div>
-              <div className="role-entry">
-                {this.props.role}
+              <div className="user-profile-pic">
+                {imageStatus}
               </div>
             </div>
             <div className="bio-unit margin-spacing">
@@ -246,9 +252,6 @@ class MembersShowTile extends Component {
                 {bioStatus}
               </div>
             </div>
-          </div>
-          <div className="user-profile-pic">
-            {imageStatus}
           </div>
         </div>
       </div>
