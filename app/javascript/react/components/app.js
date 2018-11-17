@@ -7,7 +7,6 @@ import MemberIndexContainer from '../containers/MemberIndexContainer';
 import MemberShowContainer from '../containers/MemberShowContainer';
 import ProjectIndexContainer from '../containers/ProjectIndexContainer';
 import ProjectShowContainer from '../containers/ProjectShowContainer';
-import ProjectFormContainer from '../containers/ProjectFormContainer';
 import FamShowContainer from '../containers/FamShowContainer';
 
 class App extends Component {
@@ -45,7 +44,6 @@ class App extends Component {
           <Route path='/'>
             <IndexRoute component={ProjectIndexContainer} />
             <Route path='/projects' component={ProjectIndexContainer} />
-            // <Route path='/projects/new' component={ProjectFormContainer} />
             <Route path='/projects/:id' component={ProjectShowContainer} />
             <Route path='/projects/:id/edit' component={EditProjectFormContainer} />
             <Route path='/users' component={MemberIndexContainer} />
