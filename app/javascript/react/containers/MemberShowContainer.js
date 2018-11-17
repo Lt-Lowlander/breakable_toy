@@ -59,7 +59,7 @@ class MemberShowContainer extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        image: body[0].profile_photo.thumb.url
+        image: body[0].profile_photo.url
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
