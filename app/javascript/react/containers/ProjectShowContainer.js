@@ -52,17 +52,6 @@ class ProjectShowContainer extends Component {
 
   cleanHouse(){
     window.location = `/fams/${this.state.project.fam_id}`;
-    this.setState({
-      project: {},
-      coverImage: '',
-      equipment: [],
-      material: [],
-      step: [],
-      activeMember: '',
-      fetchType: '',
-      element: '',
-      currentItem: ''
-    })
   }
   // Resets state elements to neutral values
   clearInputs(){
@@ -180,6 +169,7 @@ class ProjectShowContainer extends Component {
               budget={project.budget}
               topics={project.topics}
               user={project.handle}
+              fam={this.state.project.fam_id}
               userNum={project.user_id}
               parent={project.parent_id}
               viewer={this.state.activeMember}
