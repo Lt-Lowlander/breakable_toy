@@ -20,7 +20,6 @@ class App extends Component {
 //     // extracts user info from the navbar (written in .erb).  could be useful for linking to the user page.
 //     let relString;
 //     relString = this._reactInternalInstance._hostContainerInfo._node.offsetParent.innerText;
-// debugger
 
 
     // This is the flash message that appears when someone logs in or out
