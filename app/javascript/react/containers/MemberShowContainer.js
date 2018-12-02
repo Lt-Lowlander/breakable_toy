@@ -110,7 +110,6 @@ class MemberShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-debugger
       this.setState ({
         userInfo: body.user,
         handle: body.user.handle,
