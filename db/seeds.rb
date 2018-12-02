@@ -27,38 +27,22 @@ projects = Project.create!([
 
 # #create equipment
 equipment = Equipment.create!([
-  {id: '1', tool_name: "Soldering Iron"},
-  {id: '2', tool_name: "Screwdriver"},
-  {id: '3', tool_name: "Wire Strippers"},
-  {id: '4', tool_name: "Needle-nose Pliers"},
-  {id: '5', tool_name: "3D Printer"},
-  {id: '6', tool_name: "Laptop"},
-  {id: '7', tool_name: "Hot Glue Gun"},
-  {id: '8', tool_name: "Planer"},
-  {id: '9', tool_name: "Jointer"},
-  {id: '10', tool_name: "Table Saw"},
-  {id: '11', tool_name: "Table Router"},
-  {id: '12', tool_name: "Drill Press"},
-])
-
-# create equipment in projects
-equipment_in_projects = EquipmentInProject.create!([
-  {id: '1', equipment_id: '1', project_id: '1', user_id: '1'},
-  {id: '2', equipment_id: '2', project_id: '1', user_id: '1'},
-  {id: '3', equipment_id: '3', project_id: '1', user_id: '1'},
-  {id: '4', equipment_id: '4', project_id: '1', user_id: '1'},
-  {id: '5', equipment_id: '8', project_id: '3', user_id: '1'},
-  {id: '6', equipment_id: '9', project_id: '3', user_id: '1'},
-  {id: '7', equipment_id: '10', project_id: '3', user_id: '1'},
-  {id: '8', equipment_id: '11', project_id: '3', user_id: '1'},
-  {id: '9', equipment_id: '12', project_id: '3', user_id: '1'},
-  {id: '10', equipment_id: '5', project_id: '6', user_id: '2'},
-  {id: '11', equipment_id: '6', project_id: '6', user_id: '2'},
-  {id: '12', equipment_id: '7', project_id: '6', user_id: '2'},
-  {id: '13', equipment_id: '1', project_id: '7', user_id: '2'},
-  {id: '14', equipment_id: '2', project_id: '7', user_id: '2'},
-  {id: '15', equipment_id: '3', project_id: '7', user_id: '2'},
-  {id: '16', equipment_id: '4', project_id: '7', user_id: '2'},
+  {user_id: '1', project_id: '1', tool_name: "Soldering Iron"},
+  {user_id: '1', project_id: '1', tool_name: "Screwdriver"},
+  {user_id: '1', project_id: '1', tool_name: "Wire Stripper"},
+  {user_id: '1', project_id: '1', tool_name: "Needle-nose Pliers"},
+  {user_id: '2', project_id: '6', tool_name: "3D Printer"},
+  {user_id: '2', project_id: '6', tool_name: "Laptop"},
+  {user_id: '2', project_id: '6', tool_name: "Hot Glue Gun"},
+  {user_id: '1', project_id: '3', tool_name: "Planer"},
+  {user_id: '1', project_id: '3', tool_name: "Jointer"},
+  {user_id: '1', project_id: '3', tool_name: "Table Saw"},
+  {user_id: '1', project_id: '3', tool_name: "Table Router"},
+  {user_id: '1', project_id: '3', tool_name: "Drill Press"},
+  {user_id: '2', project_id: '7', tool_name: "Soldering Iron"},
+  {user_id: '2', project_id: '7', tool_name: "Screwdriver"},
+  {user_id: '2', project_id: '7', tool_name: "Wire Stripper"},
+  {user_id: '2', project_id: '7', tool_name: "Needle-nose Pliers"},
 ])
 
 # create materials

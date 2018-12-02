@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :equipment
-      resources :equipment_in_projects
+      # resources :equipment_in_projects
       resources :fams
       resources :projects do
         resources :equipment
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       end
       resources :users, only: [:index, :show, :update] do
         resources :projects, only: [:index, :show]
-        resources :equipment_in_projects, only: [:index, :show]
+        # resources :equipment_in_projects, only: [:index, :show]
         resources :equipment, only: [:index]
       end
     end
