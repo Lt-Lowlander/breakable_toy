@@ -110,12 +110,13 @@ class MemberShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+debugger
       this.setState ({
         userInfo: body.user,
         handle: body.user.handle,
         bio: body.user.bio,
         image: body.user.profile_photo.thumb.url,
-        userEquipment: body.user.equipment,
+        userEquipment: body.equipment,
         userProjects: body.user.projects,
         activeMember: body.viewing_member
       })
