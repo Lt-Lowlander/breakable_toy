@@ -27,18 +27,22 @@ projects = Project.create!([
 
 # #create equipment
 equipment = Equipment.create!([
-  {id: '1', tool_name: "Soldering Iron"},
-  {id: '2', tool_name: "Screwdriver"},
-  {id: '3', tool_name: "Wire Strippers"},
-  {id: '4', tool_name: "Needle-nose Pliers"},
-  {id: '5', tool_name: "3D Printer"},
-  {id: '6', tool_name: "Laptop"},
-  {id: '7', tool_name: "Hot Glue Gun"},
-  {id: '8', tool_name: "Planer"},
-  {id: '9', tool_name: "Jointer"},
-  {id: '10', tool_name: "Table Saw"},
-  {id: '11', tool_name: "Table Router"},
-  {id: '12', tool_name: "Drill Press"},
+  {user_id: '1', project_id: '1', tool_name: "Soldering Iron"},
+  {user_id: '1', project_id: '1', tool_name: "Screwdriver"},
+  {user_id: '1', project_id: '1', tool_name: "Wire Stripper"},
+  {user_id: '1', project_id: '1', tool_name: "Needle-nose Pliers"},
+  {user_id: '2', project_id: '6', tool_name: "3D Printer"},
+  {user_id: '2', project_id: '6', tool_name: "Laptop"},
+  {user_id: '2', project_id: '6', tool_name: "Hot Glue Gun"},
+  {user_id: '1', project_id: '3', tool_name: "Planer"},
+  {user_id: '1', project_id: '3', tool_name: "Jointer"},
+  {user_id: '1', project_id: '3', tool_name: "Table Saw"},
+  {user_id: '1', project_id: '3', tool_name: "Table Router"},
+  {user_id: '1', project_id: '3', tool_name: "Drill Press"},
+  {user_id: '2', project_id: '7', tool_name: "Soldering Iron"},
+  {user_id: '2', project_id: '7', tool_name: "Screwdriver"},
+  {user_id: '2', project_id: '7', tool_name: "Wire Stripper"},
+  {user_id: '2', project_id: '7', tool_name: "Needle-nose Pliers"},
 ])
 
 # create materials

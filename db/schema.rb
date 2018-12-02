@@ -19,17 +19,10 @@ ActiveRecord::Schema.define(version: 2018_10_22_200604) do
     t.string "tool_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "equipment_in_projects", force: :cascade do |t|
-    t.bigint "project_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "equipment_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["equipment_id"], name: "index_equipment_in_projects_on_equipment_id"
-    t.index ["project_id"], name: "index_equipment_in_projects_on_project_id"
-    t.index ["user_id"], name: "index_equipment_in_projects_on_user_id"
+    t.bigint "project_id", null: false
+    t.index ["project_id"], name: "index_equipment_on_project_id"
+    t.index ["user_id"], name: "index_equipment_on_user_id"
   end
 
   create_table "fams", force: :cascade do |t|
