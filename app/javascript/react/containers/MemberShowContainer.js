@@ -115,7 +115,7 @@ class MemberShowContainer extends Component {
         handle: body.user.handle,
         bio: body.user.bio,
         image: body.user.profile_photo.thumb.url,
-        userEquipment: body.user.equipment,
+        userEquipment: body.equipment,
         userProjects: body.user.projects,
         activeMember: body.viewing_member
       })

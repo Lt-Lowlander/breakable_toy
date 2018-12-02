@@ -14,11 +14,14 @@ class Api::V1::UsersController < ApiController
       member = current_user.id
     end
     user = User.find(params[:id])
+    tool_belt = current_user.equipment.pluck(:tool_name).as_json.uniq
+    gear = gear_rna(tool_belt)
     payload = {
       viewing_member: member,
-      user: user
+      user: user,
+      equipment: gear
     }
-    render json: payload, include: ["equipment", "projects"]
+    render json: payload, include: ["projects"]
   end
 
   def update
@@ -34,6 +37,19 @@ class Api::V1::UsersController < ApiController
   private
   def user_data
     params.permit(:id, :handle, :bio, :profile_photo, :user)
+  end
+
+  def gear_rna(array1)
+      i = 1
+      j = 0
+      terminus = array1.length
+      array2 = []
+      while i <= terminus
+        array2 << {id: i, tool_name: array1[j]}
+        i += 1
+        j += 1
+      end
+      return array2
   end
 
 end
