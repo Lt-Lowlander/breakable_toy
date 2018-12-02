@@ -4,8 +4,9 @@ class ProjectSerializer < ActiveModel::Serializer
   belongs_to :user
   belongs_to :fam
 
-  has_many :equipment_in_projects
-  has_many :equipment, through: :equipment_in_projects
+  # has_many :equipment_in_projects
+  # has_many :equipment, through: :equipment_in_projects
+  has_many :equipment
   has_many :materials
   has_many :steps
 end

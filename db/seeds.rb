@@ -41,26 +41,6 @@ equipment = Equipment.create!([
   {id: '12', tool_name: "Drill Press"},
 ])
 
-# create equipment in projects
-equipment_in_projects = EquipmentInProject.create!([
-  {id: '1', equipment_id: '1', project_id: '1', user_id: '1'},
-  {id: '2', equipment_id: '2', project_id: '1', user_id: '1'},
-  {id: '3', equipment_id: '3', project_id: '1', user_id: '1'},
-  {id: '4', equipment_id: '4', project_id: '1', user_id: '1'},
-  {id: '5', equipment_id: '8', project_id: '3', user_id: '1'},
-  {id: '6', equipment_id: '9', project_id: '3', user_id: '1'},
-  {id: '7', equipment_id: '10', project_id: '3', user_id: '1'},
-  {id: '8', equipment_id: '11', project_id: '3', user_id: '1'},
-  {id: '9', equipment_id: '12', project_id: '3', user_id: '1'},
-  {id: '10', equipment_id: '5', project_id: '6', user_id: '2'},
-  {id: '11', equipment_id: '6', project_id: '6', user_id: '2'},
-  {id: '12', equipment_id: '7', project_id: '6', user_id: '2'},
-  {id: '13', equipment_id: '1', project_id: '7', user_id: '2'},
-  {id: '14', equipment_id: '2', project_id: '7', user_id: '2'},
-  {id: '15', equipment_id: '3', project_id: '7', user_id: '2'},
-  {id: '16', equipment_id: '4', project_id: '7', user_id: '2'},
-])
-
 # create materials
 materials = Material.create!([
   {project_id: '1', material_name: "tin-based solder"},
