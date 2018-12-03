@@ -14,7 +14,7 @@ class Api::V1::UsersController < ApiController
       member = current_user.id
     end
     user = User.find(params[:id])
-    tool_belt = current_user.equipment.pluck(:tool_name).as_json.uniq
+    tool_belt = user.equipment.pluck(:tool_name).as_json.uniq
     gear = gear_rna(tool_belt)
     payload = {
       viewing_member: member,
