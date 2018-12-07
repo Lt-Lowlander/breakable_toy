@@ -248,7 +248,6 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
-  activestorage (>= 5.2.1.1)
   bootsnap (>= 1.1.0)
   capybara
   carrierwave
