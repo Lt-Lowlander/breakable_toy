@@ -24,7 +24,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
+<<<<<<< HEAD
 gem 'activestorage', '>=5.2.1.1'
+=======
+gem 'activestorage', '>= 5.2.1.1'
+>>>>>>> 9c980669fba562d366dd2831002bdbc01b658949
 gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
