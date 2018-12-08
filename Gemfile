@@ -24,14 +24,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-gem 'activestorage', '>= 5.2.1.1'
 gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', '>= 1.3.2', require: false
 
 group :development, :test do
 
@@ -65,3 +64,6 @@ gem 'active_model_serializers'
 gem 'carrierwave'
 
 gem "loofah", ">= 2.2.3"
+
+gem 'sprockets', '~>3.7.2'
+gem 'sprockets-es6'
