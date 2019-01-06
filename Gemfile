@@ -59,7 +59,7 @@ gem 'valid_attribute', group: [:development, :test]
 gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'devise'
 gem 'foundation-rails'
-gem 'webpacker', '~> 3.3'
+gem 'webpacker', '~> 3.5'
 gem 'active_model_serializers'
 gem 'carrierwave'
 
